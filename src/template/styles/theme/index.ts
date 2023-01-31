@@ -9,9 +9,9 @@
  */
 
 import { watch, onMounted } from 'vue';
-import { useThemeStore } from './store';
-import { useFrameStore } from '../frame/store';
-import addMetaTags from '@/template/helpers/addMetaTags';
+import { useThemeStore } from './_store';
+import { useFrameStore } from '../frame/_store';
+import addMetaTags from '@/template/helpers/dom/addMetaTags';
 
 export function useTheme() {
 

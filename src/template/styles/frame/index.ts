@@ -1,8 +1,8 @@
 
 import { watch, onBeforeMount, onMounted } from 'vue';
 import type { ComputedRef } from 'vue';
-import { useFrameStore } from './store';
-import addMetaTags from '@/template/helpers/addMetaTags';
+import { useFrameStore } from './_store';
+import addMetaTags from '@/template/helpers/dom/addMetaTags';
 
 
 export function useFrame() {

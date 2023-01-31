@@ -10,6 +10,7 @@
     },
     "types": [
       "@/**/types.ts",
+      "@/**/__types.ts",
 
     ]
   }

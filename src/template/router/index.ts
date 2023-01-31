@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { pageRoutes } from '@/template/router/pageRoutes';
+import { pageRoutes } from '@/template/router/_pageRoutes';
 
 
 

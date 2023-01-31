@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFrameStore } from '@/template/styles/frame/store';
+import { useFrameStore } from '@/template/styles/frame/_store';
 const frameStore = useFrameStore();
 </script>
 

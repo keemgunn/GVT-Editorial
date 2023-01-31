@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity';
-import { navList } from '@/template/router/pageRoutes'
-import { useFrameStore } from '@/template/styles/frame/store';
+import { navList } from '@/template/router/_pageRoutes'
+import { useFrameStore } from '@/template/styles/frame/_store';
 
 const frameStore = useFrameStore();
 
