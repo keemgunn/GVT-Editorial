@@ -1,19 +1,118 @@
-html {
+
+// =========================
+// ========= LAYOUT OVERVIEW
+.layout--app #app {
+  #nav-bar-app {}
+  #view {
+    header#main-actions {}
+    main#somename-main {}
+    footer#other-actions {}
+  }
+}
+
+
+
+.layout--app, .layout--app #app {
+  // LOCK SCROLLS FOR APP CONTAINER
   height: 100%;
-  width: 100vw;
-  padding: 0; margin: 0;
+  overflow: hidden;
 }
 
-html * {
-  // DISABLE MOBILE TAB HIGHLIGHTS
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  
-  box-sizing: border-box; /* 오페라(Opera) */
-  -moz-box-sizing: border-box; /* 파이어폭스(Firefox)*/
-  -webkit-box-sizing: border-box; /* 웹킷(Webkit) & 크롬(Chrome) */
+.layout--app #app {
+  #view {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    position: relative;
+    gap: 0 0;
+  }
 }
 
-body, #app {
-  width: 100vw;
-  padding: 0; margin: 0;
+
+// FOR TEST
+header { height: 80rem; }
+
+
+// #app ----------------------
+//    + #nav-bar-app ------------------
+//    + #view ----------------
+//    + #status-bar  ----------------
+
+.layout--app #app {
+  display: grid;
+  #nav-bar-app { grid-area: 🎈; }
+  #view { grid-area: 💎; }
+  #status-bar { grid-area: 🎾; }
 }
+
+.layout--app.scale--XXL #app,
+.layout--app.scale--XL #app,
+.layout--app.scale--L #app,
+.layout--app.scale--M #app {
+  grid-template-areas: 
+  "🎈 💎"
+  "🎈 💎"
+  "🎾 🎾";
+  grid-template-columns: 
+    0fr 10fr;
+  grid-template-rows: 
+    10fr
+    10fr
+    0fr;
+}
+
+.layout--app.scale--S #app, 
+.layout--app.scale--XS #app,
+.layout--app.scale--XXS #app{
+  grid-template-areas: 
+  "🎾 🎾"
+  "💎 💎"
+  "🎈 🎈";
+  grid-template-columns: 
+    1fr 1fr;
+  grid-template-rows: 
+    0fr
+    10fr
+    0fr;
+}
+.layout--app.scale--S #app, 
+.layout--app.scale--XS #app,
+.layout--app.scale--XXS #app{
+  flex-direction: column-reverse;
+}
+
+
+
+// ==== THIS #view layout can be different by views
+// ==== this is just a sample.
+// #view -----------------------
+//    + header -----------------
+//    + main -------------------
+//    + footer -----------------
+
+.layout--app #view {
+  display: flex;
+  header { // #main-actions
+    flex-shrink: 0;
+  }
+  main { // #{{viewname}}-main
+    flex-grow: 1;
+    width: 100%; height: 100%;
+  }
+  footer { // #other-actions
+    flex-shrink: 0;
+  }
+}
+
+.layout--app.scale--XXL #view,
+.layout--app.scale--XL #view,
+.layout--app.scale--L #view,
+.layout--app.scale--M #view,
+.layout--app.scale--S #view {
+  flex-direction: column;
+}
+
+.layout--app.scale--XS #view,
+.layout--app.scale--XXS #view {
+  flex-direction: column-reverse;
+}
+

@@ -26,7 +26,7 @@ const scaleClasses = [
       </div>
     </div>
 
-    <Vector src="@/app/assets/svg/logo-gunn.svg"/>
+    <Vector src="@/assets/svg/logo-brand-main.svg"/>
 
   </main>
 

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { viewRoutes } from '@/app/router/viewRoutes';
+import { pageRoutes } from '@/template/router/pageRoutes';
 
 
 
@@ -8,7 +8,7 @@ const routes = [
   // DEFAULT
   { path: '/', redirect: '/home' },
 
-  ...viewRoutes, 
+  ...pageRoutes, 
 ]
 
 const router = createRouter({

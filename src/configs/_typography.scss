@@ -1,8 +1,12 @@
-@import "@/template/styles/font/archivo.css";
-@import "@/template/styles/font/inter.css";
-@import "@/template/styles/font/JetBrainsMono.css";
+@import "@/assets/font/archivo.css";
+@import "@/assets/font/inter.css";
+@import "@/assets/font/JetBrainsMono.css";
 
-body.typo--default {}
+@import "@/template/styles/typography/_basics.scss";
+@import "@/template/styles/typography/_mixins.scss";
+
+
+
 
 @include Header("Archivo", 48, 56, "-",   1, 600, 400, 800);
 @include Header("Archivo", 32, 40, "-",   1, 600, 400, 800);

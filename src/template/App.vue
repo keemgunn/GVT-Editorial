@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { useTemplate } from '@/template';
+import { useFrame } from './styles/frame';
+import { useTheme } from './styles/theme';
 
-// TEMPLATE
-useTemplate();
+// =================== CSS FILES
+import('./main.scss')
+
+// =================== COMPOSABLES
+useFrame();
+useTheme();
 </script>
 
 <template>

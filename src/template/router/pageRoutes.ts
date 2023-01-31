@@ -6,7 +6,7 @@ import { createRoutesArray } from "./helpers";
 
 const AUTO_VIEW_ROUTES = true;
 
-let VIEW_ROUTE_SETTINGS: ViewRouteSettings = {
+let VIEW_ROUTE_SETTINGS: PageRouteSettings = {
   Home: {
     allowAccess: 'public',
     displayOnNav: true,
@@ -28,7 +28,7 @@ let VIEW_ROUTE_SETTINGS: ViewRouteSettings = {
 
 
 // ============== CREATE ROUTER RECORDS
-let viewRoutes: Array<RouteRecordRaw> = [];
+let pageRoutes: Array<RouteRecordRaw> = [];
 
 /**
  * MAKE ROUTE RECORDS AUTOMATICALLY
@@ -39,11 +39,12 @@ if (AUTO_VIEW_ROUTES) {
 
   VIEW_ROUTE_SETTINGS = {};
   
-  // Get array of filepaths inside of `@/views/{VIEW}/`
-  const viewFiles = import.meta.glob('../views/**/View.vue')
+  // Get array of filepaths inside of `@/pages/{VIEW}/`
+  const viewFiles = import.meta.glob('../../pages/**/Page.vue')
   
   // Make route objects from view array.
   for (const key of Object.keys(viewFiles)) {
+    console.log(key);
     const name = key.split('/').slice(-2)[0];
     const path = "/" + name.toLowerCase();
     
@@ -57,7 +58,7 @@ if (AUTO_VIEW_ROUTES) {
     }
   }
 }
-viewRoutes = createRoutesArray(VIEW_ROUTE_SETTINGS);
+pageRoutes = createRoutesArray(VIEW_ROUTE_SETTINGS);
 
 
 
@@ -77,6 +78,6 @@ for (const key of Object.keys(VIEW_ROUTE_SETTINGS)) {
 
 
 export {
-  viewRoutes,
+  pageRoutes,
   navList
 }

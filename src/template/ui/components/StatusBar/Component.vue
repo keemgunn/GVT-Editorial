@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useFrameStore } from '@/template/styles/frame/store';
-import { templateAtoms } from '@/template';
-const Plate = templateAtoms.Plate;
 const frameStore = useFrameStore();
 </script>
 

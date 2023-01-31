@@ -9,7 +9,7 @@ declare global {
    * @property displayName: string
    * @property icon: string
    */
-  interface ViewSetting {
+  interface PageSetting {
     allowAccess: 'public' | 'admin' | 'none';
     displayOnNav: boolean;
     path: string;
@@ -26,7 +26,7 @@ declare global {
    * @property displayName: string
    * @property icon: string
    */
-  interface ViewRouteSettings extends Record<string, ViewSetting> { }
+  interface PageRouteSettings extends Record<string, PageSetting> { }
   
   /**
    * @property displayName: `string`

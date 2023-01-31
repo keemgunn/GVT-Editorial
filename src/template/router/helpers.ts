@@ -30,12 +30,12 @@ function createRouterHook(callBefore: () => void, allowAccess: string): (to: any
  * @param name Name of the view directory. (e.g. `Home` - uppercased!)
  * @returns `RouteRecordRaw` | undefined
  */
-function createRouteRecord(viewSetting: ViewSetting, name: string): RouteRecordRaw | undefined {
+function createRouteRecord(viewSetting: PageSetting, name: string): RouteRecordRaw | undefined {
 
   if (viewSetting.allowAccess !== 'none') return {
     name,
     path: viewSetting.path,
-    component: () => import(`../views/${name}/View.vue`), // Why I wrote like this? See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
+    component: () => import(`../../pages/${name}/Page.vue`), // Why I wrote like this? See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
     beforeEnter: createRouterHook(
       viewSetting.beforeEnter,
       viewSetting.allowAccess
@@ -43,7 +43,7 @@ function createRouteRecord(viewSetting: ViewSetting, name: string): RouteRecordR
   }
 }
 
-function createRoutesArray(viewRouteSettings: ViewRouteSettings): Array<RouteRecordRaw> {
+function createRoutesArray(viewRouteSettings: PageRouteSettings): Array<RouteRecordRaw> {
   const routeRecords: Array<RouteRecordRaw> = [];
   
   for (const key of Object.keys(viewRouteSettings)) {
