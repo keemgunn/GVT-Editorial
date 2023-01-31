@@ -9,6 +9,32 @@
 		"workbench.colorTheme": "Night Owl",
 		"workbench.preferredDarkColorTheme": "Night Owl",
 		"editor.tabSize": 2,
-		"explorer.autoReveal": "focusNoScroll"
+		"explorer.autoReveal": "focusNoScroll",
+
+
+
+
+		"material-icon-theme.files.associations": {
+			"_store.ts": "Vue-config",
+			"index.ts": "conduct",
+			"main.ts": "Contributing",
+
+			"Atom.vue": "redux-action",
+			"Block.vue": "redux-reducer",
+
+		},
+    "material-icon-theme.folders.associations": {
+
+			"ui": "Queue",
+			"atoms": "Redux-actions",
+			"atoms/Icon": "",
+			"blocks": "Scala",
+
+			"frame": "mobile",
+			"typography": "Mock"
+
+
+
+	},
 	}
 }
