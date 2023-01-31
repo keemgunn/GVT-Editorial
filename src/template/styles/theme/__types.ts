@@ -6,7 +6,7 @@ declare global {
    * @property lightThemeClass: string
    * @property darkThemeClass: string
    */
-  interface ThemeSettings {
+  interface ColorSchemeSettings {
     appearance: "light" | "dark" | "auto",
     lightThemeClass: string,
     darkThemeClass: string

@@ -1,13 +1,17 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import { uiSettings } from '@/template/settings';
+
+
+const uiSettings: FrameSettings = {
+  layoutType: "app"
+}
 
 
 export const useFrameStore = defineStore('frame', () => {
 
   // Frame Layout Type
-  const frameSettings: Ref<FrameSettings> = ref(uiSettings.frame as FrameSettings);
+  const frameSettings: Ref<FrameSettings> = ref(uiSettings);
 
   // Browser Width
   const browserWidth: Ref<number> = ref(0);

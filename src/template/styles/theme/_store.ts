@@ -1,17 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import { uiSettings } from '@/template/settings';
-
-const containerColors: any = {
-  "theme--default-light": "#f0f0f0",
-  "theme--default-dark": "#f0f0f0"
-}
+import uiSettings from '@/configs/uiSettings.yml';
 
 export const useThemeStore = defineStore('theme', () => {
 
   // User Theme Settings
-  const themeSettings: Ref<ThemeSettings> = ref(uiSettings.theme as ThemeSettings);
+  const themeSettings: Ref<ColorSchemeSettings> = ref(uiSettings.theme.colorScheme as ColorSchemeSettings);
 
   // Current Color Scheme
   const isDark: Ref<boolean> = ref(false);
@@ -20,7 +15,7 @@ export const useThemeStore = defineStore('theme', () => {
   const currentThemeClass: Ref<string> = ref("theme--something");
 
   // Browser Container Colors
-  const containerColor = computed(() => containerColors[currentThemeClass.value])
+  const containerColor = computed(() => uiSettings.theme.browserContainerColors[currentThemeClass.value])
 
   return { 
     themeSettings, 

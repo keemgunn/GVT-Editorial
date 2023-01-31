@@ -1,0 +1,16 @@
+
+
+
+
+
+theme:
+
+  colorScheme:
+    appearance: auto
+    lightThemeClass: theme--default-light
+    darkThemeClass: theme--default-dark
+
+  browserContainerColors:
+    theme--default-light: '#f0f0f0'
+    theme--default-dark: '#f0f0f0'
+
