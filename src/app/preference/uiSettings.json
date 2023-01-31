@@ -1,0 +1,7 @@
+{
+  "themeSettings": {
+    "appearance" : "dark",
+    "lightThemeClass" : "theme--default-light",
+    "darkThemeClass" : "theme--default-dark"
+  }
+}

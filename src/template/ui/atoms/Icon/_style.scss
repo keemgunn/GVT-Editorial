@@ -1,0 +1,16 @@
+@mixin IconColor($color) {
+  .icon span {
+    color: var(#{$color});
+  }
+}
+
+@mixin IconSize($size) {
+  .icon {
+    width: #{$size}rem !important;
+    height: #{$size}rem !important;
+  }
+  .icon span {
+    font-size: #{$size}rem;
+    font-variation-settings: "opsz" #{$size}, "FILL" 0, "wght" 500, "GRAD" 0;
+  }
+}

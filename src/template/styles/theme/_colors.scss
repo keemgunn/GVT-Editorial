@@ -1,0 +1,35 @@
+
+.theme--default-light {
+  
+  --Primary: #ff622e;
+  --Secondary: #005e4e;
+  --Surface: #ffffff;
+  --OnSurface: #2d2d2d;
+  --Background: #f0f0f0;
+  --OnBackground: #161616;
+  --Error: #df1125;
+  --Warning: #e6b644;
+  --Positive: #5ebc62;
+}
+
+.theme--default-dark {
+  
+  --Primary: #ff622e;
+  --Secondary: #005e4e;
+  --Surface: #ffffff;
+  --OnSurface: #2d2d2d;
+  --Background: #f0f0f0;
+  --OnBackground: #161616;
+  --Error: #df1125;
+  --Warning: #e6b644;
+  --Positive: #5ebc62;
+}
+
+
+body {
+  background-color: var(--Background);
+  color: var(--OnSurface);
+}
+a {
+  color: inherit;
+}

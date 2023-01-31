@@ -1,0 +1,50 @@
+
+#status-bar {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  p {
+    flex-shrink: 0;
+  }
+
+  @include PlateBorderWidth(0);
+  @include PlatePlaneColor(--Background, 100);
+}
+
+.scale--XXL #status-bar{
+  height: 48rem;
+  gap: 20rem;
+  padding: 16rem;
+}
+.scale--XL #status-bar{
+  height: 48rem;
+  gap: 16rem;
+  padding: 16rem;
+}
+.scale--L #status-bar{
+  height: 32rem;
+  gap: 12rem;
+  padding: 12rem;
+}
+.scale--M #status-bar{
+  height: 28rem;
+  gap: 10rem;
+  padding: 10rem;
+}
+.scale--S #status-bar{
+  height: 28rem;
+  gap: 10rem;
+  padding: 10rem;
+}
+.scale--XS #status-bar{
+  height: 28rem;
+  gap: 10rem;
+  padding: 10rem;
+}
+.scale--XXS #status-bar{
+  height: 24rem;
+  gap: 8rem;
+  padding: 8rem;
+}

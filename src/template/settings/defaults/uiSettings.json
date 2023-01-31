@@ -1,0 +1,10 @@
+{
+  "frame": {
+    "layoutType": "app"
+  },
+  "theme": {
+    "appearance" : "auto",
+    "lightThemeClass" : "theme--default-light",
+    "darkThemeClass" : "theme--default-dark"
+  }
+}

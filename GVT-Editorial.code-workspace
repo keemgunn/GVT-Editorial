@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.preferredLightColorTheme": "Night Owl Light",
+		"workbench.colorTheme": "Night Owl",
+		"workbench.preferredDarkColorTheme": "Night Owl",
+		"editor.tabSize": 2,
+		"explorer.autoReveal": "focusNoScroll"
+	}
+}

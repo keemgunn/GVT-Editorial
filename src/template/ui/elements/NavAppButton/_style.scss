@@ -1,0 +1,96 @@
+#app .nav-app-button {
+  position: relative;
+  display: block;
+  user-select: none;
+  z-index: 10;
+
+  .contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--OnSurface);
+    opacity: 0.56;
+    transition: 80ms;
+  }
+  
+  @include PlatePlaneColor(--Primary, 0);
+  @include PlateTransition(100);
+
+  // FOR TEST
+  // @include PlateBorderWidth(1);
+  // @include PlateBorderColor(--OnSurface, 100);
+}
+
+@media (hover: hover) {
+  #app .nav-app-button:hover {
+    .contents { opacity: 1; }
+    cursor: pointer;
+    @include PlatePlaneColor(--Primary, 13)
+  }
+}
+#app .nav-app-button.--hover {
+  .contents { opacity: 1; }
+  cursor: pointer;
+  @include PlatePlaneColor(--Primary, 13)
+}
+
+
+#app .nav-app-button:active {
+  cursor: pointer;
+  @include PlatePlaneColor(--Primary, 22)
+}
+
+
+
+.scale--XXL .nav-app-button {
+  width: 82rem;
+  padding: 10rem 14rem;
+  .contents { gap: 2rem; };
+  .contents p {font-size: 12rem !important;}
+  @include PlateRoundness(27);
+  @include IconSize(20);
+  @include IconSize(24);
+}
+.scale--XL .nav-app-button {
+  width: 70rem;
+  padding: 8rem 12rem;
+  .contents { gap: 2rem; };
+  @include PlateRoundness(23);
+  @include IconSize(20);
+}
+.scale--L .nav-app-button {
+  width: 70rem;
+  padding: 8rem 12rem;
+  .contents { gap: 2rem; };
+  @include PlateRoundness(23);
+  @include IconSize(20);
+}
+.scale--M .nav-app-button {
+  width: 70rem;
+  padding: 8rem 12rem;
+  .contents { gap: 2rem; };
+  @include PlateRoundness(23);
+  @include IconSize(20);
+}
+.scale--S .nav-app-button {
+  width: 70rem;
+  padding: 8rem 12rem;
+  .contents { gap: 2rem; };
+  @include PlateRoundness(23);
+  @include IconSize(20);
+}
+.scale--XS .nav-app-button {
+  width: 70rem;
+  padding: 9rem 12rem;
+  .contents { gap: 2rem; };
+  @include PlateRoundness(24);
+  @include IconSize(20);
+}
+.scale--XXS .nav-app-button {
+  width: 70rem;
+  padding: 8rem 12rem;
+  .contents { gap: 2rem; };
+  @include PlateRoundness(23);
+  @include IconSize(20);
+}

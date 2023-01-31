@@ -1,0 +1,53 @@
+@mixin PlateRoundness($roundness) {
+  .plate {
+    border-radius: #{$roundness}rem !important;
+    .border {
+      border-radius: #{$roundness}rem !important;
+    }
+  }
+}
+
+@mixin PlatePlaneColor($color, $opacity) {
+  .plate .plane{
+    background-color: var(#{$color});
+    opacity: calc($opacity / 100);
+  }
+}
+
+@mixin PlateBorderWidth($width) {
+  .plate .border{
+    border-width: #{$width}rem;
+  }
+}
+
+@mixin PlateBorderColor($color, $opacity) {
+  .plate .border{
+    border-color: var(#{$color});
+    border-style: solid;
+    opacity: calc($opacity / 100);
+  }
+}
+
+@mixin PlateTransition($millisecond) {
+  .plate {
+    .plane { transition: #{$millisecond}ms};
+    .border { transition: #{$millisecond}ms};
+  }
+}
+
+
+.plate {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: -10;
+}
+.plane, .border {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: -10;
+}

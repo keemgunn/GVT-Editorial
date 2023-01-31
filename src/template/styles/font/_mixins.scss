@@ -1,0 +1,90 @@
+@mixin Typeface($family, $weight) {
+  font-family: $family;
+  font-weight: $weight;
+}
+
+@mixin FontSquare($size, $lineHeight, $negateString, $letterSpace) {
+  font-size: #{$size}rem;
+  letter-spacing: #{$negateString}#{calc($letterSpace * 0.01 * $size)}rem;
+  line-height: #{calc($lineHeight / $size)};
+}
+
+@mixin marginBlock($start, $end) {
+  margin-block-start: $start;
+  margin-block-end: $end;
+}
+
+@mixin noSelect() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+
+@mixin Header($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold) {
+  .typo-header-#{$size} {
+    @include Typeface($family, $regular);
+    @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
+  }
+  .typo-header-#{$size}.--light {
+    font-family: '#{$family} #{$light}';
+  }
+  .typo-header-#{$size}.--bold {
+    font-family: '#{$family} #{$bold}';
+  }
+}
+
+@mixin Body($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold) {
+  .typo-body-#{$size} {
+    @include Typeface($family, $regular);
+    @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
+  }
+  .typo-body-#{$size}.--light {
+    font-family: '#{$family} #{$light}';
+  }
+  .typo-body-#{$size}.--bold {
+    font-family: '#{$family} #{$bold}';
+  }
+}
+
+@mixin Caption($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold) {
+  .typo-caption-#{$size} {
+    @include Typeface($family, $regular);
+    @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
+  }
+  .typo-caption-#{$size}.--light {
+    font-family: '#{$family} #{$light}';
+  }
+  .typo-caption-#{$size}.--bold {
+    font-family: '#{$family} #{$bold}';
+  }
+}
+
+@mixin Mark($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold, $heavy) {
+  .typo-mark-#{$size} {
+    @include Typeface($family, $regular);
+    @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
+  }
+  .typo-mark-#{$size}.--light {
+    font-family: 'Archivo #{$light}';
+  }
+  .typo-mark-#{$size}.--bold {
+    font-family: 'Archivo #{$bold}';
+  }
+  .typo-mark-#{$size}.--heavy {
+    font-family: 'Archivo #{$heavy}';
+  }
+}
+
+@mixin SizeAdjust($origin, $var) {
+  #{$origin} {
+    font-size: $var
+  }
+}
+
+
