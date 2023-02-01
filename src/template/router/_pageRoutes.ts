@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from "vue-router";
 import { createPageRouteSettingsAuto, createRoutesArray, createNavList } from "./_helpers";
 
-import { AUTO_PAGE_ROUTES, PAGE_ROUTE_SETTINGS } from "@/configs/pageRoutes";
+import { AUTO_PAGE_ROUTES, PAGE_ROUTE_SETTINGS } from "@/configs/page/pageRoutes";
 
 // ============== CREATE ROUTER RECORDS
 let pageRoutes: Array<RouteRecordRaw> = [];

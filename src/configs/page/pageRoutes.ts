@@ -2,6 +2,7 @@
 const AUTO_PAGE_ROUTES = true;
 
 let PAGE_ROUTE_SETTINGS: PageRouteSettings = {
+
   Home: {
     allowAccess: 'public',
     displayOnNav: true,
@@ -10,6 +11,7 @@ let PAGE_ROUTE_SETTINGS: PageRouteSettings = {
     icon: 'home',
     beforeEnter: () => { console.log('HOME'); }
   },
+
   Typography: {
     allowAccess: 'public',
     displayOnNav: true,
@@ -18,6 +20,7 @@ let PAGE_ROUTE_SETTINGS: PageRouteSettings = {
     icon: 'format_size',
     beforeEnter: () => { console.log('TYPO'); }
   },
+  
 }
 
 export {

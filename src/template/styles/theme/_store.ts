@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import uiSettings from '@/configs/uiSettings.yml';
+import uiSettings from '@/configs/ui/uiSettings.yml';
 
 export const useThemeStore = defineStore('theme', () => {
 
