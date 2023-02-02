@@ -1,6 +1,6 @@
 {
   "name": "gvt-editorial",
-  "version": "2023.05",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "vite",

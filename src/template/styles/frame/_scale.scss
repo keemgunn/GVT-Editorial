@@ -1,0 +1,49 @@
+/* @/template/styles/frame/_scale.scss */
+
+/* 
+  SET DEFUALT SCALE  ---------------------
+  Default: 1rem == 1px
+*/
+
+@media (min-width: 2401px) { 
+  /* XXL */
+  html { 
+    font-size: 1.2px; 
+  }
+}
+@media (max-width: 2400px) { 
+  /* XL */
+  html { 
+    font-size: 1.1px; 
+  }
+}
+@media (max-width: 1920px) {
+  /* L */
+  html { 
+    font-size: 1px; 
+  }
+}
+@media (max-width: 1320px) {
+  /* M */
+  html { 
+    font-size: 1px; 
+  }
+}
+@media (max-width: 960px) {
+  /* S */
+  html { 
+    font-size: 1px; 
+  }
+}
+@media (max-width: 680px) {
+  /* XS */
+  html { 
+    font-size: 1px; 
+  }
+}
+@media (max-width: 320px) {
+  /* XXS */
+  html { 
+    font-size: 0.9px; 
+  }
+}

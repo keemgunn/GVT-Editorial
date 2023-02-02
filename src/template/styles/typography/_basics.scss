@@ -1,19 +1,10 @@
-html {
-
-  // SET DEFAULT METRICS
-  // 1rem == 1px
-  font-size: 1px;
-
-  body { // NORMALIZE FONT SIZE
-    font-size: 16rem;
-  }
+body {
+  // NORMALIZE FONT SIZE
+  font-size: 16rem;
 
   // FONTS 
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-}
 
-
-body {
   // NORMALIZE TEXT SIZE DIFFERENCE BY DIVICES
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
