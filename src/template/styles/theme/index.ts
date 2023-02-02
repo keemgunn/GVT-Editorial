@@ -11,7 +11,7 @@
 import { watch, onMounted } from 'vue';
 import { useThemeStore } from './_store';
 import { useFrameStore } from '../frame/_store';
-import addMetaTags from '@/template/helpers/dom/addMetaTags';
+import { injectMetaName } from '@/template/hooks/headInjection';
 
 export function useTheme() {
 
@@ -30,9 +30,9 @@ export function useTheme() {
 
     if (frameStore.userBrowser === 'safari') {
       if (frameStore.userDevice === 'iphone') {
-        addMetaTags("theme-color", "#000000");
+        injectMetaName("theme-color", "#000000");
       } else {
-        addMetaTags("theme-color", store.containerColor);
+        injectMetaName("theme-color", store.containerColor);
       }
     }
 

@@ -2,7 +2,7 @@
 import { watch, onBeforeMount, onMounted } from 'vue';
 import type { ComputedRef } from 'vue';
 import { useFrameStore } from './_store';
-import addMetaTags from '@/template/helpers/dom/addMetaTags';
+import { injectMetaName } from '@/template/hooks/headInjection';
 
 
 export function useFrame() {
@@ -49,8 +49,8 @@ export function useFrame() {
 
 
     // if (store.userDevice === 'iphone') {
-    //   addMetaTags("apple-mobile-web-app-status-bar-style", "black-translucent");
-    //   addMetaTags("theme-color", "#000000");
+    //   injectMetaName("apple-mobile-web-app-status-bar-style", "black-translucent");
+    //   injectMetaName("theme-color", "#000000");
     // }
 
 
@@ -80,7 +80,7 @@ export function useFrame() {
   onMounted(() => {
 
     // For Mobile device safe areas
-    addMetaTags("viewport", "width=device-width, initial-scale=1.0, viewport-fit=cover");
+    injectMetaName("viewport", "width=device-width, initial-scale=1.0, viewport-fit=cover");
 
     setFrameType();
     document.body.classList.add('scale--XXS');
