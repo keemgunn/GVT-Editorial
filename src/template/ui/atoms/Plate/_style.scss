@@ -1,3 +1,5 @@
+/* atoms/Plate */
+
 @mixin PlateRoundness($roundness) {
   .plate {
     border-radius: #{$roundness}rem !important;

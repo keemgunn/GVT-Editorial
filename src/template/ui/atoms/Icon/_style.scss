@@ -1,3 +1,5 @@
+/* atoms/Icon */
+
 @mixin IconColor($color) {
   .icon span {
     color: var(#{$color});
