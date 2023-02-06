@@ -18,6 +18,7 @@ function createPageSettingsAuto(): PageSettings {
       dirName: name,
       displayName: name,
       uri,
+      alias: [],
       icon: 'home',
       beforeEnter: () => {}
     })
@@ -88,11 +89,11 @@ function createRouterHook(callBefore: () => void, accessType: pageAccessType): (
  * @param name Name of the view directory. (e.g. `Home` - uppercased!)
  * @returns `RouteRecordRaw` | undefined
  */
-function PageRecord(pageSetting: PageSetting): RouteRecordRaw | undefined {
-
-  if (pageSetting.allowAccess !== 'none') return {
+function PageRecord(pageSetting: PageSetting): RouteRecordRaw {
+  return {
     name: pageSetting.displayName,
     path: pageSetting.uri,
+    alias: pageSetting.alias,
     component: () => import(`../../pages/${pageSetting.dirName}/Page.vue`), // Why I wrote like this? See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
     beforeEnter: createRouterHook(
       pageSetting.beforeEnter,

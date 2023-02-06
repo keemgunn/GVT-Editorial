@@ -15,7 +15,10 @@ declare global {
   interface PageSetting {
     dirName: string;
     displayName: string;
+
     uri: string;
+    alias: Array<string>;
+
     allowAccess: pageAccessType;
     displayOnNav: boolean;
     icon: string;

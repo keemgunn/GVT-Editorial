@@ -7,7 +7,7 @@ import { errorRecords } from './_otherRecords';
 const routes = [
 
   // DEFAULT
-  { path: '/', redirect: '/home' },
+  // { path: '/', redirect: '/home' },
 
   
   ...pageRecords, 
