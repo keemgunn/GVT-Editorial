@@ -19,7 +19,12 @@ const containerClass = computed(() => [
   `--${navBar.navBarLinkType}`,
   `--${props.size}`
 ])
-const typoClass = computed(() => `typo-body-${props.size} --bold`)
+const typoClass = computed(() => {
+  if (props.size > 12)
+    return `typo-body-${props.size} --bold`
+  else 
+    return `typo-body-${props.size}`
+})
 
 const navIconSize = computed(() => props.size + 2);
 
