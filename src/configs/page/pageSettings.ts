@@ -1,24 +1,26 @@
 
-const AUTO_PAGE_ROUTES = false;
+const CREATE_PAGE_SETTINGS_AUTO = false;
 
-let PAGE_ROUTE_SETTINGS: PageRouteSettings = [
+let PAGE_SETTINGS: PageSettings = [
   {
-    allowAccess: 'public',
-    displayOnNav: true,
     dirName: 'Home',
     displayName: 'Home',
-    uri: '/home',
+    uri: '/home/:pagenum(\\d+)?',
+
+    allowAccess: 'public',
+    displayOnNav: true,
     icon: 'home',
     beforeEnter: () => {
       console.log('HOME');
     }
   },
   {
-    allowAccess: 'public',
-    displayOnNav: true,
     dirName: 'Typography',
     displayName: 'Typography',
     uri: '/typography',
+    
+    allowAccess: 'user',
+    displayOnNav: true,
     icon: 'format_size',
     beforeEnter: () => {
       console.log('TYPO');
@@ -27,6 +29,6 @@ let PAGE_ROUTE_SETTINGS: PageRouteSettings = [
 ]
 
 export {
-  AUTO_PAGE_ROUTES,
-  PAGE_ROUTE_SETTINGS
+  CREATE_PAGE_SETTINGS_AUTO,
+  PAGE_SETTINGS
 }

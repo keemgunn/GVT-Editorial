@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity';
-import { navList } from '@/template/router/_pageRoutes'
+import { navRecords } from '@/template/router/_pageRoutes'
 import { useFrameStore } from '@/template/styles/frame/_store';
 
 const frameStore = useFrameStore();
@@ -28,7 +28,7 @@ const showPrefOnLarge = computed(() => {
     <Vector v-if="showLogo" class="nav-logo" src="@/assets/svg/logo-brand-main.svg"/>
 
     <div class="nav-wrapper">
-      <NavAppButton v-for="navRecord in navList" :key="'view--' + navRecord.url" :displayName="navRecord.displayName" :url="navRecord.url" :icon="navRecord.icon"/>
+      <NavAppButton v-for="navRecord in navRecords" :key="'view--' + navRecord.uri" :displayName="navRecord.displayName" :url="navRecord.uri" :icon="navRecord.icon"/>
 
       <!-- ONLY <= S -->
       <NavAppButton v-if="showPrefOnSmall" displayName="preference" url="#" icon="account_circle"/>
