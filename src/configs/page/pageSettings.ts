@@ -4,14 +4,14 @@ const CREATE_PAGE_SETTINGS_AUTO = false;
 let PAGE_SETTINGS: PageSettings = [
 
   { dirName: 'Home',
-    displayName: 'Home',
-
     uri: '/:pagenum(\\d+)?',
     alias: ['/home/:pagenum(\\d+)?'],
-
     allowAccess: 'public',
-    displayOnNav: true,
-    icon: 'home',
+
+    navType: 'link',
+    navTitle: 'Home',
+    navIcon: 'home',
+    navLink: '/',
 
     beforeEnter: () => {
       console.log('HOME');
@@ -19,30 +19,45 @@ let PAGE_SETTINGS: PageSettings = [
   },
 
   { dirName: 'About',
-    displayName: 'About',
-
     uri: '/about',
     alias: [],
-
     allowAccess: 'public',
-    displayOnNav: true,
-    icon: 'home',
+
+    navType: 'link',
+    navTitle: 'About',
+    navIcon: 'home',
+    navLink: '/about',
 
     beforeEnter: () => {
       console.log('ABOUT');
     }
   },
 
+  { dirName: 'Articles',
+    uri: '/articles/:filter?',
+    alias: [],
+    allowAccess: 'public',
+
+    navType: 'dropdown',
+    navTitle: 'Articles',
+    navIcon: 'category',
+    navLink: '/articles',
+
+    beforeEnter: () => {
+      console.log('ARTICLES');
+    }
+  },
+
 
   { dirName: 'Typography',
-    displayName: 'Typography',
-
     uri: '/typography',
     alias: [],
-    
     allowAccess: 'user',
-    displayOnNav: true,
-    icon: 'format_size',
+
+    navType: 'none',
+    navTitle: 'Typography',
+    navIcon: 'format_size',
+    navLink: '/typography',
 
     beforeEnter: () => {
       console.log('TYPO');

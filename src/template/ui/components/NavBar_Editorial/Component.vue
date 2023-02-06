@@ -6,7 +6,7 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 const frameStore = useFrameStore();
 
 const showLogo = computed(() => {
-  return /--M|--L|--XL|--XXL/.test(frameStore.appScale)
+  return /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
 });
 
 const showPrefOnSmall = computed(() => {
@@ -27,15 +27,15 @@ const showPrefOnLarge = computed(() => {
 
     
     <!-- <div class="nav-wrapper">
-      <NavAppButton v-for="navRecord in navRecords" :key="'view--' + navRecord.url" :displayName="navRecord.displayName" :url="navRecord.url" :icon="navRecord.icon"/> -->
+      <NavAppButton v-for="navRecord in navRecords" :key="'view--' + navRecord.url" :navTitle="navRecord.navTitle" :url="navRecord.url" :icon="navRecord.icon"/> -->
       
       <!-- ONLY <= S -->
-      <!-- <NavAppButton v-if="showPrefOnSmall" displayName="preference" url="#" icon="account_circle"/>
+      <!-- <NavAppButton v-if="showPrefOnSmall" navTitle="preference" url="#" icon="account_circle"/>
       </div> -->
       
       <!-- ONLY >= M -->
       <!-- <div v-if="showPrefOnLarge" class="preference-wrapper">
-        <NavAppButton displayName="preference" url="#" icon="account_circle"/>
+        <NavAppButton navTitle="preference" url="#" icon="account_circle"/>
       </div> -->
       
     <header>
@@ -44,7 +44,9 @@ const showPrefOnLarge = computed(() => {
 
       <nav>
         <ul id="nav-links">
-          <li v-for="navRecord in navRecords" :key="'page--'+navRecord.uri">{{navRecord.displayName}}</li>
+          <li v-for="navRecord in navRecords" :key="'page--'+navRecord.uri" >
+            <NavBarLink :navTitle="navRecord.navTitle" :navLink="navRecord.navLink" :navType="navRecord.navType" :navIcon="navRecord.navIcon"/>
+          </li>
 
         </ul>
       </nav>

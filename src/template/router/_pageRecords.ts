@@ -16,12 +16,13 @@ function createPageSettingsAuto(): PageSettings {
     
     pageRouteSettings.push({
       allowAccess: 'public',
-      displayOnNav: true,
+      navType: 'link',
       dirName: name,
-      displayName: name,
+      navTitle: name,
       uri,
       alias: [],
-      icon: 'home',
+      navIcon: 'home',
+      navLink: uri,
       beforeEnter: () => {}
     })
   }
@@ -38,7 +39,7 @@ function createPageSettingsAuto(): PageSettings {
  */
 function PageRecord(pageSetting: PageSetting): RouteRecordRaw {
   return {
-    name: pageSetting.displayName,
+    name: pageSetting.navTitle,
     path: pageSetting.uri,
     alias: pageSetting.alias,
     component: () => import(`../../pages/${pageSetting.dirName}/Page.vue`), // Why I wrote like this? See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations

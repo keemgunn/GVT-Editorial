@@ -5,7 +5,7 @@
  * @param accessType This argument decides whether the authorization process evoked. If the argument is `admin` and the authorization fails, Router will route user to the last page.
  * @returns A hook for `RouteRecordRaw`
  */
-export function createRouterHook(callBefore: () => void, accessType: pageAccessType): (to: any, from: any, next: any) => void {
+export function createRouterHook(callBefore: () => void, accessType: PageAccessType): (to: any, from: any, next: any) => void {
   return (to: any, from: any, next: any) => {
     
     // DO SOME AUTH
@@ -61,9 +61,11 @@ export function createNavList(pageRouteSettings: PageSettings): Array<NavRecord>
 
     if (pageSetting.allowAccess !== 'none') {
       navList.push({
-        displayName: pageSetting.displayName,
+        navTitle: pageSetting.navTitle,
+        navType: pageSetting.navType,
         uri: pageSetting.uri,
-        icon: pageSetting.icon
+        navIcon: pageSetting.navIcon,
+        navLink: pageSetting.navLink
       })
     }
   })

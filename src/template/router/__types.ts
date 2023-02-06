@@ -1,27 +1,31 @@
 export { };
 declare global {
 
-  type pageAccessType = 'public' | 'user' | 'admin' | 'none';
+  type PageAccessType = 'public' | 'user' | 'admin' | 'none';
+
+  type NavType = 'link' | 'dropdown' | 'none';
 
   /**
    * @property allowAccess: 'public' | 'admin' | 'none'
-   * @property displayOnNav: boolean
+   * @property navType: 'link' | 'dropdown' | 'none'
    * @property uri: string
    * @property dirName: string
    * @property beforeEnter: () => any
-   * @property displayName: string
-   * @property icon: string
+   * @property navTitle: string
+   * @property navIcon: string
+   * @property navLink: string
    */
   interface PageSetting {
     dirName: string;
-    displayName: string;
-
     uri: string;
     alias: Array<string>;
+    allowAccess: PageAccessType;
+    
+    navType: NavType;
+    navTitle: string;
+    navIcon: string;
+    navLink: string;
 
-    allowAccess: pageAccessType;
-    displayOnNav: boolean;
-    icon: string;
     beforeEnter: () => any;
   }
 
@@ -29,12 +33,13 @@ declare global {
 
   /**
    * @property allowAccess: 'public' | 'admin' | 'none'
-   * @property displayOnNav: boolean
+   * @property navType: boolean
    * @property uri: string
    * @property dirName: string
    * @property beforeEnter: () => any
-   * @property displayName: string
-   * @property icon: string
+   * @property navTitle: string
+   * @property navIcon: string
+   * @property navLink: string
    */
   type PageSettings = Array<PageSetting>;
   // interface PageSettings extends Record<string, PageSetting> { }
@@ -42,14 +47,17 @@ declare global {
 
 
   /**
-   * @property displayName: `string`
+   * @property navTitle: `string`
    * @property url: `string`
-   * @property icon: `string`
+   * @property navIcon: `string`
+   * @property navLink: string
    */
   interface NavRecord {
-    displayName: string
+    navTitle: string,
+    navType: NavType
     uri: string
-    icon: string
+    navIcon: string
+    navLink: string
   }
   
 }
