@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
+import { defineProps, computed, onBeforeMount } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { getStatusCode, ReasonPhrases, getReasonPhrase, StatusCodes } from 'http-status-codes';
-
+import { useInteractionStore } from '@/template/stores/interaction';
+import { getReasonPhrase } from 'http-status-codes';
 
 const frameStore = useFrameStore();
+const interactionStore = useInteractionStore();
+
+const pageName = "Home";
+onBeforeMount(() => {
+  interactionStore.currentPage = pageName;
+})
 
 const props = defineProps<{
   code: number
 }>();
 
 const reasonPhrase = computed(() => getReasonPhrase(props.code))
-
 </script>
 
 

@@ -1,0 +1,59 @@
+
+#app .nav-bar-link.--filled {
+  display: block;
+  position: relative;
+  height: 100%;
+
+  @include PlatePlaneColor(--Primary, 0);
+  @include PlateTransition(100);
+}
+#app .nav-bar-link.--filled .contents {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  align-content: center;
+  align-items: center;
+
+  color: var(--OnSurface);
+  opacity: 0.63;
+  .nav-handle { padding-top: 1rem; }
+}
+
+
+#app .nav-bar-link.--filled.--16 {
+  padding-left: 13rem;
+  padding-right: 13rem;
+}
+#app .nav-bar-link.--filled.--14 {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+#app .nav-bar-link.--filled.--12 {
+  padding-left: 11rem;
+  padding-right: 11rem;
+  .contents {
+    padding-top: 3rem;
+  }
+}
+
+
+#app .nav-bar-link.router-link-active.--filled 
+{
+  .contents {
+    color: var(--Primary);
+    opacity: 1;
+  }
+}
+#app .nav-bar-link.--filled:hover {
+  .contents {
+    opacity: 1;
+  }
+  @include PlatePlaneColor(--Primary, 13);
+}
+#app .nav-bar-link.--filled:active {
+  .contents {
+    opacity: 1;
+  }
+  @include PlatePlaneColor(--Primary, 22);
+}

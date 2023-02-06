@@ -1,6 +1,16 @@
 <script setup lang="ts">
+import { onBeforeMount } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
+import { useInteractionStore } from '@/template/stores/interaction';
+
 const frameStore = useFrameStore();
+const interactionStore = useInteractionStore();
+
+const pageName = "Home";
+onBeforeMount(() => {
+  interactionStore.currentPage = pageName;
+})
+
 </script>
 
 <template>

@@ -6,9 +6,17 @@
   display: flex;
   flex-direction: column;
 
-  // #nav-bar-editorial {}
-  // #router-page {}
-
+  #nav-bar-editorial { 
+    flex-shrink: unset;
+    z-index: 100;
+  }
+  #router-page { 
+    flex-grow: 1;
+    z-index: 10;
+  }
+  #dev-status-bar { 
+    flex-shrink: unset; 
+    z-index: 0;
+  }
 }
-
 

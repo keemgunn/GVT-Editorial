@@ -1,17 +1,17 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import templateConfigs from '@/configs/template/preferences.yml'
 
-
+import { useConfigs } from '@/template/configs';
 
 export const useFrameStore = defineStore('frame', () => {
+  const { preferences } = useConfigs();
 
   // Frame Layout Type
-  const templateSettings: Ref<TemplateSettings> = ref(templateConfigs as TemplateSettings);
+  const templateSettings: Ref<TemplateSettings> = ref(preferences);
 
   // Browser Width
-  const browserWidth: Ref<number> = ref(0);
+  const viewWidth: Ref<number> = ref(0);
 
   // Is device Vertical
   const isVertical: Ref<boolean> = ref(false);
@@ -25,28 +25,32 @@ export const useFrameStore = defineStore('frame', () => {
   const userBrowser: Ref<string> = ref("");
 
 
-
   const appLayout = computed(() => {
     return `layout--${templateSettings.value.appType}`
   })
 
+
+  function breakpoint(scale: 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL'): number {
+    return preferences.breakpoints[scale]
+  }
+
   const appScale = computed(() => {
-    if (browserWidth.value < 320) {
+    if (viewWidth.value < preferences.breakpoints.XXS) {
       return 'scale--XXS'
     } 
-    else if (browserWidth.value < 700) {
+    else if (viewWidth.value < preferences.breakpoints.XS) {
       return 'scale--XS'
     }
-    else if (browserWidth.value < 1030) {
+    else if (viewWidth.value < preferences.breakpoints.S) {
       return 'scale--S'
     }
-    else if (browserWidth.value < 1360) {
+    else if (viewWidth.value < preferences.breakpoints.M) {
       return 'scale--M'
     }
-    else if (browserWidth.value < 1920) {
+    else if (viewWidth.value < preferences.breakpoints.L) {
       return 'scale--L'
     }
-    else if (browserWidth.value < 2400) {
+    else if (viewWidth.value < preferences.breakpoints.XL) {
       return 'scale--XL'
     }
     else {
@@ -74,7 +78,7 @@ export const useFrameStore = defineStore('frame', () => {
 
   return { 
     templateSettings,
-    browserWidth,
+    viewWidth,
     isVertical,
     isMobile,
     
@@ -83,6 +87,8 @@ export const useFrameStore = defineStore('frame', () => {
     userBrowser,
 
     appLayout,
+
+    breakpoint,
     appScale,
     appRotation,
     appDevice,

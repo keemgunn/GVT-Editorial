@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import uiSettings from '@/configs/ui/uiSettings.yml';
+import { useConfigs } from '@/template/configs'
 
 export const useThemeStore = defineStore('theme', () => {
+  const { uiSettings } = useConfigs();
 
   // User Theme Settings
   const themeSettings: Ref<ColorSchemeSettings> = ref(uiSettings.theme.colorScheme as ColorSchemeSettings);

@@ -15,7 +15,7 @@ export function useFrame() {
   }
 
   function handleResize() {
-    store.browserWidth = window.innerWidth
+    store.viewWidth = window.innerWidth
     store.isVertical = window.innerHeight > window.innerWidth
   }
 

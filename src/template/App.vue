@@ -18,6 +18,8 @@ useTheme();
   <template v-if="appType == 'editorial'">
     <NavBar_Editorial/>
     <RouterView/>
+
+    <DevStatusBar/>
   </template>
 
   <template v-if="appType == 'app'">

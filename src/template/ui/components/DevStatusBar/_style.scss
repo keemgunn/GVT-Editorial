@@ -1,0 +1,51 @@
+/* atoms/StatusBar */
+
+#dev-status-bar {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  p {
+    flex-shrink: 0;
+  }
+
+  @include PlateBorderWidth(0);
+  @include PlatePlaneColor(--Background, 100);
+}
+
+.scale--XXL #dev-status-bar{
+  height: 48rem;
+  gap: 20rem;
+  padding: 16rem;
+}
+.scale--XL #dev-status-bar{
+  height: 48rem;
+  gap: 16rem;
+  padding: 16rem;
+}
+.scale--L #dev-status-bar{
+  height: 32rem;
+  gap: 12rem;
+  padding: 12rem;
+}
+.scale--M #dev-status-bar{
+  height: 28rem;
+  gap: 10rem;
+  padding: 10rem;
+}
+.scale--S #dev-status-bar{
+  height: 28rem;
+  gap: 10rem;
+  padding: 10rem;
+}
+.scale--XS #dev-status-bar{
+  height: 28rem;
+  gap: 10rem;
+  padding: 10rem;
+}
+.scale--XXS #dev-status-bar{
+  height: 24rem;
+  gap: 8rem;
+  padding: 8rem;
+}

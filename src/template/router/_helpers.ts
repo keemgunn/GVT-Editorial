@@ -1,5 +1,4 @@
 
-
 /**
  * @param callBefore A hook function that would be called before enter
  * @param accessType This argument decides whether the authorization process evoked. If the argument is `admin` and the authorization fails, Router will route user to the last page.
@@ -41,7 +40,8 @@ export function createRouterHook(callBefore: () => void, accessType: PageAccessT
     if (authorized) {
       console.warn(` -- ROUTING TO /${to.href.split('/')[1]}`)
       callBefore();
-      localStorage.setItem('currentPage', to.href.split('/')[1]);
+      // ls.set('currentPage', to.href.split('/')[1]);
+
       next();
     }
     else {

@@ -2,6 +2,15 @@
 
 
 
+navBar:
+  navBarLinkType: underlined
+    # 'underlined' || 'filled'
+
+
+shape:
+  roundness: 0
+    # 0 || 1 || 2
+
 
 theme:
 

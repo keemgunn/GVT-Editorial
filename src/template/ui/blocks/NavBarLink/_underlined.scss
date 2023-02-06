@@ -1,0 +1,48 @@
+
+#app .nav-bar-link.--underlined {
+  display: block;
+  position: relative;
+  height: 100%;
+
+  @include PlatePlaneColor(--Primary, 0);
+}
+#app .nav-bar-link.--underlined .contents {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  align-content: center;
+  align-items: center;
+
+  color: var(--OnSurface);
+  opacity: 0.63;
+  .nav-handle { padding-top: 1rem; }
+}
+
+
+#app .nav-bar-link.--underlined {
+  .plate .border {
+    border-bottom: 2px solid var(--OnSurface);
+    opacity: 0;
+    transition: 120ms;
+  }
+}
+#app .nav-bar-link.router-link-active.--underlined 
+{
+  .contents {
+    color: var(--Primary);
+    opacity: 1;
+  }
+  .plate .border {
+    border-bottom: 2px solid var(--Primary);
+  }
+}
+#app .nav-bar-link.--underlined:hover {
+  .contents {
+    opacity: 1;
+  }
+  .plate .border {
+    border-bottom: 2px solid var(--OnSurface);
+    opacity: 1;
+  }
+}

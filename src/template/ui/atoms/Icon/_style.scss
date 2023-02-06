@@ -6,6 +6,10 @@
   }
 }
 
+
+// DEPRECATED ---------------
+// Replaced by props injection.
+// See ./Atom.vue
 @mixin IconSize($size) {
   .icon {
     width: #{$size}rem !important;

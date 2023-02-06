@@ -1,6 +1,4 @@
 
-
-
 appType : editorial
 # appType enums:
   # app
@@ -8,6 +6,10 @@ appType : editorial
   # landing
 
 
-something: all
-
-
+breakpoints:
+  XXS: 320
+  XS: 700
+  S: 1030
+  M: 1360
+  L: 1920
+  XL: 2400
