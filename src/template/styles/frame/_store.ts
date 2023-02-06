@@ -37,13 +37,13 @@ export const useFrameStore = defineStore('frame', () => {
     if (browserWidth.value < 320) {
       return 'scale--XXS'
     } 
-    else if (browserWidth.value < 680) {
+    else if (browserWidth.value < 700) {
       return 'scale--XS'
     }
-    else if (browserWidth.value < 960) {
+    else if (browserWidth.value < 1030) {
       return 'scale--S'
     }
-    else if (browserWidth.value < 1320) {
+    else if (browserWidth.value < 1360) {
       return 'scale--M'
     }
     else if (browserWidth.value < 1920) {

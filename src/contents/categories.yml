@@ -1,0 +1,28 @@
+Budgeting: 
+  id: 0
+  description: "Budgeting and savings strategies: covers tips and tricks for saving money and managing your finances"
+
+
+Investing: 
+  id: 1
+  description: "Investment basics and portfolio diversification: includes articles on stocks, bonds, mutual funds, and other investment vehicles"
+
+
+Retirement: 
+  id: 2
+  description: "Retirement planning: focuses on saving for the future, including retirement accounts and other investment strategies"
+
+
+Real Estate: 
+  id: 3
+  description: "Real estate investing: explores the world of real estate investing, including rental properties and flipping houses"
+
+
+Taxes: 
+  id: 4
+  description: "Tax planning and optimization: covers ways to reduce your tax burden and maximize your savings"
+
+
+Personal Finance: 
+  id: 5
+  description: "Personal finance management: offers advice on managing credit, debt, and other aspects of personal finance"

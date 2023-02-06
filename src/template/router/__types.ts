@@ -4,29 +4,33 @@ declare global {
   /**
    * @property allowAccess: 'public' | 'admin' | 'none'
    * @property displayOnNav: boolean
-   * @property path: string
-   * @property beforeEnter: () => void
+   * @property uri: string
+   * @property dirName: string
+   * @property beforeEnter: () => any
    * @property displayName: string
    * @property icon: string
    */
   interface PageSetting {
     allowAccess: 'public' | 'admin' | 'none';
     displayOnNav: boolean;
-    path: string;
+    dirName: string;
     displayName: string;
+    uri: string;
     icon: string;
-    beforeEnter: () => void;
+    beforeEnter: () => any;
   }
 
   /**
    * @property allowAccess: 'public' | 'admin' | 'none'
    * @property displayOnNav: boolean
-   * @property path: string
-   * @property beforeEnter: () => void
+   * @property uri: string
+   * @property dirName: string
+   * @property beforeEnter: () => any
    * @property displayName: string
    * @property icon: string
    */
-  interface PageRouteSettings extends Record<string, PageSetting> { }
+  type PageRouteSettings = Array<PageSetting>;
+  // interface PageRouteSettings extends Record<string, PageSetting> { }
   
   /**
    * @property displayName: `string`
@@ -35,7 +39,7 @@ declare global {
    */
   interface NavRecord {
     displayName: string
-    url: string
+    uri: string
     icon: string
   }
   

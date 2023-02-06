@@ -1,27 +1,30 @@
 
-const AUTO_PAGE_ROUTES = true;
+const AUTO_PAGE_ROUTES = false;
 
-let PAGE_ROUTE_SETTINGS: PageRouteSettings = {
-
-  Home: {
+let PAGE_ROUTE_SETTINGS: PageRouteSettings = [
+  {
     allowAccess: 'public',
     displayOnNav: true,
-    path: '/home',
+    dirName: 'Home',
     displayName: 'Home',
+    uri: '/home',
     icon: 'home',
-    beforeEnter: () => { console.log('HOME'); }
+    beforeEnter: () => {
+      console.log('HOME');
+    }
   },
-
-  Typography: {
+  {
     allowAccess: 'public',
     displayOnNav: true,
-    path: '/typography',
+    dirName: 'Typography',
     displayName: 'Typography',
+    uri: '/typography',
     icon: 'format_size',
-    beforeEnter: () => { console.log('TYPO'); }
+    beforeEnter: () => {
+      console.log('TYPO');
+    }
   },
-  
-}
+]
 
 export {
   AUTO_PAGE_ROUTES,

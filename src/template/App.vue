@@ -13,8 +13,13 @@ useTheme();
 
 <template>
 
-  <NavBar/> <!-- #nav-bar-app: nav -->
-    <!-- for Navigation between Views -->
+  <!-- for Navigation between Views -->
+  <!-- <NavBar_App/> -->
+  <NavBar_Editorial/>
+
+
+
+  
 
   <RouterView/> <!-- #view: div -->
     <!-- header: Main Actions -->

@@ -12,7 +12,6 @@ let navList: Array<NavRecord> = [];
  * BASED ON DIRECTORIES IN `@/app/views`
  */
 if (AUTO_PAGE_ROUTES) {
-  
   console.warn(' -- AUTO VIEW ROUTES');
   const pageRouteSettings = createPageRouteSettingsAuto();
 
