@@ -1,32 +1,3 @@
-import type { RouteRecordRaw } from "vue-router";
-
-
-function createPageSettingsAuto(): PageSettings {
-  const pageRouteSettings: Array<PageSetting> = [];
-
-  // Get array of filepaths inside of `@/pages/{PAGE}/`
-  const pageFiles = import.meta.glob('../../pages/**/Page.vue')
-  
-  // Make route objects from page array.
-  for (const key of Object.keys(pageFiles)) {
-    const name = key.split('/').slice(-2)[0];
-    const uri = "/" + name.toLowerCase();
-    
-    pageRouteSettings.push({
-      allowAccess: 'public',
-      displayOnNav: true,
-      dirName: name,
-      displayName: name,
-      uri,
-      alias: [],
-      icon: 'home',
-      beforeEnter: () => {}
-    })
-  }
-
-  return pageRouteSettings as PageSettings
-}
-
 
 
 /**
@@ -34,7 +5,7 @@ function createPageSettingsAuto(): PageSettings {
  * @param accessType This argument decides whether the authorization process evoked. If the argument is `admin` and the authorization fails, Router will route user to the last page.
  * @returns A hook for `RouteRecordRaw`
  */
-function createRouterHook(callBefore: () => void, accessType: pageAccessType): (to: any, from: any, next: any) => void {
+export function createRouterHook(callBefore: () => void, accessType: pageAccessType): (to: any, from: any, next: any) => void {
   return (to: any, from: any, next: any) => {
     
     // DO SOME AUTH
@@ -83,45 +54,7 @@ function createRouterHook(callBefore: () => void, accessType: pageAccessType): (
 
 
 
-/**
- * 
- * @param pageSetting `public` | `admin` | `none`. If this argument is `none`, returns `undefined`
- * @param name Name of the view directory. (e.g. `Home` - uppercased!)
- * @returns `RouteRecordRaw` | undefined
- */
-function PageRecord(pageSetting: PageSetting): RouteRecordRaw {
-  return {
-    name: pageSetting.displayName,
-    path: pageSetting.uri,
-    alias: pageSetting.alias,
-    component: () => import(`../../pages/${pageSetting.dirName}/Page.vue`), // Why I wrote like this? See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
-    beforeEnter: createRouterHook(
-      pageSetting.beforeEnter,
-      pageSetting.allowAccess
-    )
-  }
-}
-
-
-
-function createPageRecords(pageRouteSettings: PageSettings): Array<RouteRecordRaw> {
-  const routeRecords: Array<RouteRecordRaw> = [];
-
-  pageRouteSettings.forEach((pageSetting) => {
-    const record = PageRecord(pageSetting);
-
-    if (record) {
-      routeRecords.push(record);
-      console.log(` - CREATED ROUTE RECORD [${record.name as string}] for '${record.path as string}'`);
-    }
-  })
-
-  return routeRecords
-}
-
-
-
-function createNavList(pageRouteSettings: PageSettings): Array<NavRecord> {
+export function createNavList(pageRouteSettings: PageSettings): Array<NavRecord> {
   const navList: Array<NavRecord> = [];
 
   pageRouteSettings.forEach((pageSetting) => {
@@ -136,29 +69,4 @@ function createNavList(pageRouteSettings: PageSettings): Array<NavRecord> {
   })
 
   return navList
-}
-
-
-// function routeParams(name, examples) {
-//   // make router parameter strings like: '/:name('ex1'||'ex2')'
-//   try {
-//     const result = examples.length ? 
-//       [':', String(name), '(', bundle.params(examples), ')'] :
-//       [':', String(name)]
-//     return result.join('')
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
-
-
-
-
-
-
-
-export {
-  createPageSettingsAuto,
-  createPageRecords,
-  createNavList
 }

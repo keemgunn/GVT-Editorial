@@ -1,15 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { pageRecords } from '@/template/router/_pageRoutes';
+import { pageRecords } from '@/template/router/_pageRecords';
 import { errorRecords } from './_otherRecords';
 
 
 
 const routes = [
-
-  // DEFAULT
-  // { path: '/', redirect: '/home' },
-
-  
   ...pageRecords, 
   ...errorRecords,
 ]
