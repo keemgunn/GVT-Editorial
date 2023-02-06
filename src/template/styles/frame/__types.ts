@@ -1,17 +1,11 @@
 export { };
 declare global {
 
-  /**
-   * @property `type`: "app" | "page" | "zen"
-      * @type `app` : appropriate for SPA.
-      * @type `page` : appropriate for blogs, web pages ...
-      * @type `zen` : appropriate for lending pages, no interfaces.
-   * 
-   */
-  interface FrameSettings {
-    layoutType: "app" | "page",
-  }
+  type AppType = 'app' | 'editorial' | 'landing'
 
+  interface TemplateSettings {
+    appType: AppType
+  }
 
   /**
    * 

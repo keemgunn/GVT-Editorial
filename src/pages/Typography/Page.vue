@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div id="view" class="typography">
+<div id="router-page" class="typography">
 
   <header id="main-actions"> Typography </header>
 

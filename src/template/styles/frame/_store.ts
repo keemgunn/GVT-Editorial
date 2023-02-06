@@ -1,17 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
+import templateConfigs from '@/configs/template/preferences.yml'
 
-
-const uiSettings: FrameSettings = {
-  layoutType: "app"
-}
 
 
 export const useFrameStore = defineStore('frame', () => {
 
   // Frame Layout Type
-  const frameSettings: Ref<FrameSettings> = ref(uiSettings);
+  const templateSettings: Ref<TemplateSettings> = ref(templateConfigs as TemplateSettings);
 
   // Browser Width
   const browserWidth: Ref<number> = ref(0);
@@ -30,7 +27,7 @@ export const useFrameStore = defineStore('frame', () => {
 
 
   const appLayout = computed(() => {
-    return `layout--${frameSettings.value.layoutType}`
+    return `layout--${templateSettings.value.appType}`
   })
 
   const appScale = computed(() => {
@@ -76,7 +73,7 @@ export const useFrameStore = defineStore('frame', () => {
 
 
   return { 
-    frameSettings,
+    templateSettings,
     browserWidth,
     isVertical,
     isMobile,

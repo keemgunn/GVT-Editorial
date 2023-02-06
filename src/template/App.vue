@@ -2,6 +2,8 @@
 import { RouterView } from 'vue-router'
 import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
+import { useFrameStore } from './styles/frame/_store';
+const appType = useFrameStore().templateSettings.appType;
 
 // =================== CSS FILES
 import('./main.scss')
@@ -13,23 +15,17 @@ useTheme();
 
 <template>
 
-  <!-- for Navigation between Views -->
-  <!-- <NavBar_App/> -->
-  <NavBar_Editorial/>
+  <template v-if="appType == 'editorial'">
+    <NavBar_Editorial/>
+    <RouterView/>
+  </template>
 
+  <template v-if="appType == 'app'">
+    <NavBar_App/>
+    <RouterView/>
+    <StatusBar/>
+  </template>
 
-
-  
-
-  <RouterView/> <!-- #view: div -->
-    <!-- header: Main Actions -->
-    <!-- main: Main Contents -->
-        <!-- sections ... -->
-    <!-- footer: Other Actions -->
-
-  <StatusBar/> <!-- #status-bar: aside -->
-
-  
 </template>
 
 <style lang="scss">

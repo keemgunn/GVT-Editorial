@@ -4,7 +4,7 @@ const frameStore = useFrameStore();
 </script>
 
 <template>
-<div id="view" class="home">
+<div id="router-page" class="home">
     
   <header id="main-actions"> this is header </header>
   
