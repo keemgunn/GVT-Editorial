@@ -1,29 +1,29 @@
-#app .nav-bar-link.--filled {
+#app .router-link-vstack-nest.--filled {
   @include PlateTransition(120);
   @include PlateBackgroundColor(--Primary);
   @include PlateBackgroundOpacity(0);
 }
-#app .nav-bar-link.--filled .contents {
+#app .router-link-vstack-nest.--filled .contents {
   color: var(--OnSurface);
   opacity: 0.74;
 }
 
 
-#app .nav-bar-link.--filled.--16 {
+#app .router-link-vstack-nest.--filled.--16 {
   padding-left: 13rem;
   padding-right: 13rem;
 }
-#app .nav-bar-link.--filled.--14 {
+#app .router-link-vstack-nest.--filled.--14 {
   padding-left: 12rem;
   padding-right: 12rem;
 }
-#app .nav-bar-link.--filled.--12 {
+#app .router-link-vstack-nest.--filled.--12 {
   padding-left: 11rem;
   padding-right: 11rem;
 }
 
 
-#app .nav-bar-link.router-link-active.--filled 
+#app .router-link-vstack-nest.router-link-active.--filled 
 {
   .contents {
     color: var(--Primary);
@@ -32,11 +32,11 @@
 }
 
 
-#app .nav-bar-link.--filled:hover {
+#app .router-link-vstack-nest.--filled:hover {
   @include PlateBackgroundOpacity(0.13);
   .contents { opacity: 1; }
 }
-#app .nav-bar-link.--filled:active {
+#app .router-link-vstack-nest.--filled:active {
   @include PlateBackgroundOpacity(0.22);
   .contents { opacity: 1; }
 }

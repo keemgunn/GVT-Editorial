@@ -1,4 +1,4 @@
-#app .nav-bar-link {
+#app .router-link-vstack-nest {
   display: block;
   position: relative;
   height: 100%;
@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: row;
     gap: 5rem;
-    align-content: center;
+    justify-content: center;
     align-items: center;
   
     .nav-handle { padding-top: 1rem; }
@@ -22,10 +22,10 @@
 // TYPOGRAPHY --------------------
 
 @for $i from 12 through 16 {
-  #app .nav-bar-link.--#{$i}.--major p {
+  #app .router-link-vstack-nest.--#{$i}.--major p {
     @extend .typo-body-#{$i}--bold; 
   }
-  #app .nav-bar-link.--#{$i}.--sub p {
+  #app .router-link-vstack-nest.--#{$i}.--sub p {
     padding-top: 3rem;
     @extend .typo-body-#{$i};
   }

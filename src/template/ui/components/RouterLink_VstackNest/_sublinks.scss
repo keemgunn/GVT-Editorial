@@ -1,0 +1,56 @@
+// SUB LINKS --------------------
+#app .rlvn-nested-links-list {
+  display: flex;
+  li {
+    .contents {
+      justify-content: left;
+    }
+    z-index: 0;
+  }
+  @include PlateBackgroundColor(--Surface);
+  @include PlateBorderOpacity(1);
+}
+
+#app .rlvn-nested-links-list.--expanded {
+  position: relative;
+  flex-direction: row;
+  gap: 10rem;
+}
+
+#app .rlvn-nested-links-list.--shrinked {
+  position: relative;
+  flex-direction: column;
+  height: fit-content;
+  
+  transform: translate(calc(var(--router-vstack-list-offset) * (-1)), 0);
+}
+#app .rlvn-nested-links-list.--shrinked li {
+  z-index: 0;
+  height: 52rem;
+  p { 
+    font-size: 14rem !important; 
+    padding-left: var(--router-vstack-list-offset);
+    padding-right: 24rem;
+  }
+}
+
+#app { --router-vstack-list-offset: 12rem; }
+#app .rlvn-nested-links-list.--shrinked {
+  transform: translate(calc(var(--router-vstack-list-offset) * (-1)), 0);
+}
+#app .router-link-vstack-nest.--underlined.--shrinked-major > div.plate {
+  transform: translate(calc(var(--router-vstack-list-offset) * (-1)), 0);
+}
+#app .router-link-vstack-nest.--underlined.--shrinked-major > div.contents {
+  justify-content: left;
+}
+
+
+.rlvn-nested-links-enter-active,
+.rlvn-nested-links-leave-active {
+  transition: opacity 0.23s ease;
+}
+.rlvn-nested-links-enter-from,
+.rlvn-nested-links-leave-to {
+  opacity: 0;
+}

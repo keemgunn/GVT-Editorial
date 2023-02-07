@@ -1,7 +1,5 @@
 
 
-
-
 navBar:
   navBarLinkType: underlined
     # 'underlined' || 'filled'

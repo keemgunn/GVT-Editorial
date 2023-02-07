@@ -1,6 +1,6 @@
 /* components/NavBar_Editorial */
 
-#nav-bar-editorial {
+#nav-bar-horizon-links {
   position: absolute;
   width: 100%;
   height: var(--nav-bar-height);
@@ -22,7 +22,7 @@
   @include PlateBackgroundOpacity(1);
 }
 
-#nav-bar-editorial header {
+#nav-bar-horizon-links header {
   font-size: 0;
 
   .nav-logo svg {
@@ -43,8 +43,9 @@
     }
   }
 
-  #nav-links { gap: var(--nav-bar-links-gap);}
-  #nav-categories { gap: var(--nav-bar-categories-gap);}
+  #nav-bar-horizon-links-list { 
+    gap: var(--router-link-vstack-nests-gap);
+  }
 
   .search-box {
     width: var(--nav-bar-search-width);
@@ -57,14 +58,14 @@
 
 
 
-.scale--XXL #nav-bar-editorial,
-.scale--XL #nav-bar-editorial,
-.scale--L #nav-bar-editorial {
+.scale--XXL #nav-bar-horizon-links,
+.scale--XL #nav-bar-horizon-links,
+.scale--L #nav-bar-horizon-links {
 
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 300rem;
   --nav-bar-header-gap: 36rem;
-  --nav-bar-links-gap: 26rem;
+  --router-link-vstack-nests-gap: 26rem;
   --nav-bar-categories-gap: 20rem;
   header { 
     width: 1280rem; 
@@ -73,13 +74,13 @@
 
 
 
-.scale--M #nav-bar-editorial {
+.scale--M #nav-bar-horizon-links {
 
   padding: 0 40rem;
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 300rem;
   --nav-bar-header-gap: 36rem;
-  --nav-bar-links-gap: 30rem;
+  --router-link-vstack-nests-gap: 30rem;
   header { 
     width: 100%
   }
@@ -87,21 +88,21 @@
 
 
 
-.scale--S #nav-bar-editorial {
+.scale--S #nav-bar-horizon-links {
 
   padding: 0 30rem;
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 220rem;
   --nav-bar-header-gap: 28rem;
-  --nav-bar-links-gap: 28rem;
+  --router-link-vstack-nests-gap: 28rem;
   header { 
     width: 100%
   }
 }
 
 
-.scale--XS #nav-bar-editorial,
-.scale--XXS #nav-bar-editorial {
+.scale--XS #nav-bar-horizon-links,
+.scale--XXS #nav-bar-horizon-links {
 
   padding: 0 26rem;
   --nav-bar-height: 40rem;

@@ -1,4 +1,4 @@
-#app .nav-bar-link.--underlined {
+#app .router-link-vstack-nest.--underlined {
   @include PlateTransition(120);
 
   @include PlateBackgroundOpacity(0);
@@ -7,21 +7,21 @@
   @include PlateBorderColor(--OnSurface);
   @include PlateBorderOpacity(0);
 }
-#app .nav-bar-link.--underlined:hover {
+#app .router-link-vstack-nest.--underlined:hover {
   @include PlateBorderOpacity(1);
 }
 
 
-#app .nav-bar-link.--underlined .contents {
+#app .router-link-vstack-nest.--underlined .contents {
   margin: 0 3rem;
   color: var(--OnSurface);
   opacity: 0.74;
 }
-#app .nav-bar-link.--underlined:hover .contents {
+#app .router-link-vstack-nest.--underlined:hover .contents {
   opacity: 1;
 }
 
-#app .nav-bar-link.--underlined.router-link-active 
+#app .router-link-vstack-nest.--underlined.router-link-active 
 {
   @include PlateBorderColor(--Primary);
   @include PlateBorderOpacity(1);

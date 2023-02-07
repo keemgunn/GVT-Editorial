@@ -9,7 +9,7 @@
   # @uri: The endpoint to route
   # @nestedRecords: Nested Links. Same as this structure. (Usually follows Categories)
 # =========================================
-NavBarLinkRecords:
+NavRecords:
 
   - title: Home
     icon: home

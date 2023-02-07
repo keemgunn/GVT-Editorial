@@ -10,9 +10,10 @@ const props = defineProps<{
   title: string
   uri: string
   icon: string
-  subLinks: Array<NavBarLinkRecord> | null
+  majorLinkSize: number
+  subLinkSize: number
+  subLinks: Array<NavRecord> | null
 }>();
-
 
 const hasChild = computed(() => {
   if ((props.subLinks == null) || (props.subLinks.length == 0))
@@ -22,33 +23,33 @@ const hasChild = computed(() => {
 })
 
 
-const majorLinkSize = computed(() => {
-  if (/--M|--L|--XL|--XXL/.test(frameStore.appScale))
-    return 16
-  else
-    return 14
-})
 const majorLinkClass = computed(() => [
-  'nav-bar-link',
+  'router-link-vstack-nest',
   `--${navBar.navBarLinkType}`,
-  `--${majorLinkSize.value}`,
+  `--${props.majorLinkSize}`,
+  `--${
+    hasChild.value ?
+      expandDropdown.value ?
+        'expanded-major' : 'shrinked-major'
+      : ''
+  }`,
   `--major`,
 ])
-const majorIconSize = computed(() => majorLinkSize.value + 2);
-
-const subLinkSize = 13;
 const subLinkClass = computed(() => [
-  'nav-bar-link',
+  'router-link-vstack-nest',
   `--sub`,
   `--${navBar.navBarLinkType}`,
-  `--${subLinkSize}`,
+  `--${props.subLinkSize}`,
 ])
-const subIconSize = computed(() => subLinkSize + 2);
+
+
+const majorIconSize = computed(() => props.majorLinkSize + 2);
+const subIconSize = computed(() => props.subLinkSize + 2);
 
 
 const roundnessStyle = computed(() => {
   if (shape.roundness > 0) {
-    const calced = shape.roundness * (majorLinkSize.value + 2)
+    const calced = shape.roundness * (props.majorLinkSize + 2)
     return {
       "border-radius": `${calced}rem`,
       "overflow": 'hidden'
@@ -58,24 +59,21 @@ const roundnessStyle = computed(() => {
   }
 });
 
-const expandDropdown = computed(() => {
-  if (hasChild.value) {
 
+const expandDropdown = computed(() => {
+  if (hasChild.value)
     return (navBar.subLinkShrinkThreshold < frameStore.viewWidth)
-    // frameStore.viewWidth
-    // return /--L|--XL|--XXL/.test(frameStore.appScale)
-  } else {
+  else
     return false
-  }
 });
 
-const hover = ref(false);
+const isMouseOver = ref(false);
 function mouseOver(bool: boolean) {
-  hover.value = bool;
+  isMouseOver.value = bool;
 }
 
 const showSubLinks = computed(() => {
-  return expandDropdown.value || hover.value
+  return expandDropdown.value || isMouseOver.value
 })
 
 const subLinksListClass = computed(() => {
@@ -83,14 +81,14 @@ const subLinksListClass = computed(() => {
   if (expandDropdown.value) {
     option = '--expanded'
   }
-  else if (hover.value) {
+  else if (isMouseOver.value) {
     option = '--shrinked --open'
   }
   else {
     option = '--shrinked --closed'
   }
   return [
-    'nav-sub-links-list',
+    'rlvn-nested-links-list',
     option
   ]
 })
@@ -122,7 +120,7 @@ function showIcon(navIcon: String) {
     <Plate/>
   </RouterLink>
 
-  <Transition name="nav-sub-links">
+  <Transition name="rlvn-nested-links">
   <ul :class="subLinksListClass" 
   v-show="showSubLinks"
   >

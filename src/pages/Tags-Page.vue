@@ -13,22 +13,31 @@ onBeforeMount(() => {
 </script>
 
 <template>
-<div id="router-page" class="home">
+<div id="router-page" class="tags">
     
   <header id="main-actions"> this is header </header>
   
   <main>
     <p class="typo-body-16">userAgent : {{ frameStore.userAgent }}</p>
 
-    <h1>This is an HOME</h1>
+    <RouterLink_VstackNest 
+    title="Test" 
+    uri="/tags" 
+    icon="home" 
+    :majorLinkSize="15"
+    :subLinkSize="13"
+    :subLinks="[]"/>
 
-    <div class="some-example">
-      <Plate/>
-      <p class="typo-header-28">Something!</p>
-    </div>
   </main>
 
   <footer id="other-actions"></footer>
 
 </div>
 </template>
+
+<style lang="scss">
+  #app #router-page.tags main .router-link-vstack-nest {
+    width: 80rem;
+    height: 40rem;
+  }
+</style>

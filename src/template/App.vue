@@ -22,7 +22,7 @@ useTheme();
   <template v-if="process_env < 2">
 
     <template v-if="appType == 'editorial'">
-      <NavBar_Editorial/>
+      <NavBar_HorizonLinks/>
       <RouterView/>
   
       <DevStatusBar v-if=" process_env > 0 "/>
