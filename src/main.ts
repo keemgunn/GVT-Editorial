@@ -15,11 +15,11 @@ app.use(router)
 
 // ====== GLOBAL DECLARATION FOR
 //    TEMPLATE COMPONENTS
-import templateAtoms from '@/template/ui/atoms';
+import templateAtoms from '@/template/atoms';
 for (const key of Object.keys(templateAtoms)) {
   app.component(key, templateAtoms[key])
 }
-import templateComponents from '@/template/ui/components';
+import templateComponents from '@/template/components';
 for (const key of Object.keys(templateComponents)) {
   app.component(key, templateComponents[key])
 }
