@@ -57,6 +57,42 @@
 }
 
 
+/* VARIABLES */
+
+.scale--XXL,
+.scale--XL,
+.scale--L {
+
+  --nav-bar-height: 74rem;
+  --nav-bar-search-width: 300rem;
+  --nav-bar-header-gap: 36rem;
+  --router-link-vstack-nests-gap: 26rem;
+  --nav-bar-categories-gap: 20rem;
+}
+
+.scale--M {
+
+  --nav-bar-height: 74rem;
+  --nav-bar-search-width: 300rem;
+  --nav-bar-header-gap: 36rem;
+  --router-link-vstack-nests-gap: 30rem;
+}
+
+.scale--S {
+
+  --nav-bar-height: 74rem;
+  --nav-bar-search-width: 220rem;
+  --nav-bar-header-gap: 28rem;
+  --router-link-vstack-nests-gap: 28rem;
+}
+
+.scale--XS,
+.scale--XXS {
+
+  --nav-bar-height: 40rem;
+}
+
+
 
 .scale--XXL #nav-bar-horizon-links,
 .scale--XL #nav-bar-horizon-links,

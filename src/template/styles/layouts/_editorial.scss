@@ -13,6 +13,7 @@
   #router-page { 
     flex-grow: 1;
     z-index: 10;
+    padding-top: var(--nav-bar-height);
   }
   #dev-status-bar { 
     flex-shrink: unset; 
