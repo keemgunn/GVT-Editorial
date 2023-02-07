@@ -24,6 +24,8 @@ function showIcon(navIcon: String) {
 
 <template>
 <div id="navigation" class="nav-bar-horizon-links">
+
+  <component :is="compConfig.customComponentInjection"></component>
     
   <header>
     <Vector class="nav-logo" src="@/assets/svg/logo-brand-main.svg"/>

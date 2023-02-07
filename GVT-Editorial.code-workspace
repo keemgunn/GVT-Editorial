@@ -31,7 +31,9 @@
 			"blocks": "Scala",
 
 			"frame": "mobile",
-			"typography": "Mock"
+			"typography": "Mock",
+
+			"customComponents": "Vue-directives"
 
 
 

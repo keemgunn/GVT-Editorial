@@ -14,4 +14,7 @@ breakpoints:
 # =========================================
 EditorialSettings: # ======================
 
+  CustomComponentInjection:
+    AppTop: 
+
   NavBar: NavBar_HorizonLinks

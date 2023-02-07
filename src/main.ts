@@ -24,6 +24,13 @@ for (const key of Object.keys(templateComponents)) {
   app.component(key, templateComponents[key])
 }
 
+// ====== GLOBAL DECLARATION FOR
+//    USER CUSTOM COMPONENTS
+import customComps from '@/customComponents';
+for (const key of Object.keys(customComps)) {
+  app.component(key, customComps[key])
+}
+
 // ====== DEV SETTINGS
 
 const process_env = Number(process.env.NODE_ENV || "0") as number;

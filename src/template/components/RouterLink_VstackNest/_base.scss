@@ -18,6 +18,11 @@
   }
 }
 
+// Disable Nest Parent Link
+#app .router-link-vstack-nest.--expanded-major, #app .router-link-vstack-nest.--shrinked-major {
+  pointer-events: none;
+}
+
 
 // TYPOGRAPHY --------------------
 

@@ -9,7 +9,7 @@ import { useConfigs } from './stores/userConfigs';
 // =================== Template User Configurations
 const { appType, EditorialSettings } = useConfigs().templateSettings;
 
-const { NavBar } = EditorialSettings;
+const { NavBar, CustomComponentInjection } = EditorialSettings;
 
 
 // =================== CSS FILES
@@ -32,6 +32,7 @@ useTheme();
 
     <template v-if="appType == 'editorial'">
 
+      <component :is="CustomComponentInjection.AppTop"></component>
       <component :is="NavBar"/>
       <RouterView/>
 
