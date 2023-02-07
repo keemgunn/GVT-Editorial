@@ -1,3 +1,4 @@
+import { useFrameStore } from "../styles/frame/_store";
 
 /**
  * @param callBefore A hook function that would be called before enter
@@ -6,6 +7,8 @@
  */
 export function createRouterHook(accessType: PageAccessType): (to: any, from: any, next: any) => void {
   return (to: any, from: any, next: any) => {
+
+    const frame = useFrameStore();
     
     // DO SOME AUTH
     let authorized: boolean;
@@ -49,25 +52,4 @@ export function createRouterHook(accessType: PageAccessType): (to: any, from: an
       next(from)
     }
   }
-}
-
-
-
-export function createNavList(pageRouteSettings: PageRecords): Array<NavRecord> {
-  const navList: Array<NavRecord> = [];
-
-  pageRouteSettings.forEach((pageRecord) => {
-
-    if (pageRecord.allowAccess !== 'none') {
-      navList.push({
-        navTitle: pageRecord.navTitle,
-        navType: pageRecord.navType,
-        uri: pageRecord.uri,
-        navIcon: pageRecord.navIcon,
-        navLink: pageRecord.navLink
-      })
-    }
-  })
-
-  return navList
 }

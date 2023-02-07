@@ -3,8 +3,8 @@ import { inject } from 'vue';
 import { RouterView } from 'vue-router'
 import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
-import { useFrameStore } from './styles/frame/_store';
-const appType = useFrameStore().templateSettings.appType;
+import { useConfigs } from './stores/userConfigs';
+const { appType } = useConfigs().templateSettings;
 
 // =================== CSS FILES
 import('./main.scss')

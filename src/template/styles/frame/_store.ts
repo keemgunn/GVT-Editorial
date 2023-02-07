@@ -1,14 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-
 import { useConfigs } from '@/template/stores/userConfigs';
 
 export const useFrameStore = defineStore('frame', () => {
-  const { preferences } = useConfigs();
-
-  // Frame Layout Type
-  const templateSettings: Ref<TemplateSettings> = ref(preferences);
+  const { templateSettings } = useConfigs();
 
   // Browser Width
   const viewWidth: Ref<number> = ref(0);
@@ -26,31 +22,31 @@ export const useFrameStore = defineStore('frame', () => {
 
 
   const appLayout = computed(() => {
-    return `layout--${templateSettings.value.appType}`
+    return `layout--${templateSettings.appType}`
   })
 
 
   function breakpoint(scale: 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL'): number {
-    return preferences.breakpoints[scale]
+    return templateSettings.breakpoints[scale]
   }
 
   const appScale = computed(() => {
-    if (viewWidth.value < preferences.breakpoints.XXS) {
+    if (viewWidth.value < templateSettings.breakpoints.XXS) {
       return 'scale--XXS'
     } 
-    else if (viewWidth.value < preferences.breakpoints.XS) {
+    else if (viewWidth.value < templateSettings.breakpoints.XS) {
       return 'scale--XS'
     }
-    else if (viewWidth.value < preferences.breakpoints.S) {
+    else if (viewWidth.value < templateSettings.breakpoints.S) {
       return 'scale--S'
     }
-    else if (viewWidth.value < preferences.breakpoints.M) {
+    else if (viewWidth.value < templateSettings.breakpoints.M) {
       return 'scale--M'
     }
-    else if (viewWidth.value < preferences.breakpoints.L) {
+    else if (viewWidth.value < templateSettings.breakpoints.L) {
       return 'scale--L'
     }
-    else if (viewWidth.value < preferences.breakpoints.XL) {
+    else if (viewWidth.value < templateSettings.breakpoints.XL) {
       return 'scale--XL'
     }
     else {

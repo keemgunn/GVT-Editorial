@@ -1,22 +1,11 @@
 
 
-navBar:
-  navBarLinkType: underlined
-    # 'underlined' || 'filled'
-  showIcons: # true || false
-    majorLinks: false
-    subLinks: false
-  subLinkShrinkThreshold: 1350
-    # Category Links Shrinks if the ViewWidth is smaller than this value. (Depends on Category counts)
-
-
-
 shape:
   roundness: 0
     # 0 || 1 || 2
 
 
-theme:
+theme: # ===================================
 
   colorScheme:
     appearance: auto

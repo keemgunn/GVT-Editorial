@@ -24,6 +24,8 @@ $headerSizes: 48, 32, 28, 24, 20, 16;
 
 
 
+@include Body("Inter", 18, 24, "",   0, 480, 340, 620);
+@include Body("Inter", 17, 24, "",   0, 480, 340, 620);
 @include Body("Inter", 16, 22, "",   0, 480, 340, 620);
 @include Body("Inter", 15, 20, "",   0, 480, 340, 620);
 @include Body("Inter", 14, 20, "",   0, 480, 340, 620);
@@ -33,7 +35,7 @@ $headerSizes: 48, 32, 28, 24, 20, 16;
 @include Body("Inter", 10, 16, "", 0.5, 480, 340, 620);
 @include Body("Inter",  9, 12, "", 0.5, 480, 340, 620);
 @include Body("Inter",  8, 12, "", 0.5, 480, 340, 620);
-$bodySizes: 16, 15, 14, 13, 12, 11, 10, 9, 8;
+$bodySizes: 17, 18, 16, 15, 14, 13, 12, 11, 10, 9, 8;
 @each $size in $bodySizes {
   .typo-body-#{$size} {
     word-wrap:break-word;

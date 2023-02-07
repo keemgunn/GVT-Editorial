@@ -4,12 +4,15 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 
 const frameStore = useFrameStore();
-const { navBar, shape } = useConfigs().uiSettings
+const { shape } = useConfigs().uiSettings;
+const compConfig = useConfigs().componentSettings.RouterLink_VstackNest;
+
 
 const props = defineProps<{
   title: string
   uri: string
-  icon: string
+  majorIcon: string
+  showSubIcon: boolean
   majorLinkSize: number
   subLinkSize: number
   subLinks: Array<NavRecord> | null
@@ -25,7 +28,7 @@ const hasChild = computed(() => {
 
 const majorLinkClass = computed(() => [
   'router-link-vstack-nest',
-  `--${navBar.navBarLinkType}`,
+  `--${compConfig.appearance}`,
   `--${props.majorLinkSize}`,
   `--${
     hasChild.value ?
@@ -38,7 +41,7 @@ const majorLinkClass = computed(() => [
 const subLinkClass = computed(() => [
   'router-link-vstack-nest',
   `--sub`,
-  `--${navBar.navBarLinkType}`,
+  `--${compConfig.appearance}`,
   `--${props.subLinkSize}`,
 ])
 
@@ -62,7 +65,7 @@ const roundnessStyle = computed(() => {
 
 const expandDropdown = computed(() => {
   if (hasChild.value)
-    return (navBar.subLinkShrinkThreshold < frameStore.viewWidth)
+    return (compConfig.subLinkShrinkThreshold < frameStore.viewWidth)
   else
     return false
 });
@@ -94,7 +97,7 @@ const subLinksListClass = computed(() => {
 })
 
 function showIcon(navIcon: String) {
-  if (navBar.showIcons.subLinks)
+  if (props.showSubIcon)
     return navIcon
   else
     return ""
@@ -110,7 +113,7 @@ function showIcon(navIcon: String) {
     {{ props.title }}
     <div class="contents">
 
-      <Icon class="nav-icon" :name="props.icon" :size="majorIconSize"/>
+      <Icon :name="props.majorIcon" :size="majorIconSize"/>
 
       <p>{{ title }}</p>
 
@@ -130,7 +133,7 @@ function showIcon(navIcon: String) {
         {{ nr.title }}
 
         <div class="contents">
-          <Icon class="nav-icon" :name="showIcon(nr.icon)" :size="subIconSize"/>
+          <Icon :name="showIcon(nr.icon)" :size="subIconSize"/>
           <p> {{ nr.title }}</p>
         </div>
 

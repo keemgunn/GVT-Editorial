@@ -1,9 +1,7 @@
 import type { RouteRecordRaw } from "vue-router";
-import { createRouterHook, createNavList } from "./_helpers";
+import { createRouterHook } from "./_helpers";
 import websiteSettings from '@/configs/websiteSettings.yml';
-
-
-const pageRecords: PageRecords = (websiteSettings.pages as PageRecords);
+const pageRecords: PageRecords = (websiteSettings.Pages as PageRecords);
 
 
 function createRouterRecord (pageRecord: PageRecord): RouteRecordRaw {

@@ -4,15 +4,16 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 
 const frameStore = useFrameStore();
-const { uiSettings, editorialSettings } = useConfigs();
-const navRecords: NavRecords = editorialSettings.NavRecords;
+const { componentSettings, websiteSettings } = useConfigs();
+const navRecords: NavRecords = websiteSettings.NavRecords;
+const compConfig = componentSettings.NavBar_HorizonLinks
 
 const showActions = computed(() => {
   return /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
 })
 
 function showIcon(navIcon: String) {
-  if (uiSettings.navBar.showIcons.majorLinks)
+  if (compConfig.showIcons.majorLinks)
     return navIcon
   else
     return ""
@@ -35,7 +36,8 @@ function showIcon(navIcon: String) {
           <RouterLink_VstackNest 
           :title="nr.title" 
           :uri="nr.uri" 
-          :icon="showIcon(nr.icon)" 
+          :majorIcon="showIcon(nr.icon)" 
+          :showSubIcon="compConfig.showIcons.subLinks"
           :majorLinkSize="15"
           :subLinkSize="13"
           :subLinks="nr.nestedRecords"/>

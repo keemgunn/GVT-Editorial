@@ -1,0 +1,24 @@
+
+
+
+
+NavBar_HorizonLinks:
+  showIcons: # true || false
+    majorLinks: false
+    subLinks: false
+
+
+RouterLink_VstackNest:
+  appearance: underlined
+    # 'underlined' || 'filled'
+  subLinkShrinkThreshold: 1350
+    # Category Links Shrinks if the ViewWidth is smaller than this value. (Depends on Category counts)
+
+
+
+
+
+
+
+
+
