@@ -1,17 +1,23 @@
 /* atoms/StatusBar */
 
 #dev-status-bar {
-  position: relative;
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
 
   p {
     flex-shrink: 0;
+    z-index: 20;
   }
 
   @include PlateBackgroundColor(--Background);
   @include PlateBackgroundOpacity(1);
+
+  .plate {
+    z-index: 10;
+  }
 }
 
 .scale--XXL #dev-status-bar{

@@ -1,7 +1,9 @@
 /* components/NavBar_Editorial */
 
-#nav-bar-horizon-links {
-  position: absolute;
+#app .nav-bar-horizon-links {
+  position: sticky;
+  top: 0;
+
   width: 100%;
   height: var(--nav-bar-height);
   padding: 0;
@@ -22,7 +24,7 @@
   @include PlateBackgroundOpacity(1);
 }
 
-#nav-bar-horizon-links header {
+#app .nav-bar-horizon-links header {
   font-size: 0;
 
   .nav-logo svg {
@@ -43,7 +45,7 @@
     }
   }
 
-  #nav-bar-horizon-links-list { 
+  .nav-bar-horizon-links-list { 
     gap: var(--router-link-vstack-nests-gap);
   }
 
@@ -94,9 +96,9 @@
 
 
 
-.scale--XXL #nav-bar-horizon-links,
-.scale--XL #nav-bar-horizon-links,
-.scale--L #nav-bar-horizon-links {
+.scale--XXL #app .nav-bar-horizon-links,
+.scale--XL #app .nav-bar-horizon-links,
+.scale--L #app .nav-bar-horizon-links {
 
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 300rem;
@@ -110,7 +112,7 @@
 
 
 
-.scale--M #nav-bar-horizon-links {
+.scale--M #app .nav-bar-horizon-links {
 
   padding: 0 40rem;
   --nav-bar-height: 74rem;
@@ -124,11 +126,11 @@
 
 
 
-.scale--S #nav-bar-horizon-links {
+.scale--S #app .nav-bar-horizon-links {
 
   padding: 0 30rem;
   --nav-bar-height: 74rem;
-  --nav-bar-search-width: 220rem;
+  --nav-bar-search-width: 80rem;
   --nav-bar-header-gap: 28rem;
   --router-link-vstack-nests-gap: 28rem;
   header { 
@@ -137,8 +139,8 @@
 }
 
 
-.scale--XS #nav-bar-horizon-links,
-.scale--XXS #nav-bar-horizon-links {
+.scale--XS #app .nav-bar-horizon-links,
+.scale--XXS #app .nav-bar-horizon-links {
 
   padding: 0 26rem;
   --nav-bar-height: 40rem;

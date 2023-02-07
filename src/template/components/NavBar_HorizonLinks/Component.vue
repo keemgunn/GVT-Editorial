@@ -23,14 +23,14 @@ function showIcon(navIcon: String) {
 
 
 <template>
-<div id="nav-bar-horizon-links">
+<div id="navigation" class="nav-bar-horizon-links">
     
   <header>
     <Vector class="nav-logo" src="@/assets/svg/logo-brand-main.svg"/>
     <h1 style="display: none;">Blog Name Here</h1>
 
     <nav v-show="showActions">
-      <ul id="nav-bar-horizon-links-list">
+      <ul class="nav-bar-horizon-links-list">
         <template v-for="nr in navRecords" 
         :key="'page--'+nr.title">
           <RouterLink_VstackNest 

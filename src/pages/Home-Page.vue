@@ -22,6 +22,26 @@ onBeforeMount(() => {
     <p class="typo-body-16">userAgent : {{ frameStore.userAgent }}</p>
 
     <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
+    <h1>This is an HOME</h1>
 
     <div class="some-example">
       <Plate/>
