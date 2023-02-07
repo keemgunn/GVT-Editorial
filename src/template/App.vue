@@ -4,28 +4,39 @@ import { RouterView } from 'vue-router'
 import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
 import { useConfigs } from './stores/userConfigs';
-const { appType } = useConfigs().templateSettings;
+
+
+// =================== Template User Configurations
+const { appType, EditorialSettings } = useConfigs().templateSettings;
+
+const { NavBar } = EditorialSettings;
+
 
 // =================== CSS FILES
 import('./main.scss')
 
+
 // =================== PROCESS ENV
 const process_env = inject('process_env') as number;
+
 
 // =================== COMPOSABLES
 useFrame();
 useTheme();
 </script>
 
-<template>
 
+
+<template>
   <template v-if="process_env < 2">
 
     <template v-if="appType == 'editorial'">
-      <NavBar_HorizonLinks/>
+
+      <component :is="NavBar"/>
       <RouterView/>
+
   
-      <DevStatusBar v-if=" process_env > 0 "/>
+    <DevStatusBar v-if=" process_env > 0 "/>
     </template>
   
     <template v-if="appType == 'app'">
@@ -34,8 +45,8 @@ useTheme();
       <StatusBar/>
     </template>
 
-  </template>
 
+  </template>
   <template v-if="process_env > 1">
     <RouterView/>
   </template>

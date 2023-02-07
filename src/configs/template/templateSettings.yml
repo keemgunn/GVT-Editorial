@@ -2,7 +2,6 @@
 appType : editorial
   # app || editorial || landing
 
-
 breakpoints:
   XXS: 320
   XS: 700
@@ -10,3 +9,9 @@ breakpoints:
   M: 1360
   L: 1920
   XL: 2400
+
+
+# =========================================
+EditorialSettings: # ======================
+
+  NavBar: NavBar_HorizonLinks
