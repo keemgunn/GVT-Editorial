@@ -40,7 +40,8 @@ function showIcon(navIcon: String) {
           :showSubIcon="compConfig.showIcons.subLinks"
           :majorLinkSize="15"
           :subLinkSize="13"
-          :subLinks="nr.nestedRecords"/>
+          :subLinks="nr.nestedRecords"
+          :showSublinks="nr.sublinks"/>
         </template>
       </ul>
     </nav>

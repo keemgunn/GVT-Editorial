@@ -8,9 +8,10 @@ import { useFrameStore } from "../styles/frame/_store";
 export function createRouterHook(accessType: PageAccessType): (to: any, from: any, next: any) => void {
   return (to: any, from: any, next: any) => {
 
-    const frame = useFrameStore();
+    // DO SOME AUTH with stores
+    // const frame = useFrameStore();
+    // console.log(frame);
     
-    // DO SOME AUTH
     let authorized: boolean;
     let alertMessage: string;
 

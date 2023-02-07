@@ -26,7 +26,7 @@
 }
 #app .rlvn-nested-links-list.--shrinked li {
   z-index: 0;
-  height: 52rem;
+  height: 48rem;
   p { 
     font-size: 14rem !important; 
     padding-left: var(--router-vstack-list-offset);
@@ -34,7 +34,9 @@
   }
 }
 
-#app { --router-vstack-list-offset: 12rem; }
+#app { 
+  --router-vstack-list-offset: 12rem; 
+}
 #app .rlvn-nested-links-list.--shrinked {
   transform: translate(calc(var(--router-vstack-list-offset) * (-1)), 0);
 }

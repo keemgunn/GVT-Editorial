@@ -16,6 +16,7 @@ const props = defineProps<{
   majorLinkSize: number
   subLinkSize: number
   subLinks: Array<NavRecord> | null
+  showSublinks: HowToShowSublinks
 }>();
 
 const hasChild = computed(() => {
@@ -64,10 +65,18 @@ const roundnessStyle = computed(() => {
 
 
 const expandDropdown = computed(() => {
-  if (hasChild.value)
-    return (compConfig.subLinkShrinkThreshold < frameStore.viewWidth)
-  else
-    return false
+  if (hasChild.value) {
+    const policy = props.showSublinks;
+
+    if (policy == 'show-on-wide') {
+      return (compConfig.subLinkShrinkThreshold < frameStore.viewWidth)
+    } else if (policy == 'always-show') {
+      return true
+    } else {
+      return false
+    }
+  }
+  else { return false }
 });
 
 const isMouseOver = ref(false);
