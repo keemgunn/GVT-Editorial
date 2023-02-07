@@ -14,7 +14,7 @@ export const errorRecords: Array<RouteRecordRaw> = [
   {
     name: 'NOT_FOUND',
     path: '/:pathMatch(.*)*',
-    component: () => import('../../pages/Error/Page.vue'),
+    component: () => import('./ErrorPage.vue'),
     props: { code: 404 },
   },
 ]

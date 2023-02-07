@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
 
-import { useConfigs } from '@/template/configs';
+import { useConfigs } from '@/template/stores/userConfigs';
 
 export const useFrameStore = defineStore('frame', () => {
   const { preferences } = useConfigs();

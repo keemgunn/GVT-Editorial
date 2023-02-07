@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import { useConfigs } from '@/template/configs';
+import { useConfigs } from '@/template/stores/userConfigs';
 import EventEmitter from 'events';
 
 
@@ -12,9 +12,9 @@ export const useLocalStorage = defineStore('localStorage', () => {
   const localStorageEventEmitter = new EventEmitter();
   
   // For Identified LocalStorage Keys
-  const { websiteData } = useConfigs();
+  const { websiteSettings } = useConfigs();
   function identify(key: string): string {
-    return websiteData.websiteName + '-' + key
+    return websiteSettings.websiteName + '-' + key
   }
   
   // Setting a LocalStorage value.

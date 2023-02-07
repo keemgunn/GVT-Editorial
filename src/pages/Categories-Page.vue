@@ -6,7 +6,7 @@ import { useInteractionStore } from '@/template/stores/interaction';
 const frameStore = useFrameStore();
 const interactionStore = useInteractionStore();
 
-const pageName = "Articles";
+const pageName = "Categories";
 onBeforeMount(() => {
   interactionStore.currentPage = pageName;
 })

@@ -2,6 +2,9 @@
   display: block;
   position: relative;
   height: 100%;
+  
+  font-size: 0; 
+    // FOR DEFAULT STRINGS FOR BOTS
 
   .contents {
     height: 100%;
@@ -23,10 +26,7 @@
     @extend .typo-body-#{$i}--bold; 
   }
   #app .nav-bar-link.--#{$i}.--sub p {
-    @extend .typo-body-#{$i}--light;
+    padding-top: 3rem;
+    @extend .typo-body-#{$i};
   }
-}
-
-#app .nav-bar-link{
-  font-size: 0;
 }

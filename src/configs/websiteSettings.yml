@@ -1,0 +1,62 @@
+
+
+websiteName: WealthyPath
+websiteDomain: https://www.wealthypath.com
+
+
+
+
+
+# PAGES ================================
+  # Corresponds to Vue Router 4.X
+  # These pages mount into <RouterView>
+  # inside of @/template/App.vue.
+  #
+  # @ name: The "name part" of files in @/pages
+  #      ex) {name}-Page.vue
+  # @ uri: Page Endpoints
+  # @ alias: Alias Endpoints (Array)
+  # @ allowAccess: Router Guarding
+  #    - 'public' anyone allowed
+  #    - 'user' user login needed
+  #    - 'admin' admin auth needed
+  #    - 'none' no route allowed
+# =======================================
+pages:
+
+  - name: Home
+    uri: '/:pagenum(\\d+)?'
+    alias:
+      - '/home/:pagenum(\\d+)?'
+    allowAccess: public
+
+  - name: About
+    uri: '/about'
+    alias: 
+    allowAccess: public
+
+  - name: Tags
+    uri: '/tags/:filter?'
+    alias: 
+    allowAccess: public
+
+  - name: Categories
+    uri: '/categories/:filter?'
+    alias: 
+    allowAccess: public
+
+  - name: Read
+    uri: '/read/:docid?'
+    alias: 
+    allowAccess: public
+
+
+
+
+
+
+
+
+
+# ADSENSE SCRIPT
+

@@ -4,7 +4,7 @@
  * @param accessType This argument decides whether the authorization process evoked. If the argument is `admin` and the authorization fails, Router will route user to the last page.
  * @returns A hook for `RouteRecordRaw`
  */
-export function createRouterHook(callBefore: () => void, accessType: PageAccessType): (to: any, from: any, next: any) => void {
+export function createRouterHook(accessType: PageAccessType): (to: any, from: any, next: any) => void {
   return (to: any, from: any, next: any) => {
     
     // DO SOME AUTH
@@ -39,7 +39,6 @@ export function createRouterHook(callBefore: () => void, accessType: PageAccessT
 
     if (authorized) {
       console.warn(` -- ROUTING TO /${to.href.split('/')[1]}`)
-      callBefore();
       // ls.set('currentPage', to.href.split('/')[1]);
 
       next();
@@ -54,18 +53,18 @@ export function createRouterHook(callBefore: () => void, accessType: PageAccessT
 
 
 
-export function createNavList(pageRouteSettings: PageSettings): Array<NavRecord> {
+export function createNavList(pageRouteSettings: PageRecords): Array<NavRecord> {
   const navList: Array<NavRecord> = [];
 
-  pageRouteSettings.forEach((pageSetting) => {
+  pageRouteSettings.forEach((pageRecord) => {
 
-    if (pageSetting.allowAccess !== 'none') {
+    if (pageRecord.allowAccess !== 'none') {
       navList.push({
-        navTitle: pageSetting.navTitle,
-        navType: pageSetting.navType,
-        uri: pageSetting.uri,
-        navIcon: pageSetting.navIcon,
-        navLink: pageSetting.navLink
+        navTitle: pageRecord.navTitle,
+        navType: pageRecord.navType,
+        uri: pageRecord.uri,
+        navIcon: pageRecord.navIcon,
+        navLink: pageRecord.navLink
       })
     }
   })

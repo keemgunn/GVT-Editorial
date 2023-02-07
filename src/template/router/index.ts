@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { pageRecords } from '@/template/router/_pageRecords';
+import { pageRouterRecords } from '@/template/router/_pageRecords';
 import { errorRecords, devRecords } from './_otherRecords';
-
 
 
 const routes = [
   ...devRecords,
-  ...pageRecords, 
+  ...pageRouterRecords, 
   ...errorRecords,
 ]
 

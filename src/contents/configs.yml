@@ -1,0 +1,33 @@
+
+categories: # ===========================
+# - Display order follows this order.
+# =======================================
+
+  - name: Budgeting
+    description: "Budgeting and savings strategies: covers tips and tricks for saving money and managing your finances"
+
+  - name: Investing
+    description: "Investment basics and portfolio diversification: includes articles on stocks, bonds, mutual funds, and other investment vehicles"
+
+  - name: Retirement
+    description: "Retirement planning: focuses on saving for the future, including retirement accounts and other investment strategies"
+
+  - name: Real Estate
+    description: "Real estate investing: explores the world of real estate investing, including rental properties and flipping houses"
+
+  - name: Taxes
+    description: "Tax planning and optimization: covers ways to reduce your tax burden and maximize your savings"
+
+  - name: Personal Finance
+    description: "Personal finance management: offers advice on managing credit, debt, and other aspects of personal finance"
+
+
+
+
+
+
+
+
+
+
+
