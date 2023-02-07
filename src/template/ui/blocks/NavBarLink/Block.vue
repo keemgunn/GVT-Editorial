@@ -12,19 +12,15 @@ const props = defineProps<{
   navIcon: string
   navLink: string
   size: number
+  hierarchy: 'major' | 'sub'
 }>();
 
 const containerClass = computed(() => [
   'nav-bar-link',
   `--${navBar.navBarLinkType}`,
-  `--${props.size}`
+  `--${props.size}`,
+  `--${props.hierarchy}`
 ])
-const typoClass = computed(() => {
-  if (props.size > 12)
-    return `typo-body-${props.size} --bold`
-  else 
-    return `typo-body-${props.size}`
-})
 
 const navIconSize = computed(() => props.size + 2);
 
@@ -59,7 +55,7 @@ const showLink = computed(() => {
     {{ props.navTitle }}
     <div class="contents">
       <Icon class="nav-icon" :name="props.navIcon" :size="navIconSize"/>
-      <p :class="typoClass">{{ navTitle }}</p>
+      <p>{{ navTitle }}</p>
       <Icon v-if="props.navType == 'dropdown'" class="nav-handle" name="expand_more" :size="props.size + 2"/>
     </div>
     <Plate/>

@@ -9,26 +9,60 @@
   }
 }
 
-@mixin PlatePlaneColor($color, $opacity) {
+@mixin PlateBackgroundColor($color) {
   .plate .plane{
     background-color: var(#{$color});
-    opacity: calc($opacity / 100);
+  }
+}
+@mixin PlateBackgroundOpacity($opacity) {
+  .plate .plane{
+    opacity: $opacity;
   }
 }
 
-@mixin PlateBorderWidth($width) {
-  .plate .border{
-    border-width: #{$width}rem;
+
+
+/* ----------- PLATE BORDER -------------*/
+
+@mixin PlateBorderTop($width) {
+  .plate .border {
+    border-top: #{$width}rem solid var(--OnSurface);
   }
 }
-
-@mixin PlateBorderColor($color, $opacity) {
-  .plate .border{
+@mixin PlateBorderBottom($width) {
+  .plate .border {
+    border-bottom: #{$width}rem solid var(--OnSurface);
+  }
+}
+@mixin PlateBorderLeft($width) {
+  .plate .border {
+    border-left: #{$width}rem solid var(--OnSurface);
+  }
+}
+@mixin PlateBorderRight($width) {
+  .plate .border {
+    border-right: #{$width}rem solid var(--OnSurface);
+  }
+}
+@mixin PlateBorder($width) {
+  .plate .border {
+    border: #{$width}rem solid var(--OnSurface);
+  }
+}
+@mixin PlateBorderColor($color) {
+  .plate .border {
     border-color: var(#{$color});
-    border-style: solid;
-    opacity: calc($opacity / 100);
   }
 }
+@mixin PlateBorderOpacity($opacity) {
+  .plate .border {
+    opacity: $opacity;
+  }
+}
+
+
+
+
 
 @mixin PlateTransition($millisecond) {
   .plate {

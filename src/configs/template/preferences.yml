@@ -1,9 +1,6 @@
 
 appType : editorial
-# appType enums:
-  # app
-  # editorial
-  # landing
+  # app || editorial || landing
 
 
 breakpoints:

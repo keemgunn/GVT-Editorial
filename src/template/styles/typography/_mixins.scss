@@ -29,56 +29,56 @@
 
 
 @mixin Header($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold) {
-  .typo-header-#{$size} {
+  .typo-header-#{$size}, .typo-header-#{$size}--light, .typo-header-#{$size}--bold {
     @include Typeface($family, $regular);
     @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
   }
-  .typo-header-#{$size}.--light {
+  .typo-header-#{$size}.--light, .typo-header-#{$size}--light {
     font-family: '#{$family} #{$light}';
   }
-  .typo-header-#{$size}.--bold {
+  .typo-header-#{$size}.--bold, .typo-header-#{$size}--bold {
     font-family: '#{$family} #{$bold}';
   }
 }
 
 @mixin Body($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold) {
-  .typo-body-#{$size} {
+  .typo-body-#{$size}, .typo-body-#{$size}--light, .typo-body-#{$size}--bold {
     @include Typeface($family, $regular);
     @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
   }
-  .typo-body-#{$size}.--light {
+  .typo-body-#{$size}.--light, .typo-body-#{$size}--light {
     font-family: '#{$family} #{$light}';
   }
-  .typo-body-#{$size}.--bold {
+  .typo-body-#{$size}.--bold, .typo-body-#{$size}--bold {
     font-family: '#{$family} #{$bold}';
   }
 }
 
 @mixin Caption($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold) {
-  .typo-caption-#{$size} {
+  .typo-caption-#{$size}, .typo-caption-#{$size}--light, .typo-caption-#{$size}--bold {
     @include Typeface($family, $regular);
     @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
   }
-  .typo-caption-#{$size}.--light {
+  .typo-caption-#{$size}.--light, .typo-caption-#{$size}--light {
     font-family: '#{$family} #{$light}';
   }
-  .typo-caption-#{$size}.--bold {
+  .typo-caption-#{$size}.--bold, .typo-caption-#{$size}--bold {
     font-family: '#{$family} #{$bold}';
   }
 }
 
 @mixin Mark($family, $size, $lineHeight, $negateString, $letterSpace, $regular, $light, $bold, $heavy) {
-  .typo-mark-#{$size} {
+  .typo-mark-#{$size}, .typo-mark-#{$size}--light, .typo-mark-#{$size}--bold, .typo-mark-#{$size}--heavy {
     @include Typeface($family, $regular);
     @include FontSquare($size, $lineHeight, $negateString, $letterSpace);
   }
-  .typo-mark-#{$size}.--light {
+  .typo-mark-#{$size}.--light, .typo-mark-#{$size}--light {
     font-family: 'Archivo #{$light}';
   }
-  .typo-mark-#{$size}.--bold {
+  .typo-mark-#{$size}.--bold, .typo-mark-#{$size}--bold {
     font-family: 'Archivo #{$bold}';
   }
-  .typo-mark-#{$size}.--heavy {
+  .typo-mark-#{$size}.--heavy, .typo-mark-#{$size}--heavy {
     font-family: 'Archivo #{$heavy}';
   }
 }

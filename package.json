@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev-0": "export NODE_ENV=0 && vite",
+    "dev-1": "export NODE_ENV=1 && vite",
+    "dev-2": "export NODE_ENV=2 && vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom --root src/",
@@ -11,6 +13,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "http-status-codes": "^2.2.0",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",

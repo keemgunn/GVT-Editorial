@@ -17,8 +17,8 @@
     align-items: flex-end;
     padding-bottom: 4rem;
   }
-  @include PlateBorderWidth(0);
-  @include PlatePlaneColor(--Background, 100);
+  @include PlateBackgroundColor(--Background);
+  @include PlateBackgroundOpacity(1);
 }
 
 

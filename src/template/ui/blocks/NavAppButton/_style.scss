@@ -16,31 +16,30 @@
     transition: 80ms;
   }
   
-  @include PlatePlaneColor(--Primary, 0);
-  @include PlateTransition(100);
-
-  // FOR TEST
-  // @include PlateBorderWidth(1);
-  // @include PlateBorderColor(--OnSurface, 100);
+  @include PlateBackgroundColor(--Primary);
+  @include PlateTransition(0);
 }
 
 @media (hover: hover) {
   #app .nav-app-button:hover {
     .contents { opacity: 1; }
     cursor: pointer;
-    @include PlatePlaneColor(--Primary, 13)
+    @include PlateBackgroundColor(--Primary);
+    @include PlateBackgroundOpacity(0.13);
   }
 }
 #app .nav-app-button.--hover {
   .contents { opacity: 1; }
   cursor: pointer;
-  @include PlatePlaneColor(--Primary, 13)
+  @include PlateBackgroundColor(--Primary);
+  @include PlateBackgroundOpacity(0.13);
 }
 
 
 #app .nav-app-button:active {
   cursor: pointer;
-  @include PlatePlaneColor(--Primary, 22)
+  @include PlateBackgroundColor(--Primary);
+  @include PlateBackgroundOpacity(0.22);
 }
 
 

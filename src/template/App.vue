@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { inject } from 'vue';
 import { RouterView } from 'vue-router'
 import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
@@ -8,6 +9,9 @@ const appType = useFrameStore().templateSettings.appType;
 // =================== CSS FILES
 import('./main.scss')
 
+// =================== PROCESS ENV
+const process_env = inject('process_env') as number;
+
 // =================== COMPOSABLES
 useFrame();
 useTheme();
@@ -15,19 +19,26 @@ useTheme();
 
 <template>
 
-  <template v-if="appType == 'editorial'">
-    <NavBar_Editorial/>
-    <RouterView/>
+  <template v-if="process_env < 2">
 
-    <DevStatusBar/>
+    <template v-if="appType == 'editorial'">
+      <NavBar_Editorial/>
+      <RouterView/>
+  
+      <DevStatusBar v-if=" process_env > 0 "/>
+    </template>
+  
+    <template v-if="appType == 'app'">
+      <NavBar_App/>
+      <RouterView/>
+      <StatusBar/>
+    </template>
+
   </template>
 
-  <template v-if="appType == 'app'">
-    <NavBar_App/>
+  <template v-if="process_env > 1">
     <RouterView/>
-    <StatusBar/>
   </template>
-
 </template>
 
 <style lang="scss">

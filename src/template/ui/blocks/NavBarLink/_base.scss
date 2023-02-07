@@ -1,0 +1,32 @@
+#app .nav-bar-link {
+  display: block;
+  position: relative;
+  height: 100%;
+
+  .contents {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    align-content: center;
+    align-items: center;
+  
+    .nav-handle { padding-top: 1rem; }
+  }
+}
+
+
+// TYPOGRAPHY --------------------
+
+@for $i from 12 through 16 {
+  #app .nav-bar-link.--#{$i}.--major p {
+    @extend .typo-body-#{$i}--bold; 
+  }
+  #app .nav-bar-link.--#{$i}.--sub p {
+    @extend .typo-body-#{$i}--light;
+  }
+}
+
+#app .nav-bar-link{
+  font-size: 0;
+}

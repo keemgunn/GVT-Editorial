@@ -1,23 +1,11 @@
-
 #app .nav-bar-link.--filled {
-  display: block;
-  position: relative;
-  height: 100%;
-
-  @include PlatePlaneColor(--Primary, 0);
-  @include PlateTransition(100);
+  @include PlateTransition(120);
+  @include PlateBackgroundColor(--Primary);
+  @include PlateBackgroundOpacity(0);
 }
 #app .nav-bar-link.--filled .contents {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 5rem;
-  align-content: center;
-  align-items: center;
-
   color: var(--OnSurface);
   opacity: 0.74;
-  .nav-handle { padding-top: 1rem; }
 }
 
 
@@ -32,9 +20,6 @@
 #app .nav-bar-link.--filled.--12 {
   padding-left: 11rem;
   padding-right: 11rem;
-  .contents {
-    padding-top: 3rem;
-  }
 }
 
 
@@ -45,15 +30,13 @@
     opacity: 1;
   }
 }
+
+
 #app .nav-bar-link.--filled:hover {
-  .contents {
-    opacity: 1;
-  }
-  @include PlatePlaneColor(--Primary, 13);
+  @include PlateBackgroundOpacity(0.13);
+  .contents { opacity: 1; }
 }
 #app .nav-bar-link.--filled:active {
-  .contents {
-    opacity: 1;
-  }
-  @include PlatePlaneColor(--Primary, 22);
+  @include PlateBackgroundOpacity(0.22);
+  .contents { opacity: 1; }
 }

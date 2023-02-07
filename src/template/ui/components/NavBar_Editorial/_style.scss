@@ -18,8 +18,8 @@
     height: 100%
   }
 
-  @include PlateBorderWidth(0);
-  @include PlatePlaneColor(--Surface, 100);
+  @include PlateBackgroundColor(--Surface);
+  @include PlateBackgroundOpacity(1);
 }
 
 #nav-bar-editorial header {

@@ -5,6 +5,8 @@
 navBar:
   navBarLinkType: underlined
     # 'underlined' || 'filled'
+  showIcons: false
+    # true || false
 
 
 shape:
