@@ -6,7 +6,7 @@
 
 /* ---------------------------------------- */
 /* ---------------------------------------- */
-#NavBar_HorizonLinks {}
+#NavBar_HorizonLinks .nav-bar-horizon-links {}
 
 #app {
   // --nav-bar-horizon-links-bg-color: var(--Primary) !important;
@@ -43,7 +43,7 @@
 
 /* ---------------------------------------- */
 /* ---------------------------------------- */
-#RouterLink_VstackNest {}
+#RouterLink_VstackNest .router-link-vstack-nest {}
 
 #app {
   // --rlvn-nested-links-list-bg-color: var(--Primary) !important;

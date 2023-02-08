@@ -5,6 +5,7 @@ shape:
     # 0 || 1 || 2
 
 
+# ==========================================
 theme: # ===================================
 
   colorScheme:
@@ -13,6 +14,9 @@ theme: # ===================================
     darkThemeClass: theme--default-dark
 
   browserContainerColors:
-    theme--default-light: '#f0f0f0'
+  # The color that would be applied to Safari container colors on Apple Devices. 
+  # Corresponds to theme-class-names in `../styles/_colors.scss`
+    theme--default-light: '#ffffff'
     theme--default-dark: '#f0f0f0'
+
 

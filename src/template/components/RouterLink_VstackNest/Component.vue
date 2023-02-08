@@ -4,7 +4,7 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 
 const frameStore = useFrameStore();
-const { shape } = useConfigs().uiSettings;
+const { shape } = useConfigs().styleSettings;
 const compConfig = useConfigs().componentSettings.RouterLink_VstackNest;
 
 

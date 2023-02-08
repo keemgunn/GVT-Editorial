@@ -5,8 +5,8 @@
 # ==================================
 NavBar_HorizonLinks:
 
-  customComponentInjection: CC_Example
-    # This component would be attached to the top of this component.
+  customComponentInjection: 
+    # This component would be attached to the top of this component. (ex: 'CC_Example')
 
   showIcons: # true || false
     majorLinks: false

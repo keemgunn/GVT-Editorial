@@ -4,10 +4,10 @@ import type { Ref } from 'vue';
 import { useConfigs } from '@/template/stores/userConfigs'
 
 export const useThemeStore = defineStore('theme', () => {
-  const { uiSettings } = useConfigs();
+  const { styleSettings } = useConfigs();
 
   // User Theme Settings
-  const themeSettings: Ref<ColorSchemeSettings> = ref(uiSettings.theme.colorScheme as ColorSchemeSettings);
+  const themeSettings: Ref<ColorSchemeSettings> = ref(styleSettings.theme.colorScheme as ColorSchemeSettings);
 
   // Current Color Scheme
   const isDark: Ref<boolean> = ref(false);
@@ -16,7 +16,7 @@ export const useThemeStore = defineStore('theme', () => {
   const currentThemeClass: Ref<string> = ref("theme--something");
 
   // Browser Container Colors
-  const containerColor = computed(() => uiSettings.theme.browserContainerColors[currentThemeClass.value])
+  const containerColor = computed(() => styleSettings.theme.browserContainerColors[currentThemeClass.value])
 
   return { 
     themeSettings, 
