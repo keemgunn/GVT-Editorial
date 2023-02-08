@@ -1,6 +1,6 @@
 #app .router-link-vstack-nest.--filled {
-  @include PlateTransition(120);
-  @include PlateBackgroundColor(--Primary);
+  @include PlateTransition(120ms);
+  @include PlateBackgroundColor(var(--Primary));
   @include PlateBackgroundOpacity(0);
 }
 #app .router-link-vstack-nest.--filled .contents {

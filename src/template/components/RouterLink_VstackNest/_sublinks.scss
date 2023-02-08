@@ -1,4 +1,8 @@
 // SUB LINKS --------------------
+#app {
+  --rlvn-nested-links-list-bg-color: var(--Surface);
+}
+
 #app .rlvn-nested-links-list {
   display: flex;
   li {
@@ -7,7 +11,7 @@
     }
     z-index: 0;
   }
-  @include PlateBackgroundColor(--Surface);
+  @include PlateBackgroundColor(var(--rlvn-nested-links-list-bg-color));
   @include PlateBorderOpacity(1);
 }
 

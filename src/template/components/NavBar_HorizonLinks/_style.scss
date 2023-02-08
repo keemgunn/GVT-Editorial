@@ -1,11 +1,13 @@
 /* components/NavBar_Editorial */
+#app {
+  --nav-bar-horizon-links-bg-color: var(--Surface);
+}
 
 #app .nav-bar-horizon-links {
   position: sticky;
   top: 0;
 
   width: 100%;
-  // height: var(--nav-bar-height);
   height: fit-content;
   padding: 0;
   
@@ -23,7 +25,7 @@
     height: var(--nav-bar-height);
   }
 
-  @include PlateBackgroundColor(--Surface);
+  @include PlateBackgroundColor(var(--nav-bar-horizon-links-bg-color));
   @include PlateBackgroundOpacity(1);
   @include Shadow-1(20rem);
 }
@@ -63,35 +65,30 @@
 }
 
 
-/* VARIABLES */
+/* SIZES */
+/* ----------------------------------------------- */
 
 .scale--XXL,
 .scale--XL,
 .scale--L {
-
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 300rem;
   --nav-bar-header-gap: 36rem;
   --router-link-vstack-nests-gap: 26rem;
   --nav-bar-categories-gap: 20rem;
 }
-
 .scale--M {
-
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 300rem;
   --nav-bar-header-gap: 36rem;
   --router-link-vstack-nests-gap: 30rem;
 }
-
 .scale--S {
-
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 160rem;
   --nav-bar-header-gap: 28rem;
   --router-link-vstack-nests-gap: 28rem;
 }
-
 .scale--XS,
 .scale--XXS {
 
@@ -99,40 +96,27 @@
 }
 
 
-
 .scale--XXL #app .nav-bar-horizon-links,
 .scale--XL #app .nav-bar-horizon-links,
 .scale--L #app .nav-bar-horizon-links {
-
   header { 
     width: 1280rem; 
   }
 }
-
-
-
 .scale--M #app .nav-bar-horizon-links {
-
   header { 
     padding: 0 40rem;
     width: 100%;
   }
 }
-
-
-
 .scale--S #app .nav-bar-horizon-links {
-
   header { 
     padding: 0 30rem;
     width: 100%;
   }
 }
-
-
 .scale--XS #app .nav-bar-horizon-links,
 .scale--XXS #app .nav-bar-horizon-links {
-
   header { 
     padding: 0 26rem;
     width: 100%;

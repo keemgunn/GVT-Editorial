@@ -16,29 +16,29 @@
     transition: 80ms;
   }
   
-  @include PlateBackgroundColor(--Primary);
-  @include PlateTransition(0);
+  @include PlateBackgroundColor(var(--Primary));
+  @include PlateTransition(0ms);
 }
 
 @media (hover: hover) {
   #app .nav-app-button:hover {
     .contents { opacity: 1; }
     cursor: pointer;
-    @include PlateBackgroundColor(--Primary);
+    @include PlateBackgroundColor(var(--Primary));
     @include PlateBackgroundOpacity(0.13);
   }
 }
 #app .nav-app-button.--hover {
   .contents { opacity: 1; }
   cursor: pointer;
-  @include PlateBackgroundColor(--Primary);
+  @include PlateBackgroundColor(var(--Primary));
   @include PlateBackgroundOpacity(0.13);
 }
 
 
 #app .nav-app-button:active {
   cursor: pointer;
-  @include PlateBackgroundColor(--Primary);
+  @include PlateBackgroundColor(var(--Primary));
   @include PlateBackgroundOpacity(0.22);
 }
 
@@ -49,7 +49,7 @@
   padding: 10rem 14rem;
   .contents { gap: 2rem; };
   .contents p {font-size: 12rem !important;}
-  @include PlateRoundness(27);
+  @include PlateRoundness(27rem);
   @include IconSize(20);
   @include IconSize(24);
 }
@@ -57,41 +57,41 @@
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
-  @include PlateRoundness(23);
+  @include PlateRoundness(23rem);
   @include IconSize(20);
 }
 .scale--L .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
-  @include PlateRoundness(23);
+  @include PlateRoundness(23rem);
   @include IconSize(20);
 }
 .scale--M .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
-  @include PlateRoundness(23);
+  @include PlateRoundness(23rem);
   @include IconSize(20);
 }
 .scale--S .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
-  @include PlateRoundness(23);
+  @include PlateRoundness(23rem);
   @include IconSize(20);
 }
 .scale--XS .nav-app-button {
   width: 70rem;
   padding: 9rem 12rem;
   .contents { gap: 2rem; };
-  @include PlateRoundness(24);
+  @include PlateRoundness(24rem);
   @include IconSize(20);
 }
 .scale--XXS .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
-  @include PlateRoundness(23);
+  @include PlateRoundness(23rem);
   @include IconSize(20);
 }

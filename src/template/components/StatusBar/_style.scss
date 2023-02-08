@@ -10,7 +10,7 @@
     flex-shrink: 0;
   }
 
-  @include PlateBackgroundColor(--Background);
+  @include PlateBackgroundColor(var(--Background));
   @include PlateBackgroundOpacity(1);
 }
 
