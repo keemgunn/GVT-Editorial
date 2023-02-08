@@ -2,6 +2,7 @@
 import { computed } from '@vue/reactivity';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
+import brandLogo from '@/assets/svg/logo-brand-main.svg';
 
 const frameStore = useFrameStore();
 const { componentSettings, websiteSettings } = useConfigs();
@@ -28,7 +29,7 @@ function showIcon(navIcon: String) {
   <component :is="compConfig.customComponentInjection"></component>
     
   <header>
-    <Vector class="nav-logo" src="@/assets/svg/logo-brand-main.svg"/>
+    <Vector class="nav-logo" :src="brandLogo"/>
     <h1 style="display: none;">Blog Name Here</h1>
 
     <nav v-show="showActions">

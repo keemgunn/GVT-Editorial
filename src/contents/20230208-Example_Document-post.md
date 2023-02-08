@@ -1,6 +1,7 @@
 ---
-title:  "Red Riding Hood"
-tags: [ Jekyll, tutorial ]
+title: "Red Riding Hood"
+tags: [ "Jekyll", tutorial ]
+category: Budgeting
 coverImage: assets/images/3.jpg
 description: this is an example document.
 meta:
@@ -8,12 +9,14 @@ meta:
     content: this is an example document
 ---
 
-## Table of Contents !
+Table of Contents !
 ```markdown
 just use `${toc}` inside your markdown!
 ```
 
 ${toc}
+
+# {{frontmatter.title}}
 
 ## Hello World!
 

@@ -6,18 +6,22 @@ import { useTheme } from './styles/theme';
 import { useConfigs } from './stores/userConfigs';
 
 
+// =================== PROCESS ENV
+const process_env = inject('process_env');
+
+
 // =================== Template User Configurations
 const { appType, EditorialSettings } = useConfigs().templateSettings;
-
 const { NavBar, CustomComponentInjection } = EditorialSettings;
 
 
 // =================== CSS FILES
+// For some reason, vite-plugin-sass-glob-import doesn't work in Vite Build process. 
+// So I made an python script that collects all .scss files using glob, and write 'main.scss'file in following directory.
+// And run this script everytime before Build process.
 import('./main.scss')
 
 
-// =================== PROCESS ENV
-const process_env = inject('process_env') as number;
 
 
 // =================== COMPOSABLES
@@ -28,7 +32,7 @@ useTheme();
 
 
 <template>
-  <template v-if="process_env < 2">
+  <template v-if="process_env !== 'DEV_2'">
 
     <template v-if="appType == 'editorial'">
 
@@ -37,7 +41,7 @@ useTheme();
       <RouterView/>
 
   
-    <DevStatusBar v-if=" process_env > 0 "/>
+      <DevStatusBar v-if=" process_env === 'DEV_1'"/>
     </template>
   
     <template v-if="appType == 'app'">
@@ -48,7 +52,7 @@ useTheme();
 
 
   </template>
-  <template v-if="process_env > 1">
+  <template v-if="process_env === 'DEV_2'">
     <RouterView/>
   </template>
 </template>

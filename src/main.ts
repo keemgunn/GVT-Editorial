@@ -42,21 +42,12 @@ for (const key of Object.keys(markdownComponents)) {
 
 
 // ====== DEV SETTINGS
-const process_env = Number(process.env.NODE_ENV || "0") as number;
+const process_env = (process.env.NODE_ENV) as string;
 app.provide('process_env', process_env);
 
-import devPages from '@/template/devComps/pages';
-import devComps from '@/template/devComps/components';
-if (process_env > 0) {
-  for (const key of Object.keys(devPages)) {
-    app.component(key, devPages[key])
-  }
-  for (const key of Object.keys(devComps)) {
-    app.component(key, devComps[key])
-  }
-}
 
 // ====== ROUTER
 app.use(router);
+
 
 app.mount('#app');

@@ -3,14 +3,21 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev-0": "export NODE_ENV=0 && vite",
-    "dev-1": "export NODE_ENV=1 && vite",
-    "dev-2": "export NODE_ENV=2 && vite",
-    "build": "run-p type-check build-only",
+    "dev-0": "export NODE_ENV=DEV_0 && npm run sass-glob-restore && vite",
+    "dev-1": "export NODE_ENV=DEV_1 && npm run sass-glob-restore && vite",
+    "dev-2": "export NODE_ENV=DEV_2 && npm run sass-glob-restore && vite",
+    
+    "build-and-preview": "npm run build && npm run preview",
+
+    "build": "export NODE_ENV=BUILD && npm run sass-glob-builder && vite build",
     "preview": "vite preview",
+
+    "build-and-typecheck": "run-p type-check build-only",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "test:unit": "vitest --environment jsdom --root src/",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
+
+    "sass-glob-builder": "source ./src/template/tools/pyenv_3_11/bin/activate && python ./src/template/tools/sass-glob-builder.py",
+    "sass-glob-restore": "source ./src/template/tools/pyenv_3_11/bin/activate && python ./src/template/tools/sass-glob-restore.py"
   },
   "dependencies": {
     "@vueuse/head": "^1.0.25",
