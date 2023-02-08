@@ -36,6 +36,15 @@ export function changeTheme(colorSchemeQuery: MediaQueryList) {
     store.isDark = false;
   }
 
+  // 1. Add Color Scheme Class
+  if (store.isDark) {
+    document.body.classList.remove('scheme--light');
+    document.body.classList.add('scheme--dark');
+  } else {
+    document.body.classList.remove('scheme--dark');
+    document.body.classList.add('scheme--light');
+  }
+
   // 2. Get ThemeClass string value by color scheme
   if (store.isDark) {
     store.currentThemeClass = store.themeSettings.darkThemeClass;

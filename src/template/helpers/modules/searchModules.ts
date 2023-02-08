@@ -1,5 +1,5 @@
 /**
- * @param importMetaGlob `import.meta.glob('your/seach/directory/query')`
+ * @param importMetaGlob import.meta.glob('your/seach/directory/query')
  */
 export default function searchModules (importMetaGlob: Record<string, () => Promise<unknown>>): Array<string> {
   const componentArray: Array<string> = [];

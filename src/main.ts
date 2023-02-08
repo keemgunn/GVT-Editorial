@@ -1,17 +1,18 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { router } from './template/router';
+import { createHead } from '@vueuse/head';
 import App from './template/App.vue';
 
 // ====== MAIN APP CONTAINER
-const app = createApp(App)
+const app = createApp(App);
 
 // ====== STORE
-app.use(createPinia())
+app.use(createPinia());
 
-// ====== ROUTER
-app.use(router)
-  
+// See(https://www.npmjs.com/package/@vueuse/head)
+app.use(createHead());
+
 
 // ====== GLOBAL DECLARATION FOR
 //    TEMPLATE COMPONENTS
@@ -31,8 +32,16 @@ for (const key of Object.keys(customComps)) {
   app.component(key, customComps[key])
 }
 
-// ====== DEV SETTINGS
 
+// ====== GLOBAL DECLARATION FOR
+//    Markdown COMPONENTS
+import { markdownComponents } from '@/template/stores/contents';
+for (const key of Object.keys(markdownComponents)) {
+  app.component(key, markdownComponents[key])
+}
+
+
+// ====== DEV SETTINGS
 const process_env = Number(process.env.NODE_ENV || "0") as number;
 app.provide('process_env', process_env);
 
@@ -47,4 +56,7 @@ if (process_env > 0) {
   }
 }
 
-app.mount('#app')
+// ====== ROUTER
+app.use(router);
+
+app.mount('#app');

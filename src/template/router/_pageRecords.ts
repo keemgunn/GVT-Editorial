@@ -20,7 +20,7 @@ function createRouterRecordArray (pageRecords: PageRecords): Array<RouteRecordRa
   pageRecords.forEach((pageRecord) => {
     const routerRecord = createRouterRecord(pageRecord);
     routeRecords.push(routerRecord);
-    console.log(` - CREATED ROUTE RECORD [${routerRecord.name as string}] for '${routerRecord.path as string}'`);
+    console.warn(` - CREATED ROUTE RECORD [${routerRecord.name as string}] for '${routerRecord.path as string}'`);
   })
 
   return routeRecords

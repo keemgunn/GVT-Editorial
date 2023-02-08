@@ -1,34 +1,27 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue';
-import { useFrameStore } from '@/template/styles/frame/_store';
-import { useInteractionStore } from '@/template/stores/interaction';
+import { defineProps, computed, ref } from 'vue';
+import { useRoute } from 'vue-router'
+import { useContentsStore } from '@/template/stores/contents';
 
-const frameStore = useFrameStore();
-const interactionStore = useInteractionStore();
+const route = useRoute()
+const contents = useContentsStore();
 
-const pageName = "Read";
-onBeforeMount(() => {
-  interactionStore.currentPage = pageName;
-})
+const isValidDocId = contents.articleList.includes(route.params.docid as string)
+
 </script>
 
 <template>
-<div id="router-page" class="home">
+<div id="router-page" class="read">
     
-  <header id="main-actions"> this is header </header>
-  
+  <h1> {{ $route.params.docid }}</h1>
+
   <main>
-    <p class="typo-body-16">userAgent : {{ frameStore.userAgent }}</p>
 
-    <h1>This is an HOME</h1>
+    <component 
+    v-if="isValidDocId" 
+    :is='$route.params.docid'/>
 
-    <div class="some-example">
-      <Plate/>
-      <p class="typo-header-28">Something!</p>
-    </div>
   </main>
-
-  <footer id="other-actions"></footer>
 
 </div>
 </template>
