@@ -1,0 +1,17 @@
+/* @/template/styles/theme/_mixins.scss */
+
+@mixin Shadow-1($size) {
+  filter: drop-shadow(0px 0px #{$size} var(--Shadow-1));
+}
+
+@mixin Shadow-2($size) {
+  filter: drop-shadow(0px 0px #{$size} var(--Shadow-2));
+}
+
+@mixin Shadow-3($size) {
+  filter: drop-shadow(0px 0px #{$size} var(--Shadow-3));
+}
+
+@mixin Shadow-4($size) {
+  filter: drop-shadow(0px 0px #{$size} var(--Shadow-4));
+}
