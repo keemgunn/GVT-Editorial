@@ -73,7 +73,7 @@ belong to the previous footnote.
 
 ### Inserted Vue Component
 
-<https:www.google.com>
+<component is='CC_Example'/>
 
 
 
