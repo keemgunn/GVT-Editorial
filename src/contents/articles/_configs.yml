@@ -5,9 +5,9 @@
 # without '-post.md' at the end, it will not rendered.
 
 
-categories: # ===========================
-# - Display order follows this order.
-# =======================================
+categories: # ==========================
+# - Descriptions about each categories follows this.
+# ======================================
 
   Budgeting : "Budgeting and savings strategies: covers tips and tricks for saving money and managing your finances"
 
@@ -20,10 +20,6 @@ categories: # ===========================
   Taxes : "Tax planning and optimization: covers ways to reduce your tax burden and maximize your savings"
 
   Personal Finance : "Personal finance management: offers advice on managing credit, debt, and other aspects of personal finance"
-
-
-
-
 
 
 

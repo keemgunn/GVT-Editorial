@@ -1,4 +1,6 @@
-import cc from '@/contents/_configs.yml';
+import cc from '@/contents/articles/_configs.yml';
+import { calcReadingTime, checkCategory, checkDuplicatedUri, extractFrontHeadPart, tidyUpRaw, toRealArray } from './_helpers';
+
 const { categories } = cc;
 
 
@@ -14,27 +16,13 @@ frontHeadClassTypeLines.forEach((line) => {
 })
 
 
-/**
- * String formatted array into Javascript Array
- */
-function toRealArray(str: string): string[] {
-  return str.trim()
-    .slice(1, -1)
-    .split(",").map((value) => 
-      value.trim().replace(/\"|\'/g,'')
-    )
-}
 
 
 
 function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRecord {
 
   // Extract only FrontHead part.
-  const frontheadPart =
-    markdownRaw.split('---')[1]
-      .split('\n').map((line) =>
-        line.replace(/\"|\'/g,'')
-      )
+  const frontheadPart = extractFrontHeadPart(markdownRaw);
 
   // Final Object
   const result: any = {};
@@ -65,11 +53,27 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRe
     result[key] = value;
   })
 
+  // Set Highlight State
+  let highlightState: ArticleHighlightState;
+  const folder = filepath.split('/').slice(-2)[0];
+  if ((folder === 'trending') || (folder === 'featured')) {
+    highlightState = folder;
+  } else {
+    highlightState = 'normal';
+  }
+  result['highlighted'] = highlightState;
+
+  result['readTime'] = 'not-calculated-yet';
+    // will do later below. just for type matching...
+
+  // Set filename
   result['filename'] = filepath.split('/').slice(-1)[0];
     // Example: 20230208-Example_Document-post.md
 
   return result as ArticleRecord
 }
+
+
 
 
 
@@ -82,23 +86,14 @@ export function formatRawMarkdowns(markdownModules: Record<string, string>): {ar
   for (const [ filepath, markdownRaw ] of Object.entries(markdownModules)) {
     const props = extractFrontHeadProps(filepath, markdownRaw)
 
-    // Check duplicated uri and show error
-    if (props.uri in articlesList) {
-      console.error(" - DUPLICATED URI");
-      console.error("   file:", props.filename);
-      console.error("   uri:", props.uri);
-      props.uri = props.uri + "-02"
-    }
+    checkDuplicatedUri(props, articlesList);
+    checkCategory(props, categories);
 
-    // Check category
-    if (!(props.category in categories)) {
-      console.error(" - UNKNOWN CATEGORY");
-      console.error("   file:", props.filename);
-      console.error("   category:", props.category);
-    }
+    const tidiedMarkdownRaw = tidyUpRaw(markdownRaw);
+    props.readTime = calcReadingTime(tidiedMarkdownRaw);
 
-    articlesList[props.uri] = props
-    articleRawRecords[props.uri] = markdownRaw.split("---")[2].replace(/\n/g,' ').replace(/#|^|\`|\[|\]|\{|\}|=|<component.*?\/>|\^longnote/g,'');
+    articlesList[props.uri] = props;
+    articleRawRecords[props.uri] = tidiedMarkdownRaw;
   }
 
   return {
