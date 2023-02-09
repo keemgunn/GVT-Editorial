@@ -1,30 +1,38 @@
 import type { RouteRecordRaw } from "vue-router";
-import { createRouterHook } from "./_helpers";
-import websiteSettings from '@/configs/websiteSettings.yml';
-const pageRecords: PageRecords = (websiteSettings.Pages as PageRecords);
+import { createRouterHook } from "./_functions";
+import searchModules from "../helpers/modules/searchModules";
 
+// Import routeSetting.ts from all page directories.
+const routeSettings = import.meta.glob('../../pages/**/routeSetting.ts', { eager: true, import: 'default' });
 
-function createRouterRecord (pageRecord: PageRecord): RouteRecordRaw {
-  return {
-    name: pageRecord.name,
-    path: pageRecord.uri,
-    alias: pageRecord.alias || [],
-    component: () => import(`../../pages/${pageRecord.name}-Page.vue`), // Why I wrote like this? See https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
-    beforeEnter: createRouterHook(pageRecord.allowAccess)
-  }
-}
+export function createRouterRecordArray(): Array<RouteRecordRaw> {
 
-function createRouterRecordArray (pageRecords: PageRecords): Array<RouteRecordRaw> {
+  // Get array of PageComponent path list
+  const pageComponentPaths = searchModules(import.meta.glob('../../pages/**/PageComponent.vue'));
+
+  // The Final Object
   const routeRecords: Array<RouteRecordRaw> = [];
 
-  pageRecords.forEach((pageRecord) => {
-    const routerRecord = createRouterRecord(pageRecord);
-    routeRecords.push(routerRecord);
-    console.warn(` - CREATED ROUTE RECORD [${routerRecord.name as string}] for '${routerRecord.path as string}'`);
+  // Iterate for each paths of page components.
+  pageComponentPaths.forEach((path) => {
+    const componentName = path.split('.').slice(-2)[0].split('/').slice(-2)[0]
+
+    const routeSetting = routeSettings[`../../pages/${componentName}/routeSetting.ts`] as PageRouteSetting;
+  
+    const record = {
+      name: componentName,
+      path: routeSetting.uri,
+      alias: routeSetting.alias || [],
+      component: () => import(`../../pages/${componentName}/PageComponent.vue`),
+      beforeEnter: createRouterHook(routeSetting.allowAccess)
+    };
+
+    routeRecords.push(record);
+    console.warn(` - CREATED ROUTE RECORD [${record.name as string}] for '${record.path as string}'`);
   })
 
   return routeRecords
 }
 
 
-export const pageRouterRecords = createRouterRecordArray(pageRecords);
+export const pageRouterRecords = createRouterRecordArray();

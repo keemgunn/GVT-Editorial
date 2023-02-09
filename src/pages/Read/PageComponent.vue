@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, computed, ref } from 'vue';
 import { useRoute } from 'vue-router'
-import { useContentsStore } from '@/template/stores/contents';
+import { useContentsStore } from '@/template/contents'
 
 const route = useRoute()
 const contents = useContentsStore();

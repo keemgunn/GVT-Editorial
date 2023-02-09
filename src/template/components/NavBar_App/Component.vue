@@ -4,8 +4,8 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
 
-const { componentSettings, websiteSettings } = useConfigs();
-const navRecords: NavRecords = websiteSettings.NavRecords;
+const { componentSettings, navigationSetting } = useConfigs();
+const navRecords: NavRecords = navigationSetting;
 
 const frameStore = useFrameStore();
 

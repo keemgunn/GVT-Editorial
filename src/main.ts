@@ -35,7 +35,7 @@ for (const key of Object.keys(customComps)) {
 
 // ====== GLOBAL DECLARATION FOR
 //    Markdown COMPONENTS
-import { markdownComponents } from '@/template/stores/contents';
+import { markdownComponents } from '@/template/contents';
 for (const key of Object.keys(markdownComponents)) {
   app.component(key, markdownComponents[key])
 }

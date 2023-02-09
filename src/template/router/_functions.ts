@@ -1,4 +1,7 @@
 import { useFrameStore } from "../styles/frame/_store";
+import searchModules from "@/template/helpers/modules/searchModules";
+
+
 
 /**
  * @param callBefore A hook function that would be called before enter
