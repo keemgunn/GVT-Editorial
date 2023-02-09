@@ -1,25 +1,24 @@
 <script setup lang="ts">
 import { defineProps, computed, ref } from 'vue';
 import { useRoute } from 'vue-router'
-import { useContentsStore } from '@/template/contents'
+import { articleList } from '@/template/contents'
 
 const route = useRoute()
-const contents = useContentsStore();
 
-const isValidDocId = contents.articleList.includes(route.params.docid as string)
+const isValidDocId = (route.params.docuri as string) in articleList
 
 </script>
 
 <template>
 <div id="router-page" class="read">
     
-  <h1> {{ $route.params.docid }}</h1>
+  <h1> {{ $route.params.docuri }}</h1>
 
   <main>
 
     <component 
     v-if="isValidDocId" 
-    :is='$route.params.docid'/>
+    :is='$route.params.docuri'/>
 
   </main>
 

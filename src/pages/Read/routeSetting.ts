@@ -13,7 +13,7 @@ inside of @/template/App.vue.
 ======================================= */
 export default {
 
-  uri: '/read/:docid?',
+  uri: '/read/:docuri?',
   alias: [],
   allowAccess: 'public'
 

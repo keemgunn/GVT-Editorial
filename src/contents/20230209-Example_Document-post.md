@@ -1,7 +1,7 @@
 ---
-title: Red Riding Hood 1
-date: 2023-02-08
-uri: article-red-riding-hood-1
+title: Red Riding Hood 2
+date: 2023-02-09
+uri: article-red-riding-hood-2
 tags: [ Jekyll, tutorial ]
 category: Budgeting
 coverImage: https://images.unsplash.com/photo-1668424861369-2accec5c7ce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80

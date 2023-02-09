@@ -44,7 +44,7 @@ export default defineConfig({
           // format: (x:any, htmlencode:any) => {
           //   return `<span>${htmlencode(x)}</span>`;
           // }
-          level: 2
+          level: 1
         });
         md.use(require('markdown-it-mark'));
         md.use(require('markdown-it-prism'), {

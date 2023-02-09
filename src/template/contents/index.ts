@@ -3,44 +3,39 @@
 */
 import { defineAsyncComponent } from 'vue'
 import { defineStore } from 'pinia'
-import { ref, markRaw } from 'vue'
+import { ref } from 'vue'
 import cc from '@/contents/_configs.yml'
-import searchModules from '@/template/helpers/modules/searchModules';
+import { formatRawMarkdowns } from './_handleMarkdown';
 
-const moduleArray = searchModules(import.meta.glob('@/contents/*-post.md'))
+
+const markdownModules = import.meta.glob('../../contents/*-post.md', { eager: true, import: 'default', as: 'raw' });
+
+// Make a list of articles
+export const {articleList, rawDocList} = formatRawMarkdowns(markdownModules);
+console.warn('articleList:', articleList);
+// console.log(rawDocList);
+
+// For Dynamic Components
 let markdownComponents: any = {};
-const articleListRaw: Array<string> = [];
+// For Filtering Articles with Tags
+export const tagSet: Set<string> = new Set([]);
+// For Filtering Articles with Categories
+export const categorySet: Set<string> = new Set(Object.keys(cc.categories));
 
-for (let i = 0; i < moduleArray.length; i++) {
-
-  const name = moduleArray[i].split('.').slice(-2)[0].split('/').slice(-1)[0].split('-post')[0];
-  const uri = "article_" + name.replace('-', '_').toLowerCase();
-  /** Example :
-  * URL: /src/contents/20230208-Example_Document-post.md
-  * name: 20230208-Example_Document
-  * uri: 20230208_example_document
-      * This uri goes into webpage url endpoint to the article & identified name for Vue component that declared globally in `@/main.ts`
-  */
-
+for (const [uri, props] of Object.entries(articleList)) {
+  
+  // Add Dynamic Component module
+  const importName = props.filename.split('-post.md')[0]; // filename example: 20230208-Example_Document-post.md
   const container = {
-    [uri]: defineAsyncComponent(() => import(`../../contents/${name}-post.md`))
+    [uri]: defineAsyncComponent(() => import(`../../contents/${importName}-post.md`))
   }
-
   markdownComponents = { ...markdownComponents, ...container };
-  articleListRaw.push(uri);
+
+  // Collect Tags
+  props.tags.forEach((tag) => {
+    tagSet.add(tag);
+  })
 }
-console.warn('articleList:', articleListRaw);
 
-
-export const useContentsStore = defineStore('contents', () => {
-
-  const configs = ref(cc);
-  const articleList = markRaw(articleListRaw);
-
-  return { 
-    configs, 
-    articleList
-  }
-})
 
 export { markdownComponents }
