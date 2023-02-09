@@ -5,24 +5,24 @@ import { defineAsyncComponent } from 'vue'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import cc from '@/contents/_configs.yml'
-import { formatRawMarkdowns } from './_handleMarkdown';
+import { formatRawMarkdowns } from './_markdownHandler';
 
 
 const markdownModules = import.meta.glob('../../contents/*-post.md', { eager: true, import: 'default', as: 'raw' });
 
 // Make a list of articles
-export const {articleList, rawDocList} = formatRawMarkdowns(markdownModules);
-console.warn('articleList:', articleList);
-// console.log(rawDocList);
+const {articleRecords, articleRawRecords} = formatRawMarkdowns(markdownModules);
+console.warn('articleRecords:', articleRecords);
+// console.log(articleRawRecords);
 
 // For Dynamic Components
 let markdownComponents: any = {};
 // For Filtering Articles with Tags
-export const tagSet: Set<string> = new Set([]);
+const tagSet: Set<string> = new Set([]);
 // For Filtering Articles with Categories
-export const categorySet: Set<string> = new Set(Object.keys(cc.categories));
+const categorySet: Set<string> = new Set(Object.keys(cc.categories));
 
-for (const [uri, props] of Object.entries(articleList)) {
+for (const [uri, props] of Object.entries(articleRecords)) {
   
   // Add Dynamic Component module
   const importName = props.filename.split('-post.md')[0]; // filename example: 20230208-Example_Document-post.md
@@ -36,6 +36,25 @@ for (const [uri, props] of Object.entries(articleList)) {
     tagSet.add(tag);
   })
 }
-
-
 export { markdownComponents }
+
+
+
+
+
+export function useContents() {
+
+  const article = {
+    records: articleRecords,
+    rawRecords: articleRawRecords,
+    tagSet: tagSet,
+    categorySet: categorySet
+  }
+
+  return {
+    article
+  }
+}
+
+
+

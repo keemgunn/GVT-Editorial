@@ -1,7 +1,7 @@
 export { };
 declare global {
 
-  interface ArticleFrontHead {
+  interface ArticleRecord {
     title: string;
     uri: string;
     date: string; // YYYY-MM-DD
@@ -12,7 +12,7 @@ declare global {
     coverImage: string;
   }
 
-  type ArticleList = Record<string, ArticleFrontHead>
+  type ArticleRecords = Record<string, ArticleRecord>
 
-  type RawDocList = Record<string, string>
+  type ArticleRawRecords = Record<string, string>
 }

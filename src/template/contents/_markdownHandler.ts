@@ -2,11 +2,11 @@ import cc from '@/contents/_configs.yml'
 const { categories } = cc;
 
 
-// GET Keys of interface: ArticleFrontHead as Array<string>
+// GET Keys of interface: ArticleRecord as Array<string>
 
 const frontHeadClassTypeModule = import.meta.glob('./__types.ts', { eager: true, import: 'default', as: 'raw ' }) as Record<string, string>;
 
-const frontHeadClassTypeLines = frontHeadClassTypeModule['./__types.ts'].split('ArticleFrontHead')[1].split('\n').slice(1).slice(0, -2)
+const frontHeadClassTypeLines = frontHeadClassTypeModule['./__types.ts'].split('ArticleRecord')[1].split('\n').slice(1).slice(0, -2)
 
 const articleFrontHeadKeys: Array<string> = [];
 frontHeadClassTypeLines.forEach((line) => {
@@ -27,7 +27,7 @@ function toRealArray(str: string): string[] {
 
 
 
-function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleFrontHead {
+function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRecord {
 
   // Extract only FrontHead part.
   const frontheadPart =
@@ -48,7 +48,7 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleFr
     const key = line.split(":")[0].trim();
     const value = line.split(":")[1].trim();
     
-    // If the key doesn't exist in the interface declaration: ArticleFrontHead, stop the process.
+    // If the key doesn't exist in the interface declaration: ArticleRecord, stop the process.
     if(!articleFrontHeadKeys.includes(key)) return
     
     if (key === 'coverImage') {
@@ -68,15 +68,15 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleFr
   result['filename'] = filepath.split('/').slice(-1)[0];
     // Example: 20230208-Example_Document-post.md
 
-  return result as ArticleFrontHead
+  return result as ArticleRecord
 }
 
 
 
-export function formatRawMarkdowns(markdownModules: Record<string, string>): {articleList: ArticleList, rawDocList: RawDocList} {
+export function formatRawMarkdowns(markdownModules: Record<string, string>): {articleRecords: ArticleRecords, articleRawRecords: ArticleRawRecords} {
 
   const articlesList: any = {};
-  const rawDocList: any = {};
+  const articleRawRecords: any = {};
 
   // Get fronthead properties for each markdown files.
   for (const [ filepath, markdownRaw ] of Object.entries(markdownModules)) {
@@ -98,11 +98,11 @@ export function formatRawMarkdowns(markdownModules: Record<string, string>): {ar
     }
 
     articlesList[props.uri] = props
-    rawDocList[props.uri] = markdownRaw.split("---")[2].replace(/\n/g,' ').replace(/#|^|\`|\[|\]|\{|\}|=|<component.*?\/>|\^longnote/g,'');
+    articleRawRecords[props.uri] = markdownRaw.split("---")[2].replace(/\n/g,' ').replace(/#|^|\`|\[|\]|\{|\}|=|<component.*?\/>|\^longnote/g,'');
   }
 
   return {
-    articleList: articlesList as ArticleList,
-    rawDocList: rawDocList as RawDocList
+    articleRecords: articlesList as ArticleRecords,
+    articleRawRecords: articleRawRecords as ArticleRawRecords
   }
 }
