@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"workbench.preferredLightColorTheme": "Night Owl Light",
-		"workbench.colorTheme": "Dracula Soft",
+		"workbench.colorTheme": "Night Owl Light",
 		"workbench.preferredDarkColorTheme": "Dracula Soft",
 		"editor.tabSize": 2,
 		"explorer.autoReveal": "focusNoScroll",

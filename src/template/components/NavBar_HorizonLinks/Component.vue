@@ -58,3 +58,24 @@ function showIcon(navIcon: String) {
   
 </div>
 </template>
+
+<style lang="scss"> // Those styles will only applied when this component has mounted to App.
+/** @/template/components/NavBar_HorizonLinks/Component.vue */
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+
+  #navigation { 
+    flex-shrink: unset;
+    z-index: 100;
+    position: sticky;
+    top: 0;
+  }
+  #router-page { 
+    flex-grow: 1;
+    z-index: 0;
+  }
+}
+</style>

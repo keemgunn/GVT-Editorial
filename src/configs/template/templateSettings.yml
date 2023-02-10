@@ -11,10 +11,4 @@ breakpoints:
   XL: 2400
 
 
-# =========================================
-EditorialSettings: # ======================
-
-  CustomComponentInjection:
-    AppTop: 
-
-  NavBar: NavBar_HorizonLinks
+NavBar: NavBar_HorizonLinks

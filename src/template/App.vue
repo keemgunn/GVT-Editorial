@@ -11,8 +11,7 @@ const process_env = inject('process_env');
 
 
 // =================== Template User Configurations
-const { appType, EditorialSettings } = useConfigs().templateSettings;
-const { NavBar, CustomComponentInjection } = EditorialSettings;
+const { appType, NavBar } = useConfigs().templateSettings;
 
 
 // =================== CSS FILES
@@ -30,31 +29,25 @@ useTheme();
 </script>
 
 
-
+<!-- Layout of the #app depends on what kind of NavBar you're implementing. Change Settings on '@/configs/template/templateSettings' -->
 <template>
-  <template v-if="process_env !== 'DEV_2'">
 
-    <template v-if="appType == 'editorial'">
+  <template v-if="NavBar == 'NavBar_HorizonLinks'">
 
-      <component :is="CustomComponentInjection.AppTop"></component>
-      <component :is="NavBar"/>
-      <RouterView/>
-
-  
-      <DevStatusBar v-if=" process_env === 'DEV_1'"/>
-    </template>
-  
-    <template v-if="appType == 'app'">
-      <NavBar_App/>
-      <RouterView/>
-      <StatusBar/>
-    </template>
-
-
-  </template>
-  <template v-if="process_env === 'DEV_2'">
+    <component :is="NavBar"/>
     <RouterView/>
+    
+    <DevStatusBar v-if=" process_env === 'DEV_1'"/>
   </template>
+  
+  
+  <template v-if="appType == 'app'">
+    <component :is="NavBar"/>
+    <RouterView/>
+    <StatusBar/>
+  </template>
+
+
 </template>
 
 <style lang="scss">
