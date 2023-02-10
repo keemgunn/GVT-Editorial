@@ -77,6 +77,8 @@ function showIcon(navIcon: String) {
   display: flex;
   flex-direction: column;
   height: fit-content;
+  align-items: center;
+  width: 100%;
 
   #navigation { 
     flex-shrink: unset;
@@ -87,6 +89,41 @@ function showIcon(navIcon: String) {
   #router-page { 
     flex-grow: 1;
     z-index: 0;
+    width: 100%;
   }
 }
+
+
+:is(.scale--XXL, .scale--XL, .scale--L) {
+  --contents-container-width: 1280rem;
+  --contents-side-padding: 0;
+  --nav-bar-height: 74rem;
+  --nav-bar-search-width: 300rem;
+  --nav-bar-header-gap: 36rem;
+  --router-link-vstack-nests-gap: 26rem;
+  --nav-bar-categories-gap: 20rem;
+}
+.scale--M {
+  --contents-container-width: 100%;
+  --contents-side-padding: 40rem;
+  --nav-bar-height: 74rem;
+  --nav-bar-search-width: 300rem;
+  --nav-bar-header-gap: 36rem;
+  --router-link-vstack-nests-gap: 30rem;
+}
+.scale--S {
+  --contents-container-width: 100%;
+  --contents-side-padding: 30rem;
+  --nav-bar-height: 74rem;
+  --nav-bar-search-width: 160rem;
+  --nav-bar-header-gap: 28rem;
+  --router-link-vstack-nests-gap: 28rem;
+}
+:is(.scale--XS, .scale--XXS){
+  --contents-container-width: 100%;
+  --contents-side-padding: 0;
+  --nav-bar-height: 40rem;
+}
+
+
 </style>

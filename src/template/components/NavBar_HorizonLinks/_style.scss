@@ -19,6 +19,7 @@
     flex-direction: row;
     gap: var(--nav-bar-header-gap);
     // height: 100%
+    width: var(--contents-container-width); 
     height: var(--nav-bar-height);
   }
 
@@ -65,58 +66,28 @@
 /* SIZES */
 /* ----------------------------------------------- */
 
-.scale--XXL,
-.scale--XL,
-.scale--L {
-  --nav-bar-height: 74rem;
-  --nav-bar-search-width: 300rem;
-  --nav-bar-header-gap: 36rem;
-  --router-link-vstack-nests-gap: 26rem;
-  --nav-bar-categories-gap: 20rem;
-}
-.scale--M {
-  --nav-bar-height: 74rem;
-  --nav-bar-search-width: 300rem;
-  --nav-bar-header-gap: 36rem;
-  --router-link-vstack-nests-gap: 30rem;
-}
-.scale--S {
-  --nav-bar-height: 74rem;
-  --nav-bar-search-width: 160rem;
-  --nav-bar-header-gap: 28rem;
-  --router-link-vstack-nests-gap: 28rem;
-}
-.scale--XS,
-.scale--XXS {
-
-  --nav-bar-height: 40rem;
-}
-
 
 .scale--XXL #app .nav-bar-horizon-links,
 .scale--XL #app .nav-bar-horizon-links,
 .scale--L #app .nav-bar-horizon-links {
   header { 
-    width: 1280rem; 
+    padding: 0;
   }
 }
 .scale--M #app .nav-bar-horizon-links {
   header { 
     padding: 0 40rem;
-    width: 100%;
   }
 }
 .scale--S #app .nav-bar-horizon-links {
   header { 
     padding: 0 30rem;
-    width: 100%;
   }
 }
 .scale--XS #app .nav-bar-horizon-links,
 .scale--XXS #app .nav-bar-horizon-links {
   header { 
     padding: 0 26rem;
-    width: 100%;
   }
   .nav-logo, .nav-logo svg {
     width: 100%;

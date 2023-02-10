@@ -45,12 +45,18 @@ $bodySizes: 17, 18, 16, 15, 14, 13, 12, 11, 10, 9, 8;
 
 
 
+@include Caption("JetBrainsMono", 18, 22, "", 1.5, 400, 200, 700);
+@include Caption("JetBrainsMono", 17, 20, "", 1.5, 400, 200, 700);
 @include Caption("JetBrainsMono", 16, 20, "", 1.5, 400, 200, 700);
+@include Caption("JetBrainsMono", 15, 18, "", 1.5, 400, 200, 700);
 @include Caption("JetBrainsMono", 14, 18, "", 1.5, 400, 200, 700);
+@include Caption("JetBrainsMono", 13, 16, "",   2, 400, 240, 700);
 @include Caption("JetBrainsMono", 12, 16, "",   2, 400, 240, 700);
+@include Caption("JetBrainsMono", 11, 14, "",   3, 400, 240, 720);
 @include Caption("JetBrainsMono", 10, 14, "",   3, 400, 240, 720);
+@include Caption("JetBrainsMono",  9, 12, "",   4, 400, 240, 720);
 @include Caption("JetBrainsMono",  8, 12, "",   4, 400, 240, 720);
-$captionSizes: 16, 14, 12, 10, 8;
+$captionSizes: 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8;
 @each $size in $captionSizes {
   .typo-caption-#{$size} {
     // @include noSelect();
@@ -61,11 +67,18 @@ $captionSizes: 16, 14, 12, 10, 8;
 
 
 
+@include Mark("Archivo", 22, 26, "", 6.0, 500, 250, 600, 800);
+@include Mark("Archivo", 21, 24, "", 6.0, 500, 250, 600, 800);
 @include Mark("Archivo", 20, 24, "", 6.0, 500, 250, 600, 800);
+@include Mark("Archivo", 19, 22, "", 6.0, 500, 260, 610, 810);
 @include Mark("Archivo", 18, 22, "", 6.0, 500, 260, 610, 810);
+@include Mark("Archivo", 17, 20, "", 6.5, 500, 270, 620, 820);
 @include Mark("Archivo", 16, 20, "", 6.5, 500, 270, 620, 820);
+@include Mark("Archivo", 15, 18, "", 7.0, 500, 280, 630, 830);
 @include Mark("Archivo", 14, 18, "", 7.0, 500, 280, 630, 830);
+@include Mark("Archivo", 13, 16, "", 7.5, 500, 290, 640, 840);
 @include Mark("Archivo", 12, 16, "", 7.5, 500, 290, 640, 840);
+@include Mark("Archivo", 11, 14, "", 8.0, 500, 300, 650, 850);
 @include Mark("Archivo", 10, 14, "", 8.0, 500, 300, 650, 850);
 $markSizes: 20, 18, 16, 14, 12, 10;
 @each $size in $markSizes {

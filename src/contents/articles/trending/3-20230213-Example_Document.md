@@ -1,6 +1,6 @@
 ---
 title: Red Riding Hood 6
-date: 2023-02-13
+date: 2023-02-01
 uri: article-red-riding-hood-6
 tags: [ Jekyll, tutorial ]
 category: Budgeting

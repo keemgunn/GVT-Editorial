@@ -1,7 +1,7 @@
-import cc from '@/contents/articles/_configs.yml';
+import categories from '@/contents/articles/categories.yml';
 import { calcReadingTime, checkCategory, checkDuplicatedUri, extractFrontHeadPart, tidyUpRaw, toRealArray } from './_helpers';
 
-const { categories } = cc;
+
 
 
 // GET Keys of interface: ArticleRecord as Array<string>
@@ -77,27 +77,36 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRe
 
 
 
-export function formatRawMarkdowns(markdownModules: Record<string, string>): {articleRecords: ArticleRecords, articleRawRecords: ArticleRawRecords} {
+export function formatRawMarkdowns(markdownModules: Record<string, string>): {articleRecords: Array<ArticleRecord>, articleRawRecords: Array<ArticleRawRecord>} {
 
-  const articlesList: any = {};
-  const articleRawRecords: any = {};
+  const articlesList: Array<ArticleRecord> = [];
+  const articleRawRecords: Array<ArticleRawRecord> = [];
 
   // Get fronthead properties for each markdown files.
   for (const [ filepath, markdownRaw ] of Object.entries(markdownModules)) {
-    const props = extractFrontHeadProps(filepath, markdownRaw)
-
-    checkDuplicatedUri(props, articlesList);
-    checkCategory(props, categories);
-
+    const articleRecord = extractFrontHeadProps(filepath, markdownRaw)
+    
+    checkDuplicatedUri(articleRecord, articlesList);
+    checkCategory(articleRecord, categories);
+    
     const tidiedMarkdownRaw = tidyUpRaw(markdownRaw);
-    props.readTime = calcReadingTime(tidiedMarkdownRaw);
+    articleRecord.readTime = calcReadingTime(tidiedMarkdownRaw);
 
-    articlesList[props.uri] = props;
-    articleRawRecords[props.uri] = tidiedMarkdownRaw;
+    const articleRawRecord: ArticleRawRecord = {
+      title: articleRecord.title,
+      uri: articleRecord.uri,
+      tags: articleRecord.tags,
+      category: articleRecord.category,
+      date: articleRecord.date,
+      raw: tidiedMarkdownRaw
+    }
+
+    articlesList.push(articleRecord);
+    articleRawRecords.push(articleRawRecord);
   }
 
   return {
-    articleRecords: articlesList as ArticleRecords,
-    articleRawRecords: articleRawRecords as ArticleRawRecords
+    articleRecords: articlesList,
+    articleRawRecords: articleRawRecords
   }
 }

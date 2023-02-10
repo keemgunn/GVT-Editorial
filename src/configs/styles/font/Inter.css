@@ -11,6 +11,12 @@
 }
 
 @font-face {
+  font-family: "Inter 480";
+  font-weight: 480;
+  src: url('./Inter/Inter-VariableFont_slnt,wght.ttf');
+}
+
+@font-face {
   font-family: "Inter 620";
   font-weight: 620;
   src: url('./Inter/Inter-VariableFont_slnt,wght.ttf');

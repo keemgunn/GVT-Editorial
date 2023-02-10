@@ -1,55 +1,78 @@
 <script setup lang="ts">
 import { onBeforeMount } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { useInteractionStore } from '@/template/stores/interaction';
+import { article } from '@/template/contents';
 
-const frameStore = useFrameStore();
-const interactionStore = useInteractionStore();
 
-const pageName = "Home";
-onBeforeMount(() => {
-  interactionStore.currentPage = pageName;
-})
+// DON'T CHANGE THIS... 
+// ONlY CAN HANDLE UP TO 3 FOR NOW
+const SHOW_FEATURED_ARTICLE = 3;
+const SHOW_TRENDING_ARTICLE = 3;
+const featuredLoop = Array.from({length: SHOW_FEATURED_ARTICLE}, (_, i) => i)
+const trendingLoop = Array.from({length: SHOW_FEATURED_ARTICLE}, (_, i) => i)
+
+const featuredArticles = article.package.getOnlyHighlighted('featured');
+featuredArticles.sortAsc('filename');
+featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
+
+const trendingArticles = article.package.getOnlyHighlighted('trending');
+trendingArticles.sortAsc('filename');
+trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);
+
+
+
 
 </script>
 
 <template>
 <div id="router-page" class="home">
-    
-  <header id="main-actions"> this is header </header>
-  
+
+
   <main>
-    <p class="typo-body-16">userAgent : {{ frameStore.userAgent }}</p>
+    <section id="highlighted-articles">
+      <ol id="featured-articles">
+        <li v-for="i in featuredLoop" :id="`featured-${i}`">
+            {{ featuredArticles.array[i].title }}
+        </li>
 
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
-    <h1>This is an HOME</h1>
+        <Adbox id="featured-ad-0" :width="300" :height="600"/>
+        <Adbox id="featured-ad-1" :width="300" :height="100"/>
+        <Adbox id="featured-ad-2" :width="300" :height="100"/>
+      </ol>
 
-    <div class="some-example">
-      <Plate/>
-      <p class="typo-header-28">Something!</p>
-    </div>
+      <section id="categegories-and-trending">
+        <div class="wrapper">
+          <div class="categories-wrapper">
+            <h1 class="typo-header-20">Categories</h1>
+            <ol id="article-categories">
+              <li v-for="cat in article.categorySet" :id="`cat-${cat}`">
+                {{ article.categoryRecords[cat].uri }}
+              </li>
+            </ol>
+          </div>
+
+          <Adbox id="trending-ad-0" :width="300" :height="100"/>
+          
+          <div class="trending-wrapper">
+            <h1 class="typo-header-20">Trending</h1>
+            <ol id="trending-articles">
+              <li v-for="i in trendingLoop" :id="`featured-${i}`">
+                  {{ trendingArticles.array[i].title }}
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <section id="all-articles">
+
+
+    </section>
   </main>
 
-  <footer id="other-actions"></footer>
+  <footer id="footer-info"></footer>
 
 </div>
 </template>

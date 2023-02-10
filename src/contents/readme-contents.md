@@ -3,10 +3,11 @@
 ### ALL markdown files must be named after following convention:
 
 ```
-{{--WHATEVER-NAME--}}-post.md
++{{--WHATEVER-NAME--}}.md
 ```
 
-- must be end with '-post.md'
-- without '-post.md' at the end, it will not rendered.
+- must be start with '+'
+- must be end with '.md'
+- without '+' at the start, it will not rendered.
 
 

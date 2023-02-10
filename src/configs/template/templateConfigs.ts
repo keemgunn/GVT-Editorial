@@ -6,7 +6,7 @@ export default {
 
 
   /** LAYOUTS =================================== */
-  
+
   /**
    * The Navigation Bar decides how #app layout forms.
    * See each component files in @/template/components/

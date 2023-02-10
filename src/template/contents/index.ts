@@ -4,19 +4,30 @@
 import { defineAsyncComponent } from 'vue'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import cc from '@/contents/articles/_configs.yml'
+import categories from '@/contents/articles/categories.yml'
 import { formatRawMarkdowns } from './_markdownHandler';
+import { ArticleRecordsPack } from './_classes';
 
 
 
 // Get all articles in raw string
-const markdownModules = import.meta.glob('../../contents/articles/**/*-post.md', { eager: true, import: 'default', as: 'raw' });
+const markdownModules = import.meta.glob('../../contents/articles/**/*.md', { eager: true, import: 'default', as: 'raw' });
 
 // Make a list of articles records from raw strings
-const { articleRecords, articleRawRecords } = formatRawMarkdowns(markdownModules);
+const { articleRecords, articleRawRecords }
+= formatRawMarkdowns(markdownModules);
 console.warn('articleRecords:', articleRecords);
-// console.log(articleRawRecords);
 
+// Sort Raw Records for search result
+const articlePack = new ArticleRecordsPack((articleRecords))
+articlePack.sortDesc('date');
+
+// Sort Raw Records for search result
+articleRawRecords.sort((a, b) => {
+  if (a.date < b.date) return -1;
+  if (a.date > b.date) return 1;
+  return 0;
+})
 
 
 // For Dynamic Components
@@ -24,30 +35,30 @@ let markdownComponents: any = {};
 // For Filtering Articles with Tags
 const tagSet: Set<string> = new Set([]);
 // For Filtering Articles with Categories
-const categorySet: Set<string> = new Set(Object.keys(cc.categories));
+const categorySet: Set<string> = new Set(Object.keys(categories));
 
-// For each articleRecords
-for (const [uri, props] of Object.entries(articleRecords)) {
-  
+
+articleRecords.forEach((props) => {
+
   // Add Dynamic Component module
   // const importName = getImportName(props);
-  let importName = props.filename.split('-post.md')[0];
+  let importName = props.filename.split('.md')[0];
 
   let moduleImport: () => Promise<any>;
   switch (props.highlighted) {
     // Dynamic Import only allows inserting variable in a single level. 
     case 'featured':
-      moduleImport = () => import(`../../contents/articles/featured/${importName}-post.md`)
+      moduleImport = () => import(`../../contents/articles/featured/${importName}.md`)
       break;
     case 'trending':
-      moduleImport = () => import(`../../contents/articles/trending/${importName}-post.md`)
+      moduleImport = () => import(`../../contents/articles/trending/${importName}.md`)
       break;
     default:
-      moduleImport = () => import(`../../contents/articles/${importName}-post.md`)
+      moduleImport = () => import(`../../contents/articles/normal/${importName}.md`)
   }
 
   const container = {
-    [uri]: defineAsyncComponent( moduleImport )
+    [props.uri]: defineAsyncComponent( moduleImport )
   }
   markdownComponents = { ...markdownComponents, ...container };
 
@@ -55,25 +66,19 @@ for (const [uri, props] of Object.entries(articleRecords)) {
   props.tags.forEach((tag) => {
     tagSet.add(tag);
   })
-}
+})
 export { markdownComponents }
 
 
 
-export function useContents() {
-
-  const article = {
-    records: articleRecords,
-    rawRecords: articleRawRecords,
-    categoryRecords: cc.categories,
-    tagSet: tagSet,
-    categorySet: categorySet,
-  }
-
-  return {
-    article
-  }
+export const article = {
+  package: articlePack,
+  rawRecords: articleRawRecords,
+  categoryRecords: categories,
+  tagSet: tagSet,
+  categorySet: categorySet,
 }
+
 
 
 

@@ -1,0 +1,46 @@
+
+
+.backdrop--blur {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+.backdrop--brightness {
+  -webkit-backdrop-filter: brightness(1.5);
+  backdrop-filter: brightness(1.5);
+}
+.backdrop--contrast {
+  -webkit-backdrop-filter: contrast(.2);
+  backdrop-filter: contrast(.2);
+}
+.backdrop--drop-shadow {
+  -webkit-backdrop-filter: drop-shadow(5px 5px red);
+  backdrop-filter: drop-shadow(5px 5px red);
+}
+.backdrop--grayscale {
+  -webkit-backdrop-filter: grayscale(.8);
+  backdrop-filter: grayscale(.8);
+}
+.backdrop--hue-rotate {
+  -webkit-backdrop-filter: hue-rotate(45deg);
+  backdrop-filter: hue-rotate(45deg);
+}
+.backdrop--invert {
+  -webkit-backdrop-filter: invert(1);
+  backdrop-filter: invert(1);
+}
+.backdrop--opacity {
+  -webkit-backdrop-filter: opacity(.4);
+  backdrop-filter: opacity(.4);
+}
+.backdrop--saturate {
+  -webkit-backdrop-filter: saturate(.3);
+  backdrop-filter: saturate(.3);
+}
+.backdrop--sepia {
+  -webkit-backdrop-filter: sepia(.9);
+  backdrop-filter: sepia(.9);
+}
+
+
+
+
