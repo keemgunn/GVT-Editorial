@@ -2,9 +2,9 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
 import { useConfigs } from '@/template/stores/userConfigs';
+import templateConfigs from '@/configs/template/templateConfigs';
 
 export const useFrameStore = defineStore('frame', () => {
-  const { templateSettings } = useConfigs();
 
   // Browser Width
   const viewWidth: Ref<number> = ref(0);
@@ -21,32 +21,28 @@ export const useFrameStore = defineStore('frame', () => {
   const userBrowser: Ref<string> = ref("");
 
 
-  const appLayout = computed(() => {
-    return `layout--${templateSettings.appType}`
-  })
-
 
   function breakpoint(scale: 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL'): number {
-    return templateSettings.breakpoints[scale]
+    return templateConfigs.breakpoints[scale]
   }
 
   const appScale = computed(() => {
-    if (viewWidth.value < templateSettings.breakpoints.XXS) {
+    if (viewWidth.value < templateConfigs.breakpoints.XXS) {
       return 'scale--XXS'
     } 
-    else if (viewWidth.value < templateSettings.breakpoints.XS) {
+    else if (viewWidth.value < templateConfigs.breakpoints.XS) {
       return 'scale--XS'
     }
-    else if (viewWidth.value < templateSettings.breakpoints.S) {
+    else if (viewWidth.value < templateConfigs.breakpoints.S) {
       return 'scale--S'
     }
-    else if (viewWidth.value < templateSettings.breakpoints.M) {
+    else if (viewWidth.value < templateConfigs.breakpoints.M) {
       return 'scale--M'
     }
-    else if (viewWidth.value < templateSettings.breakpoints.L) {
+    else if (viewWidth.value < templateConfigs.breakpoints.L) {
       return 'scale--L'
     }
-    else if (viewWidth.value < templateSettings.breakpoints.XL) {
+    else if (viewWidth.value < templateConfigs.breakpoints.XL) {
       return 'scale--XL'
     }
     else {
@@ -73,7 +69,6 @@ export const useFrameStore = defineStore('frame', () => {
 
 
   return { 
-    templateSettings,
     viewWidth,
     isVertical,
     isMobile,
@@ -81,8 +76,6 @@ export const useFrameStore = defineStore('frame', () => {
     userAgent,
     userDevice,
     userBrowser,
-
-    appLayout,
 
     breakpoint,
     appScale,

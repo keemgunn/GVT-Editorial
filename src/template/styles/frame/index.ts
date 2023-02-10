@@ -9,11 +9,6 @@ export function useFrame() {
 
   const store = useFrameStore();
 
-
-  function setFrameType() {
-    document.body.classList.add(store.appLayout);
-  }
-
   function handleResize() {
     store.viewWidth = window.innerWidth
     store.isVertical = window.innerHeight > window.innerWidth
@@ -82,7 +77,6 @@ export function useFrame() {
     // For Mobile device safe areas
     injectMetaName("viewport", "width=device-width, initial-scale=1.0, viewport-fit=cover");
 
-    setFrameType();
     document.body.classList.add('scale--XXS');
     document.body.classList.add('rotation--horizontal');
     window.addEventListener('resize', handleResize);

@@ -8,7 +8,6 @@ onMounted(() => {
     document.body.classList.remove(value)
   })
   document.body.classList.add('theme--default-light')
-  document.body.classList.remove(frameStore.appLayout)
   document.body.classList.remove(frameStore.appScale)
   
 })

@@ -1,12 +1,28 @@
+import searchModules from "@/template/helpers/modules/searchModules";
+import { defineAsyncComponent } from 'vue'
+
+
+// IMPORT ALL COMPONENT SETTING CONSTRUCTORS
+import NavBar_HorizonLinks from "./NavBar_HorizonLinks";
+import NavBar_App from "./NavBar_App";
+
+const componentList = {
+  NavBar: {
+    NavBar_HorizonLinks,
+    NavBar_App,
+
+  }
+}
+
+
+
+
 /**
  * Import all components in `@/template/components` and exports.
- */
-import { defineAsyncComponent } from 'vue'
-import searchModules from "@/template/helpers/modules/searchModules";
-
+*/
 const moduleArray = searchModules(import.meta.glob('./**/Component.vue'))
 
-let modules: any = {}
+let componentModules: any = {}
 
 for (let i = 0; i < moduleArray.length; i++) {
 
@@ -15,7 +31,12 @@ for (let i = 0; i < moduleArray.length; i++) {
   const container = {
     [name]: defineAsyncComponent(() => import(`./${name}/Component.vue`))
   }
-  modules = { ...modules, ...container };
+  componentModules = { ...componentModules, ...container };
 }
 
-export default modules
+
+
+export {
+  componentModules,
+  componentList
+}

@@ -3,10 +3,6 @@ declare global {
 
   type AppType = 'app' | 'editorial' | 'landing'
 
-  interface TemplateSettings {
-    appType: AppType
-  }
-
   /**
    * 
    * @property XXL: number,

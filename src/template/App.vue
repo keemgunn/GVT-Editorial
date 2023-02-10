@@ -4,14 +4,16 @@ import { RouterView } from 'vue-router'
 import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
 import { useConfigs } from './stores/userConfigs';
+import templateConfigs from '@/configs/template/templateConfigs';
 
+// const aaaa: navBarName = 'NavBar_HorizonLinks';
 
 // =================== PROCESS ENV
 const process_env = inject('process_env');
 
 
 // =================== Template User Configurations
-const { appType, NavBar } = useConfigs().templateSettings;
+const { navBar } = templateConfigs;
 
 
 // =================== CSS FILES
@@ -29,20 +31,21 @@ useTheme();
 </script>
 
 
-<!-- Layout of the #app depends on what kind of NavBar you're implementing. Change Settings on '@/configs/template/templateSettings' -->
+<!-- Layout of the #app depends on what kind of NavBar you're implementing. Change Settings on '@/configs/template/templateConfigs' -->
 <template>
 
-  <template v-if="NavBar == 'NavBar_HorizonLinks'">
+  <template v-if="navBar.name == 'NavBar_HorizonLinks'">
 
-    <component :is="NavBar"/>
+    <component :is="navBar.name"/>
     <RouterView/>
     
     <DevStatusBar v-if=" process_env === 'DEV_1'"/>
   </template>
   
   
-  <template v-if="appType == 'app'">
-    <component :is="NavBar"/>
+  <template v-if="navBar.name == 'NavBar_App'">
+
+    <component :is="navBar.name"/>
     <RouterView/>
     <StatusBar/>
   </template>

@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { defineProps, computed, ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { useConfigs } from '@/template/stores/userConfigs';
+import componentConfigs from '@/configs/template/componentConfigs';
+import templateConfigs from '@/configs/template/templateConfigs';
+
 
 const frameStore = useFrameStore();
-const { shape } = useConfigs().styleSettings;
-const compConfig = useConfigs().componentSettings.RouterLink_VstackNest;
+const compConfig = componentConfigs.RouterLink_VstackNest;
+
+const { roundness } = templateConfigs;
 
 
 const props = defineProps<{
@@ -52,8 +55,8 @@ const subIconSize = computed(() => props.subLinkSize + 2);
 
 
 const roundnessStyle = computed(() => {
-  if (shape.roundness > 0) {
-    const calced = shape.roundness * (props.majorLinkSize + 2)
+  if (roundness > 0) {
+    const calced = roundness * (props.majorLinkSize + 2)
     return {
       "border-radius": `${calced}rem`,
       "overflow": 'hidden'

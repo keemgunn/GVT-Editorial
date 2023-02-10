@@ -1,6 +1,9 @@
 export { };
 declare global {
 
+  /**
+   * Defines router guard.
+   */
   type PageAccessType = 'public' | 'user' | 'admin' | 'none';
 
   /**
@@ -14,5 +17,19 @@ declare global {
     alias: Array<string>;
     allowAccess: PageAccessType;
   }
+
+
+
+  type HowToShowSublinks = 'always-show' | 'always-hide' | 'show-on-wide' | null;
+
+  interface NavRecord {
+    title: string
+    icon: string
+    uri: string
+    sublinks: HowToShowSublinks
+    nestedRecords: Array<NavRecord> | null
+  }
+
+  type NavRecords = Array<NavRecord>
 
 }

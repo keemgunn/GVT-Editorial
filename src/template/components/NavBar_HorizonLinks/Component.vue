@@ -4,10 +4,21 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
 
+import templateConfigs from '@/configs/template/templateConfigs';
+import defaultConfigs from './index';
+
+
 const frameStore = useFrameStore();
-const { componentSettings, navigationSetting } = useConfigs();
+const { navigationSetting } = useConfigs();
 const navRecords: NavRecords = navigationSetting;
-const compConfig = componentSettings.NavBar_HorizonLinks
+
+
+const COMPONENT_NAME = 'NavBar_HorizonLinks'
+
+const isOnline = templateConfigs.navBar.name === COMPONENT_NAME;
+const compConfig = isOnline ?
+  templateConfigs.navBar : defaultConfigs()
+
 
 const showActions = computed(() => {
   return /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
@@ -26,7 +37,7 @@ function showIcon(navIcon: String) {
 <template>
 <div id="navigation" class="nav-bar-horizon-links">
 
-  <component :is="compConfig.customComponentInjection"></component>
+  <component :is="compConfig.topBannerInjection"></component>
     
   <header>
     <Vector class="nav-logo" :src="brandLogo"/>

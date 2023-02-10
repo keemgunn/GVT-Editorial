@@ -20,9 +20,9 @@ import templateAtoms from '@/template/atoms';
 for (const key of Object.keys(templateAtoms)) {
   app.component(key, templateAtoms[key])
 }
-import templateComponents from '@/template/components';
-for (const key of Object.keys(templateComponents)) {
-  app.component(key, templateComponents[key])
+import { componentModules } from '@/template/components';
+for (const key of Object.keys(componentModules)) {
+  app.component(key, componentModules[key])
 }
 
 // ====== GLOBAL DECLARATION FOR
