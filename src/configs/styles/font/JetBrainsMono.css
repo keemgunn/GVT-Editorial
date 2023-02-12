@@ -22,6 +22,12 @@
 }
 
 @font-face {
+  font-family: "JetbrainsMono 400";
+  font-weight: 400;
+  src: url('./JetbrainsMono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
   font-family: "JetbrainsMono 700";
   font-weight: 700;
   src: url('./JetbrainsMono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');

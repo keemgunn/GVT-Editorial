@@ -31,7 +31,7 @@
     @extend .typo-body-#{$i}--bold; 
   }
   #app .router-link-vstack-nest.--#{$i}.--sub p {
-    padding-top: 3rem;
+    padding-top: 2rem;
     @extend .typo-body-#{$i};
   }
 }
