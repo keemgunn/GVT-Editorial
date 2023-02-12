@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, computed } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { article } from '@/template/contents';
+
+
+const BREAK_FLEXGRID_WHEN = 1030;
+
+
+
+const frame = useFrameStore();
 
 
 // DON'T CHANGE THIS... 
@@ -18,6 +25,30 @@ featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
 const trendingArticles = article.package.getOnlyHighlighted('trending');
 trendingArticles.sortAsc('filename');
 trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);
+
+
+
+
+const flexGridColumn = computed(() => {
+  const categoryCount = article.categorySet.size
+  return Math.round(categoryCount / 2);
+})
+const flexGridBreaker = computed(() =>
+  frame.viewWidth < BREAK_FLEXGRID_WHEN
+)
+const flexGridClass = computed(() => {
+  if (flexGridBreaker.value) {
+    return [
+      'flexgrid',
+      '--break-to-column'
+    ]
+  } else {
+    return [
+      'flexgrid',
+      `--col${flexGridColumn.value}`
+    ]
+  }
+})
 
 
 
@@ -44,9 +75,11 @@ trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);
         <div class="wrapper">
           <div class="categories-wrapper">
             <Title-PageSection text="Categories" :size="20" divider="none" :dividerWidth="3"/>
-            <ol id="article-categories">
+            <ol id="article-categories" :class="flexGridClass">
               <li v-for="cat in article.categorySet" :id="`cat-${cat}`">
-                {{ article.categoryRecords[cat].uri }}
+                <div class="category-item-wrapper">
+                  {{ article.categoryRecords[cat].uri }}
+                </div>
               </li>
             </ol>
           </div>
