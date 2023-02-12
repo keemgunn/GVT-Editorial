@@ -3,6 +3,7 @@ export default function NavBar_HorizonLinks(showMajorIcons = true, showSubIcons 
   return {
     
     name: 'NavBar_HorizonLinks',
+      // MUST BE SAME WITH FOLDER NAME
     showIcons: {
       majorLinks: showMajorIcons,
       subLinks: showSubIcons,

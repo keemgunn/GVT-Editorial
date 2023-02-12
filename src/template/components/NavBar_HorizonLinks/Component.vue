@@ -20,9 +20,11 @@ const compConfig = isOnline ?
   templateConfigs.navBar : defaultConfigs()
 
 
-const showActions = computed(() => {
-  return /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
-})
+const showActions = computed(() => 
+  /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
+)
+
+
 
 function showIcon(navIcon: String) {
   if (compConfig.showIcons.majorLinks)

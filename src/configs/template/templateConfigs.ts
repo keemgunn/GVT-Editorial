@@ -9,10 +9,12 @@ export default {
 
   /**
    * The Navigation Bar decides how #app layout forms.
+   * Each NavBar's component settings are defined in each folder's `index.ts`
    * See each component files in @/template/components/
    */
   navBar: componentList.NavBar
     .NavBar_HorizonLinks(false, false),
+  
   
   /** This decides thresholds in responsive design. */
   breakpoints: {

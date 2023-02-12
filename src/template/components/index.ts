@@ -6,6 +6,10 @@ import { defineAsyncComponent } from 'vue'
 import NavBar_HorizonLinks from "./NavBar_HorizonLinks";
 import NavBar_App from "./NavBar_App";
 
+/**
+ * FOR TEMPLATE CONFIGS
+ * SEE: @/configs/template/templateConfigs.ts
+ */
 const componentList = {
   NavBar: {
     NavBar_HorizonLinks,

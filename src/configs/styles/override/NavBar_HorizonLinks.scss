@@ -1,0 +1,36 @@
+html #app {
+  // --nav-bar-horizon-links-bg-color: var(--Primary);
+}
+html :is(.scale--XXL, .scale--XL, .scale--L) {
+  // --contents-container-width: 1280rem;
+  // --contents-side-padding: 0;
+  // --nav-bar-height: 100rem;
+  // --nav-bar-search-width: 300rem;
+  // --nav-bar-header-gap: 36rem;
+  // --router-link-vstack-nests-gap: 26rem;
+  // --nav-bar-categories-gap: 20rem;
+
+} html .scale--M {
+  // --contents-container-width: 100%;
+  // --contents-side-padding: 40rem;
+  // --nav-bar-height: 74rem;
+  // --nav-bar-search-width: 300rem;
+  // --nav-bar-header-gap: 36rem;
+  // --router-link-vstack-nests-gap: 30rem;
+
+} html .scale--S {
+  // --contents-container-width: 100%;
+  // --contents-side-padding: 30rem;
+  // --nav-bar-height: 74rem;
+  // --nav-bar-search-width: 160rem;
+  // --nav-bar-header-gap: 28rem;
+  // --router-link-vstack-nests-gap: 28rem;
+
+}
+html :is(.scale--XS, .scale--XXS) {
+  // --contents-container-width: 100%;
+  // --contents-side-padding: 0;
+  // --nav-bar-height: 40rem;
+}
+
+

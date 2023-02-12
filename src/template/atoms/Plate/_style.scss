@@ -10,6 +10,8 @@
 }
 
 @mixin PlateBackgroundColor($color) {
+  z-index: 0;
+  position: relative;
   .plate .plane{
     background-color: $color;
   }
@@ -24,29 +26,39 @@
 
 /* ----------- PLATE BORDER -------------*/
 
-@mixin PlateBorderTop($width) {
+@mixin PlateBorderTop($property) {
+  z-index: 0;
+  position: relative;
   .plate .border {
-    border-top: $width solid var(--OnSurface);
+    border-top: $property;
   }
 }
-@mixin PlateBorderBottom($width) {
+@mixin PlateBorderBottom($property) {
+    z-index: 0;
+  position: relative;
   .plate .border {
-    border-bottom: $width solid var(--OnSurface);
+    border-bottom: $property;
   }
 }
-@mixin PlateBorderLeft($width) {
+@mixin PlateBorderLeft($property) {
+  z-index: 0;
+  position: relative;
   .plate .border {
-    border-left: $width solid var(--OnSurface);
+    border-left: $property;
   }
 }
-@mixin PlateBorderRight($width) {
+@mixin PlateBorderRight($property) {
+  z-index: 0;
+  position: relative;
   .plate .border {
-    border-right: $width solid var(--OnSurface);
+    border-right: $property;
   }
 }
-@mixin PlateBorder($width) {
+@mixin PlateBorder($property) {
+    z-index: 0;
+  position: relative;
   .plate .border {
-    border: $width solid var(--OnSurface);
+    border: $property;
   }
 }
 @mixin PlateBorderColor($color) {

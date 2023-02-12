@@ -1,7 +1,4 @@
 .ad-box {
-  position: relative;
-  z-index: 10;
 
-  @include PlateBackgroundColor(var(--Primary));
-  @include PlateBackgroundOpacity(0.63);
+  @include PlateBackgroundColor(var(--PrimaryContainer));
 }

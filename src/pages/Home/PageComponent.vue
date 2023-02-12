@@ -43,7 +43,7 @@ trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);
       <section id="categegories-and-trending">
         <div class="wrapper">
           <div class="categories-wrapper">
-            <h1 class="typo-header-20">Categories</h1>
+            <Title-PageSection text="Categories" :size="20" divider="none" :dividerWidth="3"/>
             <ol id="article-categories">
               <li v-for="cat in article.categorySet" :id="`cat-${cat}`">
                 {{ article.categoryRecords[cat].uri }}
@@ -54,7 +54,7 @@ trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);
           <Adbox id="trending-ad-0" :width="300" :height="100"/>
           
           <div class="trending-wrapper">
-            <h1 class="typo-header-20">Trending</h1>
+            <Title-PageSection text="Trending" :size="20" divider="none" :dividerWidth="3"/>
             <ol id="trending-articles">
               <li v-for="i in trendingLoop" :id="`featured-${i}`">
                   {{ trendingArticles.array[i].title }}

@@ -1,0 +1,30 @@
+/** @/template/blocks/Title-PageSection/_style.scss */
+
+.title-pagesection {
+  display: flex;
+  padding: 0;
+  color: var(--OnSurface);
+  
+  @include PlateBackgroundColor(var(--PrimaryContainer));
+  @include PlateBackgroundOpacity(0);
+  
+  h1 {
+    padding: 0;
+    padding-left: 00rem;
+    flex-shrink: unset;
+  }
+  .divider {
+    flex-grow: 1;
+    background-color: var(--OnSurface);
+    border-radius: 00rem;
+  }
+}
+
+.title-pagesection.divider-bottom {
+  flex-direction: column;
+
+}
+.title-pagesection.divider-side {
+  flex-direction: row;
+  align-items: center;
+}

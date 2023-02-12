@@ -20,6 +20,10 @@ import templateAtoms from '@/template/atoms';
 for (const key of Object.keys(templateAtoms)) {
   app.component(key, templateAtoms[key])
 }
+import templateBlocks from '@/template/blocks';
+for (const key of Object.keys(templateBlocks)) {
+  app.component(key, templateBlocks[key])
+}
 import { componentModules } from '@/template/components';
 for (const key of Object.keys(componentModules)) {
   app.component(key, componentModules[key])

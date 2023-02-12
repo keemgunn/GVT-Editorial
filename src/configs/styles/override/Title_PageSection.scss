@@ -1,0 +1,24 @@
+/** @/template/blocks/Title-PageSection/_style.scss */
+
+html body #app .title-pagesection {
+  // padding: 00;
+  // color: var(--OnSurface);
+  // @include PlateBackgroundColor(var(--PrimaryContainer));
+  // @include PlateBackgroundOpacity(0);
+  
+  h1 {
+    // padding-left: 00rem;
+    // flex-shrink: unset;
+  }
+  .divider {
+    // background-color: var(--Error);
+    // border-radius: 00rem;
+  }
+}
+
+html body #app .title-pagesection.divider-bottom {
+}
+html body #app .title-pagesection.divider-side {
+  // align-items: center;
+}
+
