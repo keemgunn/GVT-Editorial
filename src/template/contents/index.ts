@@ -20,6 +20,7 @@ console.warn('articleRecords:', articleRecords);
 
 // Sort Raw Records for search result
 const articlePack = new ArticleRecordsPack((articleRecords))
+// Sort descending order in date
 articlePack.sortDesc('date');
 
 // Sort Raw Records for search result

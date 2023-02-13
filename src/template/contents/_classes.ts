@@ -38,6 +38,20 @@ export class ArticleRecordsPack {
     return new ArticleRecordsPack(newArr)
   }
 
+  getPagedArticles(showNum: number, pageNum: number) {
+    const wholeCount = this.array.length;
+    const extra = wholeCount % showNum;
+    const pages = Math.round(wholeCount / showNum);
+    
+    if (pageNum > pages)
+      return new ArticleRecordsPack([])
+
+    const startNum = (pageNum - 1) * showNum;
+    const endNum = startNum + showNum;
+    const newArr = this.array.slice(startNum, endNum);
+    return new ArticleRecordsPack(newArr)
+  }
+
 
 
   /** Set this pack with highlight filter */
@@ -66,6 +80,7 @@ export class ArticleRecordsPack {
       return 0;
     })
   }
+
 
 
 

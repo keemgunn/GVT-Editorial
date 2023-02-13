@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { defineProps, computed, ref } from 'vue';
 import { useRoute } from 'vue-router'
-import { useContents } from '@/template/contents'
+import { article } from '@/template/contents';
 
 const route = useRoute()
-const { article } = useContents();
 
-const isValidDocId = (route.params.docuri as string) in article.records
+// const isValidDocId = (route.params.docuri as string) in article.package.
 
 </script>
 
@@ -18,7 +17,6 @@ const isValidDocId = (route.params.docuri as string) in article.records
   <main>
 
     <component 
-    v-if="isValidDocId" 
     :is='$route.params.docuri'/>
 
   </main>

@@ -15,10 +15,6 @@
     flex-grow: 1;
     flex-shrink: unset;
     flex-basis: calc(100% / calc(var(--column-count) + 1));
-    .flexgrid-wrapper {
-      width: 100%; height: 100%;
-      border: 1px solid black;
-    }
   }
 }
 

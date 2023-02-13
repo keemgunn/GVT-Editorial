@@ -10,25 +10,17 @@
   flex-direction: column;
   width: 100%;
 
-
-
   main {
     display: flex;
     flex-direction: column;
-
     li { display: block; position: relative;}
 
     #highlighted-articles {
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      #featured-articles, #categegories-and-trending .wrapper {
-        width: var(--contents-container-width);
-        padding-left: var(--contents-side-padding);
-        padding-right: var(--contents-side-padding);
-      }
     }
+
     #all-articles {
       display: flex;
       flex-direction: row;
@@ -40,161 +32,4 @@
 // -------------------------------------------TEST
 .home li {
   background-color: aquamarine;
-}
-
-
-
-.home #highlighted-articles #featured-articles {
-  display: grid;
-  justify-items: center;
-  li {width: 100%; height: 100%;}
-  #featured-0 { grid-area: 🍑 ; }
-  #featured-1 { grid-area: 🧅 ; }
-  #featured-2 { grid-area: 🍠 ; }
-  #featured-ad-0 { grid-area: 🙇‍♂️; }
-  #featured-ad-1 { grid-area: 👫; }
-  #featured-ad-2 { grid-area: 👨‍👦‍👦; }
-}
-:is(.scale--XXL, .scale--XL, .scale--L, .scale--M) .home #highlighted-articles #featured-articles {
-  #featured-ad-1, #featured-ad-2 { display: none; }
-  grid-template-areas: 
-  "🍑 🍑 🙇‍♂️"
-  "🍑 🍑 🙇‍♂️"
-  "🧅 🍠 🙇‍♂️"
-  "🧅 🍠 🙇‍♂️"
-  "🧅 🍠 🙇‍♂️";
-  grid-template-columns: 
-    1fr 1fr 0fr;
-  grid-template-rows: 
-    1fr 1fr 1fr 1fr 0fr;
-  gap: 30rem;
-  padding: 58rem 0 58rem 0;
-}
-.scale--S .home #highlighted-articles #featured-articles {
-  #featured-ad-1, #featured-ad-2 { display: none; }
-  grid-template-areas: 
-  "🍑 🍑 🙇‍♂️"
-  "🧅 🧅 🙇‍♂️"
-  "🧅 🧅 🙇‍♂️"
-  "🍠 🍠 🙇‍♂️"
-  "🍠 🍠 🙇‍♂️";
-  grid-template-columns: 
-    1fr 1fr 0fr;
-  grid-template-rows: 
-    3.8fr 1fr 1fr 1fr 1fr;
-  gap: 26rem;
-  padding: 44rem 0 44rem 0;
-}
-:is(.scale--XS, .scale--XXS) .home #highlighted-articles #featured-articles {
-  #featured-ad-0 { display: none; }
-  grid-template-areas: 
-  "🍑 🍑 🍑"
-  "👫 👫 👫"
-  "🧅 🧅 🧅"
-  "🍠 🍠 🍠"
-  "👨‍👦‍👦 👨‍👦‍👦 👨‍👦‍👦";
-  grid-template-columns: 
-    1fr 1fr 1fr;
-  grid-template-rows: 
-    1.34fr 0fr 1fr 1fr 0fr;
-  gap: 24rem;
-  height: 1080rem;
-  padding: 40rem 0 40rem 0;
-}
-
-
-
-
-
-.home #highlighted-articles #categegories-and-trending {
-  display: flex;
-  justify-content: center;
-  background-color: var(--Surface);
-  width: 100%;
-
-  .wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    .title-pagesection { 
-      flex-shrink: unset; 
-      width: 100%;
-    }
-
-    --item-gap: 10rem;
-
-    .categories-wrapper {
-      display: flex;
-      flex-direction: column;
-      #article-categories { 
-        flex-grow: 1; 
-        width: 100%;
-        height: 100%;
-        gap: var(--item-gap);
-      }
-    }
-    
-    .trending-wrapper {
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      #trending-articles {
-        display: flex;
-        flex-grow: 1;
-        flex-direction: column;
-        justify-content: center;
-        gap: var(--item-gap);
-        li { 
-          flex-grow: 1;
-        }
-      }
-    }
-  }
-}
-
-:is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) .home #highlighted-articles #categegories-and-trending .wrapper {
-  gap: 30rem;
-  height: 800rem;
-  padding: 40rem 0 80rem 0;
-
-  .title-pagesection { margin-bottom: 22rem; }
-  #trending-ad-0 { display: none; }
-  .categories-wrapper {
-    flex-grow: 1;
-    height: 100%;
-  }
-  .trending-wrapper { 
-    width: 300rem; 
-    height: 100%;
-  }
-}
-
-.scale--M .home #highlighted-articles #categegories-and-trending .wrapper {
-  height: 730rem;
-  padding: 36rem 0 74rem 0;
-}
-
-.scale--S .home #highlighted-articles #categegories-and-trending .wrapper {
-  height: 880rem;
-  padding: 30rem 0 60rem 0;
-  gap: 26rem;
-  .title-pagesection { padding-bottom: 20rem; }
-}
-
-:is(.scale--XS, .scale--XXS) .home #highlighted-articles #categegories-and-trending .wrapper {
-  flex-direction: column;
-  height: 1720rem;
-  padding: 40rem 0 60rem 0;
-  gap: 40rem;
-  .categories-wrapper {
-    width: 100%;
-    padding: 0 26rem 0 26rem;
-    flex-grow: 1.8;
-  }
-  .trending-wrapper { 
-    width: 100%; 
-    padding: 0 26rem 0 26rem;
-    flex-grow: 1; 
-  }
 }
