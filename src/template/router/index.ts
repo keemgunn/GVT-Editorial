@@ -9,7 +9,7 @@ const routes = [
   ...errorRecords,
 ]
 
-console.warn('ROUTER RECORDS:', routes);
+console.log('ROUTER RECORDS:', routes);
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

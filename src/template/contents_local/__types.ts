@@ -38,7 +38,6 @@ declare global {
   }
 
 
-
   /**
    * @key title: string;
    * @key uri: string;
@@ -56,4 +55,13 @@ declare global {
     date: string; // YYYY-MM-DD
     raw: string;
   }
+
+
+  interface CategoryRecord {
+    description: string,
+    uri: string
+  }
+  type CategoryRecords = Record<string, CategoryRecord>;
+
+
 }

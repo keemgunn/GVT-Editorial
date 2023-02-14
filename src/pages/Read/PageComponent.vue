@@ -1,24 +1,29 @@
 <script setup lang="ts">
-import { defineProps, computed, ref } from 'vue';
-import { useRoute } from 'vue-router'
-import { article } from '@/template/contents';
+import { defineProps, computed, ref, onBeforeMount } from 'vue';
+import { useRoute, useRouter } from 'vue-router'
+import { useLocalContents } from '@/template/contents_local';
 
-const route = useRoute()
+const { reader } = useLocalContents();
+const router = useRouter();
+const docURI = useRoute().params.docuri.toString();
+const fullURI = reader.getComponentName(docURI);
 
-// const isValidDocId = (route.params.docuri as string) in article.package.
-
+onBeforeMount(() => {
+  if (fullURI.length === 0) {
+    console.warn("NO DOC");
+    router.replace('/not-found')
+  }
+})
 </script>
 
 <template>
 <div id="router-page" class="read">
     
-  <h1> {{ $route.params.docuri }}</h1>
+  <h1> {{ docURI }}</h1>
 
   <main>
-
     <component 
-    :is='$route.params.docuri'/>
-
+    :is='fullURI'/>
   </main>
 
 </div>

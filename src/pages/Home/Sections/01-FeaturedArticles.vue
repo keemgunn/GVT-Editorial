@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { article } from '@/template/contents';
+import { useLocalContents } from '@/template/contents_local';
+const { articles } = useLocalContents();
 
 // DON'T CHANGE THIS... 
 // ONlY CAN HANDLE UP TO 3 FOR NOW
 const SHOW_FEATURED_ARTICLE = 3;
 const featuredLoop = Array.from({length: SHOW_FEATURED_ARTICLE}, (_, i) => i)
 
-const featuredArticles = article.package.getOnlyHighlighted('featured');
+const featuredArticles = articles.getHighlighted('featured');
 featuredArticles.sortAsc('filename');
 featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
 </script>

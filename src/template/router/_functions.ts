@@ -45,7 +45,7 @@ export function createRouterHook(accessType: PageAccessType): (to: any, from: an
 
 
     if (authorized) {
-      console.warn(` -- ROUTING TO /${to.href.split('/')[1]}`)
+      console.log(` -- ROUTING TO /${to.href.split('/')[1]}`)
       // ls.set('currentPage', to.href.split('/')[1]);
 
       next();

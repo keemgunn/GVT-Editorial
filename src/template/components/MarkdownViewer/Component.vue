@@ -4,7 +4,6 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 
 const props = defineProps<{ frontmatter: any }>();
-console.log(props.frontmatter.tags);
 
 </script>
 

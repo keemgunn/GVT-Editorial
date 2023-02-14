@@ -28,7 +28,7 @@ export function createRouterRecordArray(): Array<RouteRecordRaw> {
     };
 
     routeRecords.push(record);
-    console.warn(` - CREATED ROUTE RECORD [${record.name as string}] for '${record.path as string}'`);
+    console.log(` - CREATED ROUTE RECORD [${record.name as string}] for '${record.path as string}'`);
   })
 
   return routeRecords

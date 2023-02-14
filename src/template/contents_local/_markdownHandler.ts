@@ -1,11 +1,10 @@
-import categories from '@/contents/articles/categories.yml';
+import articleConfigs from '@/contents/articles/configs.yml';
 import { calcReadingTime, checkCategory, checkDuplicatedUri, extractFrontHeadPart, tidyUpRaw, toRealArray } from './_helpers';
-
+const { categories, uriParent } = articleConfigs;
 
 
 
 // GET Keys of interface: ArticleRecord as Array<string>
-
 const frontHeadClassTypeModule = import.meta.glob('./__types.ts', { eager: true, as: 'raw ' }) as Record<string, string>;
 
 const frontHeadClassTypeLines = (frontHeadClassTypeModule['./__types.ts'] as any).default.split('ArticleRecord')[1].split('\n').slice(1).slice(0, -2) as Array<string>
@@ -16,7 +15,13 @@ frontHeadClassTypeLines.forEach((line) => {
 })
 
 
-
+// Safety
+if ((typeof uriParent) !== 'string') {
+  console.warn(' - WRONG uriParent ... in @/contents/articles/configs.yml');
+}
+if ((uriParent as string)[0] !== '/') {
+  console.warn(" - uriParent must start with '/' ... in @/contents/articles/configs.yml");
+}
 
 
 function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRecord {
@@ -47,6 +52,11 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRe
 
     if (key === 'tags') {
       result['tags'] = toRealArray(value);
+      return
+    }
+
+    if (key === 'uri') {
+      result['uri'] = (uriParent as string) + "/" + value;
       return
     }
 

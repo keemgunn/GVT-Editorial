@@ -142,13 +142,10 @@ function showIcon(navIcon: String) {
     <li v-for="nr in props.subLinks" :key="nr.title">
       <RouterLink :class="subLinkClass" 
       :to="nr.uri">
-        {{ nr.title }}
-
         <div class="contents">
           <Icon :name="showIcon(nr.icon)" :size="subIconSize"/>
           <p> {{ nr.title }}</p>
         </div>
-
         <Plate/>
       </RouterLink>
     </li>

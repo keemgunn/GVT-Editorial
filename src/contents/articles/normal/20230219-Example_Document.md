@@ -1,11 +1,11 @@
 ---
-title: Red Riding Hood 19
+title: Some Titles Must be LOOOOOOONNNNNGGGGG !!! Here's a example of it.
 date: 2023-02-19
 uri: article-red-riding-hood-19
 tags: [ Jekyll, tutorial ]
 category: Budgeting
 coverImage: https://images.unsplash.com/photo-1668424861369-2accec5c7ce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80
-description: this is an example document.
+description: this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document. this is an example document.
 meta:
   - name: desciption
     content: this is an example document

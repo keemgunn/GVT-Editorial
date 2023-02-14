@@ -1,0 +1,35 @@
+#app .article-infopack.--10 li{ 
+  font-size: 10rem; 
+}
+#app .article-infopack.--12 li{ 
+  font-size: 12rem; 
+}
+#app .article-infopack.--14 li{ 
+  font-size: 14rem; 
+}
+.article-infopack {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 14rem;
+  position: relative;
+
+  .info-category {
+    @extend .typo-body-12--bold;
+  }
+  .info-readingtime {
+    @extend .typo-body-12;
+  }
+  .info-date {
+    @extend .typo-caption-12;
+  }
+}
+
+
+.article-infopack li:not(:first-child)::before {
+  content: "•";
+  font-family: monospace;
+  font-weight: 400;
+  position: absolute;
+  top: 0; left: -10rem;
+}

@@ -1,26 +1,34 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { onBeforeMount, computed } from 'vue';
+import { onBeforeMount, computed, ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { article } from '@/template/contents';
+import { useLocalContents } from '@/template/contents_local';
 import FeaturedArticles from './Sections/01-FeaturedArticles.vue';
 import TrendingArticles from './Sections/02-TrendingArticles.vue';
-import { toNumber } from '@vue/shared';
+import LatestArticles from './Sections/03-LatestArticles.vue';
 
 
 const DISPLAY_ARTICLE_NUMBER = 10 ;
 
-
 const route = useRoute()
 const param = Number(route.params.pagenum);
 const pageNum = param === 0 ? 1 : param;
-const totalArticlesNumber = article.package.array.length;
-const pagedArticles = article.package.getPagedArticles(DISPLAY_ARTICLE_NUMBER, pageNum);
-if (pagedArticles.array.length === 0) {
-  // NO CONTENTS. REDIRECT.
+
+const { articles } = useLocalContents();
+const pagedArticles = ref(articles.getPaged(DISPLAY_ARTICLE_NUMBER, pageNum));
+if (pagedArticles.value.array.length === 0) {
+  // TODO : NO CONTENTS. REDIRECT.
 }
 
-console.log(pagedArticles.array);
+console.log(`Paged Articles:`, pagedArticles.value.array);
+
+// // REACTIVE TEST
+// onBeforeMount(() => {
+//   setTimeout(() => {
+//     pagedArticles.value.sortAsc("title");
+//   }, 3000)
+// })
+
 
 </script>
 
@@ -32,12 +40,10 @@ console.log(pagedArticles.array);
       <FeaturedArticles/>
       <TrendingArticles/>
     </section>
+
     <section id="all-articles">
-      <section id="latest-articles">
-        <List_Articles :pagedArticles="pagedArticles" :showAds="true"/>
-        <!-- PAGING -->
-      </section>
-      <!-- ad -->
+      <LatestArticles :display-article-number="DISPLAY_ARTICLE_NUMBER"/>
+      <aside id="ad-tower"></aside>
     </section>
   </main>
 

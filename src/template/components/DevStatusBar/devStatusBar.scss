@@ -22,13 +22,14 @@
 }
 
 .scheme--light #dev-status-bar {
-  background-color: rgba(240, 248, 255, 0.5);
+  background-color: rgba(240, 248, 255, 0.66);
   border: solid 1px black;
   color: black;
   @extend .backdrop--blur;
 }
 .scheme--dark #dev-status-bar {
-  background-color: rgba(0, 0, 45, 0.5);
+  background-color: rgba(0, 0, 45, 0.66);
   border: solid 1px white;
   color: white;
+  @extend .backdrop--blur;
 }

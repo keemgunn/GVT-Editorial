@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { article } from '@/template/contents';
+import { useLocalContents } from '@/template/contents_local';
+const { articles } = useLocalContents();
 
 const BREAK_FLEXGRID_WHEN = 1030;
 const frame = useFrameStore();
@@ -10,12 +11,14 @@ const frame = useFrameStore();
 // ONlY CAN HANDLE UP TO 3 FOR NOW
 const SHOW_TRENDING_ARTICLE = 3;
 const trendingLoop = Array.from({length: SHOW_TRENDING_ARTICLE}, (_, i) => i)
-const trendingArticles = article.package.getOnlyHighlighted('trending');
+const trendingArticles = articles.getHighlighted('trending');
 trendingArticles.sortAsc('filename');
 trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);
 
+const categorySet = articles.getCategorySet();
+const categoryRecords = articles.getCategoryRecords();
 const flexGridColumn = computed(() => {
-  const categoryCount = article.categorySet.size
+  const categoryCount = categorySet.size;
   return Math.round(categoryCount / 2);
 })
 const flexGridBreaker = computed(() =>
@@ -43,8 +46,8 @@ const flexGridClass = computed(() => {
     <div class="categories-wrapper">
       <Title-PageSection text="Categories" :size="20" divider="none" :dividerWidth="3"/>
       <ol id="article-categories" :class="flexGridClass">
-        <li v-for="cat in article.categorySet" :id="`cat-${cat}`">
-          {{ article.categoryRecords[cat].uri }}
+        <li v-for="cat in categorySet" :id="`cat-${cat}`">
+          {{ categoryRecords[cat].uri }}
         </li>
       </ol>
     </div>
@@ -84,7 +87,6 @@ const flexGridClass = computed(() => {
 
   .wrapper {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     .title-pagesection { 
@@ -124,6 +126,7 @@ const flexGridClass = computed(() => {
 }
 
 :is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) #categegories-and-trending .wrapper {
+  flex-direction: row;
   gap: 30rem;
   height: 800rem;
   padding: 40rem 0 80rem 0;
