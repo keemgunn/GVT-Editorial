@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { defineProps, computed } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
+import { getRoundStyle } from '@/template/styles/shapes'
 const frameStore = useFrameStore();
+
 
 const showHeadCategoryInfo = computed(() => /--L|--XL|--XXL/.test(frameStore.appScale))
 
@@ -17,15 +19,16 @@ const infoPackSize = computed(() => {
   }
 })
 
-
 const props = defineProps<{
-  article: ArticleRecord
+  article: ArticleRecord;
+  roundness: number;
 }>();
 
+const containerRoundness = getRoundStyle(props.roundness);
 </script>
 
 <template>
-<RouterLink class="article-card-a" :to="article.uri">
+<RouterLink class="article-card-a" :to="article.uri" :style="containerRoundness">
 
       
   <div class="imagebox">

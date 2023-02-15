@@ -28,13 +28,10 @@ export default {
   } satisfies ResponsiveSizeEntry,
 
 
-
-
-
   /** SHAPES =================================== */
 
   /** Defines overall UI's roundness */
-  roundness: 0 satisfies UIRoundness,
+  roundness: 1 satisfies UIRoundness,
 
 
 

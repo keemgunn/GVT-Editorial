@@ -3,7 +3,8 @@ import { defineProps, computed, onBeforeMount, onBeforeUpdate } from 'vue';
 
 const props = defineProps<{
   name: string;
-  componentName: string;
+  cardName: string;
+  cardRoundness: number;
   articles: Array<ArticleRecord>;
     // articles are recommended to be ref()ed object.
   showAds: 0 | 1 | 2 | 3;
@@ -46,13 +47,13 @@ const articlesWithAds = computed(() => {
 </script>
 
 <template>
-<ul class="list-articles">
+<ul class="list-articlecards">
   <li v-for="article in articlesWithAds" :id="`list-${name}-${article.uri}`">
     <template v-if="article.uri === 'ad'">
       <Adbox :width="adWidth" :height="adHeight"/>
     </template>
     <template v-else>
-      <component :is="componentName" :article="article"/>
+      <component :is="cardName" :article="article" :roundness="cardRoundness"/>
     </template>
   </li>
 </ul>

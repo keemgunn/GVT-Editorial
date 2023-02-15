@@ -37,8 +37,8 @@ console.log(`Paged Articles:`, pagedArticles.value.array);
 
   <Title-PageSection text="Latest Articles" :size="20" divider="bottom" :dividerWidth="3"/>
 
-  <List_Articles id="latest-articles-list" 
-  name="latest" componentName="ArticleCard_A" 
+  <List_ArticleCards id="latest-articles-list" 
+  name="latest" cardName="ArticleCard_A" :cardRoundness="0" 
   :articles="pagedArticles.array"
   :showAds="2" :adWidth="300" :adHeight="300"/>
 
