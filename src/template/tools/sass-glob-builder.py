@@ -23,14 +23,28 @@ else :
 SRC_DIR = "./src"
 OUTPUT_FILE = "./src/template/main.scss"
 
-# Get a list of all files in the "src" directory and its sub-directories
-files = [f for f in glob.glob(os.path.join(SRC_DIR, "**/*.scss"), recursive=True) 
-         if (not f.endswith('main.scss'))]
 
-# Write the list of files to the output file in the desired format
-with open(OUTPUT_FILE, "w") as f:
+
+## 2-1. Import mixin files with _*.scss
+# Get a list of all files in the "src" directory and its sub-directories
+
+files = [f for f in glob.glob(os.path.join(SRC_DIR, "**/_*.scss"), recursive=True)]
+with open(OUTPUT_FILE, "w+") as f:
     for file in files:
         f.write(f"@import '{file}';\n")
+
+
+
+## 2-2. Import Rests.
+# Write the list of files to the output file in the desired format
+
+files = [f for f in glob.glob(os.path.join(SRC_DIR, "**/*.scss"), recursive=True) 
+         if (not f.endswith('main.scss'))]
+with open(OUTPUT_FILE, "a+") as f:
+    for file in files:
+        f.write(f"@import '{file}';\n")
+
+
 
 print('  - PROCESS DONE')
 print(" ", len(files), ".scss files merged into", SRC_DIR, "\n\n")

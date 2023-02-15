@@ -3,16 +3,34 @@ import { calcReadingTime, checkCategory, checkDuplicatedUri, extractFrontHeadPar
 const { categories, uriParent } = articleConfigs;
 
 
-
+/**
 // GET Keys of interface: ArticleRecord as Array<string>
-const frontHeadClassTypeModule = import.meta.glob('./__types.ts', { eager: true, as: 'raw ' }) as Record<string, string>;
+const frontHeadClassTypeModule = import.meta.glob('./__types.ts', { eager: true, import:'default', as: 'raw ' }) as Record<string, string>;
+// console.log(frontHeadClassTypeModule);
 
-const frontHeadClassTypeLines = (frontHeadClassTypeModule['./__types.ts'] as any).default.split('ArticleRecord')[1].split('\n').slice(1).slice(0, -2) as Array<string>
+const frontHeadClassTypeLines = (frontHeadClassTypeModule['./__types.ts'] as any).split('ArticleRecord')[1].split('\n').slice(1).slice(0, -2) as Array<string>
 
 const articleFrontHeadKeys: Array<string> = [];
 frontHeadClassTypeLines.forEach((line) => {
   articleFrontHeadKeys.push(line.split(":")[0].trim());
 })
+*/
+
+const articleFrontHeadKeys = [
+  // --------- FROM FrontHead Props
+  "title",
+  "uri",
+  "date", // YYYY-MM-DD
+  "description",
+  "tags",
+  "category",
+  "coverImage",
+
+  // --------- Added in later logic
+  "filename",
+  "highlighted",
+  "readTime",
+]
 
 
 // Safety

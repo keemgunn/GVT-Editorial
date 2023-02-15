@@ -61,10 +61,6 @@
   .movebutton {
     padding: 0 10rem;
   }
-  .movebutton.--disabled {
-    pointer-events: none;
-  }
-
   .pagebutton {
     width: var(--button-size);
   }
@@ -82,6 +78,12 @@
   }
   :is(.pagebutton, .movebutton):active {
     @include PlateBackgroundOpacity(0.5);
+  }
+  .movebutton.--disabled {
+    pointer-events: none;
+    // @include PlateBackgroundColor(var(--OnSurface));
+    // @include PlateBackgroundOpacity(0.3);
+    opacity: 0.3;
   }
 }
 

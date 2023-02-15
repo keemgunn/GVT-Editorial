@@ -4,6 +4,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -13,11 +14,15 @@
 
   p {
     flex-shrink: 0;
-    z-index: 20;
+    z-index: 0;
   }
 
-  .plate {
+  #dev-status-bar-draghandle {
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
     z-index: 10;
+    cursor: move;
   }
 }
 

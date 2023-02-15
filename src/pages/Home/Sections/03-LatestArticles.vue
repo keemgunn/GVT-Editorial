@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { onBeforeUpdate, computed, ref, defineProps } from 'vue';
 import type { Ref } from 'vue';
 import type { ArticleRecordsPack } from '@/template/contents_local/_classes'
@@ -16,17 +16,18 @@ const props = defineProps<{
 
 const totalPage = articles.getTotalPageNumber(props.articlePerPage);
 
-const route = useRoute()
+const route = useRoute();
+const router = useRouter();
 const pageNum = computed(() => {
   const num = Number(route.params.pagenum);
   if (num === 0) return 1;
   else return num;
 });
+if (pageNum.value > totalPage) {
+  router.push('/');
+}
 
 const pagedArticles: Ref<ArticleRecordsPack> = ref(articles.getPaged(props.articlePerPage, pageNum.value));
-
-
-
 
 const adSize = computed(() => {
   const scale = frameStore.appScale.split('--')[1];
@@ -53,7 +54,6 @@ const adSize = computed(() => {
     break;
   }
 })
-
 
 onBeforeUpdate(() => {
   pagedArticles.value = articles.getPaged(props.articlePerPage, pageNum.value)

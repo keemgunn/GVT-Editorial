@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { useFrameStore } from '@/template/styles/frame/_store';
+import { makeElementDraggable } from '@/template/composables/makeElementDraggable';
+
 const frameStore = useFrameStore();
+makeElementDraggable('dev-status-bar', 'dev-status-bar-draghandle');
 </script>
 
 <template>
   <aside id="dev-status-bar">
+    <div id="dev-status-bar-draghandle">
+      <Icon class="icon" name="drag_indicator" :size="24"/>
+    </div>
     <p class="typo-caption-16 --bold">DEV-STATUS-BAR</p>
     <p class="typo-caption-12">VW : {{ frameStore.viewWidth }}</p>
     <p class="typo-caption-12">{{ frameStore.appScale }}</p>

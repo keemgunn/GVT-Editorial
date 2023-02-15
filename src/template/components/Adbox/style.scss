@@ -1,4 +1,4 @@
 .ad-box {
-
+  overflow: hidden;
   @include PlateBackgroundColor(var(--PrimaryContainer));
 }

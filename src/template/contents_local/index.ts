@@ -12,6 +12,8 @@ const { categories, uriParent } = articleConfigs;
 
 // Get all articles in raw string
 const markdownModules = import.meta.glob('../../contents/articles/**/*.md', { eager: true, import: 'default', as: 'raw' });
+// console.log(markdownModules);
+
 
 // Make a list of articles records from raw strings
 const { articleRecords, articleRawRecords }

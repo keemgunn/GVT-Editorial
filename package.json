@@ -12,7 +12,7 @@
     "build": "export NODE_ENV=BUILD && npm run sass-glob-builder && vite build",
     "preview": "vite preview",
 
-    "build-and-typecheck": "run-p type-check build-only",
+    "build-and-typecheck": "run-p type-check build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "test:unit": "vitest --environment jsdom --root src/",
 

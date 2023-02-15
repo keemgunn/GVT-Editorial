@@ -1,6 +1,4 @@
-export { 
-
-};
+export default {};
 declare global {
 
 
