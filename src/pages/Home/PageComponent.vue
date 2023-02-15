@@ -8,7 +8,7 @@ import TrendingArticles from './Sections/02-TrendingArticles.vue';
 import LatestArticles from './Sections/03-LatestArticles.vue';
 
 
-const DISPLAY_ARTICLE_NUMBER = 10; // DO NOT CHANGE YET
+const ARTICLE_PER_PAGE = 10; // DO NOT CHANGE YET
 
 // For Page Nav ========
 const PAGE_NUMBER_SLICE = 5; 
@@ -33,7 +33,7 @@ const pageNum = computed(() => {
     </section>
 
     <section id="all-articles">
-      <LatestArticles :pageNumberSlice="PAGE_NUMBER_SLICE" :mobilePageDisplayNumber="MOBILE_PAGE_DISPLAY_NUM" :display-article-number="DISPLAY_ARTICLE_NUMBER"/>
+      <LatestArticles  id="latest-articles-wrapper" :pageNumberSlice="PAGE_NUMBER_SLICE" :mobilePageDisplayNumber="MOBILE_PAGE_DISPLAY_NUM" :articlePerPage="ARTICLE_PER_PAGE"/>
       <aside id="ad-tower"></aside>
     </section>
 

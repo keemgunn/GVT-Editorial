@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, onBeforeUpdate, computed } from 'vue';
 import { getRoundStyle } from '@/template/styles/shapes';
 
 const props = defineProps<{
@@ -8,12 +8,16 @@ const props = defineProps<{
   roundness: number;
 }>();
 
-const boxStyle = {
+const boxStyle = computed(() => { return {
   width: `${props.width}rem`,
   height: `${props.height}rem`,
-}
+}})
 
 const borderRadius = getRoundStyle(props.roundness);
+
+onBeforeUpdate(() => {
+  // console.warn("UPDATEEEEEEEEE");
+})
 </script>
 
 <template>

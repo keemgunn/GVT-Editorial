@@ -48,13 +48,15 @@ const articlesWithAds = computed(() => {
 
 <template>
 <ul class="list-articlecards">
-  <li v-for="article in articlesWithAds" :id="`list-${name}-${article.uri}`">
-    <template v-if="article.uri === 'ad'">
-      <Adbox :width="adWidth" :height="adHeight" :roundness="0"/>
-    </template>
-    <template v-else>
-      <component :is="cardName" :article="article" :roundness="cardRoundness"/>
-    </template>
-  </li>
+  <template v-for="article in articlesWithAds" :id="`list-${name}-${article.uri}`">
+    <li :class="`${article.uri === 'ad'? 'ad' : 'article'}`">
+      <template v-if="article.uri === 'ad'">
+        <Adbox :width="adWidth" :height="adHeight" :roundness="0"/>
+      </template>
+      <template v-else>
+        <component :is="cardName" :article="article" :roundness="cardRoundness"/>
+      </template>
+    </li>
+  </template>
 </ul>
 </template>

@@ -91,7 +91,7 @@ function showIcon(navIcon: String) {
 
 
 :is(.scale--XXL, .scale--XL, .scale--L) {
-  --contents-container-width: 1280rem;
+  --contents-container-width: 1300rem;
   --contents-side-padding: 0;
   --nav-bar-height: 74rem;
   --nav-bar-search-width: 300rem;

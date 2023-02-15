@@ -61,17 +61,20 @@ export const useLocalContents = defineStore('localContents', () => {
   // THESE LOGICS ARE ONLY FOR USING LOCAL MARKDOWN CONTENTS.
   // WHEN USING EXTERNAL CONTENTS FROM ANOTHER SERVER, WRITE SOME NEW CODES WITH SAME NAMES.
 
+  const getTotalPageNumber = (articlePerPage: number) => {
+    return Math.ceil(totalArticlesNumber / articlePerPage);
+  }
+
   /** ((Local Markdown Files)) Get only paged ArticleRecordsPack. */
-  const getPagedArticles = (showNum: number, pageNum: number) : ArticleRecordsPack => {
-    const wholeCount = articleList.length;
-    const extra = wholeCount % showNum;
-    const pages = Math.round(wholeCount / showNum);
+  const getPagedArticles = (articlePerPage: number, pageNum: number) : ArticleRecordsPack => {
+    const extra = totalArticlesNumber % articlePerPage;
+    const pages = getTotalPageNumber(articlePerPage);
     
     if (pageNum > pages)
-    return new ArticleRecordsPack([])
+      return new ArticleRecordsPack([]);
 
-    const startNum = (pageNum - 1) * showNum;
-    const endNum = startNum + showNum;
+    const startNum = (pageNum - 1) * articlePerPage;
+    const endNum = startNum + articlePerPage;
     const newArr = articleList.slice(startNum, endNum);
     return new ArticleRecordsPack(newArr)
   };
@@ -134,6 +137,7 @@ export const useLocalContents = defineStore('localContents', () => {
     articles: {
       totalNumber: totalArticlesNumber, 
       getPaged: getPagedArticles, 
+      getTotalPageNumber, 
       getHighlighted: getHighlightedArticles, 
       getCategorized: getCategorizedArticles, 
       getTagged: getTaggedArticles, 

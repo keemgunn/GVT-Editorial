@@ -28,38 +28,47 @@
       gap: var(--section-gap);
       width: var(--contents-container-width);
       height: fit-content;
-      padding-left: var(--contents-side-padding);
-      padding-right: var(--contents-side-padding);
-    }
+      padding: 
+        var(--top-bottom-paddings)
+        var(--contents-side-padding);
 
-    padding-bottom: 400rem;
+      #latest-articles-wrapper{
+        flex-shrink: 1;
+        min-width: 0;
+        overflow: hidden;
+        width: 100%;
+      }
+      #ad-tower {
+        flex-shrink: 0;
+
+        width: var(--ad-tower-width);
+        background-color: cornflowerblue;
+      }
+    }
   }
 }
 
-
-:is(.scale--XXL, .scale--XL, .scale--L, .scale--M) .home #all-articles {
+:is(.scale--XXL, .scale--XL, .scale--L) .home #all-articles {
   flex-direction: row;
-  --section-gap: 30rem
+  --section-gap: 30rem;
+  --ad-tower-width: 300rem;
+  --top-bottom-paddings: 74rem
+}
+:is(.scale--M) .home #all-articles {
+  flex-direction: row;
+  --section-gap: 30rem;
+  --ad-tower-width: 160rem;
+  --top-bottom-paddings: 68rem
 }
 :is(.scale--S) .home #all-articles {
   flex-direction: row;
-  --section-gap: 30rem
+  --section-gap: 30rem;
+  --ad-tower-width: 160rem;
+  --top-bottom-paddings: 50rem
 }
 :is(.scale--XXS, .scale--XS) .home #all-articles {
   flex-direction: column;
-  --section-gap: 48rem
+  --section-gap: 38rem;
+  --ad-tower-width: 100%;
+  --top-bottom-paddings: 50rem
 }
-
-
-
-aside#ad-tower {
-  width: 300rem;
-  background-color: cornflowerblue;
-}
-
-
-
-// -------------------------------------------TEST
-// .home li {
-//   background-color: rgba(127, 255, 212, 0.23);
-// }
