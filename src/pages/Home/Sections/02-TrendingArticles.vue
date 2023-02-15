@@ -52,7 +52,7 @@ const flexGridClass = computed(() => {
       </ol>
     </div>
 
-    <Adbox id="trending-ad-0" :width="300" :height="100"/>
+    <Adbox id="trending-ad-0" :width="300" :height="100" :roundness="0"/>
     
     <div class="trending-wrapper">
       <Title-PageSection text="Trending" :size="20" divider="none" :dividerWidth="3"/>

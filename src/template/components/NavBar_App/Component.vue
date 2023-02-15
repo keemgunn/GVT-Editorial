@@ -43,7 +43,7 @@ const showPrefOnLarge = computed(() => {
       <NavAppButton navTitle="preference" uri="#" icon="account_circle"/>
     </div>
 
-    <Plate/>
+    <Plate :roundness="0"/>
   </nav>
 </template>
 

@@ -132,7 +132,7 @@ function showIcon(navIcon: String) {
       <Icon v-if="hasChild" class="nav-handle" name="expand_more" :size="majorIconSize"/>
     </div>
 
-    <Plate/>
+    <Plate :roundness="0"/>
   </RouterLink>
 
   <Transition name="rlvn-nested-links">
@@ -146,11 +146,11 @@ function showIcon(navIcon: String) {
           <Icon :name="showIcon(nr.icon)" :size="subIconSize"/>
           <p> {{ nr.title }}</p>
         </div>
-        <Plate/>
+        <Plate :roundness="0"/>
       </RouterLink>
     </li>
     
-    <Plate/>
+    <Plate :roundness="0"/>
   </ul>
   </Transition>
 

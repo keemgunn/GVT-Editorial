@@ -20,9 +20,9 @@ featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
         {{ featuredArticles.array[i].title }}
     </li>
 
-    <Adbox id="featured-ad-0" :width="300" :height="600"/>
-    <Adbox id="featured-ad-1" :width="300" :height="100"/>
-    <Adbox id="featured-ad-2" :width="300" :height="100"/>
+    <Adbox id="featured-ad-0" :width="300" :height="600" :roundness="0"/>
+    <Adbox id="featured-ad-1" :width="300" :height="100" :roundness="0"/>
+    <Adbox id="featured-ad-2" :width="300" :height="100" :roundness="0"/>
   </ol>
 </section>
 </template>

@@ -42,6 +42,6 @@ const dividerStyle = computed(() => {
     <h1 :class="`typo-header-${props.size}`">{{text}}</h1>
     <div class="divider" :style="dividerStyle" v-show="props.divider !== 'none'"></div>
 
-    <Plate/>
+    <Plate :roundness="0"/>
   </div>
 </template>

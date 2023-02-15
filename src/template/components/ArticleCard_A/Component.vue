@@ -44,7 +44,7 @@ const containerRoundness = getRoundStyle(props.roundness);
     </div>
 
 
-  <Plate/>
+  <Plate :roundness="roundness"/>
 </RouterLink>
 
 </template>

@@ -61,7 +61,7 @@ function showIcon(navIcon: String) {
     </div>
   </header>
 
-  <Plate/>
+  <Plate :roundness="0"/>
   
 </div>
 </template>

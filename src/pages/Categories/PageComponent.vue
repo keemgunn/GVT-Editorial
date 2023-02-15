@@ -23,7 +23,7 @@ onBeforeMount(() => {
     <h1>This is an HOME</h1>
 
     <div class="some-example">
-      <Plate/>
+      <Plate :roundness="0"/>
       <p class="typo-header-28">Something!</p>
     </div>
   </main>

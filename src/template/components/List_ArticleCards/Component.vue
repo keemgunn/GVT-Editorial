@@ -50,7 +50,7 @@ const articlesWithAds = computed(() => {
 <ul class="list-articlecards">
   <li v-for="article in articlesWithAds" :id="`list-${name}-${article.uri}`">
     <template v-if="article.uri === 'ad'">
-      <Adbox :width="adWidth" :height="adHeight"/>
+      <Adbox :width="adWidth" :height="adHeight" :roundness="0"/>
     </template>
     <template v-else>
       <component :is="cardName" :article="article" :roundness="cardRoundness"/>

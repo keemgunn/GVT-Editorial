@@ -15,7 +15,7 @@ const props = defineProps<{
       <Icon :name="props.navIcon"/>
       <p class="typo-body-10 --bold">{{ navTitle }}</p>
     </div>
-    <Plate/>
+    <Plate :roundness="0"/>
   </RouterLink>
 </template>
 
