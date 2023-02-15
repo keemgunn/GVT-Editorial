@@ -39,7 +39,7 @@ const dividerStyle = computed(() => {
   :class="[dividerLayout]" 
   :style="{gap: `${props.size/2}rem`}">
 
-    <h1 :class="`typo-header-${props.size}`">{{text}}</h1>
+    <h1 v-show="text.length > 0" :class="`typo-header-${props.size}`">{{text}}</h1>
     <div class="divider" :style="dividerStyle" v-show="props.divider !== 'none'"></div>
 
     <Plate :roundness="0"/>

@@ -31,7 +31,7 @@ export default {
   /** SHAPES =================================== */
 
   /** Defines overall UI's roundness */
-  roundness: 1 satisfies UIRoundness,
+  roundness: 0 satisfies UIRoundness,
 
 
 

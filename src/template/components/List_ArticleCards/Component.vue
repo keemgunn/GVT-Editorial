@@ -39,7 +39,7 @@ function addAds(arr:Array<ArticleRecord>, num: number) {
 }
 
 const articlesWithAds = computed(() => {
-  console.warn("COMPUTED INVOKED");
+  // console.warn("COMPUTED INVOKED");
   const arr = [...props.articles];
   addAds(arr, props.showAds);[]
   return arr

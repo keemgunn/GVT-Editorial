@@ -1,0 +1,108 @@
+
+
+
+.page-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  gap: var(--buttons-gap);
+  
+  .pagebutton-wrapper {
+    height: var(--button-size);
+    display: flex;
+    flex-direction: row;
+    gap: var(--buttons-gap);
+  }
+  
+  .movebutton, .pagebutton, .dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    height: var(--button-size);
+    flex-shrink: 0;
+    flex-grow: 0;
+    color: var(--OnSurface);
+  }
+
+  .pagelist {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--buttons-gap);
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: var(--button-size);
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .--overflow-X-true.--overflow-Y-false {
+    flex-shrink: 0;
+  }
+  .pagelist.backward {
+    flex-direction: row-reverse;
+  }
+  .pagelist.forward {
+    flex-direction: row;
+  }
+  .pagelist.mobile {
+    flex-grow: 0;
+    width: 100%;
+    max-width: 500rem;
+    justify-content: space-between;
+  }
+
+  .dots {
+    padding-bottom: 6rem;
+  }
+  .movebutton {
+    padding: 0 10rem;
+  }
+  .movebutton.--disabled {
+    pointer-events: none;
+  }
+
+  .pagebutton {
+    width: var(--button-size);
+  }
+  .pagebutton.router-link-active {
+    @include PlateBorder(2rem solid var(--Primary));
+    color: var(--Primary);
+  } 
+  .pagebutton, .movebutton {
+    @include PlateBackgroundColor(var(--Primary));
+    @include PlateBackgroundOpacity(0);
+    @include PlateTransition(40ms);
+  }
+  :is(.pagebutton, .movebutton):hover {
+    @include PlateBackgroundOpacity(0.2);
+  }
+  :is(.pagebutton, .movebutton):active {
+    @include PlateBackgroundOpacity(0.5);
+  }
+}
+
+
+
+
+
+:is(.scale--XXL, .scale--XL, .scale--L, .scale--M) .page-nav {
+  justify-content: space-between;
+}
+:is(.scale--S, .scale--XS, .scale--XXS) .page-nav {
+  justify-content: center;
+}
+
+:is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) .page-nav {
+  .movebutton, .pagebutton { @extend .typo-caption-16--bold; }
+  .dots { @extend .typo-caption-12--bold;}
+  --button-size: 40rem;
+  --buttons-gap: 15rem;
+}
+:is(.scale--XS, .scale--XXS) .page-nav {
+  .movebutton, .pagebutton { @extend .typo-caption-12--bold; }
+  --button-size: 28rem;
+  --buttons-gap: 15rem;
+}
