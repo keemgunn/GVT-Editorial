@@ -28,6 +28,8 @@ declare global {
     tags: Array<string>;
     category: string;
     coverImage: string;
+    raw: string;
+
 
     // --------- Added in later logic
     filename: string;
@@ -46,11 +48,7 @@ declare global {
    */
   interface ArticleRawRecord {
     // --------- FROM FrontHead Props
-    title: string;
-    uri: string;
-    tags: Array<string>;
-    category: string;
-    date: string; // YYYY-MM-DD
+    articleRecord: ArticleRecord;
     raw: string;
   }
 

@@ -1,33 +1,17 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
-import { onBeforeUpdate, computed, ref, defineProps } from 'vue';
-import type { Ref } from 'vue';
-import type { ArticleRecordsPack } from '@/template/contents_local/_classes'
-import { useFrameStore } from '@/template/styles/frame/_store';
+import { ref, defineProps, watch } from 'vue';
 import { useLocalContents } from '@/template/contents_local';
-const frameStore = useFrameStore();
 const { articles } = useLocalContents();
 
 const props = defineProps<{
-  articlePerPage: number;
-  pageNumberSlice: number;
-  mobilePageDisplayNumber: number;
+  articlesPerPage: number;
 }>();
 
-const totalPage = articles.getTotalPageNumber(props.articlePerPage);
+const latestArticles = ref(articles.query(undefined, undefined, undefined, props.articlesPerPage));
 
-const route = useRoute();
-const router = useRouter();
-const pageNum = computed(() => {
-  const num = Number(route.params.pagenum);
-  if (num === 0) return 1;
-  else return num;
-});
-if (pageNum.value > totalPage) {
-  router.push('/');
-}
-
-const pagedArticles: Ref<ArticleRecordsPack> = ref(articles.getPaged(props.articlePerPage, pageNum.value));
+watch(() => articles.pageContext.currentPage, (newPage, oldPage) => {
+  latestArticles.value = articles.query(undefined, undefined, undefined, props.articlesPerPage);
+})
 
 const adSizes = {
   XXS: { width: 300, height: 250 },
@@ -38,13 +22,7 @@ const adSizes = {
   XL: { width: 970, height: 90 },
   XXL: { width: 970, height: 90 },
 } satisfies AdSizeByScale
-
-onBeforeUpdate(() => {
-  pagedArticles.value = articles.getPaged(props.articlePerPage, pageNum.value)
-})
 </script>
-
-
 
 
 <template>
@@ -54,12 +32,15 @@ onBeforeUpdate(() => {
 
   <List_ArticleCards id="latest-articles-list" 
   name="latest" cardName="ArticleCard_A" :cardRoundness="0" 
-  :articles="pagedArticles.array"
+  :articles="latestArticles.array"
   :showAds="2" :adSizes="adSizes"/>
 
   <Title-PageSection text="" :size="20" divider="bottom" :dividerWidth="3"/>
   
-  <PageNav rootUri="" :totalPage="totalPage" :currentPage="pageNum" :pageNumberSlice="pageNumberSlice" :mobilePageDisplayNumber="mobilePageDisplayNumber" prevButtonName="◀︎ PREV" nextButtonName="NEXT ▶︎" :roundness="0"/>
+  <PageNav rootUri="" 
+  prevButtonName="◀︎ PREV" 
+  nextButtonName="NEXT ▶︎" 
+  :roundness="0"/>
 
 </section>
 </template>
@@ -67,21 +48,21 @@ onBeforeUpdate(() => {
 
 <style lang="scss">
 /** @/pages/Home/Sections/03-LatestArticles */
-:is(.scale--XXL, .scale--XL, .scale--L) #latest-articles-wrapper {
+:is(.scale--XXL, .scale--XL, .scale--L) .home #latest-articles-wrapper {
   --items-gap: 36rem;
 }
-:is(.scale--M) #latest-articles-wrapper {
+:is(.scale--M) .home #latest-articles-wrapper {
   --items-gap: 32rem;
 }
-:is(.scale--S) #latest-articles-wrapper {
+:is(.scale--S) .home #latest-articles-wrapper {
   --items-gap: 30rem;
 }
-:is(.scale--XS, .scale--XXS) #latest-articles-wrapper {
+:is(.scale--XS, .scale--XXS) .home #latest-articles-wrapper {
   --items-gap: 24rem;
   --side-gap: 24rem;
 }
 
-#latest-articles-wrapper {
+.home #latest-articles-wrapper {
   display: flex;
   flex-direction: column;
   gap: var(--items-gap);
@@ -90,8 +71,6 @@ onBeforeUpdate(() => {
     display: flex;
     flex-direction: column;
     gap: var(--items-gap);
-    // align-items: center;
-    // li.article { width: 100%; }
     li.ad { align-self: center; }
   }
 }

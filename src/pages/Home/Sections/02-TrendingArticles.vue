@@ -11,7 +11,8 @@ const frame = useFrameStore();
 // ONlY CAN HANDLE UP TO 3 FOR NOW
 const SHOW_TRENDING_ARTICLE = 3;
 const trendingLoop = Array.from({length: SHOW_TRENDING_ARTICLE}, (_, i) => i)
-const trendingArticles = articles.getHighlighted('trending');
+// const trendingArticles = articles.getHighlighted('trending');
+const trendingArticles = articles.query('trending', undefined, undefined, undefined);
 trendingArticles.sortAsc('filename');
 trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);
 

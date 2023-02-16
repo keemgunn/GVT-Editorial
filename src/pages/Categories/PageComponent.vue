@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue';
+import { computed } from '@vue/reactivity';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { useInteractionStore } from '@/template/stores/interaction';
 
 const frameStore = useFrameStore();
-const interactionStore = useInteractionStore();
 
-const pageName = "Categories";
-onBeforeMount(() => {
-  interactionStore.currentPage = pageName;
-})
+
+
+
+
 </script>
 
 <template>
 <div id="router-page" class="home">
-    
-  <header id="main-actions"> this is header </header>
+
   
   <main>
     <p class="typo-body-16">userAgent : {{ frameStore.userAgent }}</p>

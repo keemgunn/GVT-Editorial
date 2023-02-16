@@ -29,12 +29,6 @@
   sublinks: 'always-hide'
   nestedRecords:
 
-- title: Tags
-  icon: sell
-  uri: /tags
-  sublinks: 'always-hide'
-  nestedRecords:
-
 - title: Categories
   icon: format_list_bulleted
   uri: /categories

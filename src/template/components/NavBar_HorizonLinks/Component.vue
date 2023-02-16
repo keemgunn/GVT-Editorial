@@ -5,6 +5,7 @@ import { useConfigs } from '@/template/stores/userConfigs';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
 import templateConfigs from '@/configs/template/templateConfigs';
 import defaultConfigs from './index';
+import { useScrollPosition } from '@/template/composables/useScrollPosition';
 
 const COMPONENT_NAME = 'NavBar_HorizonLinks';
 
@@ -26,12 +27,20 @@ function showIcon(navIcon: String) {
   else
     return ""
 }
+
+const { scrollPosition } = useScrollPosition();
+const CL_showBackgroundColor = computed(() => {
+  if (scrollPosition.value)
+    return "--scrolled"
+  else
+    return ""
+});
 </script>
 
 
 
 <template>
-<div id="navigation" class="nav-bar-horizon-links">
+<div id="navigation" class="nav-bar-horizon-links" :class="CL_showBackgroundColor">
 
   <component :is="compConfig.topBannerInjection"></component>
     
@@ -79,7 +88,7 @@ function showIcon(navIcon: String) {
   #navigation { 
     flex-shrink: unset;
     z-index: 100;
-    position: sticky;
+    position: fixed;
     top: 0;
   }
   #router-page { 

@@ -1,0 +1,100 @@
+
+#router-page.search {
+  --fronthead-height: 360rem
+}
+:is(.scale--XXL) #router-page.search {
+  --body-direction: row;
+  --body-gap: 30rem;
+  --ad-tower-width: 300rem;
+  --articles-gap: 36rem;
+}
+:is(.scale--XL) #router-page.search {
+  --body-direction: row;
+  --body-gap: 30rem;
+  --ad-tower-width: 300rem;
+  --articles-gap: 36rem;
+}
+:is(.scale--L) #router-page.search {
+  --body-direction: row;
+  --body-gap: 30rem;
+  --ad-tower-width: 300rem;
+  --articles-gap: 36rem;
+}
+:is(.scale--M) #router-page.search {
+  --body-direction: row;
+  --body-gap: 30rem;
+  --ad-tower-width: 160rem;
+  --articles-gap: 32rem;
+}
+:is(.scale--S) #router-page.search {
+  --body-direction: row;
+  --body-top-bottom-paddings: 50rem;
+  --body-gap: 30rem;
+  --ad-tower-width: 160rem;
+  --articles-gap: 30rem;
+}
+:is(.scale--XS, .scale--XXS) #router-page.search {
+  --body-direction: column;
+  --body-top-bottom-paddings: 50rem;
+  --body-gap: 38rem;
+  --body-direction: column;
+  --ad-tower-width: 100%;
+  --articles-gap: 24rem;
+}
+
+
+
+
+
+#router-page.search {
+  display: flex;
+  flex-direction: column;
+
+  main {
+    display: flex;
+    flex-direction: column;
+
+    section#fronthead {
+      width: 100%;
+      height: var(--fronthead-height);
+      padding-top: calc(var(--nav-bar-height));
+      background-color: var(--PrimaryContainer);
+      display: flex;
+      flex-direction: column;
+    }
+
+    section#body {
+      align-self: center;
+      width: var(--contents-container-width);
+      height: fit-content;
+      display: flex;
+      flex-direction: var(--body-direction);
+      gap: var(--body-gap);
+      justify-content: center;
+      padding: 
+      var(--body-top-bottom-paddings)
+      var(--body-contents-side-padding);
+      #search-result{
+        display: flex;
+        flex-direction: column;
+        gap: var(--articles-gap);
+        padding: 0 var(--side-gap);
+        #searched-articles-list {
+          display: flex;
+          flex-direction: column;
+          gap: var(--articles-gap);
+        }
+      }
+      #ad-tower {
+        flex-shrink: 0;
+        width: var(--ad-tower-width);
+        background-color: cornflowerblue;
+      }
+    }
+  }
+}
+
+
+
+
+

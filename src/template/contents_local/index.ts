@@ -1,52 +1,40 @@
 /**
  * Using vite-plugin-vue-markdown. See("https://www.npmjs.com/package/vite-plugin-vue-markdown")
 */
-import { defineAsyncComponent } from 'vue'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 import articleConfigs from '@/contents/articles/configs.yml';
 import { formatRawMarkdowns } from './_markdownHandler';
-import { ArticleRecordsPack } from './_classes';
+import { ArticleRawRecordsPack, ArticleRecordsPack } from './_classes';
+import { useArticlePageContext } from '@/template/stores/articlePageContext';
 const { categories, uriParent } = articleConfigs;
+
 
 
 // Get all articles in raw string
 const markdownModules = import.meta.glob('../../contents/articles/**/*.md', { eager: true, import: 'default', as: 'raw' });
 // console.log(markdownModules);
 
-
 // Make a list of articles records from raw strings
-const { articleRecords, articleRawRecords }
+const { articleRecords, articleRecordsWithRaw }
   = formatRawMarkdowns(markdownModules);
 
 console.log('articleRecords FROM LOCAL:', articleRecords);
 export { articleRecords } // For Component registration
 
+
+
 export const useLocalContents = defineStore('localContents', () => {
 
-  // Table Of Codes
-  // 1. Articles
-  // 2. Reader
-
-  // ==========================================
-  // 1. Articles
-  // ==========================================
-
   const articleList = articleRecords;
-  const articleRawList = articleRawRecords;
-  const totalArticlesNumber = articleRecords.length;
-
+  const articleRawList = articleRecordsWithRaw;
   // Default Sort : date desc order
   articleList.sort((a, b) => {
     if (a.date < b.date) return 1;
     if (a.date > b.date) return -1;
     return 0;
   })
-  articleRawRecords.sort((a, b) => {
-    if (a.date < b.date) return -1;
-    if (a.date > b.date) return 1;
-    return 0;
-  })
+
+
 
   // For Filtering Articles with Tags
   const tagSet: Set<string> = new Set([]);
@@ -55,56 +43,81 @@ export const useLocalContents = defineStore('localContents', () => {
       tagSet.add(tag);
     })
   });
+
   // For Filtering Articles with Categories
   const categorySet: Set<string> = new Set(Object.keys(categories));
-
-
-  // DATA REQUESTS ------------------
-  // THESE LOGICS ARE ONLY FOR USING LOCAL MARKDOWN CONTENTS.
-  // WHEN USING EXTERNAL CONTENTS FROM ANOTHER SERVER, WRITE SOME NEW CODES WITH SAME NAMES.
-
-  const getTotalPageNumber = (articlePerPage: number) => {
-    return Math.ceil(totalArticlesNumber / articlePerPage);
-  }
-
-  /** ((Local Markdown Files)) Get only paged ArticleRecordsPack. */
-  const getPagedArticles = (articlePerPage: number, pageNum: number) : ArticleRecordsPack => {
-    const extra = totalArticlesNumber % articlePerPage;
-    const pages = getTotalPageNumber(articlePerPage);
-    
-    if (pageNum > pages)
-      return new ArticleRecordsPack([]);
-
-    const startNum = (pageNum - 1) * articlePerPage;
-    const endNum = startNum + articlePerPage;
-    const newArr = articleList.slice(startNum, endNum);
-    return new ArticleRecordsPack(newArr)
-  };
-
-  /** ((Local Markdown Files)) Get only highlighted ArticleRecordsPack. @param state: "normal" | "trending" | "featured" */
-  const getHighlightedArticles = (state: ArticleHighlightState) : ArticleRecordsPack => {
-    const newArr = articleList.filter((article) => article.highlighted === state);
-    return new ArticleRecordsPack(newArr)
-  }
-
-  /** ((Local Markdown Files)) Get only ArticleRecordsPack under certain category. */
-  const getCategorizedArticles = (category: string): ArticleRecordsPack => {
-    const newArr = articleList.filter((article) => article.category === category);
-    return new ArticleRecordsPack(newArr)
-  }
-
-  /** ((Local Markdown Files)) Get only ArticleRecordsPack under certain tag. */
-  const getTaggedArticles = (tag: string): ArticleRecordsPack => {
-    const newArr = articleList.filter((article) => article.tags.includes(tag));
-    return new ArticleRecordsPack(newArr)
-  }
 
   /** ((Local Markdown Files)) Get a SET of categories. */
   const getArticleCategoryRecords = (): CategoryRecords => {
     return categories as CategoryRecords
   }
 
-  // TODO : Search Call Function
+  // For Pagination 
+  const pageContext = useArticlePageContext();
+
+
+  /**
+   * Query Article Contents.
+   * @params `highlightState` `category` `tag` `articlesPerPage`
+   * - When param `articlesPerPage` provided, the pagination using 'current page number' is automatically done by its logic, and returns only current page's articles.
+   * - WARNING: DON'T USE MORE THAN ONE PAGED ARTICLE LIST IN ONE PAGE. THE PAGE CONTEXT IS ONLY ONE INSATNCE THAT THIS APP HAS
+   */
+  const query = (highlightState?: ArticleHighlightState, category?: string, tag?: string, articlesPerPage?: number): ArticleRecordsPack => {
+    console.log("LocalContents - Query Called");
+    
+    let newArr: Array<ArticleRecord> = articleList.slice();
+
+    if (highlightState) 
+      newArr = newArr.filter((article) => article.highlighted === highlightState);
+    
+    if (category)
+      newArr = newArr.filter((article) => article.category === category);
+    
+    if (tag)
+      newArr = newArr.filter((article) => article.tags.includes(tag));
+    
+      
+    if (articlesPerPage && pageContext.currentPage) { // Might be 0
+    pageContext.setTotalPage(
+      Math.ceil(newArr.length / articlesPerPage)
+    );
+    
+    if (pageContext.currentPage > pageContext.totalPage)
+      pageContext.pushToFirstPage();
+  
+      const startNum = (pageContext.currentPage - 1) * articlesPerPage;
+      const endNum = startNum + articlesPerPage;
+
+      newArr = articleList.slice(startNum, endNum);
+    }
+      
+    return new ArticleRecordsPack(newArr)
+  }
+
+
+
+  const searchQuery = (query: string, articlesPerPage?: number): ArticleRawRecordsPack => {
+    // const querysafe = regexQuerySafe(query);
+    const searchedArticleRawPack = new ArticleRawRecordsPack(
+      articleRawList.filter((article) => {
+        return article.raw.includes(query);
+      }) || []
+    )
+    searchedArticleRawPack.sortDesc('date');
+
+    if (articlesPerPage) {
+      pageContext.setTotalPage(
+        Math.ceil(searchedArticleRawPack.array.length / articlesPerPage)
+      );
+
+      const startNum = (pageContext.currentPage - 1) * articlesPerPage;
+      const endNum = startNum + articlesPerPage;
+
+      searchedArticleRawPack.array = searchedArticleRawPack.array.slice(startNum, endNum);
+    }
+
+    return searchedArticleRawPack
+  }
 
 
 
@@ -135,25 +148,19 @@ export const useLocalContents = defineStore('localContents', () => {
       return ""
   }
 
+
+
   return {
     articles: {
-      totalNumber: totalArticlesNumber, 
-      getPaged: getPagedArticles, 
-      getTotalPageNumber, 
-      getHighlighted: getHighlightedArticles, 
-      getCategorized: getCategorizedArticles, 
-      getTagged: getTaggedArticles, 
       getCategoryRecords: getArticleCategoryRecords,
       getCategorySet: () => categorySet,
       getTagSet: () => tagSet,
+      query,
+      searchQuery,
+      pageContext,
     }, 
     reader: {
       getComponentName: getArticleComponentName
     }
   }
 })
-
-
-
-
-

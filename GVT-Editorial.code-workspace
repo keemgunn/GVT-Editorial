@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"workbench.preferredLightColorTheme": "Night Owl Light",
-		"workbench.colorTheme": "Bearded Theme Light",
+		"workbench.colorTheme": "Bearded Theme Monokai Metallian",
 		"workbench.preferredDarkColorTheme": "Bearded Theme Monokai Metallian",
 		"editor.tabSize": 2,
 		"explorer.autoReveal": "focusNoScroll",

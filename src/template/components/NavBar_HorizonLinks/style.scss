@@ -24,8 +24,12 @@
   }
 
   @include PlateBackgroundColor(var(--nav-bar-horizon-links-bg-color));
+  @include PlateBackgroundOpacity(0);
+  @include PlateTransition(120ms);
+}
+#app .nav-bar-horizon-links.--scrolled {
   @include PlateBackgroundOpacity(1);
-  @include Shadow-1(20rem);
+  @include Shadow-3(20rem);
 }
 
 #app .nav-bar-horizon-links header {

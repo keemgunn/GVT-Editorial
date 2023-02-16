@@ -1,18 +1,17 @@
 <script setup lang="ts">
 import { defineProps, computed, ref, watch, onBeforeMount, onBeforeUpdate, onMounted } from 'vue';
 import type { Ref } from 'vue';
-import { getRoundStyle } from '@/template/styles/shapes';
 import { useFrameStore } from '@/template/styles/frame/_store';
+import { useArticlePageContext } from '@/template/stores/articlePageContext';
 
+// How many page nav buttons will show?
+const PAGE_NUMBER_SLICE = 5;
+const MOBILE_PAGE_DISPLAY_NUM = 7; 
+
+const pageContext = useArticlePageContext();
 
 const props = defineProps<{
   rootUri: string;
-  totalPage: number;
-  currentPage: number;
-
-  pageNumberSlice: number;
-  mobilePageDisplayNumber: number;
-
   prevButtonName: string;
   nextButtonName: string;
   roundness: number;
@@ -27,39 +26,40 @@ const backwardsListElement: Ref<Element | null> = ref(null);
 const forwardsListElement: Ref<Element | null> = ref(null);
 
 function renderPages() {
-  const pageLoop = Array.from({ length: props.totalPage }, (_, i) => i + 1)
+  const pageLoop = Array.from({ length: pageContext.totalPage }, (_, i) => i + 1)
+  console.log('PageNav - Rendering Pages:', pageLoop);
   
   backwardsLimit.value =
-    props.currentPage <= props.pageNumberSlice + 1 ?
-      0 : props.currentPage - props.pageNumberSlice;
-  backwards.value = pageLoop.slice(backwardsLimit.value, props.currentPage - 1);
+    pageContext.currentPage <= PAGE_NUMBER_SLICE + 1 ?
+      0 : pageContext.currentPage - PAGE_NUMBER_SLICE;
+  backwards.value = pageLoop.slice(backwardsLimit.value, pageContext.currentPage - 1);
 
   forwardsLimit.value =
-    props.totalPage <= props.currentPage + props.pageNumberSlice + 1 ?
-      props.totalPage : props.currentPage + props.pageNumberSlice;
-  forwards.value = pageLoop.slice(props.currentPage, forwardsLimit.value);
+    pageContext.totalPage <= pageContext.currentPage + PAGE_NUMBER_SLICE + 1 ?
+      pageContext.totalPage : pageContext.currentPage + PAGE_NUMBER_SLICE;
+  forwards.value = pageLoop.slice(pageContext.currentPage, forwardsLimit.value);
 
   let backwardsExtra = pageLoop.slice(0, backwardsLimit.value);
   backwardsExtra = backwardsExtra.filter((num) => (num % 10) === 0);
   backwards.value = [...backwardsExtra, ...backwards.value];
   backwards.value.reverse();
 
-  let forwardsExtra = pageLoop.slice(forwardsLimit.value, props.totalPage);
+  let forwardsExtra = pageLoop.slice(forwardsLimit.value, pageContext.totalPage);
   forwardsExtra = forwardsExtra.filter((num) => (num % 10) === 0);
   forwards.value = [...forwards.value, ...forwardsExtra];
 
   mobileList.value = [];
-  const firstHalf = Math.floor((props.mobilePageDisplayNumber - 1) / 2);
-  mobileList.value.push(props.currentPage);
+  const firstHalf = Math.floor((MOBILE_PAGE_DISPLAY_NUM - 1) / 2);
+  mobileList.value.push(pageContext.currentPage);
   for (let i = 0; i < firstHalf; i++) {
-    const newNum = props.currentPage - (i + 1);
+    const newNum = pageContext.currentPage - (i + 1);
     if (newNum > 0)
       mobileList.value.push(newNum);
   }
-  const addMore = props.mobilePageDisplayNumber - mobileList.value.length;
+  const addMore = MOBILE_PAGE_DISPLAY_NUM - mobileList.value.length;
   for (let i = 0; i < addMore; i++) {
-    const newNum = props.currentPage + (i + 1);
-    if (newNum < props.totalPage + 1)
+    const newNum = pageContext.currentPage + (i + 1);
+    if (newNum < pageContext.totalPage + 1)
       mobileList.value.push(newNum);
   }
 
@@ -118,7 +118,7 @@ onMounted(() => {
 })
 
 const prevButtonClass = computed(() => {
-  if (props.currentPage === 1) {
+  if (pageContext.currentPage === 1) {
     return [
       "--disabled"
     ]
@@ -127,7 +127,7 @@ const prevButtonClass = computed(() => {
   }
 })
 const nextButtonClass = computed(() => {
-  if (props.currentPage === props.totalPage) {
+  if (pageContext.currentPage === pageContext.totalPage) {
     return [
       "--disabled"
     ]
@@ -147,7 +147,7 @@ const showFirstPage = computed(() => {
   return false;
 })
 const showLastPage = computed(() => {
-  if (props.currentPage + props.pageNumberSlice + 1 < props.totalPage) return true;
+  if (pageContext.currentPage + PAGE_NUMBER_SLICE + 1 < pageContext.totalPage) return true;
   if (forwardOverflowY.value) return true;
   return false;
 })
@@ -157,7 +157,7 @@ const showLastPage = computed(() => {
 <template>
 <nav class="page-nav">
 
-  <RouterLink class="movebutton prev" v-show="!mobile" :to="props.rootUri + '/' + String(props.currentPage - 1)" :class="prevButtonClass">
+  <RouterLink class="movebutton prev" v-show="!mobile" :to="props.rootUri + '/' + String(pageContext.currentPage - 1)" :class="prevButtonClass">
     {{ prevButtonName }}
     <Plate :roundness="roundness"/>
   </RouterLink>
@@ -181,8 +181,8 @@ const showLastPage = computed(() => {
       </template>
       </ol>
       
-      <RouterLink class="pagebutton currentpage" :to="props.rootUri + '/' + String(props.currentPage)">
-        <p>{{ props.currentPage }}</p>
+      <RouterLink class="pagebutton currentpage" :to="props.rootUri + '/' + String(pageContext.currentPage)">
+        <p>{{ pageContext.currentPage }}</p>
         <Plate :roundness="roundness"/>
       </RouterLink>
     
@@ -199,8 +199,8 @@ const showLastPage = computed(() => {
       
       <p class="dots last" v-show="showLastPage">...</p>
 
-      <RouterLink class="pagebutton lastpage" :to="props.rootUri + '/'+ String(props.totalPage)" v-show="showLastPage">
-        {{ totalPage }}
+      <RouterLink class="pagebutton lastpage" :to="props.rootUri + '/'+ String(pageContext.totalPage)" v-show="showLastPage">
+        {{ pageContext.totalPage }}
         <Plate :roundness="roundness"/>
       </RouterLink>
   </div>
@@ -208,7 +208,7 @@ const showLastPage = computed(() => {
   <ol class="pagelist mobile" v-show="mobile">
     <template v-for="page in mobileList">
       <li>
-        <RouterLink class="pagebutton" :class="`${(currentPage === page)?`currentpage`:''}`" :to="props.rootUri + '/' + String(page)">
+        <RouterLink class="pagebutton" :class="`${(pageContext.currentPage === page)?`currentpage`:''}`" :to="props.rootUri + '/' + String(page)">
           {{ page }}
           <Plate :roundness="roundness"/>
         </RouterLink>
@@ -216,7 +216,7 @@ const showLastPage = computed(() => {
     </template>
   </ol>
 
-  <RouterLink class="movebutton next" v-show="!mobile" :to="props.rootUri + '/' + String(props.currentPage + 1)" :class="nextButtonClass">
+  <RouterLink class="movebutton next" v-show="!mobile" :to="props.rootUri + '/' + String(pageContext.currentPage + 1)" :class="nextButtonClass">
     {{ nextButtonName }}
     <Plate :roundness="roundness"/>
   </RouterLink>

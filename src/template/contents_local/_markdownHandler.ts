@@ -93,6 +93,8 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRe
 
   result['readTime'] = 'not-calculated-yet';
     // will do later below. just for type matching...
+  
+  result['raw'] = "";
 
   // Set filename
   result['filename'] = filepath.split('/').slice(-1)[0];
@@ -105,10 +107,10 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRe
 
 
 
-export function formatRawMarkdowns(markdownModules: Record<string, string>): {articleRecords: Array<ArticleRecord>, articleRawRecords: Array<ArticleRawRecord>} {
+export function formatRawMarkdowns(markdownModules: Record<string, string>): {articleRecords: Array<ArticleRecord>, articleRecordsWithRaw: Array<ArticleRecord>} {
 
   const articlesList: Array<ArticleRecord> = [];
-  const articleRawRecords: Array<ArticleRawRecord> = [];
+  const articleRecordsWithRaw: Array<ArticleRecord> = [];
 
   // Get fronthead properties for each markdown files.
   for (const [ filepath, markdownRaw ] of Object.entries(markdownModules)) {
@@ -120,21 +122,15 @@ export function formatRawMarkdowns(markdownModules: Record<string, string>): {ar
     const tidiedMarkdownRaw = tidyUpRaw(markdownRaw);
     articleRecord.readTime = calcReadingTime(tidiedMarkdownRaw);
 
-    const articleRawRecord: ArticleRawRecord = {
-      title: articleRecord.title,
-      uri: articleRecord.uri,
-      tags: articleRecord.tags,
-      category: articleRecord.category,
-      date: articleRecord.date,
-      raw: tidiedMarkdownRaw
-    }
+    const articleRawRecord = { ...articleRecord }
+    articleRawRecord.raw = tidiedMarkdownRaw;
 
     articlesList.push(articleRecord);
-    articleRawRecords.push(articleRawRecord);
+    articleRecordsWithRaw.push(articleRawRecord);
   }
 
   return {
     articleRecords: articlesList,
-    articleRawRecords: articleRawRecords
+    articleRecordsWithRaw: articleRecordsWithRaw
   }
 }

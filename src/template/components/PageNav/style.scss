@@ -1,4 +1,21 @@
+:is(.scale--XXL, .scale--XL, .scale--L, .scale--M) .page-nav {
+  justify-content: space-between;
+}
+:is(.scale--S, .scale--XS, .scale--XXS) .page-nav {
+  justify-content: center;
+}
 
+:is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) .page-nav {
+  .movebutton, .pagebutton { @extend .typo-caption-16--bold; }
+  .dots { @extend .typo-caption-12--bold;}
+  --button-size: 40rem;
+  --buttons-gap: 15rem;
+}
+:is(.scale--XS, .scale--XXS) .page-nav {
+  .movebutton, .pagebutton { @extend .typo-caption-12--bold; }
+  --button-size: 28rem;
+  --buttons-gap: 15rem;
+}
 
 
 .page-nav {
@@ -72,7 +89,7 @@
   .pagebutton, .movebutton {
     @include PlateBackgroundColor(var(--Primary));
     @include PlateBackgroundOpacity(0);
-    @include PlateTransition(40ms);
+    @include PlateTransition(60ms);
   }
   :is(.pagebutton, .movebutton):hover {
     @include PlateBackgroundOpacity(0.2);
@@ -92,21 +109,3 @@
 
 
 
-:is(.scale--XXL, .scale--XL, .scale--L, .scale--M) .page-nav {
-  justify-content: space-between;
-}
-:is(.scale--S, .scale--XS, .scale--XXS) .page-nav {
-  justify-content: center;
-}
-
-:is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) .page-nav {
-  .movebutton, .pagebutton { @extend .typo-caption-16--bold; }
-  .dots { @extend .typo-caption-12--bold;}
-  --button-size: 40rem;
-  --buttons-gap: 15rem;
-}
-:is(.scale--XS, .scale--XXS) .page-nav {
-  .movebutton, .pagebutton { @extend .typo-caption-12--bold; }
-  --button-size: 28rem;
-  --buttons-gap: 15rem;
-}

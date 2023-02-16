@@ -11,8 +11,9 @@
     }
     z-index: 0;
   }
-  @include PlateBackgroundColor(var(--rlvn-nested-links-list-bg-color));
   @include PlateBorderOpacity(1);
+  @include PlateBackgroundColor(var(--rlvn-nested-links-list-bg-color));
+  @include PlateBackgroundOpacity(0);
 }
 
 #app .rlvn-nested-links-list.--expanded {
@@ -25,7 +26,7 @@
   position: relative;
   flex-direction: column;
   height: fit-content;
-  
+  @include PlateBackgroundOpacity(1);
   transform: translate(calc(var(--router-vstack-list-offset) * (-1)), 0);
 }
 #app .rlvn-nested-links-list.--shrinked li {

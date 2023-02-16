@@ -14,7 +14,7 @@ const props = defineProps<{
 function addAds(arr:Array<ArticleRecord>, num: number) {
   const middleIndex = Math.floor(arr.length / 2);
   const adRecord: ArticleRecord = {
-    title: "ad", uri: "ad", date: "ad", description: "ad", tags: [], category: "ad", coverImage: "ad", filename: "ad", highlighted: "normal", readTime: "ad"
+    title: "ad", uri: "ad", date: "ad", description: "ad", tags: [], category: "ad", coverImage: "ad", filename: "ad", highlighted: "normal", readTime: "ad", raw: ""
   }
   switch (num) {
     case 1:

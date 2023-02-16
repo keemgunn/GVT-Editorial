@@ -10,9 +10,6 @@ import LatestArticles from './Sections/03-LatestArticles.vue';
 
 const ARTICLE_PER_PAGE = 10; // DO NOT CHANGE YET
 
-// For Page Nav ========
-const PAGE_NUMBER_SLICE = 5; 
-const MOBILE_PAGE_DISPLAY_NUM = 7; 
 
 
 
@@ -33,11 +30,9 @@ const pageNum = computed(() => {
     </section>
 
     <section id="all-articles">
-      <LatestArticles  id="latest-articles-wrapper" :pageNumberSlice="PAGE_NUMBER_SLICE" :mobilePageDisplayNumber="MOBILE_PAGE_DISPLAY_NUM" :articlePerPage="ARTICLE_PER_PAGE"/>
+      <LatestArticles  id="latest-articles-wrapper" :articlesPerPage="ARTICLE_PER_PAGE"/>
       <aside id="ad-tower"></aside>
     </section>
-
-
   </main>
 
   <footer id="footer-info"></footer>

@@ -13,7 +13,7 @@ inside of @/template/App.vue.
 ======================================= */
 export default {
 
-  uri: '/categories/:filter?/:pagenum(\\d+)?',
+  uri: '/search/:pagenum(\\d+)?',
   alias: [],
   allowAccess: 'public'
 
