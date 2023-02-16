@@ -3,6 +3,8 @@ declare global {
 
   type AppType = 'app' | 'editorial' | 'landing'
 
+  type ScaleCode = 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+
   /**
    * 
    * @property XXL: number,

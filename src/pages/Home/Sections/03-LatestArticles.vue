@@ -29,31 +29,15 @@ if (pageNum.value > totalPage) {
 
 const pagedArticles: Ref<ArticleRecordsPack> = ref(articles.getPaged(props.articlePerPage, pageNum.value));
 
-const adSize = computed(() => {
-  const scale = frameStore.appScale.split('--')[1];
-  switch (scale) {
-    case 'XXS' || 'XS':
-      return {
-        width: 300, height: 250
-      }
-      break;
-    case 'S':
-      return {
-        width: 468, height: 60
-      }
-      break;
-    case 'M':
-      return {
-        width: 728, height: 90
-      }
-      break;
-  default:
-    return {
-      width: 970, height: 90
-    }
-    break;
-  }
-})
+const adSizes = {
+  XXS: { width: 300, height: 250 },
+  XS: { width: 300, height: 250 },
+  S: { width: 468, height: 60 },
+  M: { width: 728, height: 90 },
+  L: { width: 970, height: 90 },
+  XL: { width: 970, height: 90 },
+  XXL: { width: 970, height: 90 },
+} satisfies AdSizeByScale
 
 onBeforeUpdate(() => {
   pagedArticles.value = articles.getPaged(props.articlePerPage, pageNum.value)
@@ -71,7 +55,7 @@ onBeforeUpdate(() => {
   <List_ArticleCards id="latest-articles-list" 
   name="latest" cardName="ArticleCard_A" :cardRoundness="0" 
   :articles="pagedArticles.array"
-  :showAds="2" :adWidth="adSize.width" :adHeight="adSize.height"/>
+  :showAds="2" :adSizes="adSizes"/>
 
   <Title-PageSection text="" :size="20" divider="bottom" :dividerWidth="3"/>
   

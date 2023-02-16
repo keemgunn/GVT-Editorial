@@ -8,8 +8,7 @@ const props = defineProps<{
   articles: Array<ArticleRecord>;
     // articles are recommended to be ref()ed object.
   showAds: 0 | 1 | 2 | 3;
-  adWidth: number;
-  adHeight: number;
+  adSizes: AdSizeByScale
 }>();
 
 function addAds(arr:Array<ArticleRecord>, num: number) {
@@ -51,7 +50,7 @@ const articlesWithAds = computed(() => {
   <template v-for="article in articlesWithAds" :id="`list-${name}-${article.uri}`">
     <li :class="`${article.uri === 'ad'? 'ad' : 'article'}`">
       <template v-if="article.uri === 'ad'">
-        <Adbox :width="adWidth" :height="adHeight" :roundness="0"/>
+        <Adbox_ScaleShift :adSizes="adSizes" :roundness="cardRoundness"/>
       </template>
       <template v-else>
         <component :is="cardName" :article="article" :roundness="cardRoundness"/>

@@ -10,7 +10,18 @@ const featuredLoop = Array.from({length: SHOW_FEATURED_ARTICLE}, (_, i) => i)
 const featuredArticles = articles.getHighlighted('featured');
 featuredArticles.sortAsc('filename');
 featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
+
+const additionalAdSizes = {
+  XXS: { width: 300, height: 100 },
+  XS: { width: 300, height: 100 },
+  S: { width: 728, height: 90 },
+  M: { width: 970, height: 90 },
+  L: { width: 970, height: 90 },
+  XL: { width: 970, height: 90 },
+  XXL: { width: 970, height: 90 },
+} satisfies AdSizeByScale
 </script>
+
 
 
 <template>
@@ -22,8 +33,11 @@ featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
 
     <Adbox id="featured-ad-0" :width="300" :height="600" :roundness="0"/>
     <Adbox id="featured-ad-1" :width="300" :height="100" :roundness="0"/>
-    <Adbox id="featured-ad-2" :width="300" :height="100" :roundness="0"/>
   </ol>
+
+  <div class="additional-ads">
+    <Adbox_ScaleShift :adSizes="additionalAdSizes" :roundness="0"/>
+  </div>
 </section>
 </template>
 
@@ -52,12 +66,11 @@ featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
   #featured-2 { grid-area: 🍠 ; }
   #featured-ad-0 { grid-area: 🙇‍♂️; }
   #featured-ad-1 { grid-area: 👫; }
-  #featured-ad-2 { grid-area: 👨‍👦‍👦; }
   li {width: 100%; height: 100%;}
 }
 
 :is(.scale--XXL, .scale--XL, .scale--L, .scale--M) #featured-articles ol {
-  #featured-ad-1, #featured-ad-2 { display: none; }
+  #featured-ad-1 { display: none; }
   grid-template-areas: 
   "🍑 🍑 🙇‍♂️"
   "🍑 🍑 🙇‍♂️"
@@ -72,7 +85,7 @@ featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
   padding: 58rem 0 58rem 0;
 }
 .scale--S #featured-articles ol {
-  #featured-ad-1, #featured-ad-2 { display: none; }
+  #featured-ad-1 { display: none; }
   grid-template-areas: 
   "🍑 🍑 🙇‍♂️"
   "🧅 🧅 🙇‍♂️"
@@ -101,5 +114,9 @@ featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
   gap: 24rem;
   height: 1080rem;
   padding: 40rem 0 40rem 0;
+}
+
+.additional-ads {
+  margin-bottom: 58rem;
 }
 </style>

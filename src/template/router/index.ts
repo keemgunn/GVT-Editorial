@@ -15,8 +15,16 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    // always scroll to top
-    return { top: 0 }
+    if (to.hash.includes('#')) {
+      return {
+        el: to.hash,
+        // top: -200,
+        // behavior: 'smooth',
+      }
+    }
+    else {
+      return { top: 0 }
+    }
   },
 })
 

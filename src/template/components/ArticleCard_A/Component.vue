@@ -40,7 +40,7 @@ const containerRoundness = getRoundStyle(props.roundness);
       <h1 class="title">{{ article.title }}</h1>
       <p class="description">{{ article.description }}</p>
 
-      <Article_InfoPack id="info-tail" :article="article" :size="infoPackSize" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
+      <Article_InfoPack id="info-tail" :article="article" :size="12" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
     </div>
 
 

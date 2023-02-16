@@ -52,7 +52,8 @@
     width: 100%;
     max-width: 500rem;
     // justify-content: space-between;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: center;
   }
 
   .dots {
@@ -64,7 +65,7 @@
   .pagebutton {
     width: var(--button-size);
   }
-  .pagebutton.router-link-active {
+  .pagebutton.router-link-active, .currentpage {
     @include PlateBorder(2rem solid var(--Primary));
     color: var(--Primary);
   } 

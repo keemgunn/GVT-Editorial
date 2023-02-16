@@ -208,7 +208,7 @@ const showLastPage = computed(() => {
   <ol class="pagelist mobile" v-show="mobile">
     <template v-for="page in mobileList">
       <li>
-        <RouterLink class="pagebutton" :to="props.rootUri + '/' + String(page)">
+        <RouterLink class="pagebutton" :class="`${(currentPage === page)?`currentpage`:''}`" :to="props.rootUri + '/' + String(page)">
           {{ page }}
           <Plate :roundness="roundness"/>
         </RouterLink>

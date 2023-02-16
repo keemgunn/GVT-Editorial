@@ -6,10 +6,10 @@
   --PrimaryContainer: #BCE0C6;
   --OnPrimaryContainer: #1D4E25;
   
-  --Secondary: #005E4E;
-  --OnSecondary: #DAF9FF;
-  --SecondaryContainer: #81F0E7;
-  --OnSecondaryContainer: #003326;
+  --Secondary: #7D5B43;
+  --OnSecondary: #FFF8F0;
+  --SecondaryContainer: #F0E2D3;
+  --OnSecondaryContainer: #402111;
   
   --Tertiary: #4F6E92;
   --OnTertiary: #F0F4FF;
@@ -34,26 +34,29 @@
 
 
   .theme--default-dark {
-  --Primary: #4C8558;
-  --OnPrimary: #E5FFED;
-  --PrimaryContainer: #BCE0C6;
-  --OnPrimaryContainer: #1D4E25;
-  
-  --Secondary: #005E4E;
-  --OnSecondary: #DAF9FF;
-  --SecondaryContainer: #81F0E7;
-  --OnSecondaryContainer: #003326;
-  
-  --Tertiary: #4F6E92;
-  --OnTertiary: #F0F4FF;
-  --TertiaryContainer: #B9D3FF;
-  --OnTertiaryContainer: #27435B;
-  
-  --Surface: #ffffff;
-  --OnSurface: #001D03;
-  
-  --Background: #f0f0f0;
-  --OnBackground: #161616;
+    --Primary: #4C8558;
+    --OnPrimary: #E5FFED;
+    --PrimaryContainer: #BCE0C6;
+    --OnPrimaryContainer: #1D4E25;
+    
+    --Secondary: #7D5B43;
+    --OnSecondary: #FFF8F0;
+    --SecondaryContainer: #F0E2D3;
+    --OnSecondaryContainer: #402111;
+    
+    --Tertiary: #4F6E92;
+    --OnTertiary: #F0F4FF;
+    --TertiaryContainer: #B9D3FF;
+    --OnTertiaryContainer: #27435B;
+    
+    --Surface: #ffffff;
+    --OnSurface: #001D03;
+    
+    --Background: #f0f0f0;
+    --OnBackground: #161616;
+    
+    --SurfaceVariant: #FFFEF0;
+    --OnSurfaceVariant: #5E5541;
   
   --SurfaceVariant: #FFFEF0;
   --OnSurfaceVariant: #5E5541;
@@ -62,6 +65,9 @@
   --Shadow-3: rgba(0, 0, 0, 0.12);
   --Shadow-4: rgba(0, 0, 0, 0.16);
   }
+  
+
+
   
   // SYSTEM COLORS =====================
   
