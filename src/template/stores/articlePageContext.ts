@@ -3,7 +3,7 @@
   And distribute to all instances.
 */
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 export const useArticlePageContext = defineStore('articlePageContext', () => {
@@ -45,10 +45,18 @@ export const useArticlePageContext = defineStore('articlePageContext', () => {
     console.log('articlePageContext - setTotalPage to:', to);
   }
 
+  function onPageChange(hook: () => void) {
+    watch(() => currentPage.value, (newPage, oldPage) => {
+      console.log('articlePageContext - onPageChange CALLED');
+      hook();
+    })
+  }
+
   return {
     currentPage,
     totalPage,
     setTotalPage,
-    pushToFirstPage
+    pushToFirstPage,
+    onPageChange,
   }
 })

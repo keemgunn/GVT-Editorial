@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const latestArticles = ref(articles.query(undefined, undefined, undefined, props.articlesPerPage));
 
-watch(() => articles.pageContext.currentPage, (newPage, oldPage) => {
+articles.pageContext.onPageChange(() => {
   latestArticles.value = articles.query(undefined, undefined, undefined, props.articlesPerPage);
 })
 

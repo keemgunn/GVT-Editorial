@@ -103,10 +103,9 @@ function detectOverflow() {
 onBeforeMount(() => {
   renderPages();
 })
-onBeforeUpdate(() => {
-  renderPages();
+pageContext.onPageChange(() => {
+  renderPages()
 })
-
 
 onMounted(() => {
   backwardsListElement.value = document.querySelector('.backward');
