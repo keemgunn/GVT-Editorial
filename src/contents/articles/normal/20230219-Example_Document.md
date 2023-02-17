@@ -1,5 +1,5 @@
 ---
-title: Some Titles Must be LOOOOOOONNNNNGGGGG !!! Here's a example of it.
+title: Some Titles Must be LONG AND COMPLICATED !!! Here's a example of it. LONG LONG TITLE. Very Long Title. Very long.
 date: 2023-02-19
 uri: article-red-riding-hood-19
 tags: [ Jekyll, tutorial ]

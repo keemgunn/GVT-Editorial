@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, computed, ref, watch, onBeforeMount, onBeforeUpdate, onMounted } from 'vue';
+import { defineProps, computed, ref, onBeforeMount, onMounted } from 'vue';
 import type { Ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useArticlePageContext } from '@/template/stores/articlePageContext';

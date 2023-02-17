@@ -25,15 +25,25 @@
 		},
     "material-icon-theme.folders.associations": {
 
+
+			"override": "project",
+
+
+			"_process": "dump",
 			"ui": "Queue",
 			"atoms": "Redux-actions",
 			"atoms/Icon": "",
 			"blocks": "Scala",
+			
 
 			"frame": "mobile",
 			"typography": "Mock",
 
-			"customComponents": "Vue-directives"
+			"customComponents": "Vue-directives",
+			"compositions": "Mjml",
+
+			"contents_local": "meta"
+			
 
 
 

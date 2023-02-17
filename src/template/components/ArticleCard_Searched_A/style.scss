@@ -9,8 +9,8 @@
   --text-box-padding: 18rem 28rem 18rem 20rem;
   --title-line-clamp: 3;
   --title-max-height: 4.5em;
-  --description-line-clamp: 1;
-  --description-max-height: 1.5em;
+  --description-line-clamp: 2;
+  --description-max-height: 3.0em;
   h1.title { @extend .typo-header-24; }
   p.description { @extend .typo-body-14; }
   
