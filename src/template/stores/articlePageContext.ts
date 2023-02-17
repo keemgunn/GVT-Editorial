@@ -24,14 +24,21 @@ export const useArticlePageContext = defineStore('articlePageContext', () => {
   });
 
   function pushToFirstPage() {
+    console.log('articlePageContext - pushToFirstPage()');
     if (currentPage.value > 1) {
       const pathArr = route.path.split('/');
       const pageNumIndex = pathArr.indexOf(String(currentPage.value));
       pathArr.splice(pageNumIndex, 1);
-      const newPath = pathArr.join('/');
-      router.push(newPath);
+
+      if (pathArr.length > 1) {
+        const newPath = pathArr.join('/');
+        router.push(newPath);
+      }
+      else {
+        const newPath = '/'; // HOME PATH
+        router.push(newPath);
+      }
     }
-    else return;
   }
 
   /** Mutation evoked when articles.query called. */

@@ -4,6 +4,8 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { useRoute } from 'vue-router';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
 import { searchByFormInput } from '@/template/composables/searchByFormInput';
+import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
+
 
 const ARTICLES_PER_PAGE = 15;
 
@@ -11,6 +13,7 @@ const frameStore = useFrameStore();
 
 const route = useRoute();
 const { keyword } = route.query;
+console.warn(route.params);
 
 const { searchedArticles, requestedKeyword, searchArticles } = searchByFormInput('search-billboard-form', 'searchKeyword');
 
@@ -29,7 +32,7 @@ onBeforeMount(() => {
   }
 })
 
-const adSizes = {
+const articleListAdSizes = {
   XXS: { width: 300, height: 250 },
   XS: { width: 300, height: 250 },
   S: { width: 468, height: 60 },
@@ -55,18 +58,18 @@ const adSizes = {
       <Vector class="brand-logo" :src="brandLogo"/>
     </section>
 
-    <section id="body">
-      <div id="search-result">
-        <Title-PageSection :text="`${searchedNumber} results for ${requestedKeyword}`" :size="20" divider="bottom" :dividerWidth="3"/>
-
-        <List_ArticleCards id="searched-articles-list" 
-        name="searchResult" cardName="ArticleCard_A" :cardRoundness="0" 
-        :articles="searchedArticles.array"
-        :showAds="0" :adSizes="adSizes"/>
-      </div>
-
-      <aside id="ad-tower"></aside>
-    </section>
+    <ArticleList_AdTower
+    :title="`${searchedNumber} results for ${requestedKeyword}`" 
+    :titleSize="20" 
+    :titleDivider="'bottom'"
+    :titleDividerWidth="3"
+    articleCardName="ArticleCard_A"
+    :articleCardRoundness="0"
+    :articlesArray="searchedArticles.array"
+    :showAdsInList="0"
+    :adSizes="articleListAdSizes"
+    rootUri=""
+    />
   </main>
 
   <footer id="other-actions"></footer>

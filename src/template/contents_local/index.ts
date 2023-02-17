@@ -78,12 +78,13 @@ export const useLocalContents = defineStore('localContents', () => {
     
       
     if (articlesPerPage && pageContext.currentPage) { // Might be 0
-    pageContext.setTotalPage(
-      Math.ceil(newArr.length / articlesPerPage)
-    );
+      pageContext.setTotalPage(
+        Math.ceil(newArr.length / articlesPerPage)
+      );
     
-    if (pageContext.currentPage > pageContext.totalPage)
-      pageContext.pushToFirstPage();
+      if (pageContext.currentPage > pageContext.totalPage) {
+        pageContext.pushToFirstPage();
+      }
   
       const startNum = (pageContext.currentPage - 1) * articlesPerPage;
       const endNum = startNum + articlesPerPage;
@@ -109,6 +110,10 @@ export const useLocalContents = defineStore('localContents', () => {
       pageContext.setTotalPage(
         Math.ceil(searchedArticleRawPack.array.length / articlesPerPage)
       );
+
+      if (pageContext.currentPage > pageContext.totalPage) {
+        pageContext.pushToFirstPage();
+      }
 
       const startNum = (pageContext.currentPage - 1) * articlesPerPage;
       const endNum = startNum + articlesPerPage;

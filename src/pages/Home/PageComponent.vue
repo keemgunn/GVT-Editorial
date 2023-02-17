@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { onBeforeMount, computed, ref } from 'vue';
-import { useFrameStore } from '@/template/styles/frame/_store';
+import { computed, ref } from 'vue';
 import { useLocalContents } from '@/template/contents_local';
 import FeaturedArticles from './Sections/01-FeaturedArticles.vue';
 import TrendingArticles from './Sections/02-TrendingArticles.vue';
-import LatestArticles from './Sections/03-LatestArticles.vue';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
 
 
