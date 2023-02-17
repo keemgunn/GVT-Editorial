@@ -26,18 +26,33 @@ export const useArticlePageContext = defineStore('articlePageContext', () => {
   function pushToFirstPage() {
     console.log('articlePageContext - pushToFirstPage()');
     if (currentPage.value > 1) {
-      const pathArr = route.path.split('/');
+      const currentUri = route.path;
+      let pathArr = [];
+      let queries = "";
+      let newUri = "";
+
+      if (currentUri.includes('?')) {
+      // When the URI contains query paremeters:
+        const querySplit = currentUri.split('?');
+        queries = querySplit[1];
+        pathArr = querySplit[0].split('/');
+      }
+      else {
+        pathArr = currentUri.split('/');
+      }
+
       const pageNumIndex = pathArr.indexOf(String(currentPage.value));
       pathArr.splice(pageNumIndex, 1);
 
-      if (pathArr.length > 1) {
-        const newPath = pathArr.join('/');
-        router.push(newPath);
-      }
-      else {
-        const newPath = '/'; // HOME PATH
-        router.push(newPath);
-      }
+      if (pathArr.length < 2)
+      // When URI is basepath Or something else error
+        newUri = '/'
+      else
+        newUri = pathArr.join('/');
+      
+      if (queries.length > 0) newUri = newUri + queries;
+      
+      router.push(newUri);
     }
   }
 

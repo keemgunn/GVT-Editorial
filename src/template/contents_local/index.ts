@@ -97,18 +97,25 @@ export const useLocalContents = defineStore('localContents', () => {
 
 
 
-  const searchQuery = (query: string, articlesPerPage?: number): ArticleRawRecordsPack => {
+  const searchQuery = (query: string, articlesPerPage?: number): {searchedRawRecords:ArticleRawRecordsPack, resultCount:number} => {
+
     // const querysafe = regexQuerySafe(query);
-    const searchedArticleRawPack = new ArticleRawRecordsPack(
+    const searchedRawRecords = new ArticleRawRecordsPack(
       articleRawList.filter((article) => {
         return article.raw.includes(query);
       }) || []
     )
-    searchedArticleRawPack.sortDesc('date');
 
+    // Sort DESC
+    searchedRawRecords.sortDesc('date');
+
+    // For displaying search result counts
+    const resultCount = searchedRawRecords.array.length;
+
+    // SPLIT INTO PAGES
     if (articlesPerPage) {
       pageContext.setTotalPage(
-        Math.ceil(searchedArticleRawPack.array.length / articlesPerPage)
+        Math.ceil(searchedRawRecords.array.length / articlesPerPage)
       );
 
       if (pageContext.currentPage > pageContext.totalPage) {
@@ -118,10 +125,13 @@ export const useLocalContents = defineStore('localContents', () => {
       const startNum = (pageContext.currentPage - 1) * articlesPerPage;
       const endNum = startNum + articlesPerPage;
 
-      searchedArticleRawPack.array = searchedArticleRawPack.array.slice(startNum, endNum);
+      searchedRawRecords.array = searchedRawRecords.array.slice(startNum, endNum);
     }
 
-    return searchedArticleRawPack
+    return {
+      searchedRawRecords,
+      resultCount,
+    }
   }
 
 

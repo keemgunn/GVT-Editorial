@@ -20,7 +20,6 @@ const componentList = {
 
 
 
-
 /**
  * Import all components in `@/template/components` and exports.
 */

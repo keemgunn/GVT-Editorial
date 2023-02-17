@@ -53,7 +53,7 @@ const articleListAdSizes = {
     :articlesArray="latestArticles.array"
     :showAdsInList="2"
     :adSizes="articleListAdSizes"
-    rootUri=""
+    pageURI="/_PAGENUM_"
     />
   </main>
 

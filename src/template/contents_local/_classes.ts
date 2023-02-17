@@ -39,7 +39,7 @@ export class ArticleRawRecordsPack {
   }
 
   highlightKeyword(keyword: string) {
-    if (this.array.length === 0) return new ArticleRawRecordsPack([]);
+    if (this.array.length === 0) return;
 
     const querysafe = regexQuerySafe(keyword);
     const regex = new RegExp(querysafe, 'gi');
@@ -53,11 +53,11 @@ export class ArticleRawRecordsPack {
       );
       newArr.push(newRecord);
     })
-    return new ArticleRawRecordsPack(newArr);
+    this.array = newArr;
   }
 
   sliceAroundKeyword(keyword: string, length: number) {
-    if (this.array.length === 0) return new ArticleRawRecordsPack([]);
+    if (this.array.length === 0) return;
 
     const querysafe = regexQuerySafe(keyword);
     const newArr: Array<ArticleRecord> = [];
@@ -70,7 +70,7 @@ export class ArticleRawRecordsPack {
 
       newArr.push(newRecord);
     })
-    return new ArticleRawRecordsPack(newArr);
+    this.array = newArr;
   }
 
   /** Set this pack with sorting condition */

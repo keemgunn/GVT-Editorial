@@ -21,7 +21,7 @@ const props = defineProps<{
   showAdsInList: number;
   adSizes: AdSizeByScale;
 
-  rootUri: string;
+  pageURI: string;
 }>();
 
 const articleListName = computed(() => {
@@ -58,7 +58,7 @@ const articleListName = computed(() => {
     divider="bottom" 
     :dividerWidth="titleDividerWidth"/>
 
-    <PageNav :rootUri="rootUri" 
+    <PageNav :pageURI="pageURI" 
     prevButtonName="◀︎ PREV" 
     nextButtonName="NEXT ▶︎" 
     :roundness="0"/>

@@ -1,34 +1,49 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, computed } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
 import { searchByFormInput } from '@/template/composables/searchByFormInput';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
 
 
-const ARTICLES_PER_PAGE = 15;
+const ARTICLES_PER_PAGE = 5;
 
 const frameStore = useFrameStore();
-
 const route = useRoute();
-const { keyword } = route.query;
-console.warn(route.params);
+const router = useRouter();
 
-const { searchedArticles, requestedKeyword, searchArticles } = searchByFormInput('search-billboard-form', 'searchKeyword');
+// const {
+//   searchedArticles,
+//   requestedKeyword,
+//   searchState,
+//   searchedNumber, 
+//   searchArticles
+// } = searchByFormInput('search-billboard-form', 'searchKeyword', ARTICLES_PER_PAGE);
 
-const searchedNumber = computed(() => {
-  return searchedArticles.value.array.length;
+
+const searchPackage = searchByFormInput('search-billboard-form', 'searchKeyword', ARTICLES_PER_PAGE);
+
+
+
+
+
+const pageURI = computed(() => {
+  if (searchPackage.requestedKeyword.value.length > 0)
+    return "/search/" + "_PAGENUM_" + "?keyword=" + searchPackage.requestedKeyword.value;
+  else
+    return "/search/" + "_PAGENUM_";
 })
 
 // Automatically call for search function when user enters with search query parameter in url. 
 // (ex: /search?keyword=apple)
+const { keyword } = route.query;
 const inputTextBind = ref("");
 onBeforeMount(() => {
   if (keyword) {
     inputTextBind.value = keyword as string;
-    searchArticles(keyword as string);
-    requestedKeyword.value = keyword as string;
+    searchPackage.searchArticles(keyword as string);
+    searchPackage.requestedKeyword.value = keyword as string;
   }
 })
 
@@ -58,17 +73,22 @@ const articleListAdSizes = {
       <Vector class="brand-logo" :src="brandLogo"/>
     </section>
 
+    <p v-show="searchPackage.requestedKeyword.value.length === 0">
+      {{ searchPackage.searchState.value }}
+    </p>
+
     <ArticleList_AdTower
-    :title="`${searchedNumber} results for ${requestedKeyword}`" 
+    v-show="searchPackage.requestedKeyword.value.length > 0"
+    :title="searchPackage.searchState.value" 
     :titleSize="20" 
     :titleDivider="'bottom'"
     :titleDividerWidth="3"
     articleCardName="ArticleCard_A"
     :articleCardRoundness="0"
-    :articlesArray="searchedArticles.array"
+    :articlesArray="searchPackage.searchedArticles.value.array"
     :showAdsInList="0"
     :adSizes="articleListAdSizes"
-    rootUri=""
+    :pageURI="pageURI"
     />
   </main>
 
