@@ -80,7 +80,6 @@ const articleListName = computed(() => {
   --container-vertical-padding: 74rem;
   --container-gap: 30rem;
   --items-gap: 36rem;
-  --articles-side-padding: 0;
   --ad-tower-width: 300rem;
   
 }
@@ -90,7 +89,6 @@ const articleListName = computed(() => {
   --container-vertical-padding: 68rem;
   --container-gap: 30rem;
   --items-gap: 32rem;
-  --articles-side-padding: 0;
   --ad-tower-width: 160rem;
   
 }
@@ -100,7 +98,6 @@ const articleListName = computed(() => {
   --container-vertical-padding: 50rem;
   --container-gap: 30rem;
   --items-gap: 30rem;
-  --articles-side-padding: 0;
   --ad-tower-width: 160rem;
   
 }
@@ -110,7 +107,6 @@ const articleListName = computed(() => {
   --container-vertical-padding: 50rem;
   --container-gap: 38rem;
   --items-gap: 24rem;
-  --articles-side-padding: 24rem;
   --ad-tower-width: 100%;
 
 }
@@ -135,7 +131,6 @@ const articleListName = computed(() => {
   display: flex;
   flex-direction: column;
   gap: var(--items-gap);
-  padding: var(--articles-side-padding);
   width: 100%;
   flex-shrink: 1;
   min-width: 0;
@@ -153,7 +148,7 @@ const articleListName = computed(() => {
 .ad-tower-wrapper {
   width: var(--ad-tower-width);
   flex-shrink: 0;
-  background-color: cadetblue;
+  background-color: #5f9ea0;
 }
 
 

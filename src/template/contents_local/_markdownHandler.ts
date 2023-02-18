@@ -2,20 +2,6 @@ import articleConfigs from '@/contents/articles/configs.yml';
 import { calcReadingTime, checkCategory, checkDuplicatedUri, extractFrontHeadPart, tidyUpRaw, toRealArray } from './_helpers';
 const { categories, uriParent } = articleConfigs;
 
-
-/**
-// GET Keys of interface: ArticleRecord as Array<string>
-const frontHeadClassTypeModule = import.meta.glob('./__types.ts', { eager: true, import:'default', as: 'raw ' }) as Record<string, string>;
-// console.log(frontHeadClassTypeModule);
-
-const frontHeadClassTypeLines = (frontHeadClassTypeModule['./__types.ts'] as any).split('ArticleRecord')[1].split('\n').slice(1).slice(0, -2) as Array<string>
-
-const articleFrontHeadKeys: Array<string> = [];
-frontHeadClassTypeLines.forEach((line) => {
-  articleFrontHeadKeys.push(line.split(":")[0].trim());
-})
-*/
-
 const articleFrontHeadKeys = [
   // --------- FROM FrontHead Props
   "title",

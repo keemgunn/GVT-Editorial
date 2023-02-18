@@ -126,7 +126,7 @@ const CL_showBackgroundColor = computed(() => {
 }
 :is(.scale--XS, .scale--XXS){
   --contents-container-width: 100%;
-  --contents-side-padding: 0;
+  --contents-side-padding: 16rem;
   --nav-bar-height: 40rem;
 }
 

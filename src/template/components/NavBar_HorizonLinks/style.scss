@@ -1,4 +1,33 @@
 /* components/NavBar_Editorial */
+
+.scale--XXL #app .nav-bar-horizon-links,
+.scale--XL #app .nav-bar-horizon-links,
+.scale--L #app .nav-bar-horizon-links {
+  header { 
+    padding: 0;
+  }
+}
+.scale--M #app .nav-bar-horizon-links {
+  header { 
+    padding: 0 40rem;
+  }
+}
+.scale--S #app .nav-bar-horizon-links {
+  header { 
+    padding: 0 30rem;
+  }
+}
+.scale--XS #app .nav-bar-horizon-links,
+.scale--XXS #app .nav-bar-horizon-links {
+  header { 
+    padding: 0 26rem;
+  }
+  .nav-logo, .nav-logo svg {
+    width: 100%;
+  }
+}
+
+
 #app {
   --nav-bar-horizon-links-bg-color: var(--Surface);
 }
@@ -69,31 +98,3 @@
 
 /* SIZES */
 /* ----------------------------------------------- */
-
-
-.scale--XXL #app .nav-bar-horizon-links,
-.scale--XL #app .nav-bar-horizon-links,
-.scale--L #app .nav-bar-horizon-links {
-  header { 
-    padding: 0;
-  }
-}
-.scale--M #app .nav-bar-horizon-links {
-  header { 
-    padding: 0 40rem;
-  }
-}
-.scale--S #app .nav-bar-horizon-links {
-  header { 
-    padding: 0 30rem;
-  }
-}
-.scale--XS #app .nav-bar-horizon-links,
-.scale--XXS #app .nav-bar-horizon-links {
-  header { 
-    padding: 0 26rem;
-  }
-  .nav-logo, .nav-logo svg {
-    width: 100%;
-  }
-}

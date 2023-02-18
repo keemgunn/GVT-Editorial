@@ -5,7 +5,8 @@ import { useLocalContents } from '@/template/contents_local';
 const { articles } = useLocalContents();
 
 const BREAK_FLEXGRID_WHEN = 1030;
-const frame = useFrameStore();
+const CARDS_ROUNDNESS = 0;
+const frameStore = useFrameStore();
 
 // DON'T CHANGE THIS... 
 // ONlY CAN HANDLE UP TO 3 FOR NOW
@@ -23,7 +24,7 @@ const flexGridColumn = computed(() => {
   return Math.round(categoryCount / 2);
 })
 const flexGridBreaker = computed(() =>
-  frame.viewWidth < BREAK_FLEXGRID_WHEN
+  frameStore.viewWidth < BREAK_FLEXGRID_WHEN
 )
 const flexGridClass = computed(() => {
   if (flexGridBreaker.value) {
@@ -38,17 +39,32 @@ const flexGridClass = computed(() => {
     ]
   }
 })
+const titleDivider = computed(() => {
+  if (/--XXS|--XS/.test(frameStore.appScale))
+    return "bottom"
+  else
+    return "none"
+})
 </script>
 
 
 <template>
-<section id="categegories-and-trending">
+<section id="categories-and-trending">
   <div class="wrapper">
+
     <div class="categories-wrapper">
-      <Title-PageSection text="Categories" :size="20" divider="none" :dividerWidth="3"/>
+      <Title-PageSection 
+      text="Categories" 
+      :size="20" 
+      :divider="titleDivider" 
+      :dividerWidth="3"/>
+
       <ol id="article-categories" :class="flexGridClass">
         <li v-for="cat in categorySet" :id="`cat-${cat}`">
-          {{ categoryRecords[cat].uri }}
+          <ArticleCategoryCard
+          :name="cat"
+          :info="categoryRecords[cat]"
+          />
         </li>
       </ol>
     </div>
@@ -56,13 +72,23 @@ const flexGridClass = computed(() => {
     <Adbox id="trending-ad-0" :width="300" :height="100" :roundness="0"/>
     
     <div class="trending-wrapper">
-      <Title-PageSection text="Trending" :size="20" divider="none" :dividerWidth="3"/>
+      <Title-PageSection 
+      text="Trending" 
+      :size="20" 
+      :divider="titleDivider" 
+      :dividerWidth="3"/>
+
       <ol id="trending-articles">
-        <li v-for="i in trendingLoop" :id="`featured-${i}`">
-            {{ trendingArticles.array[i].title }}
+        <li v-for="i in trendingLoop" :id="`trending-${i}`">
+          <ArticleCard_Trending_A
+          :trendingIndex="i"
+          :article="trendingArticles.array[i]"
+          :roundness="CARDS_ROUNDNESS"
+          />
         </li>
       </ol>
     </div>
+
   </div>
 </section>
 </template>
@@ -74,30 +100,94 @@ const flexGridClass = computed(() => {
   --contents-container-width: ...
   --contents-side-padding: ...
 */
-.home #highlighted-articles #categegories-and-trending .wrapper {
-    width: var(--contents-container-width);
-    padding-left: var(--contents-side-padding);
-    padding-right: var(--contents-side-padding);
-  }
 
-.home #highlighted-articles #categegories-and-trending {
+:is(.scale--XXL, .scale--XL, .scale--L) 
+#categories-and-trending {
+  --wrapper-direction: row;
+  --wrapper-padding-top: 40rem;
+  --wrapper-padding-bottom: 80rem;
+  --wrapper-gap: 30rem;
+  --item-gap: 30rem;
+
+  --title-padding-bottom: 22rem;
+  --categories-height: unset;
+  --trending-width: 300rem;
+  #trending-ad-0 { display: none; }
+}
+:is(.scale--M) 
+#categories-and-trending {
+  --wrapper-direction: row;
+  --wrapper-padding-top: 36rem;
+  --wrapper-padding-bottom: 74rem;
+  --wrapper-gap: 30rem;
+  --item-gap: 20rem;
+
+  --title-padding-bottom: 22rem;
+  --categories-height: unset;
+  --trending-width: 300rem;
+  #trending-ad-0 { display: none; }
+}
+:is(.scale--S) 
+#categories-and-trending {
+  --wrapper-direction: row;
+  --wrapper-padding-top: 30rem;
+  --wrapper-padding-bottom: 60rem;
+  --wrapper-gap: 24rem;
+  --item-gap: 8rem;
+
+  --title-padding-bottom: 20rem;
+  --categories-height: unset;
+  --trending-width: 300rem;
+  #trending-ad-0 { display: none; }
+}
+:is(.scale--XS, .scale--XXS) 
+#categories-and-trending {
+  --wrapper-direction: column;
+  --wrapper-padding-top: 40rem;
+  --wrapper-padding-bottom: 60rem;
+  --wrapper-gap: 40rem;
+  --item-gap: 16rem;
+
+  --title-padding-bottom: 18rem;
+  --categories-height: 808rem;
+  --trending-width: 100%;
+  #trending-ad-0 { display: block; }
+}
+
+
+
+.home #categories-and-trending {
+  width: 100%;
+  background-color: var(--Surface);
+
   display: flex;
   justify-content: center;
-  background-color: var(--Surface);
-  width: 100%;
 
   .wrapper {
+    width: var(--contents-container-width);
+    height: fit-content;
+
     display: flex;
+    flex-direction: var(--wrapper-direction);
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    gap: var(--wrapper-gap);
+
+    padding: 
+      var(--wrapper-padding-top) 
+      var(--contents-side-padding) 
+      var(--wrapper-padding-bottom) 
+      var(--contents-side-padding);
+
     .title-pagesection { 
-      flex-shrink: unset; 
       width: 100%;
+      flex-shrink: 0; 
+      padding-bottom: var(--title-padding-bottom);
     }
 
-    --item-gap: 10rem;
-
     .categories-wrapper {
+      width: 100%;
+      height: var(--categories-height);
       display: flex;
       flex-direction: column;
       #article-categories { 
@@ -107,69 +197,24 @@ const flexGridClass = computed(() => {
         gap: var(--item-gap);
       }
     }
+
+    #trending-ad-0 { 
+      align-self: center; 
+    }
     
     .trending-wrapper {
+      width: var(--trending-width);
+      flex-shrink: 0;
+      min-height: 0;
       display: flex;
       flex-direction: column;
-      flex-shrink: 0;
       #trending-articles {
         display: flex;
         flex-grow: 1;
         flex-direction: column;
-        justify-content: center;
         gap: var(--item-gap);
-        li { 
-          flex-grow: 1;
-        }
       }
     }
-  }
-}
-
-:is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) #categegories-and-trending .wrapper {
-  flex-direction: row;
-  gap: 30rem;
-  height: 800rem;
-  padding: 40rem 0 80rem 0;
-
-  .title-pagesection { margin-bottom: 22rem; }
-  #trending-ad-0 { display: none; }
-  .categories-wrapper {
-    flex-grow: 1;
-    height: 100%;
-  }
-  .trending-wrapper { 
-    width: 300rem; 
-    height: 100%;
-  }
-}
-
-.scale--M #categegories-and-trending .wrapper {
-  height: 730rem;
-  padding: 36rem 0 74rem 0;
-}
-
-.scale--S #categegories-and-trending .wrapper {
-  height: 880rem;
-  padding: 30rem 0 60rem 0;
-  gap: 26rem;
-  .title-pagesection { padding-bottom: 20rem; }
-}
-
-:is(.scale--XS, .scale--XXS) #categegories-and-trending .wrapper {
-  flex-direction: column;
-  height: 1720rem;
-  padding: 40rem 0 60rem 0;
-  gap: 40rem;
-  .categories-wrapper {
-    width: 100%;
-    padding: 0 26rem 0 26rem;
-    flex-grow: 1.8;
-  }
-  .trending-wrapper { 
-    width: 100%; 
-    padding: 0 26rem 0 26rem;
-    flex-grow: 1; 
   }
 }
 </style>

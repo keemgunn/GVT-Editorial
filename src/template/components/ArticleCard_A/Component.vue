@@ -35,13 +35,13 @@ const containerRoundness = getRoundStyle(props.roundness);
     <img :src="article.coverImage" alt="">
   </div>
   <div class="textbox">
-      <Article_InfoPack id="info-head" v-show="showHeadCategoryInfo" :article="article" :size="12" :showReadingTime="false" :showDate="false" :showCategory="true"/>
+    <Article_InfoPack id="info-head" v-show="showHeadCategoryInfo" :article="article" :size="12" :showReadingTime="false" :showDate="false" :showCategory="true"/>
 
-      <h1 class="title">{{ article.title }}</h1>
-      <p class="description">{{ article.description }}</p>
+    <h1 class="title">{{ article.title }}</h1>
+    <p class="description">{{ article.description }}</p>
 
-      <Article_InfoPack id="info-tail" :article="article" :size="12" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
-    </div>
+    <Article_InfoPack id="info-tail" :article="article" :size="12" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
+  </div>
 
 
   <Plate :roundness="roundness"/>

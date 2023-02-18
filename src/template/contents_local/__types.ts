@@ -55,9 +55,10 @@ declare global {
 
   interface CategoryRecord {
     description: string,
-    uri: string
+    uri: string,
+    coverImage: string,
+    accentColor: string,
   }
-  type CategoryRecords = Record<string, CategoryRecord>;
 
 
 }

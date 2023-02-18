@@ -34,13 +34,15 @@ export const useLocalContents = defineStore('localContents', () => {
     return 0;
   })
 
-
-
   // For Filtering Articles with Tags
-  const tagSet: Set<string> = new Set([]);
+  const tags: Record<string, number> = {};
   articleList.forEach((article) => {
     article.tags.forEach((tag) => {
-      tagSet.add(tag);
+      if (tags[tag]) {
+        tags[tag] = tags[tag] + 1;
+      } else {
+        tags[tag] = 1;
+      }
     })
   });
 
@@ -48,8 +50,8 @@ export const useLocalContents = defineStore('localContents', () => {
   const categorySet: Set<string> = new Set(Object.keys(categories));
 
   /** ((Local Markdown Files)) Get a SET of categories. */
-  const getArticleCategoryRecords = (): CategoryRecords => {
-    return categories as CategoryRecords
+  const getArticleCategoryRecords = (): Record<string, CategoryRecord> => {
+    return categories as Record<string, CategoryRecord>
   }
 
   // For Pagination 
@@ -169,7 +171,7 @@ export const useLocalContents = defineStore('localContents', () => {
     articles: {
       getCategoryRecords: getArticleCategoryRecords,
       getCategorySet: () => categorySet,
-      getTagSet: () => tagSet,
+      getTagsObject: () => tags,
       query,
       searchQuery,
       pageContext,
