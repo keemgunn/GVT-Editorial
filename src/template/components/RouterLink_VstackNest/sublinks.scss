@@ -11,7 +11,7 @@
     }
     z-index: 0;
   }
-  @include PlateBorderOpacity(1);
+  @include PlateBorderOpacity(0);
   @include PlateBackgroundColor(var(--rlvn-nested-links-list-bg-color));
   @include PlateBackgroundOpacity(0);
 }

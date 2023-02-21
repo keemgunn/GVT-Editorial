@@ -1,4 +1,4 @@
-mo:is(.scale--XXL) 
+:is(.scale--XXL) 
 #app .article-category-card {
   h1 { @extend .typo-header-24--bold; }
 }
@@ -86,10 +86,10 @@ mo:is(.scale--XXL)
   }
   .solid-cover { transition: 120ms;
     background-color: var(--OnSurface);
-    opacity: 0.4;
+    opacity: 0.5;
   }
   img { transition: 120ms;
-    filter: brightness(0.4);
+    filter: brightness(0.5);
   }
 }
 
@@ -101,7 +101,7 @@ mo:is(.scale--XXL)
     opacity: 0.3;
   }
   img {
-    filter: brightness(0.6);
+    filter: brightness(0.63);
   }
 }
 

@@ -41,7 +41,7 @@
     .trending-index {
       position: absolute;
       left: 0; bottom: 0;
-      padding: 4rem 7rem;
+      padding: 4rem 9rem 4rem 7rem;
       @extend .typo-header-32--bold;
       // color: white;
       // -webkit-backdrop-filter: invert(1);
@@ -89,13 +89,12 @@
     color: var(--OnPrimary);
     background-color: var(--Primary);
   }
-  
-
   background-color: var(--Surface);
   @include PlateBackgroundColor(var(--OnSurface));
   @include PlateBackgroundOpacity(0.09);
   @include PlateTransition(200ms);
 }
+
 .article-card-trending-a:hover {
   color: var(--OnPrimaryContainer);
   @include Shadow-2(10rem);

@@ -3,7 +3,7 @@
 
   @include PlateBackgroundOpacity(0);
 
-  @include PlateBorderBottom(2rem solid var(--OnSurface));
+  @include PlateBorderBottom(3rem solid var(--OnSurface));
   @include PlateBorderColor(var(--OnSurface));
   @include PlateBorderOpacity(0);
 }
