@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { onMounted } from 'vue';
 import { pageRouterRecords } from '@/template/router/_pageRecords';
 import { errorRecords, devRecords } from './_otherRecords';
 
@@ -26,6 +27,13 @@ const router = createRouter({
       return { top: 0 }
     }
   },
+})
+
+router.afterEach((to, from) => {
+  const fromPage = from.path.split('/')[1] || 'home';
+  const toPage = to.path.split('/')[1] || 'home';
+  document.body.classList.remove(`page--${fromPage}`);
+  document.body.classList.add(`page--${toPage}`);
 })
 
 export {

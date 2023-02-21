@@ -1,7 +1,7 @@
 /* atoms/Plate */
 
 @mixin PlateRoundness($roundness) {
-  .plate {
+  > .plate {
     border-radius: $roundness !important;
     .border {
       border-radius: $roundness !important;
@@ -12,12 +12,12 @@
 @mixin PlateBackgroundColor($color) {
   z-index: 0;
   position: relative;
-  .plate .plane{
+  > .plate .plane{
     background-color: $color;
   }
 }
 @mixin PlateBackgroundOpacity($opacity) {
-  .plate .plane{
+  > .plate .plane{
     opacity: $opacity;
   }
 }
@@ -29,45 +29,45 @@
 @mixin PlateBorderTop($property) {
   z-index: 0;
   position: relative;
-  .plate .border {
+  > .plate .border {
     border-top: $property;
   }
 }
 @mixin PlateBorderBottom($property) {
     z-index: 0;
   position: relative;
-  .plate .border {
+  > .plate .border {
     border-bottom: $property;
   }
 }
 @mixin PlateBorderLeft($property) {
   z-index: 0;
   position: relative;
-  .plate .border {
+  > .plate .border {
     border-left: $property;
   }
 }
 @mixin PlateBorderRight($property) {
   z-index: 0;
   position: relative;
-  .plate .border {
+  > .plate .border {
     border-right: $property;
   }
 }
 @mixin PlateBorder($property) {
     z-index: 0;
   position: relative;
-  .plate .border {
+  > .plate .border {
     border: $property;
   }
 }
 @mixin PlateBorderColor($color) {
-  .plate .border {
+  > .plate .border {
     border-color: $color;
   }
 }
 @mixin PlateBorderOpacity($opacity) {
-  .plate .border {
+  > .plate .border {
     opacity: $opacity;
   }
 }

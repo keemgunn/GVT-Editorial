@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onBeforeMount, ref, computed } from 'vue';
+import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useRoute, useRouter } from 'vue-router';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
+import { useInteractionStore } from '@/template/stores/interaction';
 import { searchByFormInput } from '@/template/composables/searchByFormInput';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
 
@@ -34,6 +35,14 @@ onBeforeMount(() => {
   }
 })
 
+const interactionStore = useInteractionStore();
+const CL_scrolled = computed(() => {
+  if (interactionStore.windowScroll)
+    return "--scrolled"
+  else
+    return ""
+});
+
 const articleListAdSizes = {
   XXS: { width: 300, height: 250 },
   XS: { width: 300, height: 250 },
@@ -49,60 +58,40 @@ const articleListAdSizes = {
 <div id="router-page" class="search">
     
   <main>
-    <section id="fronthead">
+    <section id="fronthead" :class="CL_scrolled">
 
-      <div class="searchbox-wrapper">
-        <form id="search-billboard-form">
-          <input type="text" v-model="inputTextBind" name="searchKeyword" placeholder="Search...">
-        </form>
-      </div>
+      <form id="search-billboard-form">
+        <p class="head-text">Search for:</p>
+        <input type="text" v-model="inputTextBind" name="searchKeyword" placeholder="Search...">
+      </form>
       
-      <Vector class="brand-logo" :src="brandLogo"/>
+      <!-- <Vector class="brand-logo" :src="brandLogo"/> -->
     </section>
 
     <p v-show="searchPackage.requestedKeyword.value.length === 0">
       {{ searchPackage.searchState.value }}
     </p>
 
-    <ArticleList_AdTower
-    v-show="searchPackage.requestedKeyword.value.length > 0"
-    :title="searchPackage.searchState.value" 
-    :titleSize="20" 
-    :titleDivider="'bottom'"
-    :titleDividerWidth="3"
-    articleCardName="ArticleCard_A"
-    :articleCardRoundness="0"
-    :articlesArray="searchPackage.searchedArticles.value.array"
-    :showAdsInList="0"
-    :adSizes="articleListAdSizes"
-    :adTowerAdCount="AD_TOWER_AD_COUNT"
-    :pageURI="pageURI"
-    />
+    <section id="results">
+      <ArticleList_AdTower
+      v-show="searchPackage.requestedKeyword.value.length > 0"
+      :title="searchPackage.searchState.value" 
+      :titleSize="20" 
+      :titleDivider="'bottom'"
+      :titleDividerWidth="3"
+      articleCardName="ArticleCard_A"
+      :articleCardRoundness="0"
+      :articlesArray="searchPackage.searchedArticles.value.array"
+      :showAdsInList="0"
+      :adSizes="articleListAdSizes"
+      :adTowerAdCount="AD_TOWER_AD_COUNT"
+      :pageURI="pageURI"
+      />
+    </section>
+
   </main>
 
   <footer id="other-actions"></footer>
 
 </div>
 </template>
-
-
-<style lang="scss">
-/** @/pages/Search/PageComponent.vue */
-
-// ============ LOGO
-#router-page.search #fronthead {
-  position: relative;
-  overflow: hidden;
-  .brand-logo {
-    position: absolute;
-    right: 0;
-    bottom: -180rem;
-    svg {
-      width: 600rem;
-      height: 600rem;
-    }
-    opacity: 0.12;
-
-  }
-}
-</style>

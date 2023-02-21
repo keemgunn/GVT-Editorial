@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { defineProps, ref, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
 import type { Ref } from 'vue';
 
 const inputTextBind = ref("");
 const inputEl: Ref<HTMLElement | null> = ref(null);
 const inputElementId = crypto.randomUUID();
 
-const props = defineProps<{
-  onSubmit: (inputText:string) => void;
-}>();
+
+const route = useRoute();
+const router = useRouter();
 
 function searchSubmit(event: Event) {
   event.preventDefault();
-  props.onSubmit(inputTextBind.value);
+  router.push(`/search?keyword=${inputTextBind.value}`);
   inputTextBind.value = "";
   if (inputEl.value)
     inputEl.value.blur();
@@ -25,7 +26,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <form class="searchbox-mini" v-on:submit="searchSubmit">
+  <form v-show="!route.path.includes('search')"
+  class="searchbox-mini" 
+  v-on:submit="searchSubmit">
     <Icon name="search" :size="20"/>
     <input :id="inputElementId" type="text" v-model="inputTextBind" name="searchKeyword" placeholder="Search...">
   </form>

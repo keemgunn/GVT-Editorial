@@ -29,81 +29,88 @@
   --Shadow-2: rgba(0, 0, 0, 0.08);
   --Shadow-3: rgba(0, 0, 0, 0.12);
   --Shadow-4: rgba(0, 0, 0, 0.16);
-  }
+}
+
+.theme--default-dark {
+  --Primary: #4C8558;
+  --OnPrimary: #E5FFED;
+  --PrimaryContainer: #BCE0C6;
+  --OnPrimaryContainer: #1D4E25;
   
-
-
-  .theme--default-dark {
-    --Primary: #4C8558;
-    --OnPrimary: #E5FFED;
-    --PrimaryContainer: #BCE0C6;
-    --OnPrimaryContainer: #1D4E25;
-    
-    --Secondary: #7D5B43;
-    --OnSecondary: #FFF8F0;
-    --SecondaryContainer: #F0E2D3;
-    --OnSecondaryContainer: #402111;
-    
-    --Tertiary: #5F9EA0;
-    --OnTertiary: #EBFDFF;
-    --TertiaryContainer: #9BC9CC;
-    --OnTertiaryContainer: #1B403D;
-    
-    --Surface: #ffffff;
-    --OnSurface: #001D03;
-    
-    --Background: #f0f0f0;
-    --OnBackground: #161616;
-    
-    --SurfaceVariant: #FFFEF0;
-    --OnSurfaceVariant: #5E5541;
+  --Secondary: #7D5B43;
+  --OnSecondary: #FFF8F0;
+  --SecondaryContainer: #F0E2D3;
+  --OnSecondaryContainer: #402111;
+  
+  --Tertiary: #5F9EA0;
+  --OnTertiary: #EBFDFF;
+  --TertiaryContainer: #9BC9CC;
+  --OnTertiaryContainer: #1B403D;
+  
+  --Surface: #ffffff;
+  --OnSurface: #001D03;
+  
+  --Background: #f0f0f0;
+  --OnBackground: #161616;
   
   --SurfaceVariant: #FFFEF0;
   --OnSurfaceVariant: #5E5541;
-  --Shadow-1: rgba(0, 0, 0, 0.04);
-  --Shadow-2: rgba(0, 0, 0, 0.08);
-  --Shadow-3: rgba(0, 0, 0, 0.12);
-  --Shadow-4: rgba(0, 0, 0, 0.16);
-  }
-  
+
+--SurfaceVariant: #FFFEF0;
+--OnSurfaceVariant: #5E5541;
+--Shadow-1: rgba(0, 0, 0, 0.04);
+--Shadow-2: rgba(0, 0, 0, 0.08);
+--Shadow-3: rgba(0, 0, 0, 0.12);
+--Shadow-4: rgba(0, 0, 0, 0.16);
+}
 
 
-  
-  // SYSTEM COLORS =====================
-  
-  .scheme--light {
-  --Error: #DF1125;
-  --OnError: #FFF0F0;
-  --ErrorContainer: #F7B9BC;
-  --OnErrorContainer: #AF0C1F;
-  --Warning: #E6B644;
-  --OnWarning: #FFFDF2;
-  --WarningContainer: #FFE391;
-  --OnWarningContainer: #876422;
-  --Positive: #5ebc62;
-  --OnPositive: #EDFFF0;
-  --PositiveContainer: #A4F5AB;
-  --OnPositiveContainer: #2c602a;
-  }
-  .scheme--dark {
-  --Error: #DF1125;
-  --OnError: #FFF0F0;
-  --ErrorContainer: #F7B9BC;
-  --OnErrorContainer: #AF0C1F;
-  --Warning: #E6B644;
-  --OnWarning: #FFFDF2;
-  --WarningContainer: #FFE391;
-  --OnWarningContainer: #876422;
-  --Positive: #5ebc62;
-  --OnPositive: #EDFFF0;
-  --PositiveContainer: #A4F5AB;
-  --OnPositiveContainer: #2c602a;
-  }
-  
-  body {
-  background-color: var(--Background);
-  color: var(--OnSurface);
-  }
-  a {
-  color: inherit;
-  }
+// SYSTEM COLORS =====================
+
+.scheme--light {
+--Error: #DF1125;
+--OnError: #FFF0F0;
+--ErrorContainer: #F7B9BC;
+--OnErrorContainer: #AF0C1F;
+--Warning: #E6B644;
+--OnWarning: #FFFDF2;
+--WarningContainer: #FFE391;
+--OnWarningContainer: #876422;
+--Positive: #5ebc62;
+--OnPositive: #EDFFF0;
+--PositiveContainer: #A4F5AB;
+--OnPositiveContainer: #2c602a;
+}
+.scheme--dark {
+--Error: #DF1125;
+--OnError: #FFF0F0;
+--ErrorContainer: #F7B9BC;
+--OnErrorContainer: #AF0C1F;
+--Warning: #E6B644;
+--OnWarning: #FFFDF2;
+--WarningContainer: #FFE391;
+--OnWarningContainer: #876422;
+--Positive: #5ebc62;
+--OnPositive: #EDFFF0;
+--PositiveContainer: #A4F5AB;
+--OnPositiveContainer: #2c602a;
+}
+
+
+::-moz-selection { 
+  // Code for Firefox
+  color: var(--OnTertiary);
+  background: var(--Tertiary);
+}
+::selection {
+  color: var(--OnTertiary);
+  background: var(--Tertiary);
+}
+
+body {
+background-color: var(--Background);
+color: var(--OnSurface);
+}
+a {
+color: inherit;
+}

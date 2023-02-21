@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity';
-import { useRouter } from 'vue-router';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
 import templateConfigs from '@/configs/template/templateConfigs';
 import defaultConfigs from './index';
-import { useScrollPosition } from '@/template/composables/useScrollPosition';
+import { useInteractionStore } from '@/template/stores/interaction';
 
 const COMPONENT_NAME = 'NavBar_HorizonLinks';
 
 const frameStore = useFrameStore();
-const router = useRouter();
 const { navigationSetting } = useConfigs();
 const navRecords: NavRecords = navigationSetting;
 
@@ -19,7 +17,7 @@ const isOnline = templateConfigs.navBar.name === COMPONENT_NAME;
 const compConfig = isOnline ?
   templateConfigs.navBar : defaultConfigs()
 
-const showActions = computed(() => 
+const showNavBar = computed(() => 
   /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
 )
 
@@ -34,24 +32,20 @@ function showIcon(navIcon: String) {
     return ""
 }
 
-const { scrollPosition } = useScrollPosition();
+const interactionStore = useInteractionStore();
 const CL_showBackgroundColor = computed(() => {
-  if (scrollPosition.value)
+  if (interactionStore.windowScroll)
     return "--scrolled"
   else
     return ""
 });
-
-function searchHook(inputText:string) {
-  router.push(`/search?keyword=${inputText}`);
-}
 </script>
 
 
 
 <template>
 <!-- @NavBar_HorizonLinks -->
-<div id="navigation" class="nav-bar-horizon-links" :class="CL_showBackgroundColor">
+<div id="navigation" class="nav-bar-horizon-links" :class="CL_showBackgroundColor" v-show="showNavBar">
 
   <!-- topBannerInjection -->
   <component :is="compConfig.topBannerInjection"></component>
@@ -60,7 +54,7 @@ function searchHook(inputText:string) {
     <Vector class="nav-logo" :src="brandLogo"/>
     <h1 style="display: none;">Blog Name Here</h1>
 
-    <nav v-show="showActions">
+    <nav>
       <ul class="nav-bar-horizon-links-list">
         <template v-for="nr in navRecords" 
         :key="'page--'+nr.title">
@@ -78,8 +72,7 @@ function searchHook(inputText:string) {
     </nav>
 
     <div v-show="showSearchbox" class="search-box-wrapper">
-      <Searchbox_Mini
-      :onSubmit="searchHook"/>
+      <Searchbox_Mini/>
     </div>
   </header>
 

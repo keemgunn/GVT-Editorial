@@ -5,12 +5,6 @@ import { useInteractionStore } from '@/template/stores/interaction';
 import { getReasonPhrase } from 'http-status-codes';
 
 const frameStore = useFrameStore();
-const interactionStore = useInteractionStore();
-
-const pageName = "Home";
-onBeforeMount(() => {
-  interactionStore.currentPage = pageName;
-})
 
 const props = defineProps<{
   code: number
