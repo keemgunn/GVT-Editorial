@@ -31,9 +31,10 @@ const props = defineProps<{
   <div class="textbox">
     <h1 class="title" v-html="article.title"></h1>
 
+    <Article_InfoPack id="info-tail" :article="article" :size="15" :showReadingTime="true" :showDate="true" :showCategory="true"/>
+    
     <p class="raw" v-html="article.raw" v-show="article.raw.length"></p>
 
-    <Article_InfoPack id="info-tail" :article="article" :size="15" :showReadingTime="true" :showDate="true" :showCategory="true"/>
   </div>
 
   <Plate/>

@@ -103,11 +103,11 @@ export const useLocalContents = defineStore('localContents', () => {
     
     const queryArr: Array<ArticleRecord> = [
       ...articleRawList.filter((article) => {
-        return article.raw.includes(query);
+        return article.raw.includes(query.toLowerCase());
       }) || [],
       ...articleList.filter((article) => {
-        return article.title.includes(query);
-      })
+        return article.title.toLowerCase().includes(query.toLowerCase());
+      }) || []
     ];
 
     const uniqueArticles = queryArr.reduce((accumulator: Array<ArticleRecord>, current: ArticleRecord) => {
