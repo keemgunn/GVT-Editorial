@@ -68,13 +68,17 @@ const articleListAdSizes = {
       <!-- <Vector class="brand-logo" :src="brandLogo"/> -->
     </section>
 
-    <p v-show="searchPackage.requestedKeyword.value.length === 0">
-      {{ searchPackage.searchState.value }}
-    </p>
+    <div 
+    v-show="searchPackage.searchedNumber.value === 0" 
+    class="zero-results">
+      <p>
+        {{ searchPackage.searchState.value }}
+      </p>
+    </div>
 
     <section id="results">
       <ArticleList_AdTower
-      v-show="searchPackage.requestedKeyword.value.length > 0"
+      v-show="searchPackage.searchedNumber.value > 0"
       :title="searchPackage.searchState.value" 
       :titleSize="20" 
       :titleDivider="'bottom'"

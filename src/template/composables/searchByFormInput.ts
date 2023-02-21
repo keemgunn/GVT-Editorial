@@ -19,7 +19,7 @@ export function searchByFormInput(formElementId: string, inputName: string, arti
   const searchState = computed(() => {
     if (searchedNumber.value === 0) {
       if (requestedKeyword.value.length === 0)
-        return "Search Articles..."
+        return "Search by Keyword"
       else
         return `No results found for '${requestedKeyword.value}'`
     }

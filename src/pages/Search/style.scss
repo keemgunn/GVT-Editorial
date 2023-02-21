@@ -18,6 +18,10 @@
   @include PlateBackgroundOpacity(0);
 }
 
+.page--search #app .ad-tower li > * {
+  top: calc(var(--nav-bar-height) + var(--wrapper-gap) + calc(var(--input-font-size) * 1.24));
+}
+
 #router-page.search #fronthead {
   transition: 220ms;
   font-size: var(--input-font-size);
@@ -50,6 +54,25 @@
       justify-content: flex-end;
       align-content: center;
       align-items: center;
+    }
+
+    .zero-results {
+      width: 100%;
+      flex-grow: 1;
+      height: 60vh;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      
+      @extend .typo-header-98;
+      font-size: 8vw;
+      text-align: center;
+      color: var(--OnBackground);
+      opacity: 0.16;
+
+      user-select: none;
     }
 
     section#results {
