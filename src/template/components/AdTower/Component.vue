@@ -4,7 +4,6 @@ import { defineProps } from 'vue';
 const props = defineProps<{
   AdSizes: AdSizeByScale;
   AdCount: number;
-  roundness: number;
 }>();
 
 const adLoop = Array.from({length: props.AdCount}, (_, i) => i)
@@ -12,13 +11,13 @@ const adLoop = Array.from({length: props.AdCount}, (_, i) => i)
 
 
 <template>
+<!-- AdTower -->
 <aside class="ad-tower">
   <ul class="wrapper">
     <li v-for="i in adLoop" :id="`ad-tower-ad-${String(i)}`">
       <div class="container ad">
         <Adbox_ScaleShift 
-        :adSizes="AdSizes"
-        :roundness="roundness"/>
+        :adSizes="AdSizes"/>
       </div>
     </li>
   </ul>

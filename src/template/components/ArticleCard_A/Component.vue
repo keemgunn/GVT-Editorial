@@ -21,16 +21,13 @@ const infoPackSize = computed(() => {
 
 const props = defineProps<{
   article: ArticleRecord;
-  roundness: number;
 }>();
-
-const containerRoundness = getRoundStyle(props.roundness);
 </script>
 
 <template>
-<RouterLink class="article-card-a" :to="article.uri" :style="containerRoundness">
+<!-- ArticleCard_A -->
+<RouterLink class="article-card-a" :to="article.uri">
 
-      
   <div class="imagebox">
     <img :src="article.coverImage" alt="">
   </div>
@@ -43,8 +40,7 @@ const containerRoundness = getRoundStyle(props.roundness);
     <Article_InfoPack id="info-tail" :article="article" :size="12" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
   </div>
 
-
-  <Plate :roundness="roundness"/>
+  <Plate/>
 </RouterLink>
 
 </template>

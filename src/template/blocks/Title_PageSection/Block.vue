@@ -35,13 +35,14 @@ const dividerStyle = computed(() => {
 
 
 <template>
-  <div class="title-pagesection" 
-  :class="[dividerLayout]" 
-  :style="{gap: `${props.size/2}rem`}">
+<!-- Title_PageSection -->
+<div class="title-pagesection" 
+:class="[dividerLayout]" 
+:style="{gap: `${props.size/2}rem`}">
 
-    <h1 v-show="text.length > 0" :class="`typo-header-${props.size}`">{{text}}</h1>
-    <div class="divider" :style="dividerStyle" v-show="props.divider !== 'none'"></div>
+  <h1 v-show="text.length > 0" :class="`typo-header-${props.size}`">{{text}}</h1>
+  <div class="divider" :style="dividerStyle" v-show="props.divider !== 'none'"></div>
 
-    <Plate :roundness="0"/>
-  </div>
+  <Plate/>
+</div>
 </template>

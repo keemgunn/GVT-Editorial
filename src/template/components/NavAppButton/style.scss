@@ -44,7 +44,7 @@
 
 
 
-.scale--XXL .nav-app-button {
+:is(.scale--XXL) .nav-app-button {
   width: 82rem;
   padding: 10rem 14rem;
   .contents { gap: 2rem; };
@@ -53,42 +53,42 @@
   @include IconSize(20);
   @include IconSize(24);
 }
-.scale--XL .nav-app-button {
+:is(.scale--XL) .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
   @include PlateRoundness(23rem);
   @include IconSize(20);
 }
-.scale--L .nav-app-button {
+:is(.scale--L) .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
   @include PlateRoundness(23rem);
   @include IconSize(20);
 }
-.scale--M .nav-app-button {
+:is(.scale--M) .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
   @include PlateRoundness(23rem);
   @include IconSize(20);
 }
-.scale--S .nav-app-button {
+:is(.scale--S) .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };
   @include PlateRoundness(23rem);
   @include IconSize(20);
 }
-.scale--XS .nav-app-button {
+:is(.scale--XS) .nav-app-button {
   width: 70rem;
   padding: 9rem 12rem;
   .contents { gap: 2rem; };
   @include PlateRoundness(24rem);
   @include IconSize(20);
 }
-.scale--XXS .nav-app-button {
+:is(.scale--XXS) .nav-app-button {
   width: 70rem;
   padding: 8rem 12rem;
   .contents { gap: 2rem; };

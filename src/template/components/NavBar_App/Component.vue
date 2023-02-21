@@ -27,24 +27,25 @@ const showPrefOnLarge = computed(() => {
 
 
 <template>
-  <nav id="nav-bar-app">
+<!-- NavBar_App -->
+<nav id="nav-bar-app">
 
-    <Vector v-if="showLogo" class="nav-logo" :src="brandLogo"/>
+  <Vector v-if="showLogo" class="nav-logo" :src="brandLogo"/>
 
-    <div class="nav-wrapper">
-      <NavAppButton v-for="navRecord in navRecords" :key="'view--' + navRecord.uri" :navTitle="navRecord.title" :uri="navRecord.uri" :navIcon="navRecord.icon"/>
+  <div class="nav-wrapper">
+    <NavAppButton v-for="navRecord in navRecords" :key="'view--' + navRecord.uri" :navTitle="navRecord.title" :uri="navRecord.uri" :navIcon="navRecord.icon"/>
 
-      <!-- ONLY <= S -->
-      <NavAppButton v-if="showPrefOnSmall" navTitle="preference" uri="#" icon="account_circle"/>
-    </div>
+    <!-- ONLY <= S -->
+    <NavAppButton v-if="showPrefOnSmall" navTitle="preference" uri="#" icon="account_circle"/>
+  </div>
 
-    <!-- ONLY >= M -->
-    <div v-if="showPrefOnLarge" class="preference-wrapper">
-      <NavAppButton navTitle="preference" uri="#" icon="account_circle"/>
-    </div>
+  <!-- ONLY >= M -->
+  <div v-if="showPrefOnLarge" class="preference-wrapper">
+    <NavAppButton navTitle="preference" uri="#" icon="account_circle"/>
+  </div>
 
-    <Plate :roundness="0"/>
-  </nav>
+  <Plate/>
+</nav>
 </template>
 
 

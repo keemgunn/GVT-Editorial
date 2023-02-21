@@ -32,6 +32,13 @@
 }
 
 
+.page--home #app .nav-bar-horizon-links {
+  // @include PlateBorderOpacity(0.08);
+  @include PlateBackgroundOpacity(1);
+  @include Shadow-3(20rem);
+}
+
+
 #router-page.home {
   display: flex;
   flex-direction: column;

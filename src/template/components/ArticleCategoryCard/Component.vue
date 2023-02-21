@@ -18,6 +18,7 @@ const accentColorStyle = computed(() => {
 
 
 <template>
+  <!-- ArticleCategoryCard -->
 <RouterLink class="article-category-card"
 :to="info.uri">
 

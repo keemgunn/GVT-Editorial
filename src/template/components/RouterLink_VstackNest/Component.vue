@@ -2,14 +2,10 @@ mm<script setup lang="ts">
 import { defineProps, computed, ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import componentConfigs from '@/configs/template/componentConfigs';
-import templateConfigs from '@/configs/template/templateConfigs';
 
 
 const frameStore = useFrameStore();
 const compConfig = componentConfigs.RouterLink_VstackNest;
-
-const { roundness } = templateConfigs;
-
 
 const props = defineProps<{
   title: string
@@ -52,19 +48,6 @@ const subLinkClass = computed(() => [
 
 const majorIconSize = computed(() => props.majorLinkSize + 2);
 const subIconSize = computed(() => (props.subLinkSize || 0) + 2);
-
-
-const roundnessStyle = computed(() => {
-  if (roundness > 0) {
-    const calced = roundness * (props.majorLinkSize + 2)
-    return {
-      "border-radius": `${calced}rem`,
-      "overflow": 'hidden'
-    }
-  } else {
-    return ""
-  }
-});
 
 
 const expandDropdown = computed(() => {
@@ -117,6 +100,7 @@ function showIcon(navIcon: String) {
 </script>
 
 <template>
+<!-- RouterLink_VstackNest -->
 <li 
 class="routerlink-vstacknest"
 @mouseover="mouseOver(true)" 
@@ -124,7 +108,7 @@ class="routerlink-vstacknest"
 
   <RouterLink :class="majorLinkClass" 
   v-show="!expandDropdown"
-  :to="props.uri" :style="roundnessStyle">
+  :to="props.uri">
     {{ props.title }}
     <div class="contents">
 
@@ -135,7 +119,7 @@ class="routerlink-vstacknest"
       <Icon v-if="hasChild" class="nav-handle" name="expand_more" :size="majorIconSize"/>
     </div>
 
-    <Plate :roundness="0"/>
+    <Plate/>
   </RouterLink>
 
   <Transition name="rlvn-nested-links">
@@ -149,11 +133,11 @@ class="routerlink-vstacknest"
           <Icon :name="showIcon(nr.icon)" :size="subIconSize"/>
           <p> {{ nr.title }}</p>
         </div>
-        <Plate :roundness="0"/>
+        <Plate/>
       </RouterLink>
     </li>
     
-    <Plate :roundness="0"/>
+    <Plate/>
   </ul>
   </Transition>
 

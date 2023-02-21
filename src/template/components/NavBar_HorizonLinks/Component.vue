@@ -76,7 +76,7 @@ const CL_showBackgroundColor = computed(() => {
     </div>
   </header>
 
-  <Plate :roundness="0"/>
+  <Plate/>
   
 </div>
 </template>

@@ -1,36 +1,78 @@
 html #app {
-  // --nav-bar-horizon-links-bg-color: var(--Primary);
+  // --nav-bar-bg-color: var(--Primary);
 }
+
 html :is(.scale--XXL, .scale--XL, .scale--L) {
-  // --contents-container-width: 1280rem;
+  // --contents-container-width: 1300rem;
   // --contents-side-padding: 0;
-  // --nav-bar-height: 100rem;
+  // --nav-bar-height: 74rem;
+  // --nav-bar-logo-width: 160rem;
   // --nav-bar-search-width: 300rem;
   // --nav-bar-header-gap: 36rem;
   // --router-link-vstack-nests-gap: 26rem;
   // --nav-bar-categories-gap: 20rem;
-
-} html .scale--M {
+}
+.scale--M {
   // --contents-container-width: 100%;
   // --contents-side-padding: 40rem;
   // --nav-bar-height: 74rem;
+  // --nav-bar-logo-width: 160rem;
   // --nav-bar-search-width: 300rem;
   // --nav-bar-header-gap: 36rem;
   // --router-link-vstack-nests-gap: 30rem;
-
-} html .scale--S {
+}
+.scale--S {
   // --contents-container-width: 100%;
   // --contents-side-padding: 30rem;
   // --nav-bar-height: 74rem;
+  // --nav-bar-logo-width: 140rem;
   // --nav-bar-search-width: 160rem;
   // --nav-bar-header-gap: 28rem;
   // --router-link-vstack-nests-gap: 28rem;
-
 }
-html :is(.scale--XS, .scale--XXS) {
+html :is(.scale--XS, .scale--XXS){
   // --contents-container-width: 100%;
-  // --contents-side-padding: 0;
-  // --nav-bar-height: 40rem;
+  // --contents-side-padding: 16rem;
+  // --nav-bar-height: 0rem;
 }
 
 
+
+html .scale--XXL #app .nav-bar-horizon-links,
+html .scale--XL #app .nav-bar-horizon-links,
+html .scale--L #app .nav-bar-horizon-links {
+  header { 
+    // padding: 0;
+  }
+}
+html .scale--M #app .nav-bar-horizon-links {
+  header { 
+    // padding: 0 40rem;
+  }
+}
+html .scale--S #app .nav-bar-horizon-links {
+  header { 
+    // padding: 0 30rem;
+  }
+}
+html .scale--XS #app .nav-bar-horizon-links,
+html .scale--XXS #app .nav-bar-horizon-links {
+  header { 
+    // padding: 0 26rem;
+  }
+}
+
+
+html #app .nav-bar-horizon-links {
+  // @include PlateBackgroundColor(var(--nav-bar-bg-color));
+  // @include PlateBackgroundOpacity(0);
+  // @include PlateBorderBottom(2rem solid var(--OnSurface));
+  // @include PlateBorderOpacity(0.08);
+  // @include PlateTransition(120ms);
+}
+html #app .nav-bar-horizon-links.--scrolled {
+  // @include PlateBorderBottom(1rem solid var(--OnSurface));
+  // @include PlateBorderOpacity(0.16);
+  // @include PlateBackgroundOpacity(1);
+  // @include Shadow-3(20rem);
+}

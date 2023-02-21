@@ -1,0 +1,55 @@
+/* OVERRIDE - NavAppButton */
+
+
+
+html :is(.scale--XXL) .nav-app-button {
+  // width: 82rem;
+  // padding: 10rem 14rem;
+  // .contents { gap: 2rem; };
+  // .contents p {font-size: 12rem !important;}
+  // @include PlateRoundness(27rem);
+  // @include IconSize(20);
+  // @include IconSize(24);
+}
+html :is(.scale--XL) .nav-app-button {
+  // width: 70rem;
+  // padding: 8rem 12rem;
+  // .contents { gap: 2rem; };
+  // @include PlateRoundness(23rem);
+  // @include IconSize(20);
+}
+html :is(.scale--L) .nav-app-button {
+  // width: 70rem;
+  // padding: 8rem 12rem;
+  // .contents { gap: 2rem; };
+  // @include PlateRoundness(23rem);
+  // @include IconSize(20);
+}
+html :is(.scale--M) .nav-app-button {
+  // width: 70rem;
+  // padding: 8rem 12rem;
+  // .contents { gap: 2rem; };
+  // @include PlateRoundness(23rem);
+  // @include IconSize(20);
+}
+html :is(.scale--S) .nav-app-button {
+  // width: 70rem;
+  // padding: 8rem 12rem;
+  // .contents { gap: 2rem; };
+  // @include PlateRoundness(23rem);
+  // @include IconSize(20);
+}
+html :is(.scale--XS) .nav-app-button {
+  // width: 70rem;
+  // padding: 9rem 12rem;
+  // .contents { gap: 2rem; };
+  // @include PlateRoundness(24rem);
+  // @include IconSize(20);
+}
+html :is(.scale--XXS) .nav-app-button {
+  // width: 70rem;
+  // padding: 8rem 12rem;
+  // .contents { gap: 2rem; };
+  // @include PlateRoundness(23rem);
+  // @include IconSize(20);
+}

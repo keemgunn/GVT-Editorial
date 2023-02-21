@@ -1,3 +1,5 @@
+/* @template/components/ArticleCategoryCard/style.scss */
+
 :is(.scale--XXL) 
 #app .article-category-card {
   h1 { @extend .typo-header-24--bold; }
@@ -25,6 +27,35 @@
 :is(.scale--XXS) 
 #app .article-category-card {
   h1 { @extend .typo-header-24--bold; }
+}
+
+:is(.scale--XXL) .article-category-card {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XL) .article-category-card {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--L) .article-category-card {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--M) .article-category-card {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--S) .article-category-card {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XS) .article-category-card {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XXS) .article-category-card {
+  // border-radius: 30rem;
+  // overflow: hidden;
 }
 
 

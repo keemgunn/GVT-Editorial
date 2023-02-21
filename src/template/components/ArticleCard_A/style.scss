@@ -56,6 +56,35 @@
   p.description { @extend .typo-body-14; }
 }
 
+:is(.scale--XXL) .article-card-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XL) .article-card-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--L) .article-card-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--M) .article-card-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--S) .article-card-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XS) .article-card-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XXS) .article-card-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+
 
 .article-card-a {
   display: flex;

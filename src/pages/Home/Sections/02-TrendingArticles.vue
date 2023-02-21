@@ -53,7 +53,7 @@ const titleDivider = computed(() => {
   <div class="wrapper">
 
     <div class="categories-wrapper">
-      <Title-PageSection 
+      <Title_PageSection 
       text="Categories" 
       :size="20" 
       :divider="titleDivider" 
@@ -69,10 +69,10 @@ const titleDivider = computed(() => {
       </ol>
     </div>
 
-    <Adbox id="trending-ad-0" :width="300" :height="100" :roundness="0"/>
+    <Adbox id="trending-ad-0" :width="300" :height="100"/>
     
     <div class="trending-wrapper">
-      <Title-PageSection 
+      <Title_PageSection 
       text="Trending" 
       :size="20" 
       :divider="titleDivider" 
@@ -83,7 +83,6 @@ const titleDivider = computed(() => {
           <ArticleCard_Trending_A
           :trendingIndex="i"
           :article="trendingArticles.array[i]"
-          :roundness="CARDS_ROUNDNESS"
           />
         </li>
       </ol>

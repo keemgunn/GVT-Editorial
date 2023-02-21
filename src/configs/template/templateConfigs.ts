@@ -28,13 +28,6 @@ export default {
   } satisfies ResponsiveSizeEntry,
 
 
-  /** SHAPES =================================== */
-
-  /** Defines overall UI's roundness */
-  roundness: 0 satisfies UIRoundness,
-
-
-
   /** COLORS / THEMES ========================== */
 
   /** Theme settings cae be configured in @/configs/styles/colors.scss */

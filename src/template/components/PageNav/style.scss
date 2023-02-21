@@ -6,8 +6,12 @@
 }
 
 :is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) .page-nav {
-  .movebutton, .pagebutton { @extend .typo-caption-16--bold; }
-  .dots { @extend .typo-caption-12--bold;}
+  .movebutton, .pagebutton { 
+    @extend .typo-caption-16--bold; 
+  }
+  .dots { 
+    @extend .typo-caption-12--bold;
+  }
   --button-size: 40rem;
   --buttons-gap: 15rem;
 }
@@ -78,9 +82,11 @@
   }
   .movebutton {
     padding: 0 10rem;
+    @include PlateRoundness(0);
   }
   .pagebutton {
     width: var(--button-size);
+    @include PlateRoundness(0);
   }
   .pagebutton.router-link-active, .currentpage {
     @include PlateBorder(2rem solid var(--Primary));

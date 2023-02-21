@@ -15,7 +15,6 @@ const props = defineProps<{
   pageURI: string;
   prevButtonName: string;
   nextButtonName: string;
-  roundness: number;
 }>();
 
 const resolveURI = computed(() => {
@@ -80,18 +79,19 @@ const showLastPage = computed(() => {
 
 
 <template>
+<!-- PageNav -->
 <nav class="page-nav" 
 v-show="pageContext.totalPage > 1">
 
   <RouterLink class="movebutton prev" v-show="!mobile" :to="resolveURI(pageContext.currentPage - 1)" :class="prevButtonClass">
     {{ prevButtonName }}
-    <Plate :roundness="roundness"/>
+    <Plate/>
   </RouterLink>
 
   <div class="pagebutton-wrapper" v-show="!mobile">
       <RouterLink class="pagebutton firstpage" :to="resolveURI(1)" v-show="showFirstPage">
         1
-        <Plate :roundness="roundness"/>
+        <Plate/>
       </RouterLink>
       
       <p class="dots first" v-show="showFirstPage">...</p>
@@ -101,7 +101,7 @@ v-show="pageContext.totalPage > 1">
         <li>
           <RouterLink class="pagebutton" :to="resolveURI(page)">
             {{ page }}
-            <Plate :roundness="roundness"/>
+            <Plate/>
           </RouterLink>
         </li>
       </template>
@@ -109,7 +109,7 @@ v-show="pageContext.totalPage > 1">
       
       <RouterLink class="pagebutton currentpage" :to="resolveURI(pageContext.currentPage)">
         <p>{{ pageContext.currentPage }}</p>
-        <Plate :roundness="roundness"/>
+        <Plate/>
       </RouterLink>
     
       <ol id="pagelist-forward" class="pagelist forward" :class="forwardClass" v-show="forwards.length !== 0">
@@ -117,7 +117,7 @@ v-show="pageContext.totalPage > 1">
         <li>
           <RouterLink class="pagebutton" :to="resolveURI(page)">
             {{ page }}
-            <Plate :roundness="roundness"/>
+            <Plate/>
           </RouterLink>
         </li>
       </template>
@@ -127,7 +127,7 @@ v-show="pageContext.totalPage > 1">
 
       <RouterLink class="pagebutton lastpage" :to="resolveURI(pageContext.totalPage)" v-show="showLastPage">
         {{ pageContext.totalPage }}
-        <Plate :roundness="roundness"/>
+        <Plate/>
       </RouterLink>
   </div>
 
@@ -136,7 +136,7 @@ v-show="pageContext.totalPage > 1">
       <li>
         <RouterLink class="pagebutton" :class="`${(pageContext.currentPage === page)?`currentpage`:''}`" :to="resolveURI(page)">
           {{ page }}
-          <Plate :roundness="roundness"/>
+          <Plate/>
         </RouterLink>
       </li>
     </template>
@@ -144,7 +144,7 @@ v-show="pageContext.totalPage > 1">
 
   <RouterLink class="movebutton next" v-show="!mobile" :to="resolveURI(pageContext.currentPage + 1)" :class="nextButtonClass">
     {{ nextButtonName }}
-    <Plate :roundness="roundness"/>
+    <Plate/>
   </RouterLink>
 </nav>
 </template>

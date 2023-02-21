@@ -7,6 +7,7 @@ makeElementDraggable('dev-status-bar', 'dev-status-bar-draghandle');
 </script>
 
 <template>
+  <!-- DevStatusBar -->
   <aside id="dev-status-bar">
     <div id="dev-status-bar-draghandle">
       <Icon class="icon" name="drag_indicator" :size="24"/>

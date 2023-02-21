@@ -20,7 +20,7 @@ const frameStore = useFrameStore();
     <h1>This is an HOME</h1>
 
     <div class="some-example">
-      <Plate :roundness="0"/>
+      <Plate/>
       <p class="typo-header-28">Something!</p>
     </div>
   </main>

@@ -26,6 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- Searchbox_Mini -->
   <form v-show="!route.path.includes('search')"
   class="searchbox-mini" 
   v-on:submit="searchSubmit">

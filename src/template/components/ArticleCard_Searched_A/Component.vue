@@ -21,29 +21,27 @@ const infoPackSize = computed(() => {
 
 const props = defineProps<{
   rawArticle: ArticleRawRecord;
-  roundness: number;
 }>();
-
-const containerRoundness = getRoundStyle(props.roundness);
 </script>
 
 <template>
-<RouterLink class="article-card-searched-a" :to="rawArticle.articleRecord.uri" :style="containerRoundness">
+<!-- ArticleCard_Searched_A -->
+<RouterLink class="article-card-searched-a" :to="rawArticle.articleRecord.uri">
 
   <div class="imagebox">
     <img :src="rawArticle.articleRecord.coverImage" alt="">
   </div>
   <div class="textbox">
-      <Article_InfoPack id="info-head" v-show="showHeadCategoryInfo" :article="rawArticle.articleRecord" :size="12" :showReadingTime="false" :showDate="false" :showCategory="true"/>
+    <Article_InfoPack id="info-head" v-show="showHeadCategoryInfo" :article="rawArticle.articleRecord" :size="12" :showReadingTime="false" :showDate="false" :showCategory="true"/>
 
-      <h1 class="title">{{ rawArticle.articleRecord.title }}</h1>
-      <p class="description">{{ rawArticle.articleRecord.description }}</p>
+    <h1 class="title">{{ rawArticle.articleRecord.title }}</h1>
+    <p class="description">{{ rawArticle.articleRecord.description }}</p>
 
-      <Article_InfoPack id="info-tail" :article="rawArticle.articleRecord" :size="12" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
-    </div>
+    <Article_InfoPack id="info-tail" :article="rawArticle.articleRecord" :size="12" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
+  </div>
 
 
-  <Plate :roundness="roundness"/>
+  <Plate/>
 </RouterLink>
 
 </template>

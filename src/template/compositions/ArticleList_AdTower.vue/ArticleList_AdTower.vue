@@ -49,7 +49,7 @@ const AdSizes = {
 <section class="article-list-and-ad-tower">
 
   <section class="articles-wrapper">
-    <Title-PageSection 
+    <Title_PageSection 
     class="title"
     :text="title" 
     :size="titleSize" 
@@ -65,7 +65,7 @@ const AdSizes = {
     :showAds="showAdsInList" 
     :adSizes="adSizes"/>
 
-    <Title-PageSection 
+    <Title_PageSection 
     class="bottom-divider"
     text="" 
     :size="20" 
@@ -74,17 +74,14 @@ const AdSizes = {
 
     <PageNav :pageURI="pageURI" 
     prevButtonName="◀︎ PREV" 
-    nextButtonName="NEXT ▶︎" 
-    :roundness="0"/>
+    nextButtonName="NEXT ▶︎"/>
   </section>
 
-  <!-- @ AdTower -->
   <AdTower
   v-show="showAdTower" 
   class="ad-tower" 
   :AdSizes="AdSizes" 
   :AdCount="adTowerAdCount" 
-  :roundness="articleCardRoundness" 
   />
 
 </section>

@@ -3,26 +3,28 @@ html #app .searchbox-mini {
   // width: 100%;
   // height: 40rem;
 
-  // .icon {
+  .icon {
   //   color: var(--Primary) !important;
-  //   span { font-size: 20rem !important; }
+    span { 
+      // font-size: 20rem !important; 
+    }
   //   padding: 10rem !important;
-  // }
+  }
 
-  // input[type=text] {
-  //   width: 100%;
-  //   height: 100%;
-  //   padding-left: 36rem;
+  input[type=text] {
+    // width: 100%;
+    // height: 100%;
+    // padding-left: 36rem;
 
-  //   color: var(--OnSurface);
-  //   @extend .typo-body-14;
+    // color: var(--OnSurface);
+    // @extend .typo-body-14;
 
-  //   background-color: #ffffff00;
-  //   border: 2rem solid var(--Primary);
-  //   border-radius: 0;
-  // }
-  // input[type=text]:focus-visible {
+    // background-color: #ffffff00;
+    // border: 2rem solid var(--Primary);
+    // border-radius: 30rem;
+  }
+  input[type=text]:focus-visible {
   //   background-color: var(--OnPrimary);
   //   outline: 2px solid var(--Primary);
-  // }
+  }
 }

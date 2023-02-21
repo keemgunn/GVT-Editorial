@@ -7,8 +7,6 @@ const { articles } = useLocalContents();
 const SHOW_FEATURED_ARTICLE = 3;
 const featuredLoop = Array.from({length: SHOW_FEATURED_ARTICLE}, (_, i) => i)
 
-// const featuredArticles = articles.getHighlighted('featured');
-
 const featuredArticles = articles.query('featured', undefined, undefined, undefined);
 
 featuredArticles.sortAsc('filename');
@@ -34,12 +32,12 @@ const additionalAdSizes = {
         {{ featuredArticles.array[i].title }}
     </li>
 
-    <Adbox id="featured-ad-0" :width="300" :height="600" :roundness="0"/>
-    <Adbox id="featured-ad-1" :width="300" :height="100" :roundness="0"/>
+    <Adbox id="featured-ad-0" :width="300" :height="600"/>
+    <Adbox id="featured-ad-1" :width="300" :height="100"/>
   </ol>
 
   <div class="additional-ads">
-    <Adbox_ScaleShift :adSizes="additionalAdSizes" :roundness="0"/>
+    <Adbox_ScaleShift :adSizes="additionalAdSizes"/>
   </div>
 </section>
 </template>

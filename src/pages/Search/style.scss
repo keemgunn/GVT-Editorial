@@ -13,23 +13,40 @@
   --input-font-size-scrolled: 20rem;
 }
 
+
+#router-page.search #fronthead {
+  transition: 220ms;
+  font-size: var(--input-font-size);
+  color: var(--SurfaceVariant);
+  border-color: var(--SurfaceVariant);
+  @include PlateBackgroundColor(var(--OnSurfaceVariant));
+  @include PlateBorderBottom(2rem solid var(--OnSurface));
+  @include PlateBorderOpacity(0.04);
+}
+#router-page.search #fronthead.--scrolled {
+  font-size: var(--input-font-size-scrolled);
+  @include Shadow-3(20rem);
+}
+
+
 .page--search #app .nav-bar-horizon-links {
-  @include PlateBorderOpacity(0.08);
+  --nav-bar-bg-color: var(--OnSurfaceVariant);
+  --nav-bar-stroke-color: var(--SurfaceVariant);
+  --nav-bar-accent-color: var(--OnPrimary);
+  @include PlateBorderBottom(2rem solid);
+  @include PlateBorderOpacity(0.075);
   @include PlateBackgroundOpacity(0);
+  color: var(--SurfaceVariant);
+
+  .nav-logo svg {
+    path { fill: var(--SurfaceVariant); }
+  }
 }
 
 .page--search #app .ad-tower li > * {
   top: calc(var(--nav-bar-height) + var(--wrapper-gap) + calc(var(--input-font-size) * 1.24));
 }
 
-#router-page.search #fronthead {
-  transition: 220ms;
-  font-size: var(--input-font-size);
-}
-#router-page.search #fronthead.--scrolled {
-  font-size: var(--input-font-size-scrolled);
-  @include Shadow-2(20rem);
-}
 
 #router-page.search {
   display: flex;
@@ -47,7 +64,7 @@
       top: 0;
       z-index: 10;
       
-      background-color: var(--PrimaryContainer);
+      // background-color: var(--PrimaryContainer);
 
       display: flex;
       flex-direction: column;
@@ -104,12 +121,13 @@ form#search-billboard-form {
   }
 
   input[type=text] {
-    color: var(--OnPrimaryContainer);
     @extend .typo-header-68;
+    color: inherit;
     font-size: inherit;
     background-color: #ffffff00;
     border: none;
-    border-bottom: 3rem solid var(--OnPrimaryContainer);
+    border-bottom: 3rem solid;
+    border-color: inherit;
   }
 }
 

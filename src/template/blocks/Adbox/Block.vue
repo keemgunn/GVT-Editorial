@@ -5,7 +5,6 @@ import { getRoundStyle } from '@/template/styles/shapes';
 const props = defineProps<{
   width: number;
   height: number;
-  roundness: number;
 }>();
 
 const node_env = inject('process_env') as string;
@@ -22,20 +21,19 @@ const boxStyle = computed(() => { return {
   height: `${props.height}rem`,
 }})
 
-const borderRadius = getRoundStyle(props.roundness);
-
 onBeforeUpdate(() => {
-  // console.warn("UPDATEEEEEEEEE");
+  // console.warn("AD UPDATEEEEEEEEE");
 })
 </script>
 
 <template>
-  <div class="ad-box" :class="clickPrevent" :style="boxStyle, borderRadius">
-    <div class="ad-wrapper">
-      <!-- GOOGLE AD HERE -->
-    </div>
-    <div class="ad-background typo-header-28">Advertisement</div>
+<!-- Adbox -->
+<div class="ad-box" :class="clickPrevent" :style="boxStyle">
+  <div class="ad-wrapper">
+    <!-- GOOGLE AD HERE -->
   </div>
+  <div class="ad-background typo-header-28">Advertisement</div>
+</div>
 </template>
 
 <style lang="scss">

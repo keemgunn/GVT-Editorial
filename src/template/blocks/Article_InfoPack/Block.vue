@@ -22,6 +22,7 @@ const hideAll = (!props.showCategory && !props.showDate && !props.showReadingTim
 </script>
 
 <template>
+<!-- Article_InfoPack -->
 <ul v-if="!hideAll" class="article-infopack" :class="infoClass">
   <li v-if="showCategory" class="info-category">{{ article.category }}</li>
   <li v-if="showReadingTime" class="info-readingtime">{{ article.readTime }}</li>

@@ -4,7 +4,6 @@ import { defineProps, computed, onBeforeMount, onBeforeUpdate } from 'vue';
 const props = defineProps<{
   name: string;
   cardName: string;
-  cardRoundness: number;
   articles: Array<ArticleRecord>;
     // articles are recommended to be ref()ed object.
   showAds: 0 | 1 | 2 | 3;
@@ -46,14 +45,15 @@ const articlesWithAds = computed(() => {
 </script>
 
 <template>
+<!-- List_ArticleCards -->
 <ul class="list-articlecards">
   <template v-for="article in articlesWithAds" :id="`list-${name}-${article.uri}`">
     <li :class="`${article.uri === 'ad'? 'ad' : 'article'}`">
       <template v-if="article.uri === 'ad'">
-        <Adbox_ScaleShift :adSizes="adSizes" :roundness="cardRoundness"/>
+        <Adbox_ScaleShift :adSizes="adSizes"/>
       </template>
       <template v-else>
-        <component :is="cardName" :article="article" :roundness="cardRoundness"/>
+        <component :is="cardName" :article="article"/>
       </template>
     </li>
   </template>

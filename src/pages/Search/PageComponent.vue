@@ -66,6 +66,7 @@ const articleListAdSizes = {
       </form>
       
       <!-- <Vector class="brand-logo" :src="brandLogo"/> -->
+      <Plate/>
     </section>
 
     <div 

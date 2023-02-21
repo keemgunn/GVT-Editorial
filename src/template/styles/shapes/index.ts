@@ -6,6 +6,6 @@
 export function getRoundStyle(roundness: number) {
   return {
     "border-radius": `${roundness}rem`,
-    "overflow": `hidden`
+    "overflow": `${roundness > 0 ? 'hidden' : ''}`
   }
 }

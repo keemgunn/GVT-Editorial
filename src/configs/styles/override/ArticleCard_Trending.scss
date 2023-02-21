@@ -1,0 +1,48 @@
+/** OVERRIDE - ArticleCard_Trending */
+
+html :is(.scale--XXL, .scale--XL, .scale--L) .article-card-trending-a{
+  // --container-height: auto;
+  
+}
+html :is(.scale--M) .article-card-trending-a{
+  // --container-height: auto;
+  
+}
+html :is(.scale--S) .article-card-trending-a{
+  // --container-height: auto;
+  
+}
+html :is(.scale--XS, .scale--XXS) .article-card-trending-a{
+  // --container-height: 226rem;
+}
+
+
+html :is(.scale--XXL) .article-card-trending-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+html :is(.scale--XL) .article-card-trending-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+html :is(.scale--L) .article-card-trending-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+html :is(.scale--M) .article-card-trending-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+html :is(.scale--S) .article-card-trending-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+html :is(.scale--XS) .article-card-trending-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+html :is(.scale--XXS) .article-card-trending-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+

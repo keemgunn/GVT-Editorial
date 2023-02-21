@@ -1,0 +1,55 @@
+/* OVERRIDE - PageNav */
+
+
+
+html :is(.scale--XXL, .scale--XL, .scale--L, .scale--M) .page-nav {
+  justify-content: space-between;
+}
+html :is(.scale--S, .scale--XS, .scale--XXS) .page-nav {
+  justify-content: center;
+}
+
+html :is(.scale--XXL, .scale--XL, .scale--L, .scale--M, .scale--S) .page-nav {
+  .movebutton, .pagebutton { 
+    @extend .typo-caption-18--bold; 
+  }
+  .dots { 
+    @extend .typo-caption-12--bold;
+  }
+  --button-size: 40rem;
+  --buttons-gap: 15rem;
+}
+html :is(.scale--XS, .scale--XXS) .page-nav {
+  .movebutton, .pagebutton { @extend .typo-caption-12--bold; }
+  --button-size: 28rem;
+  --buttons-gap: 15rem;
+}
+
+
+
+html #app .page-nav .dots {
+  // padding-bottom: 6rem;
+}
+html #app .page-nav .movebutton {
+  // padding: 0 10rem;
+  // @include PlateRoundness(12rem);
+}
+html #app .page-nav .pagebutton {
+  // width: var(--button-size);
+  // @include PlateRoundness(12rem);
+}
+html #app .page-nav .pagebutton.router-link-active, .currentpage {
+  // @include PlateBorder(2rem solid var(--Primary));
+  // color: red;
+} 
+html #app .page-nav .pagebutton, .movebutton {
+  // @include PlateBackgroundColor(var(--Primary));
+  // @include PlateBackgroundOpacity(0);
+  // @include PlateTransition(60ms);
+}
+html #app .page-nav :is(.pagebutton, .movebutton):hover {
+  // @include PlateBackgroundOpacity(0.2);
+}
+html #app .page-nav :is(.pagebutton, .movebutton):active {
+  // @include PlateBackgroundOpacity(0.5);
+}
