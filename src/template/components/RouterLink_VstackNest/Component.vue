@@ -1,4 +1,4 @@
-<script setup lang="ts">
+mm<script setup lang="ts">
 import { defineProps, computed, ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import componentConfigs from '@/configs/template/componentConfigs';
@@ -15,11 +15,11 @@ const props = defineProps<{
   title: string
   uri: string
   majorIcon: string
-  showSubIcon: boolean
   majorLinkSize: number
-  subLinkSize: number
-  subLinks: Array<NavRecord> | null
-  showSublinks: HowToShowSublinks
+  subLinkSize?: number
+  showSubIcon?: boolean
+  subLinks?: Array<NavRecord> | null
+  showSublinks?: HowToShowSublinks
 }>();
 
 const hasChild = computed(() => {
@@ -51,7 +51,7 @@ const subLinkClass = computed(() => [
 
 
 const majorIconSize = computed(() => props.majorLinkSize + 2);
-const subIconSize = computed(() => props.subLinkSize + 2);
+const subIconSize = computed(() => (props.subLinkSize || 0) + 2);
 
 
 const roundnessStyle = computed(() => {
@@ -117,7 +117,10 @@ function showIcon(navIcon: String) {
 </script>
 
 <template>
-<li @mouseover="mouseOver(true)" @mouseleave="mouseOver(false)">
+<li 
+class="routerlink-vstacknest"
+@mouseover="mouseOver(true)" 
+@mouseleave="mouseOver(false)">
 
   <RouterLink :class="majorLinkClass" 
   v-show="!expandDropdown"

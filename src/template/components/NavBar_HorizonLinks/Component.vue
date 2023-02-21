@@ -23,6 +23,10 @@ const showActions = computed(() =>
   /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
 )
 
+const showSearchbox = computed(() => 
+  /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
+)
+
 function showIcon(navIcon: String) {
   if (compConfig.showIcons.majorLinks)
     return navIcon
@@ -73,9 +77,9 @@ function searchHook(inputText:string) {
       </ul>
     </nav>
 
-    <div v-show="showActions" class="search-box-wrapper">
+    <div v-show="showSearchbox" class="search-box-wrapper">
       <Searchbox_Mini
-    :onSubmit="searchHook"/>
+      :onSubmit="searchHook"/>
     </div>
   </header>
 
