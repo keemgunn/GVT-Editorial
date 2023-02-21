@@ -99,14 +99,23 @@ export const useLocalContents = defineStore('localContents', () => {
 
 
 
-  const searchQuery = (query: string, articlesPerPage?: number): {searchedRawRecords:ArticleRawRecordsPack, resultCount:number} => {
-
-    // const querysafe = regexQuerySafe(query);
-    const searchedRawRecords = new ArticleRawRecordsPack(
-      articleRawList.filter((article) => {
+  const searchQuery = (query: string, articlesPerPage?: number): { searchedRawRecords: ArticleRawRecordsPack, resultCount: number } => {
+    
+    const queryArr: Array<ArticleRecord> = [
+      ...articleRawList.filter((article) => {
         return article.raw.includes(query);
-      }) || []
-    )
+      }) || [],
+      ...articleList.filter((article) => {
+        return article.title.includes(query);
+      })
+    ];
+
+    const uniqueArticles = queryArr.reduce((accumulator: Array<ArticleRecord>, current: ArticleRecord) => {
+      const duplicated = accumulator.find(record => record.uri === current.uri);
+      if (!duplicated) accumulator.push(current);
+      return accumulator;
+    }, []);
+    const searchedRawRecords = new ArticleRawRecordsPack(uniqueArticles);
 
     // Sort DESC
     searchedRawRecords.sortDesc('date');

@@ -51,8 +51,14 @@ export class ArticleRawRecordsPack {
         regex,
         `<mark>${keyword}</mark>`
       );
+      newRecord.title = rawRecord.title.replace(
+        regex,
+        `<mark>${keyword}</mark>`
+      );
       newArr.push(newRecord);
     })
+
+
     this.array = newArr;
   }
 
@@ -64,6 +70,10 @@ export class ArticleRawRecordsPack {
 
     this.array.forEach((rawRecord) => {
       const newRecord = { ...rawRecord };
+      if (rawRecord.raw.length === 0) {
+        newArr.push(newRecord);
+        return;
+      };
 
       const slicedString = sliceAroundKeywords(rawRecord, querysafe, length);
       newRecord.raw = slicedString;

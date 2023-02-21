@@ -1,17 +1,13 @@
-#app .article-infopack.--10 li{ 
-  font-size: 10rem; 
-}
-#app .article-infopack.--12 li{ 
-  font-size: 12rem; 
-}
-#app .article-infopack.--14 li{ 
-  font-size: 14rem; 
+@for $i from 8 through 20 {
+  #app .article-infopack.--#{$i} li{ 
+    font-size: #{$i}rem; 
+  }
 }
 .article-infopack {
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  gap: 14rem;
+  gap: 1.1em;
   position: relative;
 
   .info-category {
@@ -31,5 +27,5 @@
   font-family: monospace;
   font-weight: 400;
   position: absolute;
-  top: 0; left: -10rem;
+  top: 0.05em; left: -0.8em;
 }

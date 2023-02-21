@@ -15,7 +15,6 @@ const props = defineProps<{
   titleDividerWidth: number;
 
   articleCardName: string;
-  articleCardRoundness: number;
   articlesArray: Array<ArticleRecord>;
 
   showAdsInList: number;
@@ -60,7 +59,6 @@ const AdSizes = {
     class="list-articlecards"
     :name="articleListName" 
     :cardName="articleCardName" 
-    :cardRoundness="articleCardRoundness" 
     :articles="articlesArray"
     :showAds="showAdsInList" 
     :adSizes="adSizes"/>

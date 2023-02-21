@@ -4,9 +4,6 @@ import { useFrameStore } from '@/template/styles/frame/_store';
 import { getRoundStyle } from '@/template/styles/shapes'
 const frameStore = useFrameStore();
 
-
-const showHeadCategoryInfo = computed(() => /--L|--XL|--XXL/.test(frameStore.appScale))
-
 const infoPackSize = computed(() => {
   const scale = frameStore.appScale.split('--')[1];
   switch (scale) {
@@ -20,26 +17,24 @@ const infoPackSize = computed(() => {
 })
 
 const props = defineProps<{
-  rawArticle: ArticleRawRecord;
+  article: ArticleRecord;
 }>();
 </script>
 
 <template>
-<!-- ArticleCard_Searched_A -->
-<RouterLink class="article-card-searched-a" :to="rawArticle.articleRecord.uri">
+<!-- ArticleCard_A -->
+<RouterLink class="article-card-searched-a" :to="article.uri">
 
   <div class="imagebox">
-    <img :src="rawArticle.articleRecord.coverImage" alt="">
+    <img :src="article.coverImage" alt="">
   </div>
   <div class="textbox">
-    <Article_InfoPack id="info-head" v-show="showHeadCategoryInfo" :article="rawArticle.articleRecord" :size="12" :showReadingTime="false" :showDate="false" :showCategory="true"/>
+    <h1 class="title" v-html="article.title"></h1>
 
-    <h1 class="title">{{ rawArticle.articleRecord.title }}</h1>
-    <p class="description">{{ rawArticle.articleRecord.description }}</p>
+    <p class="raw" v-html="article.raw" v-show="article.raw.length"></p>
 
-    <Article_InfoPack id="info-tail" :article="rawArticle.articleRecord" :size="12" :showReadingTime="true" :showDate="true" :showCategory="!showHeadCategoryInfo"/>
+    <Article_InfoPack id="info-tail" :article="article" :size="15" :showReadingTime="true" :showDate="true" :showCategory="true"/>
   </div>
-
 
   <Plate/>
 </RouterLink>
