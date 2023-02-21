@@ -30,3 +30,13 @@ li {
   text-indent: 0;
   list-style-type: none;
 }
+
+a,
+input,
+button {
+    outline: 0;
+}
+
+:focus {
+    outline: none;
+}

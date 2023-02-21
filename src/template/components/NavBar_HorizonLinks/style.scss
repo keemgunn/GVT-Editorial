@@ -143,12 +143,12 @@
     gap: var(--router-link-vstack-nests-gap);
   }
 
-  .search-box {
+  .search-box-wrapper {
     width: var(--nav-bar-search-width);
     height: 100%;
-
-    // FOR TEST
-    font-size: 16rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }
 

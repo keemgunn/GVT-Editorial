@@ -6,27 +6,13 @@ import brandLogo from '@/assets/svg/logo-brand-main.svg';
 import { searchByFormInput } from '@/template/composables/searchByFormInput';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
 
-
-const ARTICLES_PER_PAGE = 5;
+const ARTICLES_PER_PAGE = 15;
 
 const frameStore = useFrameStore();
 const route = useRoute();
 const router = useRouter();
 
-// const {
-//   searchedArticles,
-//   requestedKeyword,
-//   searchState,
-//   searchedNumber, 
-//   searchArticles
-// } = searchByFormInput('search-billboard-form', 'searchKeyword', ARTICLES_PER_PAGE);
-
-
 const searchPackage = searchByFormInput('search-billboard-form', 'searchKeyword', ARTICLES_PER_PAGE);
-
-
-
-
 
 const pageURI = computed(() => {
   if (searchPackage.requestedKeyword.value.length > 0)

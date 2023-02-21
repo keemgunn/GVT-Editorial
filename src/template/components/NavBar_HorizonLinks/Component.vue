@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity';
+import { useRouter } from 'vue-router';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useConfigs } from '@/template/stores/userConfigs';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
@@ -10,6 +11,7 @@ import { useScrollPosition } from '@/template/composables/useScrollPosition';
 const COMPONENT_NAME = 'NavBar_HorizonLinks';
 
 const frameStore = useFrameStore();
+const router = useRouter();
 const { navigationSetting } = useConfigs();
 const navRecords: NavRecords = navigationSetting;
 
@@ -35,13 +37,19 @@ const CL_showBackgroundColor = computed(() => {
   else
     return ""
 });
+
+function searchHook(inputText:string) {
+  router.push(`/search?keyword=${inputText}`);
+}
 </script>
 
 
 
 <template>
+<!-- @NavBar_HorizonLinks -->
 <div id="navigation" class="nav-bar-horizon-links" :class="CL_showBackgroundColor">
 
+  <!-- topBannerInjection -->
   <component :is="compConfig.topBannerInjection"></component>
     
   <header>
@@ -65,8 +73,9 @@ const CL_showBackgroundColor = computed(() => {
       </ul>
     </nav>
 
-    <div v-show="showActions" class="search-box">
-      search-box-here
+    <div v-show="showActions" class="search-box-wrapper">
+      <Searchbox_Mini
+    :onSubmit="searchHook"/>
     </div>
   </header>
 

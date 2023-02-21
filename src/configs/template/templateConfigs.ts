@@ -13,7 +13,7 @@ export default {
    * See each component files in @/template/components/
    */
   navBar: componentList.NavBar
-    .NavBar_HorizonLinks(false, false),
+    .NavBar_HorizonLinks(false, false, undefined),
   
   
   /** This decides thresholds in responsive design. */
