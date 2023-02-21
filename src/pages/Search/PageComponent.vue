@@ -7,6 +7,7 @@ import { searchByFormInput } from '@/template/composables/searchByFormInput';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
 
 const ARTICLES_PER_PAGE = 15;
+const AD_TOWER_AD_COUNT = 1;
 
 const frameStore = useFrameStore();
 const route = useRoute();
@@ -74,6 +75,7 @@ const articleListAdSizes = {
     :articlesArray="searchPackage.searchedArticles.value.array"
     :showAdsInList="0"
     :adSizes="articleListAdSizes"
+    :adTowerAdCount="AD_TOWER_AD_COUNT"
     :pageURI="pageURI"
     />
   </main>

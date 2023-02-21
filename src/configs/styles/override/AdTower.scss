@@ -1,0 +1,30 @@
+
+:is(.scale--XXL, .scale--XL, .scale--L) #app 
+.ad-tower {
+  // --wrapper-gap: 36rem;
+  
+}
+:is(.scale--M) #app 
+.ad-tower {
+  // --wrapper-gap: 32rem;
+  
+}
+:is(.scale--S) #app 
+.ad-tower {
+  // --wrapper-gap: 30rem;
+  
+}
+:is(.scale--XS, .scale--XXS) #app 
+.ad-tower {
+  // --wrapper-gap: 24rem;
+}
+
+
+html #app .ad-tower {
+  ul.wrapper {
+    li > * {
+      // position: sticky;
+      // top: calc(var(--nav-bar-height) + var(--wrapper-gap));
+    }
+  }
+}

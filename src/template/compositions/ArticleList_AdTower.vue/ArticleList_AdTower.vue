@@ -21,12 +21,26 @@ const props = defineProps<{
   showAdsInList: number;
   adSizes: AdSizeByScale;
 
+  adTowerAdCount: number;
+
   pageURI: string;
 }>();
 
 const articleListName = computed(() => {
   return props.title.replace(/ /gi, "")
 })
+
+const showAdTower = computed(() => /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale))
+
+const AdSizes = {
+  XXS: { width: 300, height: 250 },
+  XS: { width: 300, height: 250 },
+  S: { width: 160, height: 600 },
+  M: { width: 160, height: 600 },
+  L: { width: 300, height: 600 },
+  XL: { width: 300, height: 600 },
+  XXL: { width: 300, height: 600 },
+} satisfies AdSizeByScale
 </script>
 
 
@@ -64,8 +78,14 @@ const articleListName = computed(() => {
     :roundness="0"/>
   </section>
 
-  <aside class="ad-tower-wrapper">
-  </aside>
+  <!-- @ AdTower -->
+  <AdTower
+  v-show="showAdTower" 
+  class="ad-tower" 
+  :AdSizes="AdSizes" 
+  :AdCount="adTowerAdCount" 
+  :roundness="articleCardRoundness" 
+  />
 
 </section>
 </template>
@@ -108,7 +128,6 @@ const articleListName = computed(() => {
   --container-gap: 38rem;
   --items-gap: 24rem;
   --ad-tower-width: 100%;
-
 }
 
 
@@ -145,10 +164,9 @@ const articleListName = computed(() => {
   }
 }
 #app .article-list-and-ad-tower 
-.ad-tower-wrapper {
+.ad-tower {
   width: var(--ad-tower-width);
   flex-shrink: 0;
-  background-color: #5f9ea0;
 }
 
 

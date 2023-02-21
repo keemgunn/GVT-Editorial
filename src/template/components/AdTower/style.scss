@@ -1,0 +1,47 @@
+
+:is(.scale--XXL, .scale--XL, .scale--L) 
+.ad-tower {
+  --wrapper-gap: 36rem;
+  
+}
+:is(.scale--M) 
+.ad-tower {
+  --wrapper-gap: 32rem;
+  
+}
+:is(.scale--S) 
+.ad-tower {
+  --wrapper-gap: 30rem;
+  
+}
+:is(.scale--XS, .scale--XXS) 
+.ad-tower {
+  --wrapper-gap: 24rem;
+}
+
+
+
+.ad-tower {
+  // width: from parent css
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+  ul.wrapper {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: var(--wrapper-gap);
+
+    li {
+      flex-grow: 1;
+    }
+    li > * {
+      position: sticky;
+      top: calc(var(--nav-bar-height) + var(--wrapper-gap));
+    }
+
+  }
+
+}

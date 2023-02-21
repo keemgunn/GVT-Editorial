@@ -8,6 +8,7 @@ import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue
 
 
 const ARTICLE_PER_PAGE = 10; // DO NOT CHANGE YET
+const AD_TOWER_AD_COUNT = 2;
 
 
 const route = useRoute()
@@ -53,6 +54,7 @@ const articleListAdSizes = {
     :articlesArray="latestArticles.array"
     :showAdsInList="2"
     :adSizes="articleListAdSizes"
+    :adTowerAdCount="AD_TOWER_AD_COUNT"
     pageURI="/_PAGENUM_"
     />
   </main>

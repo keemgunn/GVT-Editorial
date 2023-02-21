@@ -65,6 +65,6 @@ onBeforeUpdate(() => {
   }
 }
 .ad-box.--prevent-interaction {
-  pointer-events: none !important;;
+  pointer-events: none !important;
 }
 </style>
