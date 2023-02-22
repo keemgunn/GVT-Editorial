@@ -8,13 +8,14 @@
   
   outline-color: var(--Secondary);
 
-  &, .bg { transition: 160ms; }
-  @include PlateTransition(160ms);
+  @extend .backdrop--blur;
+  &, .bg { transition: 100ms; }
+  @include PlateTransition(100ms);
 }
 
 .button.--roundness-1 {
   @include ButtonRoundness (
-    'roundness', 1.2em,
+    'roundness', 1.125em,
   );
 }
 .button.--roundness-2 {
@@ -28,7 +29,7 @@
 }
 
 .button .wrapper > :nth-child(2) {
-  padding-right: 0.18em;
+  padding-right: 0.06em;
 }
 .button p {
   margin-top: 0.03em;
@@ -60,7 +61,7 @@
 }
 @media(hover: hover) and (pointer: fine) {
   .button.filled:hover {
-    @include PlateBackgroundOpacity(0.78);
+    @include PlateBackgroundOpacity(0.84);
   }
 }
 .button.filled:active {
@@ -79,7 +80,6 @@
   @include PlateBackgroundOpacity(0.24);
   @include PlateBorderOpacity(0);
   --bg-opacity: 1;
-  @extend .backdrop--blur;
 }
 @media(hover: hover) and (pointer: fine) {
   .button.toned:hover {
@@ -126,7 +126,6 @@
   @include PlateBorderOpacity(1);
   @include PlateBackgroundOpacity(0);
   --bg-opacity: 0;
-  @extend .backdrop--blur;
 }
 @media(hover: hover) and (pointer: fine) {
   .button.outlined-backdrop:hover {
@@ -150,7 +149,6 @@
   @include PlateBackgroundOpacity(0);
   @include PlateBorderOpacity(0);
   --bg-opacity: 0;
-  @extend .backdrop--blur;
 }
 @media(hover: hover) and (pointer: fine) {
   .button.minimal:hover {
@@ -174,7 +172,7 @@
   @include IconSize(18);
   @include PlateBorder(2rem solid);
   p { @extend .typo-mark-14--bold; }
-  padding: 10rem 16rem;
+  padding: 10rem 12rem;
   .wrapper {
     gap: 6rem;
   }
@@ -184,7 +182,7 @@
   @include IconSize(20);
   @include PlateBorder(3rem solid);
   p { @extend .typo-mark-16--bold; }
-  padding: 12rem 18rem;
+  padding: 12rem 14rem;
   .wrapper {
     gap: 8rem;
   }
@@ -194,27 +192,27 @@
   @include IconSize(24);
   @include PlateBorder(3rem solid);
   p { @extend .typo-mark-18--bold; }
-  padding: 14rem 20rem;
+  padding: 14rem 16rem;
   .wrapper {
     gap: 9rem;
   }
 }
 .button.--20 {
   font-size: 20rem;
-  @include IconSize(26);
+  @include IconSize(28);
   @include PlateBorder(3rem solid);
   p { @extend .typo-mark-20--bold; }
-  padding: 16rem 22rem;
+  padding: 14rem 18rem;
   .wrapper {
     gap: 11rem;
   }
 }
 .button.--22 {
   font-size: 22rem;
-  @include IconSize(28);
+  @include IconSize(30);
   @include PlateBorder(4rem solid);
   p { @extend .typo-mark-22--bold; }
-  padding: 18rem 24rem;
+  padding: 16rem 20rem;
   .wrapper {
     gap: 12rem;
   }

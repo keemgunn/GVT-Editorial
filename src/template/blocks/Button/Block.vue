@@ -16,6 +16,8 @@ const props = defineProps<{
   onBeforeMountHook?: () => void;
   onMountedHook?: () => void;
   onMouseClickHook?: (event: MouseEvent) => void;
+  onMouseEnterHook?: (event: MouseEvent) => void;
+  onMouseLeaveHook?: (event: MouseEvent) => void;
 }>();
 
 const enabled = computed(() => {
@@ -57,7 +59,10 @@ onMounted(() => {
 <template>
 <button 
 :class="CL_buttonContainer" :style="ST_buttonContainer" 
-@click="props.onMouseClickHook">
+@click="props.onMouseClickHook"
+@mouseenter="props.onMouseEnterHook"
+@mouseleave="props.onMouseLeaveHook"
+>
 
   <div class="wrapper">
     <Icon class="icon" v-show="props.icon?.length" :name="props.icon"/>

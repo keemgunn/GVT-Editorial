@@ -61,7 +61,5 @@ const articleListAdSizes = {
 
   <footer id="footer-info"></footer>
 
-  <List_FloatingActions/>
-
 </div>
 </template>

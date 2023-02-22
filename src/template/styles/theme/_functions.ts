@@ -1,6 +1,7 @@
 import { useThemeStore } from './_store';
 import { useFrameStore } from '../frame/_store';
 import { injectMetaName } from '@/template/hooks/headInjection';
+import sessionStorageHelper from '@/template/helpers/sessionStorageHelper';
 
 
 export function appleThemeColor() {
@@ -50,5 +51,46 @@ export function changeTheme(colorSchemeQuery: MediaQueryList) {
     store.currentThemeClass = store.themeSettings.darkThemeClass;
   } else {
     store.currentThemeClass = store.themeSettings.lightThemeClass;
+  }
+}
+
+
+
+/** SAVE APPEARANCE SETTINGS TO LOCAL STORAGE */
+export function appearanceLSsave() {
+  const store = useThemeStore();
+  localStorage.setItem('GVT-appearance', store.themeSettings.appearance);
+}
+
+/** SYNC APPEARANCE SETTINGS WITH LOCAL STORAGE */
+export function appearanceLSsync() {
+  const store = useThemeStore();
+  const ls_appearance = localStorage.getItem('GVT-appearance');
+
+  if (["light", "dark", "auto"].includes(ls_appearance || '')) {
+    store.themeSettings.appearance = ls_appearance as Appearence;
+  }
+  else {
+    localStorage.setItem('GVT-appearance', store.themeSettings.appearance);
+  }
+}
+
+
+/** SAVE APPEARANCE SETTINGS TO SESSION STORAGE */
+export function appearanceSessionSave() {
+  const store = useThemeStore();
+  sessionStorageHelper.setItem('appearance', store.themeSettings.appearance);
+}
+
+/** SYNC APPEARANCE SETTINGS WITH SESSION STORAGE */
+export function appearanceSessionSync() {
+  const store = useThemeStore();
+  const ss_appearance = sessionStorageHelper.getItem('appearance');
+
+  if (["light", "dark", "auto"].includes(ss_appearance || '')) {
+    store.themeSettings.appearance = ss_appearance as Appearence;
+  }
+  else {
+    appearanceSessionSave();
   }
 }

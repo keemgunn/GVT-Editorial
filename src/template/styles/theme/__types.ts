@@ -1,13 +1,14 @@
 export { };
 declare global {
 
+  type Appearence = 'light' | 'dark' | 'auto';
   /**
    * @property appearance : "light" | "dark" | "auto"
    * @property lightThemeClass: string
    * @property darkThemeClass: string
    */
   interface ColorSchemeSettings {
-    appearance: "light" | "dark" | "auto",
+    appearance: Appearence,
     lightThemeClass: string,
     darkThemeClass: string
   }

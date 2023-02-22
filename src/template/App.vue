@@ -5,6 +5,7 @@ import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
 import { useConfigs } from './stores/userConfigs';
 import templateConfigs from '@/configs/template/templateConfigs';
+import BlogFloatingActions from './compositions/BlogFloatingActions/BlogFloatingActions.vue';
 
 // const aaaa: navBarName = 'NavBar_HorizonLinks';
 
@@ -40,6 +41,7 @@ useTheme();
 
     <component :is="navBar.name"/>
     <RouterView/>
+    <BlogFloatingActions/>
     
     <DevStatusBar v-if=" process_env === 'DEV_1'"/>
   </template>

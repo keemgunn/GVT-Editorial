@@ -12,11 +12,11 @@ export const useConfigs = defineStore('configs', () => {
 
 
   // -------- Website
-  const websiteSettings: Ref<any> = ref(ws);
+  const websiteProperties: Ref<any> = ref(ws);
   const navigationSetting: Ref<any> = ref(nav);
 
   return {
-    websiteSettings,
+    websiteProperties,
     navigationSetting,
   }
 })

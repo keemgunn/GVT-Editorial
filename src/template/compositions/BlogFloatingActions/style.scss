@@ -1,0 +1,68 @@
+
+:is(.scale--XXL, .scale--XL, .scale--L) #blog-floating-actions {
+  --side-padding: 50rem;
+}
+:is(.scale--M) #blog-floating-actions {
+  --side-padding: 50rem;
+}
+:is(.scale--S) #blog-floating-actions {
+  --side-padding: 40rem;
+}
+:is(.scale--XS, .scale--XXS) #blog-floating-actions {
+  --side-padding: 26rem;
+}
+
+
+#blog-floating-actions 
+.actions.desktop.--dim, 
+.actions.mobile.--dim {
+  opacity: 0.5;
+}
+
+#blog-floating-actions 
+.actions.mobile.--hide {
+  opacity: 0.5;
+  transform: translateY(100rem);
+}
+
+
+#blog-floating-actions {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%; height: fit-content;
+  z-index: 50;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  user-select: none;
+  pointer-events: none;
+
+  .actions {
+    position: relative;
+    display: flex;
+    pointer-events: all;
+    transition: 
+      opacity 400ms, 
+      transform 400ms;
+  }
+}
+
+
+#blog-floating-actions 
+.actions.desktop {
+  width: fit-content;
+  padding-right: var(--side-padding);
+  padding-bottom: var(--side-padding);
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#blog-floating-actions 
+.actions.mobile {
+  width: 100%;
+  padding-left: var(--side-padding);
+  padding-right: var(--side-padding);
+  padding-bottom: var(--side-padding);
+  flex-direction: row;
+  justify-content: space-between;
+}

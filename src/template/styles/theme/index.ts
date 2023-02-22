@@ -7,9 +7,9 @@
  * 
  * 3. When OS Color Scheme Changes, changeTheme (If `store.themeSettings.appearance` is `"auto"`)
  */
-import { watch, onMounted } from 'vue';
+import { watch, onMounted, onBeforeMount } from 'vue';
 import { useThemeStore } from './_store';
-import { appleThemeColor, changeTheme } from './_functions';
+import { appleThemeColor, changeTheme, appearanceLSsync, appearanceLSsave, appearanceSessionSave, appearanceSessionSync } from './_functions';
 
 export function useTheme() {
 
@@ -42,4 +42,19 @@ export function useTheme() {
   };
 
   onMounted(() => changeTheme(colorSchemeQuery));
+
+  onBeforeMount(() => {
+    appearanceSessionSync();
+  })
+}
+
+export function toggleDarkmode() {
+  const store = useThemeStore();
+
+  if (store.isDark) 
+    store.themeSettings.appearance = 'light';
+  else 
+    store.themeSettings.appearance = 'dark';
+  
+  appearanceSessionSave();
 }

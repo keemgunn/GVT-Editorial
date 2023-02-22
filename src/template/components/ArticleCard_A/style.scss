@@ -38,8 +38,8 @@
   --title-max-height: 4.5em;
   --description-line-clamp: 2;
   --description-max-height: 3em;
-  h1.title { @extend .typo-header-22; }
-  p.description { @extend .typo-body-13; }
+  h1.title { @extend .typo-header-21; }
+  p.description { @extend .typo-body-12; }
   
 }
 :is(.scale--XS, .scale--XXS) .article-card-a{
@@ -92,6 +92,7 @@
   width: 100%;
   height: var(--article-card-height);
   transition: 200ms;
+  user-select: none;
   ul, li {
     position: relative; 
   }
@@ -164,6 +165,8 @@
   @include PlateBackgroundColor(var(--PrimaryContainer));
   @include PlateBackgroundOpacity(1);
   transform: scale(1.01);
+}
+@media (hover: hover) and (pointer: fine) {
 }
 
 
