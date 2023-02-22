@@ -6,17 +6,14 @@
 
 @mixin IconColor($color) {
   .icon span {
-    color: var(#{$color});
+    color: #{$color};
   }
 }
 
-// DEPRECATED ---------------
-// Replaced by props injection.
-// See ./Atom.vue
 @mixin IconSize($size) {
   .icon {
-    width: #{$size}rem !important;
-    height: #{$size}rem !important;
+    width: #{$size}rem;
+    height: #{$size}rem;
   }
   .icon span {
     font-size: #{$size}rem;

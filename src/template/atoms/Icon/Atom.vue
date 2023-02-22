@@ -3,7 +3,7 @@ import { defineProps, computed } from 'vue';
 
 const props = defineProps<{
   name: string,
-  size: number
+  size?: number
 }>();
 
 const containerStyle = computed(() => {

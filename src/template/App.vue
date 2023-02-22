@@ -12,8 +12,10 @@ import templateConfigs from '@/configs/template/templateConfigs';
 const process_env = inject('process_env');
 
 
+
 // =================== Template User Configurations
 const { navBar } = templateConfigs;
+
 
 
 // =================== CSS FILES
@@ -44,7 +46,6 @@ useTheme();
   
   
   <template v-if="navBar.name == 'NavBar_App'">
-
     <component :is="navBar.name"/>
     <RouterView/>
     <StatusBar/>

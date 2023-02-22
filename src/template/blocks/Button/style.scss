@@ -1,0 +1,248 @@
+
+.button {
+  width: fit-content;
+  height: fit-content;
+  
+  --bg-color: var(--Surface);
+  --bg-opacity: 1;
+  
+  outline-color: var(--Secondary);
+
+  &, .bg { transition: 160ms; }
+  @include PlateTransition(160ms);
+}
+
+.button.--roundness-1 {
+  @include ButtonRoundness (
+    'roundness', 1.2em,
+  );
+}
+.button.--roundness-2 {
+  @include ButtonRoundness (
+    'roundness', 4em,
+  );
+  .wrapper {
+    padding-left: 0.125em;
+    padding-right: 0.125em;
+  }
+}
+
+.button .wrapper > :nth-child(2) {
+  padding-right: 0.18em;
+}
+.button p {
+  margin-top: 0.03em;
+}
+.button.--caps {
+  .icon {
+    margin-bottom: 0.1em;
+  }
+  p { 
+    margin-top: 0.034em;
+    @extend .--caps; 
+  }
+}
+
+.button.--disabled {
+  pointer-events: none;
+  * {filter: grayscale(1);}
+}
+
+// DEFINED IN COMPONENT
+// --button-accent-color
+
+.button.filled {
+  color: var(--Surface);
+  @include IconColor(var(--Surface));
+  @include PlateBackgroundColor(var(--button-accent-color));
+  @include PlateBackgroundOpacity(1);
+  @include PlateBorderOpacity(0);
+}
+@media(hover: hover) and (pointer: fine) {
+  .button.filled:hover {
+    @include PlateBackgroundOpacity(0.78);
+  }
+}
+.button.filled:active {
+  @include PlateBackgroundOpacity(1);
+}
+.button.filled.--disabled {
+  .wrapper { opacity: 0.72; }
+  @include PlateBackgroundOpacity(0.22);
+}
+
+
+.button.toned {
+  color: var(--OnSurface);
+  @include IconColor(var(--OnSurface));
+  @include PlateBackgroundColor(var(--button-accent-color));
+  @include PlateBackgroundOpacity(0.24);
+  @include PlateBorderOpacity(0);
+  --bg-opacity: 1;
+  @extend .backdrop--blur;
+}
+@media(hover: hover) and (pointer: fine) {
+  .button.toned:hover {
+    @include PlateBackgroundOpacity(0.38);
+  }
+}
+.button.toned:active {
+  @include PlateBackgroundOpacity(0.48);
+}
+.button.toned.--disabled {
+  .wrapper { opacity: 0.24; }
+  @include PlateBackgroundOpacity(0.18);
+}
+
+
+.button.outlined {
+  color: var(--button-accent-color);
+  @include IconColor(var(--button-accent-color));
+  @include PlateBackgroundColor(var(--button-accent-color));
+  @include PlateBorderColor(var(--button-accent-color));
+  @include PlateBorderOpacity(1);
+  @include PlateBackgroundOpacity(0);
+}
+@media(hover: hover) and (pointer: fine) {
+  .button.outlined:hover {
+    @include PlateBackgroundOpacity(0.12);
+  }
+}
+.button.outlined:active {
+  @include PlateBackgroundOpacity(0.24);
+}
+.button.outlined.--disabled {
+  .wrapper { opacity: 0.24; }
+  @include PlateBorderOpacity(0.2);
+  @include PlateBackgroundOpacity(0.1);
+}
+
+
+.button.outlined-backdrop {
+  color: var(--button-accent-color);
+  @include IconColor(var(--button-accent-color));
+  @include PlateBackgroundColor(var(--button-accent-color));
+  @include PlateBorderColor(var(--button-accent-color));
+  @include PlateBorderOpacity(1);
+  @include PlateBackgroundOpacity(0);
+  --bg-opacity: 0;
+  @extend .backdrop--blur;
+}
+@media(hover: hover) and (pointer: fine) {
+  .button.outlined-backdrop:hover {
+    @include PlateBackgroundOpacity(0.12);
+  }
+}
+.button.outlined-backdrop:active {
+  @include PlateBackgroundOpacity(0.24);
+}
+.button.outlined-backdrop.--disabled {
+  .wrapper { opacity: 0.38; }
+  @include PlateBorderOpacity(0.30);
+  @include PlateBackgroundOpacity(0.06);
+}
+
+
+.button.minimal {
+  color: var(--button-accent-color);
+  @include IconColor(var(--button-accent-color));
+  @include PlateBackgroundColor(var(--button-accent-color));
+  @include PlateBackgroundOpacity(0);
+  @include PlateBorderOpacity(0);
+  --bg-opacity: 0;
+  @extend .backdrop--blur;
+}
+@media(hover: hover) and (pointer: fine) {
+  .button.minimal:hover {
+    @include PlateBackgroundOpacity(0.12);
+  }
+}
+.button.minimal:active {
+  @include PlateBackgroundOpacity(0.24);
+}
+.button.minimal.--disabled {
+  .wrapper { opacity: 0.32; }
+}
+
+
+
+
+
+
+.button.--14 {
+  font-size: 14rem;
+  @include IconSize(18);
+  @include PlateBorder(2rem solid);
+  p { @extend .typo-mark-14--bold; }
+  padding: 10rem 16rem;
+  .wrapper {
+    gap: 6rem;
+  }
+}
+.button.--16 {
+  font-size: 16rem;
+  @include IconSize(20);
+  @include PlateBorder(3rem solid);
+  p { @extend .typo-mark-16--bold; }
+  padding: 12rem 18rem;
+  .wrapper {
+    gap: 8rem;
+  }
+}
+.button.--18 {
+  font-size: 18rem;
+  @include IconSize(24);
+  @include PlateBorder(3rem solid);
+  p { @extend .typo-mark-18--bold; }
+  padding: 14rem 20rem;
+  .wrapper {
+    gap: 9rem;
+  }
+}
+.button.--20 {
+  font-size: 20rem;
+  @include IconSize(26);
+  @include PlateBorder(3rem solid);
+  p { @extend .typo-mark-20--bold; }
+  padding: 16rem 22rem;
+  .wrapper {
+    gap: 11rem;
+  }
+}
+.button.--22 {
+  font-size: 22rem;
+  @include IconSize(28);
+  @include PlateBorder(4rem solid);
+  p { @extend .typo-mark-22--bold; }
+  padding: 18rem 24rem;
+  .wrapper {
+    gap: 12rem;
+  }
+}
+
+
+
+
+button.button {
+  * { // Prevent Safari weird hover effect
+    -webkit-transform: translate3d(0,0,0);
+  }
+  .wrapper {
+    font-size: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    z-index: 0;
+    p { color: inherit; }
+  }
+  .bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -20;
+    background-color: var(--bg-color);
+    opacity: var(--bg-opacity);
+  }
+}
