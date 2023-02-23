@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import { useConfigs } from '@/template/stores/userConfigs';
-import templateConfigs from '@/configs/template/templateConfigs';
+import configs from '@/template/configs';
 
 export const useFrameStore = defineStore('frame', () => {
+
+  const { BREAKPOINTS } = configs.template;
 
   // Browser Width
   const viewWidth: Ref<number> = ref(0);
@@ -23,26 +24,26 @@ export const useFrameStore = defineStore('frame', () => {
 
 
   function breakpoint(scale: 'XXS' | 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL'): number {
-    return templateConfigs.breakpoints[scale]
+    return BREAKPOINTS[scale]
   }
 
   const appScale = computed(() => {
-    if (viewWidth.value < templateConfigs.breakpoints.XXS) {
+    if (viewWidth.value < BREAKPOINTS.XXS) {
       return 'scale--XXS'
     } 
-    else if (viewWidth.value < templateConfigs.breakpoints.XS) {
+    else if (viewWidth.value < BREAKPOINTS.XS) {
       return 'scale--XS'
     }
-    else if (viewWidth.value < templateConfigs.breakpoints.S) {
+    else if (viewWidth.value < BREAKPOINTS.S) {
       return 'scale--S'
     }
-    else if (viewWidth.value < templateConfigs.breakpoints.M) {
+    else if (viewWidth.value < BREAKPOINTS.M) {
       return 'scale--M'
     }
-    else if (viewWidth.value < templateConfigs.breakpoints.L) {
+    else if (viewWidth.value < BREAKPOINTS.L) {
       return 'scale--L'
     }
-    else if (viewWidth.value < templateConfigs.breakpoints.XL) {
+    else if (viewWidth.value < BREAKPOINTS.XL) {
       return 'scale--XL'
     }
     else {

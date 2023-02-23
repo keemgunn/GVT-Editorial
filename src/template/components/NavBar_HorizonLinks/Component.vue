@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { useConfigs } from '@/template/stores/userConfigs';
+import configs from '@/template/configs';
 import brandLogo from '@/assets/svg/logo-brand-main.svg';
-import templateConfigs from '@/configs/template/templateConfigs';
 import defaultConfigs from './index';
 import { useInteractionStore } from '@/template/stores/interaction';
 
 const COMPONENT_NAME = 'NavBar_HorizonLinks';
 
 const frameStore = useFrameStore();
-const { navigationSetting } = useConfigs();
-const navRecords: NavRecords = navigationSetting;
+const NAV_RECORDS: NavRecords = configs.navigation;
 
-const isOnline = templateConfigs.navBar.name === COMPONENT_NAME;
-const compConfig = isOnline ?
-  templateConfigs.navBar : defaultConfigs()
+const { NAV_BAR } = configs.template;
+const isOnline = NAV_BAR.name === COMPONENT_NAME;
+const compConfig = isOnline ? NAV_BAR : defaultConfigs()
 
 const showNavBar = computed(() => 
   /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
@@ -56,7 +54,7 @@ const CL_showBackgroundColor = computed(() => {
 
     <nav>
       <ul class="nav-bar-horizon-links-list">
-        <template v-for="nr in navRecords" 
+        <template v-for="nr in NAV_RECORDS" 
         :key="'page--'+nr.title">
           <RouterLink_VstackNest 
           :title="nr.title" 

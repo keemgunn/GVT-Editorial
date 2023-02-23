@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { defineProps, computed } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { getRoundStyle } from '@/template/styles/shapes'
 const frameStore = useFrameStore();
 
 const infoPackSize = computed(() => {

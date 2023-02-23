@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import { defineProps, computed, ref, onBeforeMount } from 'vue';
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useLocalContents } from '@/template/contents_local';
 
+const MARKDOWN_COMPONENT = "Markdown_BlogArticle";
+
 const { reader } = useLocalContents();
-const router = useRouter();
 const docURI = useRoute().params.docuri.toString();
 const fullURI = reader.getComponentName(docURI);
-
-onBeforeMount(() => {
-  if (fullURI.length === 0) {
-    console.warn("NO DOC");
-    router.replace('/not-found')
-  }
-})
 </script>
 
 <template>
@@ -22,8 +15,15 @@ onBeforeMount(() => {
 
   <main>
     <component 
-    :is='fullURI'/>
+    :is="MARKDOWN_COMPONENT"
+    :markdownComponentName="fullURI"/>
   </main>
 
 </div>
 </template>
+
+<style lang="scss">
+#router-page.read main {
+  width: 100%;
+}
+</style>

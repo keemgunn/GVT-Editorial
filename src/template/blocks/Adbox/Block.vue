@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { defineProps, onBeforeUpdate, computed, inject } from 'vue';
-import { getRoundStyle } from '@/template/styles/shapes';
 
 const props = defineProps<{
   width: number;

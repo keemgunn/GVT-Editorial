@@ -1,11 +1,11 @@
 mm<script setup lang="ts">
 import { defineProps, computed, ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import componentConfigs from '@/configs/template/componentConfigs';
+import configs from '@/template/configs';
 
 
 const frameStore = useFrameStore();
-const compConfig = componentConfigs.RouterLink_VstackNest;
+const compConfig = configs.component.RouterLink_VstackNest;
 
 const props = defineProps<{
   title: string

@@ -1,12 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Ref } from 'vue';
-import templateConfigs from '@/configs/template/templateConfigs';
+import configs from '@/template/configs';
 
 export const useThemeStore = defineStore('theme', () => {
+  const { COLOR_SCHEME, BROWSER_CONTAINER_COLORS }
+    = configs.template;
 
   // User Theme Settings
-  const themeSettings: Ref<ColorSchemeSettings> = ref(templateConfigs.colorScheme);
+  const themeSettings: Ref<ColorSchemeSettings> = ref(COLOR_SCHEME);
 
   // Current Color Scheme
   const isDark: Ref<boolean> = ref(false);
@@ -16,7 +18,7 @@ export const useThemeStore = defineStore('theme', () => {
 
   // Browser Container Colors
   const containerColor = computed(() => {
-    const containerColors = templateConfigs.browserContainerColors as any;
+    const containerColors = BROWSER_CONTAINER_COLORS as any;
     return containerColors[currentThemeClass.value] || ''
   })
 

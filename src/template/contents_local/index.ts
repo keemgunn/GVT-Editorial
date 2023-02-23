@@ -2,11 +2,11 @@
  * Using vite-plugin-vue-markdown. See("https://www.npmjs.com/package/vite-plugin-vue-markdown")
 */
 import { defineStore } from 'pinia'
-import articleConfigs from '@/contents/articles/configs.yml';
+import configs from '../configs';
 import { formatRawMarkdowns } from './_markdownHandler';
 import { ArticleRawRecordsPack, ArticleRecordsPack } from './_classes';
 import { useArticlePageContext } from '@/template/stores/articlePageContext';
-const { categories, uriParent } = articleConfigs;
+const { CATEGORIES, URI_PARENT } = configs.article;
 
 
 
@@ -47,11 +47,11 @@ export const useLocalContents = defineStore('localContents', () => {
   });
 
   // For Filtering Articles with Categories
-  const categorySet: Set<string> = new Set(Object.keys(categories));
+  const categorySet: Set<string> = new Set(Object.keys(CATEGORIES));
 
   /** ((Local Markdown Files)) Get a SET of categories. */
   const getArticleCategoryRecords = (): Record<string, CategoryRecord> => {
-    return categories as Record<string, CategoryRecord>
+    return CATEGORIES as Record<string, CategoryRecord>
   }
 
   // For Pagination 
@@ -163,15 +163,15 @@ export const useLocalContents = defineStore('localContents', () => {
    * - example of paramDocUri: `some-uri`
    * - example of fullUri: `/{{uriParam}}/some-uri`
    * - To load the local document component, we want "fullUri", but router parameter gives "paramDocUri"
-   * - For uriParam, see '@/contents/articles/configs.yml'
+   * - For uriParam, see '@/configs/articleConfigs.ts'
    * ### If there's no document corresponds to current uri, @returns `""` (empty string)
   */
   const getArticleComponentName = (docURI: string) => {
-    const fullUri = uriParent + "/" + docURI;
+    const fullUri = URI_PARENT + "/" + docURI;
     if (articleDocumentSet.has(fullUri))
       return fullUri
     else
-      return ""
+      return null
   }
 
 

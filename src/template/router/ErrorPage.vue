@@ -1,18 +1,11 @@
 <script setup lang="ts">
-import { defineProps, computed, onBeforeMount } from 'vue';
-import { useFrameStore } from '@/template/styles/frame/_store';
-import { useInteractionStore } from '@/template/stores/interaction';
+import { defineProps, computed } from 'vue';
 import { getReasonPhrase } from 'http-status-codes';
-
-const frameStore = useFrameStore();
-
 const props = defineProps<{
   code: number
 }>();
-
 const reasonPhrase = computed(() => getReasonPhrase(props.code))
 </script>
-
 
 <template>
 <!-- PAGE : ERROR -->
@@ -33,9 +26,6 @@ const reasonPhrase = computed(() => getReasonPhrase(props.code))
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-content: stretch;
-  // align-items: stretch;
-  // justify-items: stretch;
 
   * {
     text-align: center;

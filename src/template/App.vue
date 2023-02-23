@@ -3,8 +3,7 @@ import { inject } from 'vue';
 import { RouterView } from 'vue-router'
 import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
-import { useConfigs } from './stores/userConfigs';
-import templateConfigs from '@/configs/template/templateConfigs';
+import configs from './configs';
 import BlogFloatingActions from './compositions/BlogFloatingActions/BlogFloatingActions.vue';
 
 // const aaaa: navBarName = 'NavBar_HorizonLinks';
@@ -15,7 +14,7 @@ const process_env = inject('process_env');
 
 
 // =================== Template User Configurations
-const { navBar } = templateConfigs;
+const { NAV_BAR } = configs.template;
 
 
 
@@ -34,12 +33,12 @@ useTheme();
 </script>
 
 
-<!-- Layout of the #app depends on what kind of NavBar you're implementing. Change Settings on '@/configs/template/templateConfigs' -->
+<!-- Layout of the #app depends on what kind of NavBar you're implementing. Change Settings on '@/configs/templateConfigs' -->
 <template>
 
-  <template v-if="navBar.name == 'NavBar_HorizonLinks'">
+  <template v-if="NAV_BAR.name == 'NavBar_HorizonLinks'">
 
-    <component :is="navBar.name"/>
+    <component :is="NAV_BAR.name"/>
     <RouterView/>
     <BlogFloatingActions/>
     
@@ -47,8 +46,8 @@ useTheme();
   </template>
   
   
-  <template v-if="navBar.name == 'NavBar_App'">
-    <component :is="navBar.name"/>
+  <template v-if="NAV_BAR.name == 'NavBar_App'">
+    <component :is="NAV_BAR.name"/>
     <RouterView/>
     <StatusBar/>
   </template>

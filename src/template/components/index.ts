@@ -8,7 +8,7 @@ import NavBar_App from "./NavBar_App";
 
 /**
  * FOR TEMPLATE CONFIGS
- * SEE: @/configs/template/templateConfigs.ts
+ * SEE: @/configs/templateConfigs.ts
  */
 const componentList = {
   NavBar: {

@@ -8,16 +8,17 @@ export default {
   /** LAYOUTS =================================== */
 
   /**
+   #### templateConfigs/
    * The Navigation Bar decides how #app layout forms.
    * Each NavBar's component settings are defined in each folder's `index.ts`
    * See each component files in @/template/components/
    */
-  navBar: componentList.NavBar
+  NAV_BAR: componentList.NavBar
     .NavBar_HorizonLinks(false, false, undefined),
   
   
   /** This decides thresholds in responsive design. */
-  breakpoints: {
+  BREAKPOINTS: {
     XXS: 320,
     XS: 700,
     S: 1030,
@@ -31,7 +32,7 @@ export default {
   /** COLORS / THEMES ========================== */
 
   /** Theme settings cae be configured in @/configs/styles/colors.scss */
-  colorScheme: {
+  COLOR_SCHEME: {
     appearance: 'auto',
     lightThemeClass: 'theme--default-light',
     darkThemeClass: 'theme--default-dark',
@@ -41,7 +42,7 @@ export default {
   * The color that will be applied to Safari container colors on Apple Devices. 
   * Corresponds to theme-class-names in `../styles/_colors.scss`
    */
-  browserContainerColors: {
+  BROWSER_CONTAINER_COLORS: {
     "theme--default-light": '#ffffff',
     "theme--default-dark": '#f0f0f0',
   },

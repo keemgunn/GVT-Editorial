@@ -1,8 +1,8 @@
-import websiteProperties from '@/configs/website/properties.yml';
-const websiteName = websiteProperties.websiteName as string;
+import configs from '../configs';
+const { WEBSITE_NAME } = configs.website;
 
 function tag(name: string) {
-  return websiteName + '-' + name
+  return WEBSITE_NAME + '-' + name
 }
 
 function getItem(name: string) {

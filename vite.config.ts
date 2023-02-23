@@ -58,7 +58,7 @@ export default defineConfig({
 
       // Component name to wrapper with
       // Place <slot></slot> inside of the wrapper component!
-      wrapperComponent: 'MarkdownViewer'
+      wrapperComponent: 'MarkdownWrapper'
     }),
 
   ],

@@ -1,13 +1,7 @@
 
 ## CAUTION
-### ALL markdown files must be named after following convention:
+### ALL markdown files under '@/contents/articles would be listed into public article pages.':
 
-```
-+{{--WHATEVER-NAME--}}.md
-```
-
-- must be start with '+'
-- must be end with '.md'
-- without '+' at the start, it will not rendered.
-
+### No naming convention. Just markdown file would be okay.
+{{--WHATEVER-NAME--}}.md
 
