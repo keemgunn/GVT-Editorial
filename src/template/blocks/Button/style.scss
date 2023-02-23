@@ -51,10 +51,11 @@
 
 // DEFINED IN COMPONENT
 // --button-accent-color
+// --button-text-color
 
 .button.filled {
-  color: var(--Surface);
-  @include IconColor(var(--Surface));
+  color: var(--button-text-color);
+  @include IconColor(var(--button-text-color));
   @include PlateBackgroundColor(var(--button-accent-color));
   @include PlateBackgroundOpacity(1);
   @include PlateBorderOpacity(0);
@@ -74,8 +75,8 @@
 
 
 .button.toned {
-  color: var(--OnSurface);
-  @include IconColor(var(--OnSurface));
+  color: var(--button-text-color);
+  @include IconColor(var(--button-text-color));
   @include PlateBackgroundColor(var(--button-accent-color));
   @include PlateBackgroundOpacity(0.24);
   @include PlateBorderOpacity(0);

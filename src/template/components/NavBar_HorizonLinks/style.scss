@@ -99,7 +99,10 @@
   @include PlateBorderOpacity(0.08);
   @include PlateTransition(120ms);
   .nav-logo svg {
-    path { fill: var(--nav-bar-stroke-color); }
+    path { fill: var(--nav-bar-stroke-color) !important; }
+  }
+  .rlvn-nested-links-list {
+    @include PlateBackgroundColor(var(--nav-bar-bg-color));
   }
   .searchbox-mini {
     .icon {
@@ -108,9 +111,8 @@
     input {
       border-color: var(--nav-bar-accent-color);
     }
-    input:focus-visible {
-      background-color: var(--nav-bar-on-accent-color);
-      outline: 2px solid var(--nav-bar-accent-color);
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: var(--nav-bar-stroke-color);
     }
   }
 }

@@ -29,6 +29,9 @@
   height: fit-content;
   @include PlateBackgroundOpacity(1);
   transform: translate(calc(var(--router-vstack-list-offset) * (-1)), 0);
+  @include PlateBorder(1px solid);
+  @include PlateBorderOpacity(0.1);
+  @include Shadow-2(20rem);
 }
 #app .rlvn-nested-links-list.--shrinked li {
   z-index: 0;

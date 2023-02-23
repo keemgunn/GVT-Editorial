@@ -17,6 +17,7 @@ const mobileDimmer = computed(() => {
 const mobileHider = computed(() => {
   if (interactionStore.windowScroll < 400) 
     return ''
+  // TODO: also measure scroll number from the bottom of the page.
   if (interactionStore.lastScrollDirection > 0) {
     return '--hide'
   } else {
@@ -63,6 +64,7 @@ function darkModeClick(event: MouseEvent) {
     :roundness="1"
     icon="brightness_medium" 
     text="darkmode" 
+    toolTip="Toggle Darkmode"
     :onMouseEnterHook="desktopHoverAction"
     :onMouseLeaveHook="desktopHoverAction"
     :onMouseClickHook="darkModeClick"

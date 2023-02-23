@@ -1,14 +1,14 @@
 ---
-title: Red Riding Hood 7
+title: An exciting new lineup of smartphones is on the horizon… for Europe at least
 date: 2023-02-14
 uri: article-red-riding-hood-7
 tags: [ Jekyll, tutorial ]
 category: Budgeting
 coverImage: https://images.unsplash.com/photo-1668424861369-2accec5c7ce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80
-description: this is an example document.
+description: Mobile World Congress arrives in Barcelona next week, heralding the arrival of a host of new smartphones for Europeans to enjoy and Americans to crave from afar.
 meta:
   - name: desciption
-    content: this is an example document
+    content: Mobile World Congress arrives in Barcelona next week, heralding the arrival of a host of new smartphones for Europeans to enjoy and Americans to crave from afar.
 ---
 
 Table of Contents !

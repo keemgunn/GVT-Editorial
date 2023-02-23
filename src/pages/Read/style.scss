@@ -1,0 +1,24 @@
+
+
+
+.page--read #app .nav-bar-horizon-links {
+  --nav-bar-bg-color: var(--Base);
+  --nav-bar-stroke-color: var(--Ink);
+  --nav-bar-accent-color: var(--Ink);
+  color: var(--Ink);
+  @include PlateBorderBottom(2rem solid);
+  @include PlateBorderOpacity(0.08);
+  @extend .backdrop--blur;
+  @include PlateBackgroundOpacity(0);
+
+  .nav-logo svg {
+    path { fill: var(--SurfaceVariant); }
+  }
+}
+.page--read #app .nav-bar-horizon-links.--scrolled {
+  @include PlateBackgroundOpacity(0.68);
+}
+
+
+
+

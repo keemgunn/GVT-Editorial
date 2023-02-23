@@ -6,6 +6,8 @@ const props = defineProps<{
   size: 14 | 16 | 18 | 20 | 22;
   buttonStyle?: 'filled' | 'toned' | 'outlined' | 'outlined-backdrop' | 'minimal';
   accentColor?: string;
+  textColor?: string;
+  toolTip?: string;
   roundness?: 0 | 1 | 2;
 
   icon?: string;
@@ -44,6 +46,8 @@ const ST_buttonContainer = computed(() => {
   return {
     '--button-accent-color':
       `${props.accentColor || 'var(--Primary)'}`,
+    '--button-text-color': 
+      `${props.textColor || 'var(--OnPrimary)'}`
 }})
 
 
@@ -59,6 +63,7 @@ onMounted(() => {
 <template>
 <button 
 :class="CL_buttonContainer" :style="ST_buttonContainer" 
+:title="toolTip"
 @click="props.onMouseClickHook"
 @mouseenter="props.onMouseEnterHook"
 @mouseleave="props.onMouseLeaveHook"

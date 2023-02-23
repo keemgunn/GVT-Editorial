@@ -31,22 +31,9 @@
 
 
 
-@include Body("Inter", 20, 26, "",   0, 480, 340, 620);
-@include Body("Inter", 19, 24, "",   0, 480, 340, 620);
-@include Body("Inter", 18, 24, "",   0, 480, 340, 620);
-@include Body("Inter", 17, 22, "",   0, 480, 340, 620);
-@include Body("Inter", 16, 22, "",   0, 480, 340, 620);
-@include Body("Inter", 15, 20, "",   0, 480, 340, 620);
-@include Body("Inter", 14, 20, "",   0, 480, 340, 620);
-@include Body("Inter", 13, 18, "", 0.5, 480, 340, 620);
-@include Body("Inter", 12, 18, "", 0.5, 480, 340, 620);
-@include Body("Inter", 11, 16, "", 0.5, 480, 340, 620);
-@include Body("Inter", 10, 16, "", 0.5, 480, 340, 620);
-@include Body("Inter",  9, 12, "", 0.5, 480, 340, 620);
-@include Body("Inter",  8, 12, "", 0.5, 480, 340, 620);
-$bodySizes: 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8;
-@each $size in $bodySizes {
-  .typo-body-#{$size}, .typo-body-#{$size}--bold, .typo-body-#{$size}--light {
+@for $i from 8 through 32 {
+  @include Body("Inter", $i, ($i + 6), "",   0, 480, 340, 620);
+  .typo-body-#{$i}, .typo-body-#{$i}--bold, .typo-body-#{$i}--light {
     word-wrap:break-word;
     word-break: keep-all;
   }

@@ -11,6 +11,6 @@ declare global {
   //   XXL: { width: number, height: number },
   // }
 
-  type AdSizeByScale = Record<ScaleCode, { width: number, height: number }>;
+  type AdSizeByScale = Record<ScaleCode, { width: number, height: number } | undefined>;
 
 }
