@@ -54,9 +54,19 @@ useTheme();
   </template>
 
 
+  <div id="browser-head-cover"></div>
+
 </template>
 
 <style lang="scss">
   // ==== IMPORT Material Symbols
   @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+  #browser-head-cover {
+    position: fixed;
+    width: 100vw;
+    height: 400rem;
+    top: -400rem;
+    left: 0;
+  }
 </style>

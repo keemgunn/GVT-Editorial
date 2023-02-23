@@ -17,9 +17,8 @@ onBeforeMount(() => {
 </script>
 
 <template>
+<!-- PAGE : READ -->
 <div id="router-page" class="read">
-    
-  <h1> {{ docURI }}</h1>
 
   <main>
     <component 

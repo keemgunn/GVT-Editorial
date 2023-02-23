@@ -29,6 +29,10 @@
   --Shadow-2: rgba(0, 0, 0, 0.08);
   --Shadow-3: rgba(0, 0, 0, 0.12);
   --Shadow-4: rgba(0, 0, 0, 0.16);
+
+  #browser-head-cover {
+    background-color: var(--Surface);
+  }
 }
 
 .theme--default-dark {
@@ -56,12 +60,17 @@
   --SurfaceVariant: #FFFEF0;
   --OnSurfaceVariant: #5E5541;
 
---SurfaceVariant: #FFFEF0;
---OnSurfaceVariant: #5E5541;
---Shadow-1: rgba(0, 0, 0, 0.04);
---Shadow-2: rgba(0, 0, 0, 0.08);
---Shadow-3: rgba(0, 0, 0, 0.12);
---Shadow-4: rgba(0, 0, 0, 0.16);
+  --SurfaceVariant: #FFFEF0;
+  --OnSurfaceVariant: #5E5541;
+  
+  --Shadow-1: rgba(0, 0, 0, 0.04);
+  --Shadow-2: rgba(0, 0, 0, 0.08);
+  --Shadow-3: rgba(0, 0, 0, 0.12);
+  --Shadow-4: rgba(0, 0, 0, 0.16);
+
+  #browser-head-cover {
+    background-color: var(--Surface);
+  }
 }
 
 
@@ -108,8 +117,8 @@
 }
 
 body {
-background-color: var(--Background);
-color: var(--OnSurface);
+  background-color: var(--Background);
+  color: var(--OnSurface);
 }
 a {
 color: inherit;

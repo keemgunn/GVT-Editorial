@@ -14,20 +14,36 @@ const reasonPhrase = computed(() => getReasonPhrase(props.code))
 </script>
 
 
-
 <template>
-<div id="router-page" class="home">
-    
-  <header id="main-actions"> this is header </header>
+<!-- PAGE : ERROR -->
+<div id="router-page" class="error">
   
   <main>
-    <p class="typo-body-16">userAgent : {{ frameStore.userAgent }}</p>
-
-    <h1>Error: {{ reasonPhrase }}</h1>
-
+    <h1 class="typo-header-96 --bold">{{ code }}</h1>
+    <h1 class="typo-header-96 --bold">{{ reasonPhrase }}</h1>
   </main>
-
-  <footer id="other-actions"></footer>
 
 </div>
 </template>
+
+<style lang="scss">
+#router-page.error {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-content: stretch;
+  // align-items: stretch;
+  // justify-items: stretch;
+
+  * {
+    text-align: center;
+  }
+  h1 {
+    font-size: 10vw;
+    color: var(--OnBackground);
+    opacity: 0.36;
+  }
+}
+</style>
