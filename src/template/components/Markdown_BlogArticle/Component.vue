@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { defineProps, computed, ref, onBeforeMount, onMounted } from 'vue';
+import { defineProps, computed, ref, onBeforeMount } from 'vue';
 import type { Ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import configs from '@/template/configs';
-import { toRealArray } from '@/template/contents_local/_helpers';
 import { imageSourceFromUrl } from '@/template/helpers/strings';
 import { copyText } from '@/template/helpers/userActions';
+import { useToaster } from '../Toaster/useToaster';
 const frameStore = useFrameStore();
 const router = useRouter();
+const toaster = useToaster();
 const { CATEGORIES } = configs.article;
 
 const AD_TOWER_AD_COUNT = 2;
@@ -97,6 +98,7 @@ const adTowerAdSizes = {
 
 function copyUrlAction(event: MouseEvent) {
   copyText(window.location.href);
+  toaster.toast('URL Copied!');
 }
 </script>
 

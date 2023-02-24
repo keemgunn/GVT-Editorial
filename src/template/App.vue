@@ -6,17 +6,11 @@ import { useTheme } from './styles/theme';
 import configs from './configs';
 import BlogFloatingActions from './compositions/BlogFloatingActions/BlogFloatingActions.vue';
 
-// const aaaa: navBarName = 'NavBar_HorizonLinks';
-
 // =================== PROCESS ENV
 const process_env = inject('process_env');
 
-
-
 // =================== Template User Configurations
 const { NAV_BAR } = configs.template;
-
-
 
 // =================== CSS FILES
 // For some reason, vite-plugin-sass-glob-import doesn't work in Vite Build process. 
@@ -24,23 +18,20 @@ const { NAV_BAR } = configs.template;
 // And run this script everytime before Build process.
 import('./main.scss')
 
-
-
-
 // =================== COMPOSABLES
 useFrame();
 useTheme();
 </script>
 
-
 <!-- Layout of the #app depends on what kind of NavBar you're implementing. Change Settings on '@/configs/templateConfigs' -->
 <template>
 
   <template v-if="NAV_BAR.name == 'NavBar_HorizonLinks'">
-
     <component :is="NAV_BAR.name"/>
+
     <RouterView/>
     <BlogFloatingActions/>
+    <Toaster/>
     
     <DevStatusBar v-if=" process_env === 'DEV_1'"/>
   </template>

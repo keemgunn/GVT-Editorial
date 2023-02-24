@@ -3,7 +3,8 @@ import { defineProps, computed } from 'vue';
 
 const props = defineProps<{
   name: string,
-  size?: number
+  size?: number,
+  fill?: boolean
 }>();
 
 const containerStyle = computed(() => {
@@ -16,7 +17,7 @@ const containerStyle = computed(() => {
 const spanStyle = computed(() => {
   return {
     "font-size": `${props.size}rem`,
-    "font-variation-settings": `"opsz" ${props.size}, "FILL" 0, "wght" 500, "GRAD" 0`
+    "font-variation-settings": `"opsz" ${props.size}, "FILL" ${props.fill ? 1 : 0}, "wght" 500, "GRAD" 0`
   }
 })
 

@@ -1,0 +1,26 @@
+
+
+
+
+
+button.iconbutton {
+  @include IconColor(var(--iconbutton-color));
+  opacity: 1;
+  transition: 200ms;
+}
+
+@media(hover: hover) and (pointer: fine) {
+  button.iconbutton:hover {
+    opacity: 0.74;
+  }
+}
+button.iconbutton:active {
+  opacity: 1;
+}
+button.iconbutton.--disabled {
+  opacity: 0.4;
+  filter: grayscale(1);
+  pointer-events: none !important;
+  cursor: not-allowed;
+  user-select: none;
+}

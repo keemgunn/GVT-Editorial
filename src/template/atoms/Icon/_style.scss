@@ -1,7 +1,7 @@
 /* atoms/Icon */
 
-.icon span {
-  user-select: none;
+.icon, .icon * {
+  user-select: none !important;
 }
 
 @mixin IconColor($color) {

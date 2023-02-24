@@ -3,16 +3,12 @@ import { defineProps, onBeforeMount, onMounted, computed } from 'vue';
 
 const props = defineProps<{
 
-  size: 14 | 16 | 18 | 20 | 22;
-  buttonStyle?: 'filled' | 'toned' | 'outlined' | 'outlined-backdrop' | 'minimal';
-  accentColor?: string;
-  textColor?: string;
+  icon: string;
+  size: number;
+  fill?: boolean;
+  color?: string;
   toolTip?: string;
-  roundness?: 0 | 1 | 2;
 
-  icon?: string;
-  text?: string;
-  caps?: boolean;
   disabled?: boolean;
 
   onBeforeMountHook?: () => void;
@@ -31,25 +27,16 @@ const state = computed(() => {
 
 const CL_buttonContainer = computed(() => {
   return [
-
-
-
-  
-    'button',
-    `${props.buttonStyle || 'filled'}`,
+    'iconbutton',
     `${state.value}`,
-    `--${props.size}`,
-    `${props.caps ? '--caps' : ''}`,
-    `--roundness-${String(props.roundness || 0)}`
   ]
 })
 
 const ST_buttonContainer = computed(() => {
   return {
-    '--button-accent-color':
-      `${props.accentColor || 'var(--Primary)'}`,
-    '--button-text-color': 
-      `${props.textColor || 'var(--OnPrimary)'}`
+    '--iconbutton-color':
+      `${props.color || 'var(--Primary)'}`,
+    'font-size': `${props.size}rem`
 }})
 
 
@@ -66,20 +53,11 @@ onMounted(() => {
 <button 
 :class="CL_buttonContainer" :style="ST_buttonContainer" 
 :title="toolTip"
-:disabled="disabled"
+:disabled="props.disabled"
 @click="props.onMouseClickHook"
 @mouseenter="props.onMouseEnterHook"
 @mouseleave="props.onMouseLeaveHook"
 >
-
-  <div class="wrapper">
-    <Icon class="icon" v-show="props.icon?.length" :name="props.icon"/>
-    <p class="text" v-show="props.text?.length">{{ props.text }}</p>
-  </div>
-  
-  <Plate/>
-
-  <div class="bg"></div>
-
+  <Icon class="icon" :name="props.icon" :fill="props.fill" :size="props.size"/>
 </button>
 </template>
