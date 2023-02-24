@@ -8,10 +8,13 @@
   .icon span {
     color: #{$color};
   }
+  .icon-svg .vector svg path {
+    fill: #{$color};
+  }
 }
 
 @mixin IconSize($size) {
-  .icon {
+  .icon, .icon-svg, .icon-svg svg {
     width: #{$size}rem;
     height: #{$size}rem;
   }

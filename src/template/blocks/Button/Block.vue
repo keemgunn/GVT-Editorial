@@ -11,6 +11,7 @@ const props = defineProps<{
   roundness?: 0 | 1 | 2;
 
   icon?: string;
+  iconType?: 'material' | 'svg';
   text?: string;
   caps?: boolean;
   disabled?: boolean;
@@ -31,10 +32,6 @@ const state = computed(() => {
 
 const CL_buttonContainer = computed(() => {
   return [
-
-
-
-  
     'button',
     `${props.buttonStyle || 'filled'}`,
     `${state.value}`,
@@ -50,8 +47,8 @@ const ST_buttonContainer = computed(() => {
       `${props.accentColor || 'var(--Primary)'}`,
     '--button-text-color': 
       `${props.textColor || 'var(--OnPrimary)'}`
-}})
-
+  }
+})
 
 onBeforeMount(() => {
   if (props.onBeforeMountHook) props.onBeforeMountHook();
@@ -73,7 +70,7 @@ onMounted(() => {
 >
 
   <div class="wrapper">
-    <Icon class="icon" v-show="props.icon?.length" :name="props.icon"/>
+    <Icon :iconType="props.iconType" :name="props.icon"/>
     <p class="text" v-show="props.text?.length">{{ props.text }}</p>
   </div>
   

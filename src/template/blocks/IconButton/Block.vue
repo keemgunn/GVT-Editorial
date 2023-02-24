@@ -4,6 +4,7 @@ import { defineProps, onBeforeMount, onMounted, computed } from 'vue';
 const props = defineProps<{
 
   icon: string;
+  iconType?: 'material' | 'svg';
   size: number;
   fill?: boolean;
   color?: string;
@@ -58,6 +59,6 @@ onMounted(() => {
 @mouseenter="props.onMouseEnterHook"
 @mouseleave="props.onMouseLeaveHook"
 >
-  <Icon class="icon" :name="props.icon" :fill="props.fill" :size="props.size"/>
+  <Icon :iconType="props.iconType" :name="props.icon" :fill="props.fill" :size="props.size"/>
 </button>
 </template>

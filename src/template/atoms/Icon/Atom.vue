@@ -1,32 +1,41 @@
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
+import { defineProps } from 'vue';
+import IconSvg from './IconSvg.vue';
+import IconMaterial from './IconMaterial.vue';
 
 const props = defineProps<{
   name: string,
+  iconType?: 'material' | 'svg';
   size?: number,
-  fill?: boolean
+  fill?: boolean,
+  class?:string
 }>();
 
-const containerStyle = computed(() => {
-  return {
-    width: `${props.size}rem`,
-    height: `${props.size}rem`,
-  }
-})
-
-const spanStyle = computed(() => {
-  return {
-    "font-size": `${props.size}rem`,
-    "font-variation-settings": `"opsz" ${props.size}, "FILL" ${props.fill ? 1 : 0}, "wght" 500, "GRAD" 0`
-  }
-})
+const iconComponent = (() => {
+  if (props.iconType)  
+    return props.iconType
+  else
+    return 'material'
+})();
 
 </script>
 
+
 <template>
-  <div v-if="props.name.length > 0" class="icon" :style="containerStyle">
-    <span class="material-symbols-rounded" :style="spanStyle">
-      {{ props.name }}
-    </span>
-  </div>
+
+<IconMaterial v-if="iconComponent === 'material'" 
+v-show="props.name?.length" 
+  :name="props.name"
+  :size="props.size"
+  :fill="props.fill"
+  :class="props.class"
+/>
+
+<IconSvg v-if="iconComponent === 'svg'" 
+v-show="props.name?.length" 
+  :name="props.name"
+  :size="props.size"
+  :class="props.class"
+/>
+
 </template>

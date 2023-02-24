@@ -208,6 +208,13 @@
       @extend .typo-caption-14;
     }
 
+    .actions {
+      display: flex;
+      flex-direction: row;
+      gap: 8rem;
+      padding-top: 2rem;
+    }
+
   }
 
 

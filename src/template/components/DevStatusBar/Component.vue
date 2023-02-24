@@ -10,7 +10,7 @@ makeElementDraggable('dev-status-bar', 'dev-status-bar-draghandle');
   <!-- DevStatusBar -->
   <aside id="dev-status-bar">
     <div id="dev-status-bar-draghandle">
-      <Icon class="icon" name="drag_indicator" :size="24"/>
+      <Icon name="drag_indicator" :size="24"/>
     </div>
     <p class="typo-caption-16 --bold">DEV-STATUS-BAR</p>
     <p class="typo-caption-12">VW : {{ frameStore.viewWidth }}</p>

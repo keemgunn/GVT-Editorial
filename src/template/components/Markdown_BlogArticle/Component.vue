@@ -7,6 +7,7 @@ import configs from '@/template/configs';
 import { imageSourceFromUrl } from '@/template/helpers/strings';
 import { copyText } from '@/template/helpers/userActions';
 import { useToaster } from '../Toaster/useToaster';
+import { shareOnFacebook, shareOnTwitter } from '@/template/helpers/snsShareActions';
 const frameStore = useFrameStore();
 const router = useRouter();
 const toaster = useToaster();
@@ -57,7 +58,7 @@ const categoryUri = computed(() => {
 const accentColor = computed(() => {
   if (frontmatter.value) {
     const category = frontmatter.value.category as string;
-    console.log(category);
+    // console.log(category);
     if (Object.keys(CATEGORIES).includes(category)) {
       return (CATEGORIES as any)[category].accentColor as string
     } else {
@@ -137,15 +138,40 @@ function copyUrlAction(event: MouseEvent) {
           <p class="date">{{ getFrontmatter('date') }}</p>
 
           <div class="actions">
-            <Button id="article-link"
+
+            <Button class="action facebook"
+            toolTip="Share on Facebook"
+            icon="facebook"
+            iconType="svg"
+            :size="14"
+            accentColor="var(--accent-color)"
+            textColor="var(--Base)"
+            :roundness="1"
+            :onMouseClickHook="shareOnFacebook"
+            />
+
+            <Button class="action twitter"
+            toolTip="Share on Twitter"
+            icon="twitter"
+            iconType="svg"
+            :size="14"
+            accentColor="var(--accent-color)"
+            textColor="var(--Base)"
+            :roundness="1"
+            :onMouseClickHook="shareOnTwitter"
+            />
+
+            <Button class="action linkcopy"
+            toolTip="Copy Link"
+            icon="link"
             :size="14" buttonStyle="filled"
             accentColor="var(--accent-color)"
             textColor="var(--Base)"
-            toolTip="Copy Link"
             :roundness="1"
-            icon="link"
             :onMouseClickHook="copyUrlAction"
             />
+
+
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onBeforeMount, onMounted, ref } from 'vue';
+import { defineProps, onBeforeMount, watch, ref } from 'vue';
 const props = defineProps<{
   src: string
 }>();
@@ -11,25 +11,24 @@ const props = defineProps<{
 // --- FOR V-HTML
 const svgData = ref("");
 
-onBeforeMount(() => {
-
-  // 1. Get corrected path
-  let url = props.src.replace("@", "/src");
-
-  if (props.src[0] === "@") {
-    url = props.src.replace("@", "/src");
-  }
-  else {
-    url = props.src;
-  }
-
-  // 2. Fetch and put into Ref.
-  fetch(url)
+function fetchSvgData(source:string) {
+  // console.warn(source);
+  // Fetch and put into Ref.
+  fetch(source)
     .then(response => response.text())
     .then(str => {
       svgData.value = str
     })
+}
+
+onBeforeMount(() => {
+  fetchSvgData(props.src);
 })
+
+watch(() => props.src, (newVal, oldVal) => {
+  fetchSvgData(newVal);
+})
+
 </script>
 
 <!-- 
