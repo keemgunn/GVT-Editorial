@@ -3,21 +3,12 @@ import { defineProps, computed, ref, onBeforeMount } from 'vue';
 import type { Ref } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useRouter } from 'vue-router';
-import configs from '@/template/configs';
-import { imageSourceFromUrl } from '@/template/helpers/strings';
-import { copyText } from '@/template/helpers/userActions';
-import { useToaster } from '../Toaster/useToaster';
-import { shareOnFacebook, shareOnTwitter } from '@/template/helpers/snsShareActions';
-import { useLocalContents } from '@/template/contents_local';
+import BlogArticle_FrontHead from './Sections/BlogArticle_Fronthead.vue';
 
 const AD_TOWER_AD_COUNT = 2;
-const { CATEGORIES } = configs.article;
 
 const frameStore = useFrameStore();
 const router = useRouter();
-const toaster = useToaster();
-const { articles } = useLocalContents();
-
 const props = defineProps<{
   markdownComponentName: string | null | undefined;
 }>();
@@ -44,51 +35,6 @@ function getFrontmatter(key: string) {
   }
 }
 
-const imageSource = computed(() => {
-  const url = getFrontmatter('coverImage');
-  return imageSourceFromUrl(url);
-})
-
-const categoryUri = computed(() => {
-  const categoryRecord = (CATEGORIES as any)[getFrontmatter('category')]
-  if (categoryRecord) {
-    return categoryRecord.uri
-  } else {
-    return ""
-  }
-})
-
-const accentColor = computed(() => {
-  if (frontmatter.value) {
-    const category = frontmatter.value.category as string;
-    // console.log(category);
-    if (Object.keys(CATEGORIES).includes(category)) {
-      return (CATEGORIES as any)[category].accentColor as string
-    } else {
-      console.warn(`NO CATEGORY: ${category} ...Markdown_BlogArticle`);
-      return "var(--Primary)"
-    }
-  } else {
-    return "var(--OnPrimary)"
-  }
-})
-
-const ST_container = computed(() => {
-  return {
-    "--accent-color" : accentColor.value,
-}})
-
-
-const headSpaceAdSizes = {
-  XXS: { width: 300, height: 100 },
-  XS: { width: 300, height: 100 },
-  S: { width: 728, height: 90 },
-  M: { width: 970, height: 90 },
-  L: { width: 970, height: 90 },
-  XL: { width: 970, height: 90 },
-  XXL: { width: 970, height: 90 },
-} satisfies AdSizeByScale
-
 const showAdTower = computed(() => /--M|--L|--XL|--XXL/.test(frameStore.appScale))
 const adTowerAdSizes = {
   XXS: undefined,
@@ -99,110 +45,22 @@ const adTowerAdSizes = {
   XL: { width: 300, height: 600 },
   XXL: { width: 300, height: 600 },
 } satisfies AdSizeByScale
-
-function copyUrlAction(event: MouseEvent) {
-  copyText(window.location.href);
-  toaster.toast('URL Copied!');
-}
 </script>
 
 
 <template>
 <!-- Markdown_BlogArticle -->
-<section id="markdown-blogarticle" :style="ST_container">
+<section id="markdown-blogarticle">
   <article>
 
-    <section id="article-fronthead">
-      <Adbox_ScaleShift
-      :adSizes="headSpaceAdSizes"/>
-
-      <div class="container">
-        <div class="wrapper-category">
-          <RouterLink class="category-name" :to="categoryUri">{{ getFrontmatter('category') }}</RouterLink>
-          <RouterLink class="arrow" :to="categoryUri" style="display: none">↖︎</RouterLink>
-        </div>
-  
-        <div class="wrapper-title">
-          <h1 class="title">{{ getFrontmatter('title') }}</h1>
-        </div>
-        
-        <div class="wrapper-image">
-          <img :src="getFrontmatter('coverImage')" alt="">
-          <p v-show="imageSource.length > 0" class="imagesource">IMAGE: {{ imageSource }}</p>
-        </div>
-        
-        <div class="wrapper-information">
-          <p class="description">{{ getFrontmatter('description') }}</p>
-
-          <ul class="tags">
-            <li v-for="tag in getFrontmatter('tags')" 
-            :id="`tag-${tag}`">
-              <RouterLink 
-              class="tag-link"
-              :to="articles.getUriFromTag(tag)" >
-                <Chip
-                  :size="14" 
-                  chipStyle="outlined"
-                  accentColor="var(--accent-color)"
-                  textColor="var(--Ink)"
-                  :text="tag"
-                  :roundness="1"
-                />
-              </RouterLink>
-            </li>
-          </ul>
-          
-          <div class="divider"/>
-
-          <p class="date">{{ getFrontmatter('date') }}</p>
-
-          <div class="actions">
-
-            <Button class="action facebook"
-            toolTip="Share on Facebook"
-            icon="facebook"
-            iconType="svg"
-            :size="14"
-            accentColor="var(--accent-color)"
-            textColor="var(--Base)"
-            :roundness="1"
-            :onMouseClickHook="shareOnFacebook"
-            />
-
-            <Button class="action twitter"
-            toolTip="Share on Twitter"
-            icon="twitter"
-            iconType="svg"
-            :size="14"
-            accentColor="var(--accent-color)"
-            textColor="var(--Base)"
-            :roundness="1"
-            :onMouseClickHook="shareOnTwitter"
-            />
-
-            <Button class="action linkcopy"
-            toolTip="Copy Link"
-            icon="link"
-            :size="14"
-            accentColor="var(--accent-color)"
-            textColor="var(--Base)"
-            :roundness="1"
-            :onMouseClickHook="copyUrlAction"
-            />
-
-          </div>
-        </div>
-      </div>
-
-      <Plate/>
-    </section>
-
+    <BlogArticle_FrontHead :frontmatter="frontmatter"/>
 
     <section id="article-body">
       <component @markdownLoaded="handleFrontmatter" 
       :is='props.markdownComponentName'/>
 
       <AdTower
+      v-show="showAdTower"
       :AdSizes="adTowerAdSizes" 
       :AdCount="AD_TOWER_AD_COUNT"/>
     </section>

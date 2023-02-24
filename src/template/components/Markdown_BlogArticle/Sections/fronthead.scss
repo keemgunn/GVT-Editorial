@@ -47,7 +47,7 @@
   --fronthead-gap: var(--contents-side-padding);
   --fronthead-padding-bottom: var(--contents-side-padding);
   --adbox-margin-top: 44rem;
-  --adbox-margin-bottom: 50rem;
+  --adbox-margin-bottom: 60rem;
   --category-opacity: 1;
   --category-left: 0;
   --category-top: -1.6em;
@@ -187,7 +187,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12rem;
+    gap: 14rem;
 
     .description {
       @extend .typo-body-20--light;
@@ -213,7 +213,8 @@
     }
 
     .date {
-      @extend .typo-caption-14;
+      @extend .typo-caption-14--bold;
+      color: var(--Ink);
     }
 
     .actions {

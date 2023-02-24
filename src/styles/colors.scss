@@ -110,12 +110,7 @@
 }
 
 
-::-moz-selection { 
-  // Code for Firefox
-  color: var(--OnTertiary);
-  background: var(--Tertiary);
-}
-::selection {
+::-moz-selection, ::selection {
   color: var(--OnTertiary);
   background: var(--Tertiary);
 }
@@ -124,6 +119,12 @@ body {
   background-color: var(--Background);
   color: var(--OnSurface);
 }
+
 a {
 color: inherit;
+}
+
+* {
+  transition: background-color 200ms;
+  -webkit-transition: background-color 200ms;
 }
