@@ -1,6 +1,6 @@
 import configs from '../configs';
 import { calcReadingTime, checkCategory, checkDuplicatedUri, extractFrontHeadPart, tidyUpRaw, toRealArray } from './_helpers';
-const { CATEGORIES, URI_PARENT } = configs.article;
+const { CATEGORIES, ARTICLE_PARENT } = configs.article;
 
 const articleFrontHeadKeys = [
   // --------- FROM FrontHead Props
@@ -20,10 +20,10 @@ const articleFrontHeadKeys = [
 
 
 // Safety
-if ((typeof URI_PARENT) !== 'string') {
-  console.warn(' - WRONG URI_PARENT ... in @/contents/articles/configs.ts');
-} if ((URI_PARENT)[0] !== '/') {
-  console.warn(" - URI_PARENT must start with '/' ... in @/contents/articles/configs.ts");
+if ((typeof ARTICLE_PARENT) !== 'string') {
+  console.warn(' - WRONG ARTICLE_PARENT ... in @/contents/articles/configs.ts');
+} if ((ARTICLE_PARENT)[0] !== '/') {
+  console.warn(" - ARTICLE_PARENT must start with '/' ... in @/contents/articles/configs.ts");
 }
 
 
@@ -59,7 +59,7 @@ function extractFrontHeadProps(filepath: string, markdownRaw: string): ArticleRe
     }
 
     if (key === 'uri') {
-      result['uri'] = URI_PARENT + "/" + value;
+      result['uri'] = ARTICLE_PARENT + "/" + value;
       return
     }
 

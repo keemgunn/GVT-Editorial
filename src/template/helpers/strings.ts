@@ -14,6 +14,11 @@ export function imageSourceFromUrl(url: string): string {
 }
 
 
+/** MakeInto => snake_case */
+export function snakify(text: string): string {
+  return text.toLowerCase().replace(/ /gi, '-');
+}
+
 
 
 

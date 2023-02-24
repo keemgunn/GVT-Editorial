@@ -5,7 +5,7 @@ const props = defineProps<{
   text: string;
   size: number;
   divider: 'none' | 'bottom' | 'side';
-  dividerWidth: number;
+  dividerWidth?: number;
 }>();
 
 const dividerLayout = computed(() => {
@@ -25,7 +25,7 @@ const dividerLayout = computed(() => {
 const dividerStyle = computed(() => {
 
   return {
-    "height": `${props.dividerWidth}rem`
+    "height": `${props.dividerWidth || 0}rem`
   }
 })
 

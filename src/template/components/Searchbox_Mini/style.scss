@@ -28,13 +28,22 @@
     border: 2rem solid var(--normal-color);
     border-radius: 0;
   }
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  ::placeholder {
     color: var(--normal-color);
     opacity: 0.6; /* Firefox */
   }
   input[type=text]:focus-visible {
-    // color: var(--normal-color) !important;
-    background-color: var(--on-accent-color);
+    color: var(--OnSurface) !important;
+    background-color: var(--OnPrimary);
     border-color: var(--accent-color) !important;
   }
+  input[type=text]:focus-visible::placeholder {
+    color: var(--OnSurface) !important;
+    opacity: 0.6; /* Firefox */
+  }
 }
+// .searchbox-mini:focus-visible {
+//   .icon {
+//     color: red;
+//   }
+// }

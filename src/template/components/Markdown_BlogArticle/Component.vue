@@ -8,12 +8,15 @@ import { imageSourceFromUrl } from '@/template/helpers/strings';
 import { copyText } from '@/template/helpers/userActions';
 import { useToaster } from '../Toaster/useToaster';
 import { shareOnFacebook, shareOnTwitter } from '@/template/helpers/snsShareActions';
+import { useLocalContents } from '@/template/contents_local';
+
+const AD_TOWER_AD_COUNT = 2;
+const { CATEGORIES } = configs.article;
+
 const frameStore = useFrameStore();
 const router = useRouter();
 const toaster = useToaster();
-const { CATEGORIES } = configs.article;
-
-const AD_TOWER_AD_COUNT = 2;
+const { articles } = useLocalContents();
 
 const props = defineProps<{
   markdownComponentName: string | null | undefined;
@@ -131,7 +134,23 @@ function copyUrlAction(event: MouseEvent) {
         <div class="wrapper-information">
           <p class="description">{{ getFrontmatter('description') }}</p>
 
-          <ul class="tags"><li v-for="tag in getFrontmatter('tags')" :id="`tag-${tag}`">{{ tag }}</li></ul>
+          <ul class="tags">
+            <li v-for="tag in getFrontmatter('tags')" 
+            :id="`tag-${tag}`">
+              <RouterLink 
+              class="tag-link"
+              :to="articles.getUriFromTag(tag)" >
+                <Chip
+                  :size="14" 
+                  chipStyle="outlined"
+                  accentColor="var(--accent-color)"
+                  textColor="var(--Ink)"
+                  :text="tag"
+                  :roundness="1"
+                />
+              </RouterLink>
+            </li>
+          </ul>
           
           <div class="divider"/>
 
@@ -164,13 +183,12 @@ function copyUrlAction(event: MouseEvent) {
             <Button class="action linkcopy"
             toolTip="Copy Link"
             icon="link"
-            :size="14" buttonStyle="filled"
+            :size="14"
             accentColor="var(--accent-color)"
             textColor="var(--Base)"
             :roundness="1"
             :onMouseClickHook="copyUrlAction"
             />
-
 
           </div>
         </div>

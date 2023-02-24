@@ -2,6 +2,7 @@
 
 .icon, .icon * {
   user-select: none !important;
+  -webkit-user-select: none !important;
 }
 
 @mixin IconColor($color) {

@@ -23,11 +23,25 @@ function fetchSvgData(source:string) {
 
 onBeforeMount(() => {
   fetchSvgData(props.src);
+
+  // SAFTY
+  setTimeout(() => {
+    checkData();
+  }, 300);
 })
 
 watch(() => props.src, (newVal, oldVal) => {
   fetchSvgData(newVal);
+  // SAFTY
+  setTimeout(() => {
+    checkData();
+  }, 300);
 })
+
+function checkData() {
+  if (svgData.value.length === 0)
+    fetchSvgData(props.src);
+}
 
 </script>
 

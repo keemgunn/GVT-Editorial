@@ -2,11 +2,13 @@ export default {
 
   /**
    if an artiles's uri is "some-uri-for-article",
-   each article directs to {{URI_PARENT}}/some-uri-for-article.
+   each article directs to {{ARTICLE_PARENT}}/some-uri-for-article.
 
    In this case, it would be '/read/some-uri-for-article'
    */
-  URI_PARENT: '/read',
+  ARTICLE_PARENT: '/read',
+  TAG_PARENT: '/tags',
+  CATEGORY_PARENT: '/categories',
 
 
   /**

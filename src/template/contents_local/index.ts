@@ -6,7 +6,8 @@ import configs from '../configs';
 import { formatRawMarkdowns } from './_markdownHandler';
 import { ArticleRawRecordsPack, ArticleRecordsPack } from './_classes';
 import { useArticlePageContext } from '@/template/stores/articlePageContext';
-const { CATEGORIES, URI_PARENT } = configs.article;
+import { snakify } from '../helpers/strings';
+const { CATEGORIES, ARTICLE_PARENT, TAG_PARENT } = configs.article;
 
 
 
@@ -46,6 +47,10 @@ export const useLocalContents = defineStore('localContents', () => {
     })
   });
 
+  function getUriFromTag(tag: string) {
+    return TAG_PARENT + '/' + snakify(tag);
+  }
+
   // For Filtering Articles with Categories
   const categorySet: Set<string> = new Set(Object.keys(CATEGORIES));
 
@@ -56,7 +61,6 @@ export const useLocalContents = defineStore('localContents', () => {
 
   // For Pagination 
   const pageContext = useArticlePageContext();
-
 
   /**
    * Query Article Contents.
@@ -72,13 +76,20 @@ export const useLocalContents = defineStore('localContents', () => {
     if (highlightState) 
       newArr = newArr.filter((article) => article.highlighted === highlightState);
     
-    if (category)
-      newArr = newArr.filter((article) => article.category === category);
+    if (category) {
+      const queryFor = snakify(category);
+      newArr = newArr.filter((article) =>
+        snakify(article.category) === queryFor);
+    }
     
-    if (tag)
-      newArr = newArr.filter((article) => article.tags.includes(tag));
+    if (tag) {
+      const queryFor = snakify(tag);
+      newArr = newArr.filter((article) =>
+        article.tags.map((tag) =>
+          snakify(tag)
+        ).includes(queryFor));
+    }
     
-      
     if (articlesPerPage && pageContext.currentPage) { // Might be 0
       pageContext.setTotalPage(
         Math.ceil(newArr.length / articlesPerPage)
@@ -167,7 +178,7 @@ export const useLocalContents = defineStore('localContents', () => {
    * ### If there's no document corresponds to current uri, @returns `""` (empty string)
   */
   const getArticleComponentName = (docURI: string) => {
-    const fullUri = URI_PARENT + "/" + docURI;
+    const fullUri = ARTICLE_PARENT + "/" + docURI;
     if (articleDocumentSet.has(fullUri))
       return fullUri
     else
@@ -181,6 +192,7 @@ export const useLocalContents = defineStore('localContents', () => {
       getCategoryRecords: getArticleCategoryRecords,
       getCategorySet: () => categorySet,
       getTagsObject: () => tags,
+      getUriFromTag,
       query,
       searchQuery,
       pageContext,

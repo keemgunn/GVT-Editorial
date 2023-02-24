@@ -88,7 +88,6 @@
   --nav-bar-bg-color: var(--Surface);
   --nav-bar-stroke-color: var(--OnSurface);
   --nav-bar-accent-color: var(--Primary);
-  --nav-bar-on-accent-color: var(--OnPrimary);
 }
 #app .nav-bar-horizon-links {
   @include PlateBackgroundColor(var(--nav-bar-bg-color));
@@ -105,15 +104,19 @@
     @include PlateBackgroundColor(var(--nav-bar-bg-color));
   }
   .searchbox-mini {
-    .icon {
-      color: var(--nav-bar-accent-color);
-    }
-    input {
-      border-color: var(--nav-bar-accent-color);
-    }
-    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: var(--nav-bar-stroke-color);
-    }
+    --normal-color: var(--nav-bar-stroke-color);
+    --accent-color: var(--nav-bar-accent-color);
+    // --on-accent-color: 
+
+    // .icon {
+    //   color: var(--nav-bar-accent-color);
+    // }
+    // input {
+    //   border-color: var(--nav-bar-accent-color);
+    // }
+    // ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    //   color: var(--nav-bar-stroke-color);
+    // }
   }
 }
 #app .nav-bar-horizon-links.--scrolled {

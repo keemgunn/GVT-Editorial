@@ -46,7 +46,7 @@
 #article-fronthead {
   --fronthead-gap: var(--contents-side-padding);
   --fronthead-padding-bottom: var(--contents-side-padding);
-  --adbox-margin-top: 20rem;
+  --adbox-margin-top: 44rem;
   --adbox-margin-bottom: 50rem;
   --category-opacity: 1;
   --category-left: 0;
@@ -187,13 +187,21 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10rem;
+    gap: 12rem;
 
     .description {
       @extend .typo-body-20--light;
       font-size: var(--description-font-size) !important;
       color: var(--Ink);
       flex-shrink: 0;
+    }
+
+    .tags {
+      padding-top: 2rem;
+      display: flex;
+      width: 100%;
+      gap: 8rem;
+      flex-wrap: wrap;
     }
 
     .divider {

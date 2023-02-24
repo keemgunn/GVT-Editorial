@@ -12,6 +12,7 @@ const props = defineProps<{
 
   icon?: string;
   iconType?: 'material' | 'svg';
+  iconFill?: boolean;
   text?: string;
   caps?: boolean;
   disabled?: boolean;
@@ -70,7 +71,7 @@ onMounted(() => {
 >
 
   <div class="wrapper">
-    <Icon :iconType="props.iconType" :name="props.icon"/>
+    <Icon :iconType="props.iconType" :name="props.icon" :fill="props.iconFill"/>
     <p class="text" v-show="props.text?.length">{{ props.text }}</p>
   </div>
   

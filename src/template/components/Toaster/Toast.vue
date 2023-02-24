@@ -31,8 +31,8 @@ const style = (() => {
   switch (props.toastData.type) {
     case 'alert':
       return {
-        '--text-color': 'var(--OnSecondary)',
-        '--bg-color': 'var(--Secondary)'
+        '--text-color': 'var(--SurfaceVariant)',
+        '--bg-color': 'var(--OnSurfaceVariant)'
       }
       break;
     case 'error':
@@ -55,8 +55,8 @@ const style = (() => {
       break;
     default: // 'message'
       return {
-        '--text-color': 'var(--Primary)',
-        '--bg-color': 'var(--OnPrimary)'
+        '--text-color': 'var(--OnSurfaceVariant)',
+        '--bg-color': 'var(--SurfaceVariant)'
       }
       break;
   }
