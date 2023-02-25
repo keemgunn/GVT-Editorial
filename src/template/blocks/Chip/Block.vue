@@ -48,8 +48,8 @@ const ST_chipContainer = computed(() => {
   v-show="props.headIcon?.length" 
   :name="props.headIcon" :fill="props.headIconFill"/>
 
-  <p class="object text" 
-  v-show="props.text?.length">{{ props.text }}</p>
+  <span class="object text" 
+  v-show="props.text?.length">{{ props.text }}</span>
 
   <Icon class="object icon-handle" 
   v-show="props.handleIcon?.length" 

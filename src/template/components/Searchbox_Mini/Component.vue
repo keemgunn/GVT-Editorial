@@ -5,7 +5,7 @@ import type { Ref } from 'vue';
 
 const inputTextBind = ref("");
 const inputEl: Ref<HTMLElement | null> = ref(null);
-const inputElementId = crypto.randomUUID();
+const inputElementId = 'searchbox-input-element';
 
 
 const route = useRoute();

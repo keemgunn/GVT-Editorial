@@ -83,8 +83,10 @@ const headSpaceAdSizes = {
 
 
 function copyUrlAction(event: MouseEvent) {
-  copyText(window.location.href);
+  const url = window.location.href;
   toaster.toast('URL Copied!');
+    // TODO: crypto.randomUUID() doesn't work in iOS Safari.
+  copyText(url);
 }
 </script>
 
@@ -107,16 +109,15 @@ function copyUrlAction(event: MouseEvent) {
     
     <div class="wrapper-image">
       <img :src="getFrontmatter('coverImage')" alt="">
-      <p v-show="imageSource.length > 0" class="imagesource">IMAGE: {{ imageSource }}</p>
+      <cite v-show="imageSource.length > 0" class="imagesource">IMAGE: {{ imageSource }}</cite>
     </div>
     
     <div class="wrapper-information">
-      <p class="description">{{ getFrontmatter('description') }}</p>
-
+      <h2 class="description">{{ getFrontmatter('description') }}</h2>
 
       <div class="divider"/>
 
-      <p class="date">{{ articleDate }}</p>
+      <time :datetime="formatDate(getFrontmatter('date'))" class="date">{{ articleDate }}</time>
 
 
       <ul class="tags">

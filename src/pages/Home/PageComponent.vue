@@ -5,6 +5,7 @@ import { useLocalContents } from '@/template/contents_local';
 import FeaturedArticles from './Sections/01-FeaturedArticles.vue';
 import TrendingArticles from './Sections/02-TrendingArticles.vue';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
+import TagsList from './Sections/03-Tags.vue';
 
 
 const ARTICLE_PER_PAGE = 10; // DO NOT CHANGE YET
@@ -42,6 +43,7 @@ const articleListAdSizes = {
     <section id="highlighted-articles">
       <FeaturedArticles/>
       <TrendingArticles/>
+      <TagsList/>
     </section>
 
     <ArticleList_AdTower

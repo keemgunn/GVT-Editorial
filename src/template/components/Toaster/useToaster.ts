@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { onMounted, onBeforeUnmount, ref, computed, watch } from 'vue'
+import { onMounted, onBeforeUnmount, ref, computed, watch } from 'vue';
+
 import type { Ref } from 'vue';
 
 const TOAST_TIMER = 3000; //(ms)
@@ -54,9 +55,10 @@ export const useToaster = defineStore('toaster', () => {
     }, TOAST_TIMER)
   }
 
-  function toast(message:string, type: ToastType = 'message', timer: boolean = true) {
+  function toast(message: string, type: ToastType = 'message', timer: boolean = true) {
+    const id = crypto.randomUUID()
     const newToast = {
-      id: crypto.randomUUID(),
+      id,
       message: message,
       type: type,
       timer: timer

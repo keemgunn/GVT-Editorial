@@ -2,7 +2,6 @@
 import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useRoute, useRouter } from 'vue-router';
-import brandLogo from '@/assets/svg/logo-brand-main.svg';
 import { useInteractionStore } from '@/template/stores/interaction';
 import { searchByFormInput } from '@/template/composables/searchByFormInput';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
@@ -10,9 +9,7 @@ import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue
 const ARTICLES_PER_PAGE = 15;
 const AD_TOWER_AD_COUNT = 1;
 
-const frameStore = useFrameStore();
 const route = useRoute();
-const router = useRouter();
 
 const searchPackage = searchByFormInput('search-billboard-form', 'searchKeyword', ARTICLES_PER_PAGE);
 

@@ -104,7 +104,7 @@ const titleDivider = computed(() => {
 #categories-and-trending {
   --wrapper-direction: row;
   --wrapper-padding-top: 40rem;
-  --wrapper-padding-bottom: 80rem;
+  --wrapper-padding-bottom: 0rem;
   --wrapper-gap: 30rem;
   --item-gap: 30rem;
 
@@ -117,7 +117,7 @@ const titleDivider = computed(() => {
 #categories-and-trending {
   --wrapper-direction: row;
   --wrapper-padding-top: 36rem;
-  --wrapper-padding-bottom: 74rem;
+  --wrapper-padding-bottom: 0rem;
   --wrapper-gap: 30rem;
   --item-gap: 20rem;
 
@@ -130,7 +130,7 @@ const titleDivider = computed(() => {
 #categories-and-trending {
   --wrapper-direction: row;
   --wrapper-padding-top: 30rem;
-  --wrapper-padding-bottom: 60rem;
+  --wrapper-padding-bottom: 0rem;
   --wrapper-gap: 24rem;
   --item-gap: 8rem;
 
@@ -143,7 +143,7 @@ const titleDivider = computed(() => {
 #categories-and-trending {
   --wrapper-direction: column;
   --wrapper-padding-top: 40rem;
-  --wrapper-padding-bottom: 60rem;
+  --wrapper-padding-bottom: 00rem;
   --wrapper-gap: 40rem;
   --item-gap: 16rem;
 

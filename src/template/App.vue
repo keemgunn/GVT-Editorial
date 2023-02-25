@@ -44,7 +44,7 @@ useTheme();
   </template>
 
 
-  <div id="browser-head-cover"></div>
+  <!-- <div id="browser-head-cover"></div> -->
 
 </template>
 
