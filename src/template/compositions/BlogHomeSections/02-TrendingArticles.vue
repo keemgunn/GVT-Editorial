@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, defineProps } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useLocalContents } from '@/template/contents_local';
 const { articles } = useLocalContents();
 
-const BREAK_FLEXGRID_WHEN = 1030;
-const CARDS_ROUNDNESS = 0;
-const frameStore = useFrameStore();
 
-// DON'T CHANGE THIS... 
-// ONlY CAN HANDLE UP TO 3 FOR NOW
 const SHOW_TRENDING_ARTICLE = 3;
+
+
+const props = defineProps<{
+  BREAK_FLEXGRID_WHEN: number;
+}>();
+const frameStore = useFrameStore();
 const trendingLoop = Array.from({length: SHOW_TRENDING_ARTICLE}, (_, i) => i)
 // const trendingArticles = articles.getHighlighted('trending');
 const trendingArticles = articles.query('trending', undefined, undefined, undefined);
@@ -24,7 +25,7 @@ const flexGridColumn = computed(() => {
   return Math.round(categoryCount / 2);
 })
 const flexGridBreaker = computed(() =>
-  frameStore.viewWidth < BREAK_FLEXGRID_WHEN
+  frameStore.viewWidth < props.BREAK_FLEXGRID_WHEN
 )
 const flexGridClass = computed(() => {
   if (flexGridBreaker.value) {
@@ -143,7 +144,7 @@ const titleDivider = computed(() => {
 #categories-and-trending {
   --wrapper-direction: column;
   --wrapper-padding-top: 40rem;
-  --wrapper-padding-bottom: 00rem;
+  --wrapper-padding-bottom: var(--contents-side-padding);
   --wrapper-gap: 40rem;
   --item-gap: 16rem;
 

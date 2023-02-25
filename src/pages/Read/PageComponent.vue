@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useLocalContents } from '@/template/contents_local';
-
-const MARKDOWN_COMPONENT = "Markdown_BlogArticle";
+import Markdown_BlogArticle from '@/template/compositions/Markdown_BlogArticle/Markdown_BlogArticle.vue';
 
 const { reader } = useLocalContents();
 const docURI = useRoute().params.docuri.toString();
@@ -14,9 +13,7 @@ const fullURI = reader.getComponentName(docURI);
 <div id="router-page" class="read">
 
   <main>
-    <component 
-    :is="MARKDOWN_COMPONENT"
-    :markdownComponentName="fullURI"/>
+    <Markdown_BlogArticle :markdownComponentName="fullURI"/>
   </main>
 
 </div>

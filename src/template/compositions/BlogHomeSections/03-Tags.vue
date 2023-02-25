@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import { useLocalContents } from '@/template/contents_local';
 const { articles } = useLocalContents();
-
 const tagsObject = articles.getTagsObject();
-
-
-
 </script>
-
-
-
 
 <template>
 <section id="tags-list">
@@ -49,26 +42,30 @@ const tagsObject = articles.getTagsObject();
 
 :is(.scale--XXL, .scale--XL, .scale--L) 
 .home #tags-list {
-  --padding-vertical: 40rem;
-  --padding-sides: var(--contents-side-padding);
+  --container-padding-vertical: 40rem;
+  --container-padding-sides: var(--contents-side-padding);
+  --wrapper-padding: 28rem;
   --wrapper-gap: 22rem;
 }
 :is(.scale--M) 
 .home #tags-list {
-  --padding-vertical: 36rem;
-  --padding-sides: var(--contents-side-padding);
+  --container-padding-vertical: 36rem;
+  --container-padding-sides: var(--contents-side-padding);
+  --wrapper-padding: 28rem;
   --wrapper-gap: 22rem;
 }
 :is(.scale--S) 
 .home #tags-list {
-  --padding-vertical: 30rem;
-  --padding-sides: var(--contents-side-padding);
+  --container-padding-vertical: 30rem;
+  --container-padding-sides: var(--contents-side-padding);
+  --wrapper-padding: 24rem;
   --wrapper-gap: 20rem;
 }
 :is(.scale--XS, .scale--XXS) 
 .home #tags-list {
-  --padding-vertical: 30rem;
-  --padding-sides: 0;
+  --container-padding-vertical: 0rem;
+  --container-padding-sides: 0;
+  --wrapper-padding: 28rem 20rem;
   --wrapper-gap: 18rem;
 }
 
@@ -77,8 +74,8 @@ const tagsObject = articles.getTagsObject();
 .home #tags-list {
   width: 100%;
   padding: 
-    var(--padding-vertical)
-    var(--padding-sides);
+    var(--container-padding-vertical)
+    var(--container-padding-sides);
   background-color: var(--Surface);
 
   display: flex;
@@ -87,7 +84,7 @@ const tagsObject = articles.getTagsObject();
   .wrapper {
     width: var(--contents-container-width);
     height: fit-content;
-    padding: var(--padding-vertical);
+    padding: var(--wrapper-padding);
     gap: var(--wrapper-gap);
     display: flex;
     flex-direction: column;

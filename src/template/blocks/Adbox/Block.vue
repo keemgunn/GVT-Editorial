@@ -31,7 +31,7 @@ onBeforeUpdate(() => {
   <div class="ad-wrapper">
     <!-- GOOGLE AD HERE -->
   </div>
-  <div class="ad-background typo-header-28">Advertisement</div>
+  <div class="ad-background typo-header-20">Advertisement</div>
 </div>
 </template>
 
@@ -56,9 +56,9 @@ onBeforeUpdate(() => {
     align-items: center;
     word-break: break-all;
     text-align: center;
-    color: var(--OnPrimary);
-    background-color: var(--Secondary);
-    opacity: 0.64;
+    color: var(--Background);
+    background-color: var(--OnBackground);
+    opacity: 0.18;
   }
 }
 .ad-box.--prevent-interaction {

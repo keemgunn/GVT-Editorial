@@ -1,21 +1,17 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useLocalContents } from '@/template/contents_local';
-import FeaturedArticles from './Sections/01-FeaturedArticles.vue';
-import TrendingArticles from './Sections/02-TrendingArticles.vue';
+import FeaturedArticles from '@/template/compositions/BlogHomeSections/01-FeaturedArticles.vue';
+import TrendingArticles from '@/template/compositions/BlogHomeSections/02-TrendingArticles.vue';
+import TagsList from '@/template/compositions/BlogHomeSections/03-Tags.vue';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
-import TagsList from './Sections/03-Tags.vue';
 
 
-const ARTICLE_PER_PAGE = 10; // DO NOT CHANGE YET
+// -- 02 Trending Articles
+const BREAK_FLEXGRID_WHEN = 1030;
+// -- ArticleList AdTower
+const ARTICLE_PER_PAGE = 10;
 const AD_TOWER_AD_COUNT = 2;
-
-
-const route = useRoute()
-const pageNum = computed(() => {
-  return Number(route.params.pagenum);
-});
 
 
 const { articles } = useLocalContents();
@@ -33,7 +29,6 @@ const articleListAdSizes = {
   XL: { width: 970, height: 90 },
   XXL: { width: 970, height: 90 },
 } satisfies AdSizeByScale
-
 </script>
 
 <template>
@@ -42,7 +37,8 @@ const articleListAdSizes = {
   <main>
     <section id="highlighted-articles">
       <FeaturedArticles/>
-      <TrendingArticles/>
+      <TrendingArticles
+        :BREAK_FLEXGRID_WHEN="BREAK_FLEXGRID_WHEN"/>
       <TagsList/>
     </section>
 

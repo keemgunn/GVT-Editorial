@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router';
 import configs from '@/template/configs';
 import { imageSourceFromUrl } from '@/template/helpers/strings';
 import { copyText } from '@/template/helpers/userActions';
-import { useToaster } from '../../Toaster/useToaster';
+import { useToaster } from '@/template/components/Toaster/useToaster';
 import { shareOnFacebook, shareOnTwitter } from '@/template/helpers/snsShareActions';
 import { useLocalContents } from '@/template/contents_local';
 import { formatDate } from '@/template/helpers/time';

@@ -6,7 +6,7 @@ import configs from '../configs';
 import { formatRawMarkdowns } from './_markdownHandler';
 import { ArticleRawRecordsPack, ArticleRecordsPack } from './_classes';
 import { useArticlePageContext } from '@/template/stores/articlePageContext';
-import { snakify } from '../helpers/strings';
+import { toKebabCase } from '../helpers/strings';
 const { CATEGORIES, ARTICLE_PARENT, TAG_PARENT } = configs.article;
 
 
@@ -48,7 +48,7 @@ export const useLocalContents = defineStore('localContents', () => {
   });
 
   function getUriFromTag(tag: string) {
-    return TAG_PARENT + '/' + snakify(tag);
+    return TAG_PARENT + '/' + toKebabCase(tag);
   }
 
   // For Filtering Articles with Categories
@@ -77,16 +77,16 @@ export const useLocalContents = defineStore('localContents', () => {
       newArr = newArr.filter((article) => article.highlighted === highlightState);
     
     if (category) {
-      const queryFor = snakify(category);
+      const queryFor = toKebabCase(category);
       newArr = newArr.filter((article) =>
-        snakify(article.category) === queryFor);
+        toKebabCase(article.category) === queryFor);
     }
     
     if (tag) {
-      const queryFor = snakify(tag);
+      const queryFor = toKebabCase(tag);
       newArr = newArr.filter((article) =>
         article.tags.map((tag) =>
-          snakify(tag)
+          toKebabCase(tag)
         ).includes(queryFor));
     }
     

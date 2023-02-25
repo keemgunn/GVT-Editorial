@@ -1,14 +1,14 @@
 ---
-title: Red Riding Hood 3
+title: Cocaine Bear doesn’t have a problem — it just doesn’t know when to stop
 date: 2023-02-10
 uri: article-red-riding-hood-3
 tags: [ Jekyll, tutorial ]
 category: Budgeting
 coverImage: https://images.unsplash.com/photo-1668424861369-2accec5c7ce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80
-description: this is an example document.
+description: Director Elizabeth Banks’ Cocaine Bear over-delivers on a very simple, silly premise that mostly works because it doesn’t take anything seriously except being ridiculous.
 meta:
   - name: desciption
-    content: this is an example document
+    content: Director Elizabeth Banks’ Cocaine Bear over-delivers on a very simple, silly premise that mostly works because it doesn’t take anything seriously except being ridiculous.
 ---
 
 Table of Contents !

@@ -1,27 +1,27 @@
 <script setup lang="ts">
 import { onBeforeMount, onMounted, ref, computed } from 'vue';
-import { useFrameStore } from '@/template/styles/frame/_store';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useInteractionStore } from '@/template/stores/interaction';
 import { searchByFormInput } from '@/template/composables/searchByFormInput';
 import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
 
+
 const ARTICLES_PER_PAGE = 15;
 const AD_TOWER_AD_COUNT = 1;
 
-const route = useRoute();
 
 const searchPackage = searchByFormInput('search-billboard-form', 'searchKeyword', ARTICLES_PER_PAGE);
 
 const pageURI = computed(() => {
   if (searchPackage.requestedKeyword.value.length > 0)
-    return "/search/" + "_PAGENUM_" + "?keyword=" + searchPackage.requestedKeyword.value;
+  return "/search/" + "_PAGENUM_" + "?keyword=" + searchPackage.requestedKeyword.value;
   else
-    return "/search/" + "_PAGENUM_";
+  return "/search/" + "_PAGENUM_";
 })
 
 // Automatically call for search function when user enters with search query parameter in url. 
 // (ex: /search?keyword=apple)
+const route = useRoute();
 const { keyword } = route.query;
 const inputTextBind = ref("");
 onBeforeMount(() => {
@@ -56,13 +56,10 @@ const articleListAdSizes = {
     
   <main>
     <section id="fronthead" :class="CL_scrolled">
-
       <form id="search-billboard-form">
         <p class="head-text">Search for:</p>
         <input type="text" v-model="inputTextBind" name="searchKeyword" placeholder="Search...">
       </form>
-      
-      <!-- <Vector class="brand-logo" :src="brandLogo"/> -->
       <Plate/>
     </section>
 

@@ -1,4 +1,19 @@
 
+/** kebab-case-string */
+export function toKebabCase(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ /gi, '-')
+    .replace(/_/gi, '-')
+}
+
+/** snake_case_string */
+export function toSnakeCase(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ /gi, '_')
+    .replace(/-/gi, '_')
+}
 
 
 export function imageSourceFromUrl(url: string): string {
@@ -14,10 +29,6 @@ export function imageSourceFromUrl(url: string): string {
 }
 
 
-/** MakeInto => snake_case */
-export function snakify(text: string): string {
-  return text.toLowerCase().replace(/ /gi, '-');
-}
 
 
 
