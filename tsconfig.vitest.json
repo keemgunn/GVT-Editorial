@@ -8,6 +8,7 @@
       "node", 
       "jsdom",
       "@modyfi/vite-plugin-yaml/modules",
+      "@types/color"
     ]
   }
 }

@@ -4,7 +4,9 @@ import { RouterView } from 'vue-router'
 import { useFrame } from './styles/frame';
 import { useTheme } from './styles/theme';
 import configs from './configs';
+
 import BlogFloatingActions from './compositions/BlogFloatingActions/BlogFloatingActions.vue';
+import DEV_Nav from './dev/components/DEV_Nav.vue';
 
 // =================== PROCESS ENV
 const process_env = inject('process_env');
@@ -25,27 +27,35 @@ useTheme();
 
 <!-- Layout of the #app depends on what kind of NavBar you're implementing. Change Settings on '@/configs/templateConfigs' -->
 <template>
-
-  <template v-if="NAV_BAR.name == 'NavBar_HorizonLinks'">
-    <component :is="NAV_BAR.name"/>
-
-    <RouterView/>
-    <BlogFloatingActions/>
-    <Toaster/>
+  <template v-if=" process_env !== 'DEV_2'">
+    <template v-if="NAV_BAR.name == 'NavBar_HorizonLinks'">
+      <component :is="NAV_BAR.name"/>
+  
+      <RouterView/>
+      <BlogFloatingActions/>
+      <Toaster/>
+    </template>
+    
+    
+    <template v-if="NAV_BAR.name == 'NavBar_App'">
+      <component :is="NAV_BAR.name"/>
+      <RouterView/>
+      <StatusBar/>
+    </template>
     
     <DevStatusBar v-if=" process_env === 'DEV_1'"/>
-  </template>
-  
-  
-  <template v-if="NAV_BAR.name == 'NavBar_App'">
-    <component :is="NAV_BAR.name"/>
-    <RouterView/>
-    <StatusBar/>
+    <!-- <div id="browser-head-cover"></div> -->
   </template>
 
-
-  <!-- <div id="browser-head-cover"></div> -->
-
+  <template v-else>
+  <!-- PROCESS_ENV === DEV_2 -->
+    <div id="dev-container">
+      <DEV_Nav/>
+      <RouterView/>
+      <!-- <DevStatusBar/> -->
+      <Toaster/>
+    </div>
+  </template>
 </template>
 
 <style lang="scss">
@@ -59,4 +69,16 @@ useTheme();
     top: -400rem;
     left: 0;
   }
+
+  #dev-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+  }
+
+
 </style>
+
+<style src="@vueform/slider/themes/default.css"></style>

@@ -13,7 +13,7 @@ for (let i = 0; i < moduleArray.length; i++) {
   const name = moduleArray[i].split('.').slice(-2)[0].split('/')[1].split('-')[0]
 
   const container = {
-    [name]: defineAsyncComponent(() => import(`./${name}-comp.vue`))
+    [name]: defineAsyncComponent(() => import(`./${name}.vue`))
   }
   modules = { ...modules, ...container };
 }

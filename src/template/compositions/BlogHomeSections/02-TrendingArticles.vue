@@ -2,18 +2,19 @@
 import { computed, defineProps } from 'vue';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import { useLocalContents } from '@/template/contents_local';
-const { articles } = useLocalContents();
+import ArticleCard_Trending_A from './ArticleCard_Trending_A/ArticleCard_Trending_A.vue';
 
 
 const SHOW_TRENDING_ARTICLE = 3;
 
 
+const frameStore = useFrameStore();
+const { articles } = useLocalContents();
 const props = defineProps<{
   BREAK_FLEXGRID_WHEN: number;
 }>();
-const frameStore = useFrameStore();
+
 const trendingLoop = Array.from({length: SHOW_TRENDING_ARTICLE}, (_, i) => i)
-// const trendingArticles = articles.getHighlighted('trending');
 const trendingArticles = articles.query('trending', undefined, undefined, undefined);
 trendingArticles.sortAsc('filename');
 trendingArticles.slice(0, SHOW_TRENDING_ARTICLE);

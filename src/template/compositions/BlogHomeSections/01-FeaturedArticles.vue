@@ -8,7 +8,6 @@ const SHOW_FEATURED_ARTICLE = 3;
 
 const featuredLoop = Array.from({length: SHOW_FEATURED_ARTICLE}, (_, i) => i)
 const featuredArticles = articles.query('featured', undefined, undefined, undefined);
-
 featuredArticles.sortAsc('filename');
 featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
 

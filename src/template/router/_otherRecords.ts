@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
-
+import DEV_ColorSchemeVue from "../dev/pages/DEV_ColorScheme.vue";
 
 
 
@@ -21,19 +21,16 @@ export const errorRecords: Array<RouteRecordRaw> = [
 
 
 export const devRecords: Array<RouteRecordRaw> = []
-if (Number(process.env.NODE_ENV || "0") > 1) {
+if (process.env.NODE_ENV === 'DEV_2') {
 
   devRecords.push({
-    name: 'DEVGROUND',
-    path: '/devground/:component?',
-    component: () => import('../devComps/pages/DEVGROUND-comp.vue')
+    name: 'DEV_COLORSCHEME',
+    path: '/dev/colorscheme',
+    component: DEV_ColorSchemeVue
   })
 
   devRecords.push({
     path: '/:pathMatch(.*)*',
     redirect: '/devground'
   })
-
-  
-
 }

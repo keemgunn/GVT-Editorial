@@ -123,8 +123,14 @@
   }
   .articlecard-featured-a.primary:hover {
     .title span {
-      color: var(--OnPrimary);
+      color: var(--PrimaryContainer);
       background-color: var(--OnSurface);
+    }
+    .description {
+      background-color: var(--OnPrimary);
+      border: 2px solid var(--PrimaryContainer);
+      text-decoration: underline;
+      text-decoration-color: var(--Primary);
     }
     transform: scale(1.01);
   }
@@ -270,7 +276,7 @@
 }
 .articlecard-featured-a.secondary {
   color: var(--OnSurface);
-  .info-tail { color: var(--Secondary); }
+  .info-tail { color: var(--OnSecondaryContainer); }
   background-color: var(--Surface);
   @include PlateBackgroundColor(var(--Primary));
   @include PlateBackgroundOpacity(0.02);

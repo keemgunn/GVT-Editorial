@@ -55,10 +55,11 @@ export const useToaster = defineStore('toaster', () => {
     }, TOAST_TIMER)
   }
 
+  console.warn(crypto);
+  
   function toast(message: string, type: ToastType = 'message', timer: boolean = true) {
-    const id = crypto.randomUUID()
     const newToast = {
-      id,
+      id: crypto.randomUUID(),
       message: message,
       type: type,
       timer: timer

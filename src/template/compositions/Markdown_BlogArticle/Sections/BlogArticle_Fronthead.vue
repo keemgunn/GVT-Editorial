@@ -13,7 +13,6 @@ import { formatDate } from '@/template/helpers/time';
 
 const { CATEGORIES } = configs.article;
 
-const toaster = useToaster();
 const { articles } = useLocalContents();
 const props = defineProps<{
   frontmatter: any;
@@ -82,6 +81,7 @@ const headSpaceAdSizes = {
 } satisfies AdSizeByScale
 
 
+const toaster = useToaster();
 function copyUrlAction(event: MouseEvent) {
   const url = window.location.href;
   toaster.toast('URL Copied!');
@@ -108,8 +108,8 @@ function copyUrlAction(event: MouseEvent) {
     </div>
     
     <div class="wrapper-image">
-      <img :src="getFrontmatter('coverImage')" alt="">
-      <cite v-show="imageSource.length > 0" class="imagesource">IMAGE: {{ imageSource }}</cite>
+      <img :src="getFrontmatter('coverImage')" alt="unsplash">
+      <figcaption><cite v-show="imageSource.length > 0" class="imagesource">IMAGE: {{ imageSource }}</cite></figcaption>
     </div>
     
     <div class="wrapper-information">

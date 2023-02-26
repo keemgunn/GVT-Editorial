@@ -3,6 +3,8 @@ import { useFrameStore } from '../frame/_store';
 import { injectMetaName } from '@/template/hooks/headInjection';
 import sessionStorageHelper from '@/template/helpers/sessionStorageHelper';
 
+// ====== DEV SETTINGS
+const process_env = (process.env.NODE_ENV) as string;
 
 export function appleThemeColor() {
   const store = useThemeStore();
@@ -26,6 +28,10 @@ export function appleThemeColor() {
  * 2. Get ThemeClass string value by color scheme
  */
 export function changeTheme(colorSchemeQuery: MediaQueryList) {
+  if (process_env === 'DEV_2') {
+    return
+  }
+
   const store = useThemeStore();
 
   // 1. Decide Color Scheme (boolean)

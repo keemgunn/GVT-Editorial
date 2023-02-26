@@ -4,6 +4,8 @@ import type { ComputedRef } from 'vue';
 import { useFrameStore } from './_store';
 import { injectMetaName } from '@/template/hooks/headInjection';
 
+// ====== DEV SETTINGS
+const process_env = (process.env.NODE_ENV) as string;
 
 export function useFrame() {
 
@@ -42,14 +44,14 @@ export function useFrame() {
     }
     if (store.userBrowser === "") store.userBrowser = "other";
 
-
     // if (store.userDevice === 'iphone') {
     //   injectMetaName("apple-mobile-web-app-status-bar-style", "black-translucent");
     //   injectMetaName("theme-color", "#000000");
     // }
 
-
     store.isMobile = /(android|iphone|ipad|mobile)/i.test(userAgent)
+
+    if (process_env === 'DEV_2') { return }
     document.body.classList.add(store.appDevice);
   }
 
@@ -57,23 +59,23 @@ export function useFrame() {
 
 
   watch(() => store.appScale, (newScale, oldScale) => {
+    if (process_env === 'DEV_2') { return }
     document.body.classList.remove(oldScale);
     document.body.classList.add(newScale);
   })
 
   watch(() => store.appRotation, (newRotation, oldRotation) => {
+    if (process_env === 'DEV_2') { return }
     document.body.classList.remove(oldRotation);
     document.body.classList.add(newRotation);
   })
 
 
   onBeforeMount(() => {
-
     checkDeviceType();
   })
 
   onMounted(() => {
-
     // For Mobile device safe areas
     injectMetaName("viewport", "width=device-width, initial-scale=1.0, viewport-fit=cover");
 

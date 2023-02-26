@@ -1,0 +1,34 @@
+/* @/template/styles/externalPackages/_slider.scss */
+// SEE: https://github.com/vueform/slider#demo?ref=madewithvuejs.com
+
+html {
+  --slider-bg: #D1D5DB;
+  --slider-connect-bg: #10B981;
+  --slider-connect-bg-disabled: #9CA3AF;
+  --slider-height: 6px;
+  --slider-vertical-height: 300px;
+  --slider-radius: 9999px;
+
+  --slider-handle-bg: #fff;
+  --slider-handle-border: 0;
+  --slider-handle-width: 16px;
+  --slider-handle-height: 16px;
+  --slider-handle-radius: 9999px;
+  --slider-handle-shadow: 0.5px 0.5px 2px 1px rgba(0,0,0,.32);
+  --slider-handle-shadow-active: 0.5px 0.5px 2px 1px rgba(0,0,0,.42);
+  --slider-handle-ring-width: 3px;
+  --slider-handle-ring-color: #10B98130;
+
+  --slider-tooltip-font-size: 14rem;
+  --slider-tooltip-line-height: 16rem;
+  --slider-tooltip-font-weight: 600;
+  --slider-tooltip-min-width: 20px;
+  --slider-tooltip-bg: #10B981;
+  --slider-tooltip-bg-disabled: #9CA3AF;
+  --slider-tooltip-color: #fff;
+  --slider-tooltip-radius: 5px;
+  --slider-tooltip-py: 2px;
+  --slider-tooltip-px: 6px;
+  --slider-tooltip-arrow-size: 5px;
+  --slider-tooltip-distance: 3px;
+}

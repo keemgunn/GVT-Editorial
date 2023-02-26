@@ -16,7 +16,9 @@
     "sass-glob-restore": "source ./src/template/tools/pyenv_3_11/bin/activate && python ./src/template/tools/sass-glob-restore.py"
   },
   "dependencies": {
+    "@vueform/slider": "^2.1.7",
     "@vueuse/head": "^1.0.25",
+    "color": "^4.2.3",
     "cross-env": "^7.0.3",
     "http-status-codes": "^2.2.0",
     "moment": "^2.29.4",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "^1.0.4",
+    "@types/color": "^3.0.3",
     "@types/jsdom": "^20.0.1",
     "@types/node": "^18.11.12",
     "@vitejs/plugin-vue": "^4.0.0",

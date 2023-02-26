@@ -15,6 +15,11 @@ export function toSnakeCase(text: string): string {
     .replace(/-/gi, '_')
 }
 
+/** snake_case_string */
+export function removeSpace(text: string): string {
+  return text
+    .replace(/ /gi, '')
+}
 
 export function imageSourceFromUrl(url: string): string {
   if (url.includes('://')) {
