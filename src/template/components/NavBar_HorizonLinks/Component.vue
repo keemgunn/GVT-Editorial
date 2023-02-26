@@ -2,23 +2,21 @@
 import { computed } from '@vue/reactivity';
 import { useFrameStore } from '@/template/styles/frame/_store';
 import configs from '@/template/configs';
-import brandLogo from '@/assets/svg/logo-brand-main.svg';
 import defaultConfigs from './index';
 import { useInteractionStore } from '@/template/stores/interaction';
 
-const COMPONENT_NAME = 'NavBar_HorizonLinks';
-
-const frameStore = useFrameStore();
 const NAV_RECORDS: NavRecords = configs.navigation;
+const { BRAND_LOGO } = configs.template;
 
+const COMPONENT_NAME = 'NavBar_HorizonLinks';
 const { NAV_BAR } = configs.template;
 const isOnline = NAV_BAR.name === COMPONENT_NAME;
 const compConfig = isOnline ? NAV_BAR : defaultConfigs()
 
+const frameStore = useFrameStore();
 const showNavBar = computed(() => 
   /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
 )
-
 const showSearchbox = computed(() => 
   /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale)
 )
@@ -49,7 +47,7 @@ const CL_showBackgroundColor = computed(() => {
   <component :is="compConfig.topBannerInjection"></component>
     
   <header>
-    <Vector class="nav-logo" :src="brandLogo"/>
+    <Vector class="nav-logo" :src="BRAND_LOGO"/>
     <h1 style="display: none;">Blog Name Here</h1>
 
     <nav>

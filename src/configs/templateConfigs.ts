@@ -1,12 +1,24 @@
 import { componentList } from '@/template/components';
 // * UNCOMMENT THESE TO SEE THE LISTS
 // console.log('NavBar List:', Object.keys(componentList.NavBar));
+
+// Favicon and Logo SHOULD BE .SVG FORMAT.
+import brandLogoSvg from '@/assets/svg/logo-brand-main.svg';
+import faviconLight from '@/assets/favicon/favicon-light.svg';
+import faviconDark from '@/assets/favicon/favicon-dark.svg';
+
+
 export default {
+
+  /** ASSETS ==================================== */
+  BRAND_LOGO: brandLogoSvg,
+  FAVICON_LIGHT: faviconLight,
+  FAVICON_DARK: faviconDark,
 
 
 
   /** LAYOUTS =================================== */
-
+  
   /**
    #### templateConfigs/
    * The Navigation Bar decides how #app layout forms.
@@ -15,7 +27,6 @@ export default {
    */
   NAV_BAR: componentList.NavBar
     .NavBar_HorizonLinks(false, false, undefined),
-  
   
   /** This decides thresholds in responsive design. */
   BREAKPOINTS: {
@@ -27,6 +38,7 @@ export default {
     XL: 2400,
     XXL: 10000,
   } satisfies ResponsiveSizeEntry,
+
 
 
   /** COLORS / THEMES ========================== */
@@ -46,7 +58,5 @@ export default {
     "theme--default-light": '#ffffff',
     "theme--default-dark": '#f0f0f0',
   },
-
-
 
 }

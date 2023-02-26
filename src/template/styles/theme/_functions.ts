@@ -2,6 +2,7 @@ import { useThemeStore } from './_store';
 import { useFrameStore } from '../frame/_store';
 import { injectMetaName } from '@/template/hooks/headInjection';
 import sessionStorageHelper from '@/template/helpers/sessionStorageHelper';
+import configs from '@/template/configs';
 
 // ====== DEV SETTINGS
 const process_env = (process.env.NODE_ENV) as string;
@@ -57,6 +58,17 @@ export function changeTheme(colorSchemeQuery: MediaQueryList) {
     store.currentThemeClass = store.themeSettings.darkThemeClass;
   } else {
     store.currentThemeClass = store.themeSettings.lightThemeClass;
+  }
+
+  // 3. Favicon Change
+  const { FAVICON_DARK, FAVICON_LIGHT } = configs.template;
+  const faviconEl = document.querySelector('link[rel="icon"]');
+  if (faviconEl) {
+    if (store.isDark) {
+      faviconEl.setAttribute('href', FAVICON_DARK);
+    } else {
+      faviconEl.setAttribute('href', FAVICON_LIGHT);
+    }
   }
 }
 
