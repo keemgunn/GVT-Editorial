@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { useInteractionStore } from '@/template/stores/interaction';
-import { searchByFormInput } from '@/template/composables/searchByFormInput';
-import ArticleList_GwangTower from '@/template/compositions/ArticleList_GwangTower/ArticleList_GwangTower.vue';
+import { useInteractionStore } from '#/stores/interaction';
+import { searchByFormInput } from '#/composables/searchByFormInput';
+import ArticleList_GwangTower from '#/compositions/ArticleList_GwangTower/ArticleList_GwangTower.vue';
 
 
 const ARTICLES_PER_PAGE = 15;

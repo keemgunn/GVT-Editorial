@@ -48,5 +48,6 @@
 
 
 	},
+	"workbench.editor.splitInGroupLayout": "horizontal",
 	}
 }

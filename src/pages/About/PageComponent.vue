@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeMount, computed } from 'vue';
-import { useFrameStore } from '@/template/styles/frame/_store';
-import { useInteractionStore } from '@/template/stores/interaction';
+import { useFrameStore } from '#/styles/frame/_store';
+import { useInteractionStore } from '#/stores/interaction';
 
 const frameStore = useFrameStore();
 

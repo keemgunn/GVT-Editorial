@@ -1,0 +1,53 @@
+/* #/components/Markdown_BlogArticle/style.scss */
+
+:is(.scale--XXL, .scale--XL, .scale--L) #markdown-blogarticle {
+  --blog-contents-width: 1200rem;
+}
+:is(.scale--M) #markdown-blogarticle {
+  --blog-contents-width: 100%;
+}
+:is(.scale--S) #markdown-blogarticle {
+  --blog-contents-width: 100%;
+}
+:is(.scale--XS, .scale--XXS) #markdown-blogarticle {
+  --blog-contents-width: 100%;
+}
+
+// DEFINED IN COMPONENT :
+// --accent-color
+
+#article-fronthead {
+  background-color: var(--Base);
+  @include PlateBackgroundColor(var(--accent-color));
+  @include PlateBackgroundOpacity(0.18);
+}
+
+
+
+
+
+
+
+
+#markdown-blogarticle {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+
+  article {
+    width: 100%; height: fit-content;
+    > * { 
+      // width: var(--blog-contents-width);
+      width: var(--contents-container-width);
+      height: fit-content;
+    }
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+
+
+

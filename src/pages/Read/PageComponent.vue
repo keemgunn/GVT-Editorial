@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { useLocalContents } from '@/template/contents_local';
-import Markdown_BlogArticle from '@/template/compositions/Markdown_BlogArticle/Markdown_BlogArticle.vue';
+import { useLocalContents } from '#/contents_local';
+import Markdown_BlogArticle from '#/compositions/Markdown_BlogArticle/Markdown_BlogArticle.vue';
 
 const { reader } = useLocalContents();
 const docURI = useRoute().params.docuri.toString();

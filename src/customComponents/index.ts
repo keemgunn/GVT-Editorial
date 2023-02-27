@@ -1,8 +1,8 @@
 /**
- * Import all components in `@/template/components` and exports.
+ * Import all components in `#/components` and exports.
  */
 import { defineAsyncComponent } from 'vue'
-import searchModules from "@/template/helpers/modules/searchModules";
+import searchModules from "#/helpers/modules/searchModules";
 
 const moduleArray = searchModules(import.meta.glob('./CC_*.vue'))
 

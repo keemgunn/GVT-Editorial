@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount } from 'vue';
-import { useFrameStore } from '@/template/styles/frame/_store';
+import { useFrameStore } from '#/styles/frame/_store';
 const frameStore = useFrameStore();
 
 

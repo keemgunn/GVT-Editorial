@@ -1,7 +1,7 @@
 /** Router Setting =====================
 Corresponds to Vue Router 4.X
 These pages mount into <RouterView>
-inside of @/template/App.vue.
+inside of #/App.vue.
 
 @ uri:string - Page Endpoints
 @ alias:Array<string> - Alias Endpoints (Array)

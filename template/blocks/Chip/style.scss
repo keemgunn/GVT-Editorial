@@ -1,0 +1,157 @@
+/* #/atoms/ChipBase/chipCommonStyle.scss */
+
+// DEFINED ON ChipBase.vue
+// --chip-accent-color
+// --chip-text-color
+
+.chip {
+  transition: 120ms;
+  @include PlateTransition(120ms);
+}
+@media(hover: hover) and (pointer: fine) {
+  .chip:hover {
+    cursor: pointer;
+  }
+}
+
+
+.chip.toned {
+  color: var(--chip-text-color);
+  background-color: var(--Base);
+  @include PlateBackgroundColor(var(--chip-accent-color));
+  @include PlateBackgroundOpacity(0.38);
+  .plate { filter: brightness(1.2); }
+  .object { opacity: 0.92; }
+}
+@media(hover: hover) and (pointer: fine) {
+  .chip.toned:hover {
+    @include PlateBackgroundOpacity(0.5);
+  }
+}
+.chip.toned:active {
+  @include PlateBackgroundOpacity(0.6);
+}
+.chip.toned.--disabled {
+  .object { opacity: 0.4; }
+  .plate { filter: saturate(0); }
+  @include PlateBackgroundOpacity(0.2);
+}
+
+
+.chip.outlined {
+  color: var(--chip-text-color);
+  background-color: var(--Base);
+  @include PlateBackgroundColor(var(--chip-accent-color));
+  @include PlateBackgroundOpacity(0.2);
+  @include PlateBorder(2rem solid var(--chip-accent-color));
+  @include PlateBorderOpacity(0.72);
+  .object { opacity: 0.92; }
+}
+@media(hover: hover) and (pointer: fine) {
+  .chip.outlined:hover {
+    @include PlateBackgroundOpacity(0.4);
+    @include PlateBorderOpacity(1);
+  }
+}
+.chip.outlined:active {
+  @include PlateBackgroundOpacity(0.52);
+}
+.chip.outlined.--disabled {
+  .object { opacity: 0.4; }
+  .plate { filter: saturate(0); }
+  @include PlateBackgroundOpacity(0.2);
+  @include PlateBorderOpacity(0.3);
+}
+
+
+.chip.filled {
+  color: var(--chip-text-color);
+  background-color: var(--Base);
+  @include PlateBackgroundColor(var(--chip-accent-color));
+  @include PlateBackgroundOpacity(1);
+  .plate { filter: brightness(1.1); }
+  .object { opacity: 1; }
+}
+@media(hover: hover) and (pointer: fine) {
+  .chip.filled:hover {
+    @include PlateBackgroundOpacity(0.9);
+  }
+}
+.chip.filled:active {
+  @include PlateBackgroundOpacity(1);
+}
+.chip.filled.--disabled {
+  color: var(--Ink);
+  .object { opacity: 0.4; }
+  .plate { filter: saturate(0); }
+  @include PlateBackgroundOpacity(0.2);
+}
+
+
+
+.chip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  z-index: 0;
+  overflow: hidden;
+  
+
+  gap: 0.28em;
+  .text { 
+    @extend .typo-body-16; 
+    font-size: inherit !important;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-bottom: 0.04em;
+  }
+  
+  * { // Prevent Safari weird hover effect
+    -webkit-transform: translate3d(0,0,0);
+  }
+}
+
+
+.chip.--roundness-0 {
+  padding: 0 0.6em;
+}
+.chip.--roundness-1 {
+  border-radius: 1em;
+  @include PlateRoundness(1em);
+  padding: 0 0.74em;
+}
+.chip.--roundness-2 {
+  border-radius: 4em;
+  @include PlateRoundness(4em);
+  padding: 0 0.86em;
+}
+
+
+.chip.--12 {
+  font-size: 12rem;
+  @include IconSize(16);
+  height: 28rem;
+}
+.chip.--14 {
+  font-size: 14rem;
+  @include IconSize(18);
+  height: 34rem;
+}
+.chip.--16 {
+  font-size: 16rem;
+  @include IconSize(20);
+  height: 38rem;
+  .text { margin-top: 1rem; }
+}
+.chip.--18 {
+  font-size: 18rem;
+  @include IconSize(22);
+  height: 44rem;
+  .text { margin-top: 1.25rem; }
+}
+
+
+
+
+

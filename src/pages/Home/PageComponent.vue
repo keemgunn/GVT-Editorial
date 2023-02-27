@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useLocalContents } from '@/template/contents_local';
-import FeaturedArticles from '@/template/compositions/BlogHomeSections/01-FeaturedArticles.vue';
-import TrendingArticles from '@/template/compositions/BlogHomeSections/02-TrendingArticles.vue';
-import TagsList from '@/template/compositions/BlogHomeSections/03-Tags.vue';
-import ArticleList_GwangTower from '@/template/compositions/ArticleList_GwangTower/ArticleList_GwangTower.vue';
+import { useLocalContents } from '#/contents_local';
+import FeaturedArticles from '#/compositions/BlogHomeSections/01-FeaturedArticles.vue';
+import TrendingArticles from '#/compositions/BlogHomeSections/02-TrendingArticles.vue';
+import TagsList from '#/compositions/BlogHomeSections/03-Tags.vue';
+import ArticleList_GwangTower from '#/compositions/ArticleList_GwangTower/ArticleList_GwangTower.vue';
 
 
 // -- 02 Trending Articles

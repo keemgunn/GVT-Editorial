@@ -1,0 +1,179 @@
+/** #/components/ArticleCard_Searched_A/_style.scss */
+
+:is(.scale--XXL, .scale--XL, .scale--L) .article-card-searched-a{
+  --article-card-flex-dir: row;
+  --image-box-width: 240rem;
+  --text-box-padding: 18rem 28rem 18rem 20rem;
+  --title-line-clamp: 4;
+  --title-max-height: 6em;
+  h1.title { @extend .typo-header-26; }
+  p.raw { @extend .typo-body-16; }
+  
+}
+:is(.scale--M) .article-card-searched-a{
+  --article-card-flex-dir: row;
+  --image-box-width: 194rem;
+  --text-box-padding: 14rem 26rem 14rem 18rem;
+  --title-line-clamp: 4;
+  --title-max-height: 6em;
+  h1.title { @extend .typo-header-26; }
+  p.raw { @extend .typo-body-16; }
+  
+}
+:is(.scale--S) .article-card-searched-a{
+  --article-card-flex-dir: row;
+  --image-box-width: 140rem;
+  --text-box-padding: 14rem 26rem 14rem 18rem;
+  --title-line-clamp: 4;
+  --title-max-height: 6em;
+  h1.title { @extend .typo-header-24; }
+  p.raw { @extend .typo-body-15; }
+  
+}
+:is(.scale--XS, .scale--XXS) .article-card-searched-a{
+  --article-card-flex-dir: column;
+  --image-box-height: 140rem;
+  --text-box-padding: 16rem 26rem 16rem 20rem;
+  --title-line-clamp: 4;
+  --title-max-height: 6em;
+  h1.title { @extend .typo-header-24; }
+  p.raw { @extend .typo-body-15; }
+}
+
+:is(.scale--XXL) .article-card-searched-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XL) .article-card-searched-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--L) .article-card-searched-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--M) .article-card-searched-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--S) .article-card-searched-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XS) .article-card-searched-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+:is(.scale--XXS) .article-card-searched-a {
+  // border-radius: 30rem;
+  // overflow: hidden;
+}
+
+
+.article-card-searched-a {
+  color: var(--OnSurface);
+  background-color: var(--Surface);
+  @include PlateBackgroundColor(var(--Primary));
+  @include PlateBackgroundOpacity(0.02);
+  @include PlateTransition(200ms);
+  .textbox h1.title {
+    mark {
+      color: var(--OnPrimary);
+      background-color: var(--OnPrimaryContainer);
+    }
+  }
+  .textbox p.raw {
+    color: var(--OnSecondaryContainer);
+    background-color: var(--OnPrimary);
+    border: 1rem solid var(--PrimaryContainer);
+    mark {
+      color: var(--OnPrimary);
+      background-color: var(--OnPrimaryContainer);
+    }
+  }
+}
+.article-card-searched-a:hover {
+  color: var(--OnPrimaryContainer);
+  @include Shadow-2(10rem);
+  @include PlateBackgroundColor(var(--PrimaryContainer));
+  @include PlateBackgroundOpacity(1);
+  transform: scale(1.01);
+}
+
+
+
+.article-card-searched-a {
+  display: flex;
+  flex-direction: var(--article-card-flex-dir);
+  align-items: stretch;
+  width: 100%;
+  height: fit-content;
+  transition: 200ms;
+  ul, li {
+    position: relative; 
+  }
+  .textbox {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10rem;
+    padding: var(--text-box-padding);
+    > * { width: 100%; }
+    h1.title { 
+      padding: 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--title-line-clamp);
+      max-height: var(--title-max-height);
+      overflow:hidden;
+    }
+    p.raw { 
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 10;
+      max-height: 14.4em;
+      overflow: hidden;
+      padding: 8rem;
+    }
+    .article-infopack {
+      flex-grow: 0;
+      flex-shrink: 0;
+      align-items: flex-end;
+      align-content: flex-end;
+      opacity: 1;
+      .info-date {
+        padding-bottom: 1rem;
+      }
+    }
+
+  }
+  .imagebox {
+    width: var(--image-box-width);
+    height: var(--image-box-height);
+    flex-shrink: 0;
+    flex-grow: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

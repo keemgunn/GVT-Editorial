@@ -1,4 +1,4 @@
-import { componentList } from '@/template/components';
+import { componentList } from '#/components';
 // * UNCOMMENT THESE TO SEE THE LISTS
 // console.log('NavBar List:', Object.keys(componentList.NavBar));
 
@@ -23,7 +23,7 @@ export default {
    #### templateConfigs/
    * The Navigation Bar decides how #app layout forms.
    * Each NavBar's component settings are defined in each folder's `index.ts`
-   * See each component files in @/template/components/
+   * See each component files in #/components/
    */
   NAV_BAR: componentList.NavBar
     .NavBar_HorizonLinks(false, false, undefined),
