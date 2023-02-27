@@ -1,12 +1,5 @@
 {
-  "name": "gunns-vue-template",
-  "version": "2023.02.27.1200",
-  "private": true,
-  "scripts": {
-    "sass-glob-builder": "source ./tools/pyenv_3_11/bin/activate && python ./tools/pythonScripts/sass-glob-builder.py",
-    "sass-glob-restore": "source ./tools/pyenv_3_11/bin/activate && python ./tools/pythonScripts/sass-glob-restore.py",
-    "sh-test": "sh ./tools/shellScripts/test.command && sh ./tools/shellScripts/test-2.command"
-  },
+  "version": "2023.02.02",
   "dependencies": {
     "pinia": "^2.0.28",
     "vue": "^3.2.45",

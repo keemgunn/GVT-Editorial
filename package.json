@@ -1,7 +1,12 @@
 {
-  "name": "gvt-editorial",
-  "version": "0.0.1",
+  "name": "wealthypath.com",
+  "version": "0.8.0",
   "private": true,
+
+  "GunnsVueTemplate": {
+    "version": "2023.02.27.1200"
+  },
+
   "scripts": {
     "DEV_0": "export NODE_ENV=DEV_0 && cd template && npm run sass-glob-restore && cd .. && vite",
     "DEV_1": "export NODE_ENV=DEV_1 && cd template && npm run sass-glob-restore && cd .. && vite",
@@ -11,6 +16,7 @@
     "build": "export NODE_ENV=BUILD && cd template && npm run sass-glob-builder && cd .. && vite build",
     "preview": "vite preview"
   },
+
   "dependencies": {
     "@vueform/slider": "^2.1.7",
     "@vueuse/head": "^1.0.25",
@@ -22,6 +28,7 @@
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
+
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "^1.0.4",
     "@types/color": "^3.0.3",
