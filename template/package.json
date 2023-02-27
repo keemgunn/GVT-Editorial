@@ -3,12 +3,10 @@
   "version": "2023.03",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check build-only",
-    "preview": "vite preview",
-    "test:unit": "vitest --environment jsdom --root src/",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
+    "sass-glob-builder": "source ./tools/pyenv_3_11/bin/activate && python ./tools/pythonScripts/sass-glob-builder.py",
+    "sass-glob-restore": "source ./tools/pyenv_3_11/bin/activate && python ./tools/pythonScripts/sass-glob-restore.py",
+
+    "sh-test": "sh ./tools/shellScripts/test.command"
   },
   "dependencies": {
     "pinia": "^2.0.28",

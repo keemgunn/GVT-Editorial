@@ -1,13 +1,16 @@
+# CAUTION ========================================
+# This script is designed to be executed by a NPM Script inside of  'template/package.json'
+# So relative paths are based on 'template/package.json'.
+
 import os
 import glob
 import shutil
 print('======== EXECUTING sass-glob-builder.py')
 
 
-
 # 1. Copy the dev sass file
-SOURCE_FILE = "./template/main.scss"
-DESTINATION_FILE = './template/_process/devsass.txt'
+SOURCE_FILE = "./main.scss"
+DESTINATION_FILE = './tools/temp/devsass.txt'
 
 backupfile = glob.glob(DESTINATION_FILE, recursive=True)
 
@@ -20,25 +23,25 @@ else :
 
 
 # 2. Collect all sass file and rerite the main.scss
-SRC_DIR = "."
-OUTPUT_FILE = "./template/main.scss"
-
-
+SRC_DIR = ".." # Based on template/package.json
+OUTPUT_FILE = "./main.scss"
 
 ## 2-1. Import mixin files with _*.scss
-# Get a list of all files in the "src" directory and its sub-directories
-
-files = [f for f in glob.glob(os.path.join(SRC_DIR, "**/_*.scss"), recursive=True)]
+files = [f for f in glob.glob(os.path.join(SRC_DIR, "template/**/_*.scss"), recursive=True)]
 with open(OUTPUT_FILE, "w+") as f:
     for file in files:
         f.write(f"@import '{file}';\n")
 
-
-
 ## 2-2. Import Rests.
 # Write the list of files to the output file in the desired format
 
-files = [f for f in glob.glob(os.path.join(SRC_DIR, "**/*.scss"), recursive=True) 
+files = [f for f in glob.glob(os.path.join(SRC_DIR, "template/**/*.scss"), recursive=True) 
+         if (not f.endswith('main.scss'))]
+with open(OUTPUT_FILE, "a+") as f:
+    for file in files:
+        f.write(f"@import '{file}';\n")
+
+files = [f for f in glob.glob(os.path.join(SRC_DIR, "src/**/*.scss"), recursive=True) 
          if (not f.endswith('main.scss'))]
 with open(OUTPUT_FILE, "a+") as f:
     for file in files:

@@ -11,5 +11,4 @@ export default {
   template: templateConfigs,
   component: componentConfigs,
   
-  
 }

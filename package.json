@@ -3,20 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev-0": "export NODE_ENV=DEV_0 && npm run sass-glob-restore && vite",
-    "dev-1": "export NODE_ENV=DEV_1 && npm run sass-glob-restore && vite",
-    "dev-2": "export NODE_ENV=DEV_2 && npm run sass-glob-restore && vite",
+    "DEV_0": "export NODE_ENV=DEV_0 && cd template && npm run sass-glob-restore && cd .. && vite",
+    "DEV_1": "export NODE_ENV=DEV_1 && cd template && npm run sass-glob-restore && cd .. && vite",
+    "DEV_2": "export NODE_ENV=DEV_2 && cd template && npm run sass-glob-restore && cd .. && vite",
+    "BUILD & PREV": "npm run build && npm run preview",
 
-    "build-and-preview": "npm run build && npm run preview",
-    "build": "export NODE_ENV=BUILD && npm run sass-glob-builder && vite build",
-
-    "preview": "vite preview",
-    "build-and-typecheck": "run-p type-check build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "test:unit": "vitest --environment jsdom --root src/",
-
-    "sass-glob-builder": "source ./template/tools/pyenv_3_11/bin/activate && python ./template/tools/sass-glob-builder.py",
-    "sass-glob-restore": "source ./template/tools/pyenv_3_11/bin/activate && python ./template/tools/sass-glob-restore.py"
+    "build": "export NODE_ENV=BUILD && cd template && npm run sass-glob-builder && cd .. && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@vueform/slider": "^2.1.7",
