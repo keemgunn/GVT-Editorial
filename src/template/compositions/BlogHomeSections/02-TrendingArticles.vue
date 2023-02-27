@@ -71,7 +71,7 @@ const titleDivider = computed(() => {
       </ol>
     </div>
 
-    <Adbox id="trending-ad-0" :width="300" :height="100"/>
+    <GwangBox id="trending-gwang-0" :width="300" :height="100"/>
     
     <div class="trending-wrapper">
       <Title_PageSection 
@@ -113,7 +113,7 @@ const titleDivider = computed(() => {
   --title-padding-bottom: 22rem;
   --categories-height: unset;
   --trending-width: 300rem;
-  #trending-ad-0 { display: none; }
+  #trending-gwang-0 { display: none; }
 }
 :is(.scale--M) 
 #categories-and-trending {
@@ -126,7 +126,7 @@ const titleDivider = computed(() => {
   --title-padding-bottom: 22rem;
   --categories-height: unset;
   --trending-width: 300rem;
-  #trending-ad-0 { display: none; }
+  #trending-gwang-0 { display: none; }
 }
 :is(.scale--S) 
 #categories-and-trending {
@@ -139,7 +139,7 @@ const titleDivider = computed(() => {
   --title-padding-bottom: 20rem;
   --categories-height: unset;
   --trending-width: 300rem;
-  #trending-ad-0 { display: none; }
+  #trending-gwang-0 { display: none; }
 }
 :is(.scale--XS, .scale--XXS) 
 #categories-and-trending {
@@ -152,7 +152,7 @@ const titleDivider = computed(() => {
   --title-padding-bottom: 18rem;
   --categories-height: 808rem;
   --trending-width: 100%;
-  #trending-ad-0 { display: block; }
+  #trending-gwang-0 { display: block; }
 }
 
 
@@ -199,7 +199,7 @@ const titleDivider = computed(() => {
       }
     }
 
-    #trending-ad-0 { 
+    #trending-gwang-0 { 
       align-self: center; 
     }
     

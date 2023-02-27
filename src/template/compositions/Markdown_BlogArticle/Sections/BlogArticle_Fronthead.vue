@@ -70,7 +70,7 @@ const ST_container = computed(() => {
 }})
 
 
-const headSpaceAdSizes = {
+const headSpaceGwangSizes = {
   XXS: { width: 300, height: 100 },
   XS: { width: 300, height: 100 },
   S: { width: 728, height: 90 },
@@ -78,7 +78,7 @@ const headSpaceAdSizes = {
   L: { width: 970, height: 90 },
   XL: { width: 970, height: 90 },
   XXL: { width: 970, height: 90 },
-} satisfies AdSizeByScale
+} satisfies GwangSizeByScale
 
 
 const toaster = useToaster();
@@ -94,8 +94,8 @@ function copyUrlAction(event: MouseEvent) {
 <template>
 <section id="article-fronthead"
 :style="ST_container">
-  <Adbox_ScaleShift
-  :adSizes="headSpaceAdSizes"/>
+  <GwangBox_ScaleShift
+  :gwangSizes="headSpaceGwangSizes"/>
 
   <div class="container">
     <div class="wrapper-category">

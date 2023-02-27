@@ -11,7 +11,7 @@ const featuredArticles = articles.query('featured', undefined, undefined, undefi
 featuredArticles.sortAsc('filename');
 featuredArticles.slice(0, SHOW_FEATURED_ARTICLE);
 
-const additionalAdSizes = {
+const additionalGwangSizes = {
   XXS: { width: 300, height: 100 },
   XS: { width: 300, height: 100 },
   S: { width: 728, height: 90 },
@@ -19,7 +19,7 @@ const additionalAdSizes = {
   L: { width: 970, height: 90 },
   XL: { width: 970, height: 90 },
   XXL: { width: 970, height: 90 },
-} satisfies AdSizeByScale
+} satisfies GwangSizeByScale
 </script>
 
 
@@ -34,12 +34,12 @@ const additionalAdSizes = {
       />
     </li>
 
-    <Adbox id="featured-ad-0" :width="300" :height="600"/>
-    <Adbox id="featured-ad-1" :width="300" :height="100"/>
+    <GwangBox id="featured-gwang-0" :width="300" :height="600"/>
+    <GwangBox id="featured-gwang-1" :width="300" :height="100"/>
   </ol>
 
-  <div class="additional-ads">
-    <Adbox_ScaleShift :adSizes="additionalAdSizes"/>
+  <div class="additional-gwangs">
+    <GwangBox_ScaleShift :gwangSizes="additionalGwangSizes"/>
   </div>
 </section>
 </template>
@@ -67,14 +67,14 @@ const additionalAdSizes = {
   #featured-0 { grid-area: 🍑 ; }
   #featured-1 { grid-area: 🧅 ; }
   #featured-2 { grid-area: 🍠 ; }
-  #featured-ad-0 { grid-area: 🙇‍♂️; }
-  #featured-ad-1 { grid-area: 👫; }
+  #featured-gwang-0 { grid-area: 🙇‍♂️; }
+  #featured-gwang-1 { grid-area: 👫; }
   li {width: 100%; height: 100%;}
 }
 
 :is(.scale--XXL, .scale--XL, .scale--L, .scale--M) #featured-articles {
   .article-list {
-    #featured-ad-1 { display: none; }
+    #featured-gwang-1 { display: none; }
     grid-template-areas: 
     "🍑 🍑 🍑 🙇‍♂️"
     "🧅 🧅 🍠 🍠";
@@ -85,13 +85,13 @@ const additionalAdSizes = {
     gap: 30rem;
     padding: 58rem 0 30rem 0;
   }
-  .additional-ads {
+  .additional-gwangs {
     margin-bottom: 30rem;
   }
 }
 .scale--S #featured-articles {
   .article-list {
-    #featured-ad-1 { display: none; }
+    #featured-gwang-1 { display: none; }
     grid-template-areas: 
     "🍑 🙇‍♂️"
     "🧅 🧅"
@@ -103,13 +103,13 @@ const additionalAdSizes = {
     gap: 26rem;
     padding: 44rem 0 26rem 0;
   }
-  .additional-ads {
+  .additional-gwangs {
     margin-bottom: 26rem;
   }
 }
 :is(.scale--XS, .scale--XXS) #featured-articles {
   .article-list {
-    #featured-ad-0 { display: none; }
+    #featured-gwang-0 { display: none; }
     grid-template-areas: 
     "🍑"
     "👫"
@@ -123,7 +123,7 @@ const additionalAdSizes = {
     gap: 24rem;
     padding: 40rem 0 0 0;
   }
-  .additional-ads {
+  .additional-gwangs {
     margin-bottom: 24rem;
   }
 }

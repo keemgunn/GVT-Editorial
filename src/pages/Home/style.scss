@@ -9,25 +9,25 @@
 :is(.scale--XXL, .scale--XL, .scale--L) .home #all-articles {
   flex-direction: row;
   --section-gap: 30rem;
-  --ad-tower-width: 300rem;
+  --gwang-tower-width: 300rem;
   --top-bottom-paddings: 74rem
 }
 :is(.scale--M) .home #all-articles {
   flex-direction: row;
   --section-gap: 30rem;
-  --ad-tower-width: 160rem;
+  --gwang-tower-width: 160rem;
   --top-bottom-paddings: 68rem
 }
 :is(.scale--S) .home #all-articles {
   flex-direction: row;
   --section-gap: 30rem;
-  --ad-tower-width: 160rem;
+  --gwang-tower-width: 160rem;
   --top-bottom-paddings: 50rem
 }
 :is(.scale--XXS, .scale--XS) .home #all-articles {
   flex-direction: column;
   --section-gap: 38rem;
-  --ad-tower-width: 100%;
+  --gwang-tower-width: 100%;
   --top-bottom-paddings: 50rem
 }
 

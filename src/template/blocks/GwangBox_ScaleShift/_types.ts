@@ -1,7 +1,7 @@
 export { } 
 declare global {
 
-  // interface AdSizeByScale {
+  // interface GwangSizeByScale {
   //   XXS: { width: number, height: number },
   //   XS: { width: number, height: number },
   //   S: { width: number, height: number },
@@ -11,6 +11,6 @@ declare global {
   //   XXL: { width: number, height: number },
   // }
 
-  type AdSizeByScale = Record<ScaleCode, { width: number, height: number } | undefined>;
+  type GwangSizeByScale = Record<ScaleCode, { width: number, height: number } | undefined>;
 
 }

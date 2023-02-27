@@ -17,10 +17,10 @@ const props = defineProps<{
   articleCardName: string;
   articlesArray: Array<ArticleRecord>;
 
-  showAdsInList: number;
-  adSizes: AdSizeByScale;
+  showGwangsInList: number;
+  gwangSizes: GwangSizeByScale;
 
-  adTowerAdCount: number;
+  gwangTowerAdCount: number;
 
   pageURI: string;
 }>();
@@ -29,9 +29,9 @@ const articleListName = computed(() => {
   return props.title.replace(/ /gi, "")
 })
 
-const showAdTower = computed(() => /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale))
+const showGwangTower = computed(() => /--S|--M|--L|--XL|--XXL/.test(frameStore.appScale))
 
-const AdSizes = {
+const GwangSizes = {
   XXS: { width: 300, height: 250 },
   XS: { width: 300, height: 250 },
   S: { width: 160, height: 600 },
@@ -39,13 +39,13 @@ const AdSizes = {
   L: { width: 300, height: 600 },
   XL: { width: 300, height: 600 },
   XXL: { width: 300, height: 600 },
-} satisfies AdSizeByScale
+} satisfies GwangSizeByScale
 </script>
 
 
 
 <template>
-<section class="article-list-and-ad-tower">
+<section class="article-list-and-gwang-tower">
 
   <section class="articles-wrapper">
     <Title_PageSection 
@@ -60,8 +60,8 @@ const AdSizes = {
     :name="articleListName" 
     :cardName="articleCardName" 
     :articles="articlesArray"
-    :showAds="showAdsInList" 
-    :adSizes="adSizes"/>
+    :showGwangs="showGwangsInList" 
+    :gwangSizes="gwangSizes"/>
 
     <Title_PageSection 
     class="bottom-divider"
@@ -75,11 +75,11 @@ const AdSizes = {
     nextButtonName="NEXT ▶︎"/>
   </section>
 
-  <AdTower
-  v-show="showAdTower" 
-  class="ad-tower" 
-  :AdSizes="AdSizes" 
-  :AdCount="adTowerAdCount" 
+  <GwangTower
+  v-show="showGwangTower" 
+  class="gwang-tower" 
+  :GwangSizes="GwangSizes" 
+  :AdCount="gwangTowerAdCount" 
   />
 
 </section>
@@ -87,46 +87,46 @@ const AdSizes = {
 
 
 <style lang="scss">
-/** @/template/compositions/ArticleList_AdTower.vue */
+/** @/template/compositions/ArticleList_GwangTower.vue */
 
 :is(.scale--XXL, .scale--XL, .scale--L) #app 
-.article-list-and-ad-tower {
+.article-list-and-gwang-tower {
   --container-direction: row;
   --container-vertical-padding: 74rem;
   --container-gap: 30rem;
   --items-gap: 36rem;
-  --ad-tower-width: 300rem;
+  --gwang-tower-width: 300rem;
   
 }
 :is(.scale--M) #app 
-.article-list-and-ad-tower {
+.article-list-and-gwang-tower {
   --container-direction: row;
   --container-vertical-padding: 68rem;
   --container-gap: 30rem;
   --items-gap: 32rem;
-  --ad-tower-width: 160rem;
+  --gwang-tower-width: 160rem;
   
 }
 :is(.scale--S) #app 
-.article-list-and-ad-tower {
+.article-list-and-gwang-tower {
   --container-direction: row;
   --container-vertical-padding: 50rem;
   --container-gap: 30rem;
   --items-gap: 30rem;
-  --ad-tower-width: 160rem;
+  --gwang-tower-width: 160rem;
   
 }
 :is(.scale--XS, .scale--XXS) #app 
-.article-list-and-ad-tower {
+.article-list-and-gwang-tower {
   --container-direction: column;
   --container-vertical-padding: 50rem;
   --container-gap: 38rem;
   --items-gap: 24rem;
-  --ad-tower-width: 100%;
+  --gwang-tower-width: 100%;
 }
 
 
-#app .article-list-and-ad-tower {
+#app .article-list-and-gwang-tower {
   align-self: center;
   display: flex;
   flex-direction: var(--container-direction);
@@ -140,7 +140,7 @@ const AdSizes = {
 }
 
 
-#app .article-list-and-ad-tower 
+#app .article-list-and-gwang-tower 
 .articles-wrapper {
   display: flex;
   flex-direction: column;
@@ -158,9 +158,9 @@ const AdSizes = {
     }
   }
 }
-#app .article-list-and-ad-tower 
-.ad-tower {
-  width: var(--ad-tower-width);
+#app .article-list-and-gwang-tower 
+.gwang-tower {
+  width: var(--gwang-tower-width);
   flex-shrink: 0;
 }
 

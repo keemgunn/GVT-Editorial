@@ -3,7 +3,7 @@ import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useInteractionStore } from '@/template/stores/interaction';
 import { searchByFormInput } from '@/template/composables/searchByFormInput';
-import ArticleList_AdTower from '@/template/compositions/ArticleList_AdTower.vue/ArticleList_AdTower.vue';
+import ArticleList_GwangTower from '@/template/compositions/ArticleList_GwangTower/ArticleList_GwangTower.vue';
 
 
 const ARTICLES_PER_PAGE = 15;
@@ -40,7 +40,7 @@ const CL_scrolled = computed(() => {
     return ""
 });
 
-const articleListAdSizes = {
+const articleListGwangSizes = {
   XXS: { width: 300, height: 250 },
   XS: { width: 300, height: 250 },
   S: { width: 468, height: 60 },
@@ -48,7 +48,7 @@ const articleListAdSizes = {
   L: { width: 970, height: 90 },
   XL: { width: 970, height: 90 },
   XXL: { width: 970, height: 90 },
-} satisfies AdSizeByScale
+} satisfies GwangSizeByScale
 </script>
 
 <template>
@@ -72,7 +72,7 @@ const articleListAdSizes = {
     </div>
 
     <section id="results">
-      <ArticleList_AdTower
+      <ArticleList_GwangTower
       v-show="searchPackage.searchedNumber.value > 0"
       :title="searchPackage.searchState.value" 
       :titleSize="20" 
@@ -80,9 +80,9 @@ const articleListAdSizes = {
       :titleDividerWidth="3"
       articleCardName="ArticleCard_Searched_A"
       :articlesArray="searchPackage.searchedArticles.value.array"
-      :showAdsInList="0"
-      :adSizes="articleListAdSizes"
-      :adTowerAdCount="AD_TOWER_AD_COUNT"
+      :showGwangsInList="0"
+      :gwangSizes="articleListGwangSizes"
+      :gwangTowerAdCount="AD_TOWER_AD_COUNT"
       :pageURI="pageURI"
       />
     </section>

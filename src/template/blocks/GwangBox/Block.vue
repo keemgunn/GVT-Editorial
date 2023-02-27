@@ -21,31 +21,31 @@ const boxStyle = computed(() => { return {
 }})
 
 onBeforeUpdate(() => {
-  // console.warn("AD UPDATEEEEEEEEE");
+  // console.warn("COMM UPDATEEEEEEEEE");
 })
 </script>
 
 <template>
-<!-- Adbox -->
-<div class="ad-box" :class="clickPrevent" :style="boxStyle">
-  <div class="ad-wrapper">
-    <!-- GOOGLE AD HERE -->
+<!-- GwangBox -->
+<div class="gwang-box" :class="clickPrevent" :style="boxStyle">
+  <div class="gwang-wrapper">
+    <!-- GOOGLE COMM HERE -->
   </div>
-  <div class="ad-background typo-header-20">Advertisement</div>
+  <div class="gwang-background typo-header-20">Advertisement</div>
 </div>
 </template>
 
 <style lang="scss">
-.ad-box {
+.gwang-box {
   overflow: hidden;
   z-index: 10;
   pointer-events: all;
-  .ad-wrapper {
+  .gwang-wrapper {
     position: relative;
     width: 100%; height: 100%;
     z-index: 10;
   }
-  .ad-background {
+  .gwang-background {
     width: 100%; height: 100%;
     position: absolute;
     top: 0;
@@ -61,7 +61,7 @@ onBeforeUpdate(() => {
     opacity: 0.18;
   }
 }
-.ad-box.--prevent-interaction {
+.gwang-box.--prevent-interaction {
   pointer-events: none !important;
 }
 </style>

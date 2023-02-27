@@ -1,27 +1,27 @@
 
 :is(.scale--XXL, .scale--XL, .scale--L) 
-.ad-tower {
+.gwang-tower {
   --wrapper-gap: 36rem;
   
 }
 :is(.scale--M) 
-.ad-tower {
+.gwang-tower {
   --wrapper-gap: 32rem;
   
 }
 :is(.scale--S) 
-.ad-tower {
+.gwang-tower {
   --wrapper-gap: 30rem;
   
 }
 :is(.scale--XS, .scale--XXS) 
-.ad-tower {
+.gwang-tower {
   --wrapper-gap: 24rem;
 }
 
 
 
-.ad-tower {
+.gwang-tower {
   // width: from parent css
   display: flex;
   flex-direction: column;

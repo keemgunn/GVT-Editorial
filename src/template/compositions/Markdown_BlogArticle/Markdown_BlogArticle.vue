@@ -35,8 +35,8 @@ function getFrontmatter(key: string) {
   }
 }
 
-const showAdTower = computed(() => /--M|--L|--XL|--XXL/.test(frameStore.appScale))
-const adTowerAdSizes = {
+const showGwangTower = computed(() => /--M|--L|--XL|--XXL/.test(frameStore.appScale))
+const gwangTowerGwangSizes = {
   XXS: undefined,
   XS: undefined,
   S: undefined,
@@ -44,7 +44,7 @@ const adTowerAdSizes = {
   L: { width: 300, height: 600 },
   XL: { width: 300, height: 600 },
   XXL: { width: 300, height: 600 },
-} satisfies AdSizeByScale
+} satisfies GwangSizeByScale
 </script>
 
 
@@ -59,9 +59,9 @@ const adTowerAdSizes = {
       <component @markdownLoaded="handleFrontmatter" 
       :is='props.markdownComponentName'/>
 
-      <AdTower
-      v-show="showAdTower"
-      :AdSizes="adTowerAdSizes" 
+      <GwangTower
+      v-show="showGwangTower"
+      :GwangSizes="gwangTowerGwangSizes" 
       :AdCount="AD_TOWER_AD_COUNT"/>
     </section>
 
